@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en-in">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/images/shared/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/site.css">
+    <title>Contact Us | Future Tech School Program</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f5f7fb;
+            color: #222;
+        }
+        .main-header { 
+            position: relative; 
+            z-index: 1000; 
+            width: 100%; 
+            background: #06264d; 
+        }
+            
+
+        .contact-section {
+            padding: 80px 0;
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(13, 110, 253, 0.05),
+                    rgba(255, 255, 255, 0.9)
+                );
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+
+        .section-title span {
+            display: inline-block;
+            color: #0d6efd;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .section-title h2 {
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #172033;
+        }
+
+        .section-title p {
+            max-width: 650px;
+            margin: auto;
+            color: #777;
+            font-size: 15px;
+        }
+
+        .contact-wrapper {
+            background: #fff;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 18px 55px rgba(0, 0, 0, 0.10);
+            min-height: 700px;
+        }
+
+
+        .contact-info {
+            background: linear-gradient(
+                145deg,
+                #0d6efd,
+                #084298
+            );
+
+            color: #fff;
+            padding: 60px 45px;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            min-height:700px;
+        }
+
+        .contact-info::before {
+            content: "";
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.08);
+            top: -80px;
+            right: -70px;
+        }
+
+        .contact-info::after {
+            content: "";
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.06);
+            bottom: -80px;
+            left: -70px;
+        }
+
+        .contact-info h3 {
+            font-size: 33px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-info > p {
+            color: rgba(255,255,255,0.8);
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 38px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-icon {
+            min-width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            background: rgba(255,255,255,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 23px;
+        }
+
+        .contact-item h6 {
+            font-size: 17px;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        .contact-item p,
+        .contact-item a {
+            margin: 0;
+            font-size: 15px;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            line-height: 1.7;
+        }
+
+        .contact-item a:hover {
+            color: #fff;
+        }
+        .social-links {
+            display: flex;
+            gap: 10px;
+            margin-top: 35px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.12);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            background: #fff;
+            color: #0d6efd;
+            transform: translateY(-4px);
+        }
+
+
+        .contact-form {
+            padding: 60px 50px;
+            min-height: 700px;
+        }
+
+        .contact-form h3 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #172033;
+            margin-bottom: 12px;
+        }
+
+        .contact-form .subtitle {
+            font-size: 16px;
+            color: #777;
+            min-height:1.7;
+            margin-bottom: 37px;
+        }
+
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            font-size: 15px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 9px;
+        }
+
+        .form-control {
+            height: 58px;
+            border: 1px solid #e1e5eb;
+            border-radius: 10px;
+            padding: 14px 17px;
+            font-size: 15px;
+            transition: 0.3s;
+            box-shadow: none;
+        }
+
+        textarea.form-control {
+            height: 150px;
+            resize: none;
+        }
+
+        .form-control:focus {
+            border-color: #0d6efd;
+            box-shadow: 0 0 0 4px rgba(13,110,253,0.08);
+        }
+
+
+        .send-btn {
+            border: none;
+            background: linear-gradient(
+                135deg,
+                #0d6efd,
+                #084298
+            );
+
+            color: #fff;
+            padding: 15px 32px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .send-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(13,110,253,0.25);
+        }
+
+
+        .map-section {
+            margin-top: 30px;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .map-section iframe {
+            width: 100%;
+            height: 350px;
+            border: 0;
+            display: block;
+        }
+
+        .contact-cards {
+            margin-top: 50px;
+        }
+
+        .info-card {
+            background: #fff;
+            padding: 40px 25px;
+            border-radius: 18px;
+            text-align: center;
+            height: 100%;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+        }
+
+        .info-card i {
+            width: 55px;
+            height: 55px;
+            background: rgba(13,110,253,0.1);
+            color: #0d6efd;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 23px;
+        }
+
+        .info-card h5 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .info-card p {
+            font-size: 13px;
+            color: #777;
+            margin: 0;
+        }
+
+        @media (max-width: 991px) {
+
+            .contact-info {
+                padding: 35px 30px;
+            }
+
+            .contact-form {
+                padding: 35px 30px;
+            }
+
+            .section-title h2 {
+                font-size: 34px;
+            }
+        }
+
+        @media (max-width: 767px) {
+
+            .contact-section {
+                padding: 55px 15px;
+            }
+
+            .section-title {
+                margin-bottom: 35px;
+            }
+
+            .section-title h2 {
+                font-size: 28px;
+            }
+
+            .contact-wrapper {
+                border-radius: 15px;
+            }
+
+            .contact-info,
+            .contact-form {
+                padding: 30px 22px;
+            }
+
+            
+        }
+        footer{
+             background-color: rgb(14, 14, 65);
+             margin-top: -50px;
+            padding-bottom: 40px;
+            padding-top: 20px;
+        }
+        .line{
+            border-bottom: 0px;
+            border-top: 0px;
+            border-left: 0px;
+            border-right: 2px solid rgb(26, 26, 83);
+        }
+        .quick:hover{
+            transform:translateY(-10px);
+            box-shadow:0 15px 35px rgba(0,0,0,.2);
+            color: rgb(211, 151, 22);
+        } 
+         .to{
+            color: rgb(15, 220, 15);
+        }
+        .four{
+            color:rgb(187, 22, 187);
+        }
+
+    </style>
+</head>
+
+<body>
+    <header class="ft-header">
+    <nav class="navbar navbar-expand-xl ft-navbar">
+      <div class="container-fluid">
+        <a href="home.html" class="d-flex align-items-center text-decoration-none ft-logo-wrap">
+          <img src="assets/images/shared/logo.png" width="60" height="60" alt="Future Tech logo" class="rounded-3">
+          <span class="ms-2 text-white fw-bold d-none d-lg-inline" style="font-size:1.05rem;line-height:1.1;">FUTURE TECH<br><span class="text-warning" style="font-size:.8rem;">SCHOOL PROGRAM</span></span>
+        </a>
+
+        <button class="navbar-toggler ft-toggle-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#ftOffcanvas">
+          <span class="bi bi-list fs-1"></span>
+        </button>
+
+        <div class="collapse navbar-collapse d-none d-xl-flex justify-content-end">
+          <ul class="navbar-nav align-items-center gap-1">
+            <li class="nav-item"><a href="home.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Programs</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="programs.html">Programs Overview</a></li>
+                <li><a class="dropdown-item" href="programs-level1.html">Level 1 &middot; Junior Innovators</a></li>
+                <li><a class="dropdown-item" href="programs-level2.html">Level 2 &middot; Young Technologists</a></li>
+                <li><a class="dropdown-item" href="programs-level3.html">Level 3 &middot; Future Engineers</a></li>
+                <li><a class="dropdown-item" href="programs-level4.html">Level 4 &middot; AI Professional Foundation</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="methodology.html">Methodology</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Projects</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="projects.html">All Projects</a></li>
+                <li><a class="dropdown-item" href="projects-aiml.html">AI &amp; ML</a></li>
+                <li><a class="dropdown-item" href="projects-robotics.html">Robotics</a></li>
+                <li><a class="dropdown-item" href="projects-web.html">Web &amp; App</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Admissions</a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="admissions-individual.html">Individual Student</a></li>
+                <li><a class="dropdown-item" href="admissions-bulk.html">School / Bulk</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="student-login.html"><i class="bi bi-box-arrow-in-right me-1"></i>Student Login</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">More</a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="school.html">School Programs</a></li>
+                <li><a class="dropdown-item" href="events-workshops.html">Events &amp; Workshops</a></li>
+                <li><a class="dropdown-item" href="competitions.html">Competitions</a></li>
+                <li><a class="dropdown-item" href="certifications.html">Certifications</a></li>
+                <li><a class="dropdown-item" href="admin.html">Admin Login</a></li>
+                <li><a class="dropdown-item" href="faq.html">FAQ's</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item"><a href="contact.html" class="btn btn-warning fw-bold px-4 ms-2 active">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="offcanvas offcanvas-end ft-offcanvas" id="ftOffcanvas">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title fw-bold">Future Tech School Program</h5>
+        <button class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a href="home.html" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="programs.html" class="nav-link">Programs Overview</a></li>
+          <li class="nav-item ps-3"><a href="programs-level1.html" class="nav-link small">Level 1 &middot; Junior Innovators</a></li>
+          <li class="nav-item ps-3"><a href="programs-level2.html" class="nav-link small">Level 2 &middot; Young Technologists</a></li>
+          <li class="nav-item ps-3"><a href="programs-level3.html" class="nav-link small">Level 3 &middot; Future Engineers</a></li>
+          <li class="nav-item ps-3"><a href="programs-level4.html" class="nav-link small">Level 4 &middot; AI Professional Foundation</a></li>
+          <li class="nav-item"><a href="methodology.html" class="nav-link">Methodology</a></li>
+          <li class="nav-item"><a href="projects.html" class="nav-link">Projects</a></li>
+          <li class="nav-item"><a href="school.html" class="nav-link">School Programs</a></li>
+          <li class="nav-item"><a href="events-workshops.html" class="nav-link">Events &amp; Workshops</a></li>
+          <li class="nav-item"><a href="competitions.html" class="nav-link">Competitions</a></li>
+          <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+          <li class="nav-item"><a href="certifications.html" class="nav-link">Certifications</a></li>
+          <li class="nav-item"><a href="admissions-individual.html" class="nav-link">Admissions &middot; Individual</a></li>
+          <li class="nav-item"><a href="admissions-bulk.html" class="nav-link">Admissions &middot; School / Bulk</a></li>
+          <li class="nav-item"><a href="school-login.html" class="nav-link"><i class="bi bi-box-arrow-in-right me-1"></i>School Login</a></li>
+          <li class="nav-item"><a href="partnership.html" class="nav-link">Partner With Us</a></li>
+          <li class="nav-item"><a href="faq.html" class="nav-link">FAQ's</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link active">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+   
+    <section id="contact" class="contact-section">
+
+        <div class="container">
+            <div class="section-title">
+
+                <span>Get In Touch</span>
+
+                <h2>Contact Us</h2>
+
+                <p>
+                    Have a question or need assistance?
+                    Our team is ready to help you. Send us a message
+                    and we will get back to you shortly.
+                </p>
+
+            </div>
+
+            <div class="contact-wrapper">
+
+                <div class="row g-0">
+
+                    <div class="col-lg-5">
+
+                        <div class="contact-info">
+
+                            <h3>Let's Talk</h3>
+
+                            <p>
+                                We'd love to hear from you. Whether you have
+                                a project in mind, a question, or simply want
+                                to learn more about our services, feel free
+                                to contact us.
+                            </p>
+
+
+                            <div class="contact-item">
+
+                                <div class="contact-icon">
+                                    <i class="bi bi-telephone-fill"></i>
+                                </div>
+
+                                <div>
+
+                                    <h6>Call Us</h6>
+
+                                    <a href="#">
+                                        +91 98765 43210
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                            <div class="contact-item">
+
+                                <div class="contact-icon">
+                                    <i class="bi bi-envelope-fill"></i>
+                                </div>
+
+                                <div>
+
+                                    <h6>Email Us</h6>
+
+                                    <a href="#">
+                                        info@3DWebsoft.com
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                            <div class="contact-item">
+
+                                <div class="contact-icon">
+                                    <i class="bi bi-geo-alt-fill"></i>
+                                </div>
+
+                                <div>
+
+                                    <h6>Visit Us</h6>
+
+                                    <p>
+                                        Future Tech Foundation,<br>
+                                        123 Main Road, Hyderabad,<br>
+                                        Telangana - 500001, India
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="contact-item">
+
+                                <div class="contact-icon">
+                                    <i class="bi bi-clock-fill"></i>
+                                </div>
+
+                                <div>
+
+                                    <h6>Working Hours</h6>
+
+                                    <p>
+                                        Monday - Friday: 9:00 AM - 6:00 PM
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                            <div class="social-links">
+
+                                <a href="#">
+                                    <i class="bi bi-facebook"></i>
+                                </a>
+
+                                <a href="#">
+                                    <i class="bi bi-instagram"></i>
+                                </a>
+
+                                <a href="#">
+                                    <i class="bi bi-linkedin"></i>
+                                </a>
+
+                                <a href="#">
+                                    <i class="bi bi-whatsapp"></i>
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-7">
+
+                        <div class="contact-form">
+
+                            <h3>Send Us a Message</h3>
+
+                            <p class="subtitle">
+                                Fill out the form below and our team will
+                                contact you as soon as possible.
+                            </p>
+
+
+                            <form id="contactForm">
+
+
+                                <div class="row">
+
+                                    <div class="col-md-6">
+
+                                        <div class="form-group">
+
+                                            <label class="form-label">
+                                                Your Name
+                                            </label>
+
+                                            <input id="contactName" type="text" class="form-control" placeholder="Enter your name"  required>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="col-md-6">
+
+                                        <div class="form-group">
+
+                                            <label class="form-label">
+                                                Email Address
+                                            </label>
+
+                                            <input
+                                                id="contactEmail"
+                                                type="email"
+                                                class="form-control"
+                                                placeholder="Enter your email"
+                                                required
+                                            >
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="row">
+
+                                    <div class="col-md-6">
+
+                                        <div class="form-group">
+
+                                            <label class="form-label">
+                                                Phone Number
+                                            </label>
+
+                                            <input
+                                                id="contactPhone"
+                                                type="tel"
+                                                class="form-control"
+                                                placeholder="+91 XXXXX XXXXX"
+                                            >
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-md-6">
+
+                                        <div class="form-group">
+
+                                            <label class="form-label">
+                                                Subject
+                                            </label>
+
+                                            <input
+                                                id="contactSubject"
+                                                type="text"
+                                                class="form-control"
+                                                placeholder="Enter subject"
+                                            >
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group">
+
+                                    <label class="form-label">
+                                        Your Message
+                                    </label>
+
+                                    <textarea
+                                        id="contactMessage"
+                                        class="form-control"
+                                        placeholder="Write your message..."
+                                        required
+                                    ></textarea>
+
+                                </div>
+
+                                <div id="contactFormAlert" class="alert d-none mt-3" role="alert"></div>
+
+                                <button
+                                    type="submit"
+                                    class="send-btn"
+                                >
+                                    <i class="bi bi-send-fill me-2"></i>
+                                    Send Message
+                                </button>
+
+                            </form>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="row g-4 contact-cards">
+
+
+                <div class="col-md-4">
+
+                    <div class="info-card">
+
+                        <i class="bi bi-headset"></i>
+
+                        <h5>24/7 Support</h5>
+
+                        <p>
+                            Our support team is always ready
+                            to assist you.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <div class="info-card">
+
+                        <i class="bi bi-lightning-charge"></i>
+
+                        <h5>Quick Response</h5>
+
+                        <p>
+                            We usually respond to inquiries
+                            within 24 hours.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-4">
+
+                    <div class="info-card">
+
+                        <i class="bi bi-shield-check"></i>
+
+                        <h5>Trusted Service</h5>
+
+                        <p>
+                            Your information is secure
+                            and completely confidential.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div><br><br>
+
+            <div class="map-container">
+                <iframe
+                    src="https://www.google.com/maps?q=17.3861675,78.3564153&output=embed"
+                    width="100%"
+                    height="350"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+
+        </div>
+
+    </section>
+    <footer class="ft-footer">
+    <div class="container-fluid">
+      <div class="row gy-4">
+        <div class="col-lg-3 col-md-6 ft-col">
+          <div class="d-flex align-items-center mb-3">
+            <img src="assets/images/shared/logo.png" width="52" height="52" class="rounded-3 me-2" alt="logo">
+            <div class="fw-bold">FUTURE TECH<br><span class="text-warning">SCHOOL PROGRAM</span></div>
+          </div>
+          <p class="small text-white-50">Building Future Innovators Today &mdash; empowering students from Grade 5th to 12th with future-ready technology skills through hands-on learning, real-world projects and expert mentorship.</p>
+          <div class="d-flex align-items-center mt-3">
+            <a href="https://3dwebsoftfoundation.org/" class="me-2"><img src="assets/images/home/foundation.jpeg" width="42" height="42" class="rounded-circle" alt="3DWebSoft Foundation"></a>
+            <div class="small"><a href="https://3dwebsoftfoundation.org/">3DWEBSOFT<br>Foundation</a></div>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-6 ft-col">
+          <h6>Quick Links</h6>
+          <a href="home.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Home</a>
+          <a href="about.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>About Us</a>
+          <a href="programs.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Programs</a>
+          <a href="school.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Schools</a>
+          <a href="events-workshops.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Events</a>
+          <a href="projects.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Projects</a>
+          <a href="gallery.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Gallery</a>
+          <a href="admissions-individual.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Admissions</a>
+          <a href="certifications.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Certificates</a>
+          <a href="contact.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Contact Us</a>
+        </div>
+
+        <div class="col-lg-2 col-md-6 ft-col">
+          <h6>Program Levels</h6>
+          <p class="small mb-2"><span class="bi bi-circle-fill text-warning me-1"></span>Level 1 &middot; Junior Innovators<br><span class="text-white-50 ms-3">(5th&ndash;6th Standard)</span></p>
+          <p class="small mb-2"><span class="bi bi-circle-fill text-success me-1"></span>Level 2 &middot; Young Technologists<br><span class="text-white-50 ms-3">(7th&ndash;8th Standard)</span></p>
+          <p class="small mb-2"><span class="bi bi-circle-fill text-primary me-1"></span>Level 3 &middot; Future Engineers<br><span class="text-white-50 ms-3">(9th&ndash;10th Standard)</span></p>
+          <p class="small mb-2"><span class="bi bi-circle-fill text-purple me-1" style="color:#bb16bb;"></span>Level 4 &middot; AI Professional Foundation<br><span class="text-white-50 ms-3">(11th&ndash;12th Standard)</span></p>
+        </div>
+
+        <div class="col-lg-2 col-md-6 ft-col">
+          <h6>Get In Touch</h6>
+          <p class="small mb-2"><i class="bi bi-telephone-fill me-2 text-warning"></i>+91 9108534041</p>
+          <p class="small mb-2"><i class="bi bi-envelope me-2 text-warning"></i>info@futuretech.org</p>
+          <p class="small mb-2"><i class="bi bi-globe me-2 text-warning"></i>www.futuretech.org</p>
+          <p class="small mb-2"><i class="bi bi-geo-alt-fill me-2 text-warning"></i>3DWebSoft IT Solutions,<br><span class="ms-4">Narsingi, Hyderabad,</span><br><span class="ms-4">Telangana - 500075, India</span></p>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h6>Follow Us</h6>
+          <div class="d-flex ft-social mb-3">
+            <a href="https://www.facebook.com/profile.php?id=61592302205333" class="me-2"><img src="assets/images/gallery/facebook.jpeg" alt="Facebook"></a>
+            <a href="https://www.instagram.com/3dwebsoftitsolutions" class="me-2"><img src="assets/images/gallery/instagram.jpeg" alt="Instagram"></a>
+            <a href="https://www.youtube.com/@3dwebsoftitsolutions" class="me-2"><img src="assets/images/gallery/youtube.jpeg" alt="YouTube"></a>
+            <a href="https://www.linkedin.com/company/3dwebsoft-it-solutions/"><img src="assets/images/gallery/linkedin.jpeg" alt="LinkedIn"></a>
+          </div>
+          <h6>Stay Updated</h6>
+          <p class="small text-white-50">Get the latest updates, events and opportunities.</p>
+          <form class="d-flex" onsubmit="return false;">
+            <input type="email" class="form-control form-control-sm" placeholder="Enter your email">
+            <button class="btn btn-warning btn-sm ms-2"><i class="bi bi-arrow-right"></i></button>
+          </form>
+        </div>
+      </div>
+
+      <div class="ft-brand-badges d-flex flex-wrap justify-content-center gap-4 py-4">
+        <a href="https://www.3dwebsoftitsolutions.com" target="_blank" rel="noopener" class="ft-badge-link d-flex align-items-center text-decoration-none">
+          <span class="badge rounded-pill bg-primary px-3 py-2 me-3">Developed by</span>
+          <img src="assets/images/shared/itsolutions-logo.jpeg" alt="3DWebSoft IT Solutions" class="rounded-circle me-2" width="48" height="48">
+          <span class="text-white fw-bold text-start lh-sm">3DWEBSOFT<br><span class="fw-normal">IT Solutions</span></span>
+        </a>
+        <a href="https://3dwebsoftfoundation.org/" target="_blank" rel="noopener" class="ft-badge-link d-flex align-items-center text-decoration-none">
+          <span class="badge rounded-pill bg-warning text-dark px-3 py-2 me-3">Launched BY</span>
+          <img src="assets/images/shared/foundation-logo.jpeg" alt="3DWebSoft Foundation" class="rounded-circle me-2" width="48" height="48">
+          <span class="text-white fw-bold text-start lh-sm">3DWEBSOFT<br><span class="fw-normal">Foundation</span></span>
+        </a>
+      </div>
+
+      <div class="ft-copyright text-center">
+        &copy; 2026 Future Tech School Program. All Rights Reserved. &middot; A 3DWebSoft IT Solutions initiative.
+      <br class="d-md-none"><span class="mx-2 d-none d-md-inline">&middot;</span><a href="terms.html" class="text-white-50">Terms of Service</a><span class="mx-2">&middot;</span><a href="privacy.html" class="text-white-50">Privacy Policy</a></div>
+    </div>
+  </footer>
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/api-client.js"></script>
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById('contactName').value.trim();
+      const email = document.getElementById('contactEmail').value.trim();
+      const phone = document.getElementById('contactPhone').value.trim();
+      const subject = document.getElementById('contactSubject').value.trim();
+      const message = document.getElementById('contactMessage').value.trim();
+      const alertBox = document.getElementById('contactFormAlert');
+
+      if (!name || !email || !message) {
+        alertBox.className = 'alert alert-danger mt-3';
+        alertBox.textContent = 'Please fill in your name, email and message.';
+        alertBox.classList.remove('d-none');
+        return;
+      }
+
+      try {
+        await FTApi.submitContact({ name, email, phone, subject, message });
+        alertBox.className = 'alert alert-success mt-3';
+        alertBox.textContent = 'Thank you! Your message has been received. Our team will contact you soon.';
+        alertBox.classList.remove('d-none');
+        e.target.reset();
+      } catch (err) {
+        alertBox.className = 'alert alert-danger mt-3';
+        alertBox.textContent = err.message || 'Could not send your message. Please try again.';
+        alertBox.classList.remove('d-none');
+      }
+    });
+  </script>
+</body>
+</html>

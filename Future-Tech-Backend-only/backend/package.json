@@ -1,0 +1,39 @@
+{
+  "name": "future-tech-backend",
+  "version": "1.0.0",
+  "description": "Backend API for Future Tech School Program website — admissions, school accounts, admin dashboard, UPI QR payments and PDF receipts.",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "db:init": "node src/scripts/initDb.js",
+    "migrate:upi-payments": "node src/scripts/migrateToUpiPayments.js",
+    "backfill:payment-refs": "node src/scripts/backfillPaymentReferences.js",
+    "db:seed-admin": "node src/scripts/seedAdmin.js",
+    "db:reset-admin": "node src/scripts/resetAdminPassword.js",
+    "package:deploy": "node src/scripts/packageForDeploy.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-rate-limit": "^7.4.0",
+    "express-validator": "^7.1.0",
+    "helmet": "^7.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
+    "mysql2": "^3.11.0",
+    "nodemailer": "^10.0.3",
+    "pdfkit": "^0.15.0",
+    "pg": "^8.12.0",
+    "pg-hstore": "^2.3.4",
+    "qrcode": "^1.5.4",
+    "sequelize": "^6.37.3",
+    "sqlite3": "^5.1.7"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

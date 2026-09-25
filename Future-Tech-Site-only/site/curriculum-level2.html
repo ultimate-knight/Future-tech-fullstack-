@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="shortcut icon" href="assets/images/shared/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/site.css">
+    <title>Level 2 Curriculum | Future Tech School Program</title>
+    <style>
+    .objective {
+            padding: 60px 8%;
+            background: #eef7f0;
+            text-align: center;
+        }
+        .section-title {
+            font-size: 34px;
+            color: #13773a;
+            margin-bottom: 15px;
+        }
+        .objective p {
+            max-width: 850px;
+            margin: auto;
+            font-size: 18px;
+            color: #4e5d5b;
+        }
+        .focus-list {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .focus-list span {
+            background: white;
+            border: 1px solid #cce4d0;
+            padding: 12px 20px;
+            border-radius: 25px;
+            color: #13773a;
+            font-weight: bold;
+        }
+        .curriculum {
+            width: 92%;
+            max-width: 1200px;
+            margin: 50px auto;
+        }
+        .curriculum-heading {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+        .curriculum-heading h2 {
+            font-size: 36px;
+            color: #082d3e;
+            font-weight: 700;
+        }
+        .curriculum-heading p {
+            color: #65716f;
+            margin-top: 8px;
+            font-size: 17px;
+        }
+        .course-card {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            min-height: 280px;
+            background: #ffffff;
+            border: 1px solid #cce4d0;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
+            transition: 0.3s;
+        }
+        .course-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+        .course-left {
+            position: relative;
+            padding: 45px 20px 25px;
+            text-align: center;
+            border-right: 2px dotted #c7d8cb;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #f9fcfa;
+        }
+        .course-number {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 110px;
+            height: 65px;
+            color: white;
+            background: #32a852;
+            font-size: 34px;
+            font-weight: 700;
+            padding-top: 7px;
+            border-radius: 15px 0 35px 0;
+        }
+        .course-icon {
+            width: 90px;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            font-size: 65px;
+            color: #32a852;
+        }
+        .course-left h2 {
+            color: #082d3e;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin: 5px 0 0;
+        }
+        .course-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding: 30px 30px;
+            gap: 35px;
+        }
+        .content-column {
+            padding-left: 5px;
+        }
+        .content-column h3 {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            background: #32a852;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 6px 15px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+        }
+        .content-column ul {
+            margin: 0;
+            padding-left: 20px;
+            color: #53615f;
+            font-size: 15px;
+            line-height: 1.65;
+        }
+        .content-column li {
+            margin-bottom: 3px;
+        }
+        .content-column li::marker {
+            color: #32a852;
+        }
+        .content-column h4 {
+            font-size: 17px;
+            color: #16803e;
+            margin: 5px 0 8px;
+        }
+        .content-column p {
+            color: #40504d;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+        .projects {
+            padding: 70px 8%;
+            background: #eef7f0;
+        }
+        .projects h2 {
+            text-align: center;
+            color: #082d3e;
+            font-size: 36px;
+            margin-bottom: 40px;
+        }
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 18px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .project-card {
+            background: white;
+            padding: 25px 15px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #cce4d0;
+            min-height: 140px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            color: #174536;
+            transition: 0.3s;
+        }
+        .project-card:hover {
+            background: #32a852;
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .skills {
+            padding: 70px 8%;
+            background: white;
+        }
+        .skills h2 {
+            text-align: center;
+            font-size: 36px;
+            color: #082d3e;
+            margin-bottom: 40px;
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 950px;
+            margin: auto;
+        }
+        .skill {
+            background: #f5faf6;
+            padding: 18px;
+            border-radius: 10px;
+            border: 1px solid #d9e8dc;
+            font-weight: bold;
+            color: #31534a;
+            transition: 0.3s;
+        }
+        .skill:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+        .skill::before {
+            content: "✓";
+            color: #32a852;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .final-outcome {
+            padding: 60px 8%;
+            background:#fff;
+        }
+        .outcome-box {
+            display: flex;
+            align-items: stretch;
+            background: #ffffff;
+            border: 1px solid #cce4d0;
+            border-radius: 20px;
+            overflow: hidden;
+            min-height: 350px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+            max-width: 1200px;
+            margin: auto;
+        }
+        .outcome-img {
+            width: 42%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #eef7f0;
+            padding: 30px;
+        }
+        .outcome-img img {
+            width: 100%;
+            max-width: 430px;
+            height: auto;
+            object-fit: contain;
+            display: block;
+        }
+        .outcome-content {
+            width: 58%;
+            padding: 45px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .outcome-label {
+            display: inline-block;
+            width: fit-content;
+            background: #32a852;
+            color: #ffffff;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 18px;
+        }
+        .outcome-content h2 {
+            margin-top: 5px;
+            max-width: 750px;
+            font-size: 20px;
+            line-height: 1.6;
+            font-weight: 600;
+            color: #15294a;
+            margin-bottom: 18px;
+        }
+        .outcome-line {
+            width: 100%;
+            height: 1px;
+            background: #d9e2ef;
+            margin: 10px 0 22px;
+        }
+        .outcome-content h3 {
+            font-size: 32px;
+            line-height: 1.2;
+            font-weight: 800;
+            color: #13773a;
+            margin-bottom: 12px;
+        }
+        .outcome-content p {
+            font-size: 16px;
+            color: #5c6b7d;
+            margin-bottom: 25px;
+        }
+        .outcome-buttons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .outcome-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #32a852;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 13px 25px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+        .outcome-btn:hover {
+            background: #278b43;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(50, 168, 82, 0.25);
+        }
+        .outcome-btn i {
+            font-size: 17px;
+        }
+        .next-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            color: #278b43;
+            border: 2px solid #32a852;
+            text-decoration: none;
+            padding: 11px 18px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .next-btn:hover {
+             background: #278b43;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(50, 168, 82, 0.25);
+        }
+    </style>
+    <body>
+        <header class="ft-header">
+    <nav class="navbar navbar-expand-xl ft-navbar">
+      <div class="container-fluid">
+        <a href="home.html" class="d-flex align-items-center text-decoration-none ft-logo-wrap">
+          <img src="assets/images/shared/logo.png" width="60" height="60" alt="Future Tech logo" class="rounded-3">
+          <span class="ms-2 text-white fw-bold d-none d-lg-inline" style="font-size:1.05rem;line-height:1.1;">FUTURE TECH<br><span class="text-warning" style="font-size:.8rem;">SCHOOL PROGRAM</span></span>
+        </a>
+
+        <button class="navbar-toggler ft-toggle-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#ftOffcanvas">
+          <span class="bi bi-list fs-1"></span>
+        </button>
+
+        <div class="collapse navbar-collapse d-none d-xl-flex justify-content-end">
+          <ul class="navbar-nav align-items-center gap-1">
+            <li class="nav-item"><a href="home.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">Programs</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="programs.html">Programs Overview</a></li>
+                <li><a class="dropdown-item" href="programs-level1.html">Level 1 &middot; Junior Innovators</a></li>
+                <li><a class="dropdown-item" href="programs-level2.html">Level 2 &middot; Young Technologists</a></li>
+                <li><a class="dropdown-item" href="programs-level3.html">Level 3 &middot; Future Engineers</a></li>
+                <li><a class="dropdown-item" href="programs-level4.html">Level 4 &middot; AI Professional Foundation</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="methodology.html">Methodology</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Projects</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="projects.html">All Projects</a></li>
+                <li><a class="dropdown-item" href="projects-aiml.html">AI &amp; ML</a></li>
+                <li><a class="dropdown-item" href="projects-robotics.html">Robotics</a></li>
+                <li><a class="dropdown-item" href="projects-web.html">Web &amp; App</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Admissions</a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="admissions-individual.html">Individual Student</a></li>
+                <li><a class="dropdown-item" href="admissions-bulk.html">School / Bulk</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="student-login.html"><i class="bi bi-box-arrow-in-right me-1"></i>Student Login</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">More</a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="school.html">School Programs</a></li>
+                <li><a class="dropdown-item" href="events-workshops.html">Events &amp; Workshops</a></li>
+                <li><a class="dropdown-item" href="competitions.html">Competitions</a></li>
+                <li><a class="dropdown-item" href="certifications.html">Certifications</a></li>
+                <li><a class="dropdown-item" href="admin.html">Admin Login</a></li>
+                <li><a class="dropdown-item" href="faq.html">FAQ's</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item"><a href="contact.html" class="btn btn-warning fw-bold px-4 ms-2">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="offcanvas offcanvas-end ft-offcanvas" id="ftOffcanvas">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title fw-bold">Future Tech School Program</h5>
+        <button class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a href="home.html" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="programs.html" class="nav-link active">Programs Overview</a></li>
+          <li class="nav-item ps-3"><a href="programs-level1.html" class="nav-link small">Level 1 &middot; Junior Innovators</a></li>
+          <li class="nav-item ps-3"><a href="programs-level2.html" class="nav-link small">Level 2 &middot; Young Technologists</a></li>
+          <li class="nav-item ps-3"><a href="programs-level3.html" class="nav-link small">Level 3 &middot; Future Engineers</a></li>
+          <li class="nav-item ps-3"><a href="programs-level4.html" class="nav-link small">Level 4 &middot; AI Professional Foundation</a></li>
+          <li class="nav-item"><a href="methodology.html" class="nav-link">Methodology</a></li>
+          <li class="nav-item"><a href="projects.html" class="nav-link">Projects</a></li>
+          <li class="nav-item"><a href="school.html" class="nav-link">School Programs</a></li>
+          <li class="nav-item"><a href="events-workshops.html" class="nav-link">Events &amp; Workshops</a></li>
+          <li class="nav-item"><a href="competitions.html" class="nav-link">Competitions</a></li>
+          <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+          <li class="nav-item"><a href="certifications.html" class="nav-link">Certifications</a></li>
+          <li class="nav-item"><a href="admissions-individual.html" class="nav-link">Admissions &middot; Individual</a></li>
+          <li class="nav-item"><a href="admissions-bulk.html" class="nav-link">Admissions &middot; School / Bulk</a></li>
+          <li class="nav-item"><a href="school-login.html" class="nav-link"><i class="bi bi-box-arrow-in-right me-1"></i>School Login</a></li>
+          <li class="nav-item"><a href="partnership.html" class="nav-link">Partner With Us</a></li>
+          <li class="nav-item"><a href="faq.html" class="nav-link">FAQ's</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+  <section class="curriculum">
+    <div class="curriculum-heading">
+        <h2>
+            📚 Curriculum
+        </h2>
+        <p>
+            Learn programming, artificial intelligence,
+            machine learning and cybersecurity.
+        </p>
+    </div>
+    <div class="course-card">
+        <div class="course-left">
+            <div class="course-number">
+                01
+            </div>
+            <div class="course-icon">
+                <i class="bi bi-filetype-py"></i>
+            </div>
+            <h2>
+                Python<br>
+                Basics
+            </h2>
+        </div>
+        <div class="course-content">
+            <div class="content-column">
+                <h3>
+                    <i class="bi bi-grid-3x3-gap-fill"></i>
+                    Topics
+                </h3>
+                <ul>
+                    <li>Introduction to Python</li>
+                    <li>Variables</li>
+                    <li>Data types</li>
+                    <li>Operators</li>
+                    <li>Input and output</li>
+                    <li>Conditional statements</li>
+                    <li>Loops</li>
+                    <li>Functions</li>
+                    <li>Lists</li>
+                    <li>Dictionaries</li>
+                    <li>Basic problem solving</li>
+                </ul>
+            </div>
+            <div class="content-column">
+                <h3>
+                    <i class="bi bi-folder-fill"></i>
+                    Practical Exercises
+                </h3>
+                <ul>
+                    <li>Calculator</li>
+                    <li>Number guessing game</li>
+                    <li>Student marks program</li>
+                    <li>Quiz program</li>
+                    <li>Simple text game</li>
+                </ul>
+                <h4>
+                    Learning Outcome
+                </h4>
+                <p>
+                    Students understand the fundamentals of
+                    text-based programming.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="course-card">
+
+        <div class="course-left">
+
+            <div class="course-number">
+                02
+            </div>
+            <div class="course-icon">
+                <i class="bi bi-cpu"></i>
+            </div>
+            <h2>
+                AI Tools &<br>
+                ChatGPT
+            </h2>
+        </div>
+        <div class="course-content">
+            <div class="content-column">
+                <h3>
+                    <i class="bi bi-grid-3x3-gap-fill"></i>
+                    Topics
+                </h3>
+                <ul>
+                    <li>Introduction to Generative AI</li>
+                    <li>AI assistants</li>
+                    <li>Prompt fundamentals</li>
+                    <li>Asking effective questions</li>
+                    <li>AI for learning</li>
+                    <li>AI for research</li>
+                    <li>AI for presentations</li>
+                    <li>AI-assisted coding</li>
+                    <li>Responsible AI</li>
+                    <li>AI limitations</li>
+                </ul>
+            </div>
+            <div class="content-column">
+                <h3>
+                    <i class="bi bi-folder-fill"></i>
+                    Practical Activities
+                </h3>
+                <ul>
+                    <li>Create effective prompts</li>
+                    <li>Generate ideas</li>
+                    <li>Create study material</li>
+                    <li>Assist with coding</li>
+                    <li>Compare AI responses</li>
+                    <li>Verify AI-generated information</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="course-card">
+        <div class="course-left">
+            <div class="course-number">
+                03
+            </div>
+            <div class="course-icon">
+                <i class="bi bi-robot"></i>
+            </div>
+            <h2>
+                Machine<br>
+                Learning Basics
+            </h2>
+        </div>
+        <div class="course-content">
+            <div class="content-column">
+                <h3>
+                    <i class="bi bi-grid-3x3-gap-fill"></i>
+                    Topics
+                </h3>
+                <ul>
+                    <li>AI vs ML</li>
+                    <li>What is machine learning?</li>
+                    <li>Data and datasets</li>
+                    <li>Features</li>
+                    <li>Labels</li>
+                    <li>Training data</li>
+                    <li>Testing data</li>
+                    <li>Classification</li>
+                    <li>Prediction</li>
+                    <li>Basic model concepts</li>
+                </ul>
+            </div>
+            <div class="content-column">
+                <h3>
+                    <i class="bi bi-folder-fill"></i>
+                    Activities
+                </h3>
+                <p>
+                    Students experiment with beginner-friendly
+                    ML tools and datasets.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="course-card">
+        <div class="course-left">
+            <div class="course-number">
+                04
+            </div>
+            <div class="course-icon">
+                <i class="bi bi-shield-lock-fill"></i>
+            </div>
+            <h2>
+                Cybersecurity<br>
+                Basics
+            </h2>
+        </div>
+        <div class="course-content">
+            <div class="content-column">
+                <h3>
+                    <i class="bi bi-grid-3x3-gap-fill"></i>
+                    Topics
+                </h3>
+                <ul>
+                    <li>Introduction to cybersecurity</li>
+                    <li>Malware</li>
+                    <li>Phishing</li>
+                    <li>Social engineering</li>
+                    <li>Password security</li>
+                    <li>Authentication</li>
+                    <li>Data protection</li>
+                    <li>Network security basics</li>
+                    <li>Cyber threats</li>
+                    <li>Ethical cybersecurity</li>
+                </ul>
+            </div>
+            <div class="content-column">
+                <h3>
+                    <i class="bi bi-shield-check"></i>
+                    Practical Activities
+                </h3>
+                <ul>
+                    <li>Cybersecurity quiz</li>
+                    <li>Phishing identification</li>
+                    <li>Password security exercise</li>
+                    <li>Security awareness challenge</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="final-outcome">
+    <div class="outcome-box">
+        <div class="outcome-img">
+            <img src="assets/images/admission/curriculum-2.jpeg" alt="Level 2 Final Outcome">
+        </div>
+        <div class="outcome-content">
+            <span class="outcome-label">
+                LEVEL 2 FINAL OUTCOME
+            </span>
+            <h2>
+
+                Students progress from technology users to beginner
+                technology creators, developing their first real
+                programming and AI-based projects.
+
+            </h2>
+            <div class="outcome-line"></div>
+            <h3>
+                Start Building With
+                Technology
+            </h3>
+            <p>
+                Take the next step into programming, AI and
+                cybersecurity.
+            </p>
+            <div class="outcome-buttons">
+                <a
+                    href="admissions-individual-registration.html"
+                    class="outcome-btn">
+                    ENROLL NOW
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+                <a
+                    href="programs-level3.html"
+                    class="next-btn">
+                    Level 3
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="ft-footer">
+    <div class="container-fluid">
+      <div class="row gy-4">
+        <div class="col-lg-3 col-md-6 ft-col">
+          <div class="d-flex align-items-center mb-3">
+            <img src="assets/images/shared/logo.png" width="52" height="52" class="rounded-3 me-2" alt="logo">
+            <div class="fw-bold">FUTURE TECH<br><span class="text-warning">SCHOOL PROGRAM</span></div>
+          </div>
+          <p class="small text-white-50">Building Future Innovators Today &mdash; empowering students from Grade 5th to 12th with future-ready technology skills through hands-on learning, real-world projects and expert mentorship.</p>
+        </div>
+
+        <div class="col-lg-2 col-md-6 ft-col">
+          <h6>Quick Links</h6>
+          <a href="home.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Home</a>
+          <a href="about.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>About Us</a>
+          <a href="programs.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Programs</a>
+          <a href="school.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Schools</a>
+          <a href="events-workshops.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Events</a>
+          <a href="projects.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Projects</a>
+          <a href="gallery.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Gallery</a>
+          <a href="admissions-individual.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Admissions</a>
+          <a href="certifications.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Certificates</a>
+          <a href="contact.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Contact Us</a>
+        </div>
+
+        <div class="col-lg-2 col-md-6 ft-col">
+          <h6>Program Levels</h6>
+          <p class="small mb-2">
+            <a href="curriculum-level1.html" class="ft-quick-link">
+              <span class="bi bi-circle-fill text-warning me-1"></span>Level 1 &middot; Junior Innovators
+              <br><span class="text-white-50 ms-3">(5th&ndash;6th Standard)</span>
+            </a>
+          </p>
+          <p class="small mb-2">
+            <a href="curriculum-level2.html" class="ft-quick-link">
+              <span class="bi bi-circle-fill text-success me-1"></span>Level 2 &middot; Young Technologists
+              <br><span class="text-white-50 ms-3">(7th&ndash;8th Standard)</span>
+            </a>
+          </p>
+          <p class="small mb-2">
+            <a href="curriculum-level3.html" class="ft-quick-link">
+              <span class="bi bi-circle-fill text-primary me-1"></span>Level 3 &middot; Future Engineers
+              <br><span class="text-white-50 ms-3">(9th&ndash;10th Standard)</span>
+            </a>
+          </p>
+          <p class="small mb-2">
+            <a href="curriculum-level4.html" class="ft-quick-link">
+              <span class="bi bi-circle-fill me-1" style="color:#bb16bb;"></span>Level 4 &middot; AI Professional Foundation
+              <br><span class="text-white-50 ms-3">(11th&ndash;12th Standard)</span>
+            </a>
+          </p>
+        </div>
+
+        <div class="col-lg-2 col-md-6 ft-col">
+          <h6>Get In Touch</h6>
+          <p class="small mb-2"><i class="bi bi-telephone-fill me-2 text-warning"></i>+91 9108534041</p>
+          <p class="small mb-2"><i class="bi bi-envelope me-2 text-warning"></i>info@futuretech.org</p>
+          <p class="small mb-2"><i class="bi bi-globe me-2 text-warning"></i>www.futuretech.org</p>
+          <p class="small mb-2"><i class="bi bi-geo-alt-fill me-2 text-warning"></i>3DWebSoft IT Solutions,<br><span class="ms-4">Narsingi, Hyderabad,</span><br><span class="ms-4">Telangana - 500075, India</span></p>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h6>Follow Us</h6>
+          <div class="d-flex ft-social mb-3">
+            <a href="https://www.facebook.com/profile.php?id=61592302205333" class="me-2"><img src="assets/images/gallery/facebook.jpeg" alt="Facebook"></a>
+            <a href="https://www.instagram.com/3dwebsoftitsolutions" class="me-2"><img src="assets/images/gallery/instagram.jpeg" alt="Instagram"></a>
+            <a href="https://www.youtube.com/@3dwebsoftitsolutions" class="me-2"><img src="assets/images/gallery/youtube.jpeg" alt="YouTube"></a>
+            <a href="https://www.linkedin.com/company/3dwebsoft-it-solutions/"><img src="assets/images/gallery/linkedin.jpeg" alt="LinkedIn"></a>
+          </div>
+          <h6>Stay Updated</h6>
+          <p class="small text-white-50">Get the latest updates, events and opportunities.</p>
+          <form class="d-flex" onsubmit="return false;">
+            <input type="email" class="form-control form-control-sm" placeholder="Enter your email">
+            <button class="btn btn-warning btn-sm ms-2"><i class="bi bi-arrow-right"></i></button>
+          </form>
+        </div>
+      </div>
+
+      <div class="ft-brand-badges d-flex flex-wrap justify-content-center gap-5 py-4">
+        <a href="https://www.3dwebsoftitsolutions.com" target="_blank" rel="noopener"
+           class="ft-badge-link d-flex flex-column align-items-center text-decoration-none text-center">
+          <img src="assets/images/shared/itsolutions-logo.jpeg"
+               alt="3DWebSoft IT Solutions" class="rounded-circle mb-2" width="60" height="60">
+          <span class="text-white fw-bold lh-sm">3DWEBSOFT<br><span class="fw-normal">IT Solutions</span></span>
+          <span class="badge rounded-pill bg-primary px-3 py-2 mt-2">Developed by</span>
+        </a>
+
+        <a href="https://3dwebsoftfoundation.org/" target="_blank" rel="noopener"
+           class="ft-badge-link d-flex flex-column align-items-center text-decoration-none text-center">
+          <img src="assets/images/shared/foundation-logo.jpeg"
+               alt="3DWebSoft Foundation" class="rounded-circle mb-2" width="60" height="60">
+          <span class="text-white fw-bold lh-sm">3DWEBSOFT<br><span class="fw-normal">Foundation</span></span>
+          <span class="badge rounded-pill bg-warning text-dark px-3 py-2 mt-2">Launched by</span>
+        </a>
+      </div>
+
+
+      <div class="ft-copyright text-center">
+        &copy; 2026 Future Tech School Program. All Rights Reserved. &middot; A 3DWebSoft IT Solutions initiative.
+      <br class="d-md-none"><span class="mx-2 d-none d-md-inline">&middot;</span><a href="terms.html" class="text-white-50">Terms of Service</a><span class="mx-2">&middot;</span><a href="privacy.html" class="text-white-50">Privacy Policy</a></div>
+    </div>
+  </footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

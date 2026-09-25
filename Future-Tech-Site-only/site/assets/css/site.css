@@ -1,0 +1,140 @@
+/* ===================================================================
+   Future Tech School Program — Shared Site Stylesheet
+   Unified header / offcanvas / footer / utility styles used on
+   every page of the merged site.
+   =================================================================== */
+
+:root{
+  --ft-navy: rgb(14, 14, 65);
+  --ft-navy-dark: rgb(10, 10, 46);
+  --ft-gold: #ffc107;
+}
+
+body{
+  font-family: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ---------- Header / Navbar ---------- */
+.ft-header{
+  background: var(--ft-navy);
+  box-shadow: 0 2px 12px rgba(0,0,0,.25);
+}
+.ft-navbar{
+  padding: .6rem 1.5rem;
+}
+.ft-logo-wrap img{
+  border-radius: .5rem;
+}
+.ft-navbar .nav-link{
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: .3px;
+  font-size: .92rem;
+  padding: .4rem .7rem;
+  transition: color .2s ease;
+}
+.ft-navbar .nav-link:hover,
+.ft-navbar .nav-link.active{
+  color: var(--ft-gold) !important;
+}
+.ft-navbar .dropdown-menu{
+  border: none;
+  box-shadow: 0 10px 30px rgba(0,0,0,.2);
+}
+.ft-navbar .dropdown-item.active,
+.ft-navbar .dropdown-item:active{
+  background-color: var(--ft-gold);
+  color: var(--ft-navy);
+}
+.ft-toggle-btn{
+  color: #fff;
+  border: none;
+  background: transparent;
+}
+.ft-toggle-btn:hover{ color: var(--ft-gold); }
+
+.ft-offcanvas .offcanvas-header{
+  background: var(--ft-navy);
+  color: #fff;
+}
+.ft-offcanvas .nav-link{
+  color: #212529;
+  font-weight: 600;
+}
+.ft-offcanvas .nav-link.active{
+  color: var(--ft-navy) !important;
+  background: rgba(255,193,7,.25);
+  border-radius: .4rem;
+}
+
+/* ---------- Hero fallback (pages without their own hero styling) ---------- */
+.ft-page-hero{
+  background: linear-gradient(135deg, var(--ft-navy) 0%, var(--ft-navy-dark) 100%);
+  color:#fff;
+  padding: 140px 5% 60px;
+}
+
+/* ---------- Footer ---------- */
+.ft-footer{
+  background: var(--ft-navy);
+  color: #fff;
+  padding: 50px 4% 20px;
+}
+.ft-footer a{
+  color: #e9ecef;
+  text-decoration: none;
+}
+.ft-footer a:hover{
+  color: var(--ft-gold);
+}
+.ft-footer h6{
+  color: var(--ft-gold);
+  font-weight: 700;
+  letter-spacing: .4px;
+}
+.ft-footer .ft-col{
+  border-right: 1px solid rgba(255,255,255,.15);
+}
+.ft-footer .ft-col:last-child{ border-right: none; }
+.ft-footer .ft-quick-link{
+  display:block;
+  margin-bottom: .55rem;
+  transition: transform .2s ease, color .2s ease;
+}
+.ft-footer .ft-quick-link:hover{
+  transform: translateX(6px);
+  color: var(--ft-gold);
+}
+.ft-footer .ft-social a img{
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  object-fit: cover;
+}
+.ft-footer .ft-copyright{
+  border-top: 1px solid rgba(255,255,255,.15);
+  padding-top: 14px;
+  margin-top: 24px;
+  font-size: .9rem;
+  color: #cfd3da;
+}
+
+/* ---------- Developed by / Launched by badges ---------- */
+.ft-brand-badges{
+  border-top: 1px solid rgba(255,255,255,.15);
+  margin-top: 10px;
+}
+.ft-badge-link img{
+  object-fit: cover;
+  border: 2px solid rgba(255,255,255,.4);
+}
+.ft-badge-link{
+  transition: transform .2s ease;
+}
+.ft-badge-link:hover{
+  transform: translateY(-3px);
+}
+.ft-badge-link .badge{
+  font-size: .85rem;
+  font-weight: 600;
+}

@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/images/shared/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/site.css">
+    <title>Bulk / School Admissions | Future Tech School Program</title>
+    <style>
+        .main-header { 
+        position: relative; 
+        z-index: 1000; 
+        width: 100%; 
+        background: #06264d; 
+        }
+        footer{
+                background-color: rgb(14, 14, 65);
+                margin-top: 50px;
+                padding-bottom: 40px;
+                padding-top: 20px;
+            }
+            .line{
+                border-bottom: 0px;
+                border-top: 0px;
+                border-left: 0px;
+                border-right: 2px solid rgb(26, 26, 83);
+            }
+            .quick:hover{
+                transform:translateY(-10px);
+                box-shadow:0 15px 35px rgba(0,0,0,.2);
+                color: rgb(211, 151, 22);
+            } 
+            .to{
+                color: rgb(15, 220, 15);
+            }
+            .four{
+                color:rgb(187, 22, 187);
+            }
+    </style>
+
+<body>
+
+    <header class="ft-header">
+    <nav class="navbar navbar-expand-xl ft-navbar">
+      <div class="container-fluid">
+        <a href="home.html" class="d-flex align-items-center text-decoration-none ft-logo-wrap">
+          <img src="assets/images/shared/logo.png" width="60" height="60" alt="Future Tech logo" class="rounded-3">
+          <span class="ms-2 text-white fw-bold d-none d-lg-inline" style="font-size:1.05rem;line-height:1.1;">FUTURE TECH<br><span class="text-warning" style="font-size:.8rem;">SCHOOL PROGRAM</span></span>
+        </a>
+
+        <button class="navbar-toggler ft-toggle-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#ftOffcanvas">
+          <span class="bi bi-list fs-1"></span>
+        </button>
+
+        <div class="collapse navbar-collapse d-none d-xl-flex justify-content-end">
+          <ul class="navbar-nav align-items-center gap-1">
+            <li class="nav-item"><a href="home.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Programs</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="programs.html">Programs Overview</a></li>
+                <li><a class="dropdown-item" href="programs-level1.html">Level 1 &middot; Junior Innovators</a></li>
+                <li><a class="dropdown-item" href="programs-level2.html">Level 2 &middot; Young Technologists</a></li>
+                <li><a class="dropdown-item" href="programs-level3.html">Level 3 &middot; Future Engineers</a></li>
+                <li><a class="dropdown-item" href="programs-level4.html">Level 4 &middot; AI Professional Foundation</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="methodology.html">Methodology</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Projects</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="projects.html">All Projects</a></li>
+                <li><a class="dropdown-item" href="projects-aiml.html">AI &amp; ML</a></li>
+                <li><a class="dropdown-item" href="projects-robotics.html">Robotics</a></li>
+                <li><a class="dropdown-item" href="projects-web.html">Web &amp; App</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">Admissions</a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="admissions-individual.html">Individual Student</a></li>
+                <li><a class="dropdown-item active" href="admissions-bulk.html">School / Bulk</a></li>
+                
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">More</a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="school.html">School Programs</a></li>
+                <li><a class="dropdown-item" href="events-workshops.html">Events &amp; Workshops</a></li>
+                <li><a class="dropdown-item" href="competitions.html">Competitions</a></li>
+                <li><a class="dropdown-item" href="certifications.html">Certifications</a></li>
+                <li><a class="dropdown-item" href="admin.html">Admin Login</a></li>
+                <li><a class="dropdown-item" href="faq.html">FAQ's</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item"><a href="contact.html" class="btn btn-warning fw-bold px-4 ms-2">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="offcanvas offcanvas-end ft-offcanvas" id="ftOffcanvas">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title fw-bold">Future Tech School Program</h5>
+        <button class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a href="home.html" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="programs.html" class="nav-link">Programs Overview</a></li>
+          <li class="nav-item ps-3"><a href="programs-level1.html" class="nav-link small">Level 1 &middot; Junior Innovators</a></li>
+          <li class="nav-item ps-3"><a href="programs-level2.html" class="nav-link small">Level 2 &middot; Young Technologists</a></li>
+          <li class="nav-item ps-3"><a href="programs-level3.html" class="nav-link small">Level 3 &middot; Future Engineers</a></li>
+          <li class="nav-item ps-3"><a href="programs-level4.html" class="nav-link small">Level 4 &middot; AI Professional Foundation</a></li>
+          <li class="nav-item"><a href="methodology.html" class="nav-link">Methodology</a></li>
+          <li class="nav-item"><a href="projects.html" class="nav-link">Projects</a></li>
+          <li class="nav-item"><a href="school.html" class="nav-link">School Programs</a></li>
+          <li class="nav-item"><a href="events-workshops.html" class="nav-link">Events &amp; Workshops</a></li>
+          <li class="nav-item"><a href="competitions.html" class="nav-link">Competitions</a></li>
+          <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+          <li class="nav-item"><a href="certifications.html" class="nav-link">Certifications</a></li>
+          <li class="nav-item"><a href="admissions-individual.html" class="nav-link active">Admissions &middot; Individual</a></li>
+          <li class="nav-item"><a href="admissions-bulk.html" class="nav-link">Admissions &middot; School / Bulk</a></li>
+          <li class="nav-item"><a href="school-login.html" class="nav-link"><i class="bi bi-box-arrow-in-right me-1"></i>School Login</a></li>
+          <li class="nav-item"><a href="partnership.html" class="nav-link">Partner With Us</a></li>
+          <li class="nav-item"><a href="faq.html" class="nav-link">FAQ's</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+    <div class="container-fluid mt-5">
+
+    <div class="row ">
+        <div class="col-6 ">
+            <h2 class="fw-semibold text-black">Bulk Student Registration</h2>
+            <p class="fs-5 mt-3">
+                Register multiple students from your school or<br>
+                organization for the Future Tech School Program.
+            </p>
+        </div>
+
+        <div class="col-6 text-center">
+            <img src="assets/images/admission/bulk.png"
+                 width="450px"
+                 height="200px"
+                 class="rounded-3 mb-4"
+                 alt="School">
+        </div>
+    </div>
+
+
+    <form id="bulkAdmissionForm">
+
+        <div class="row g-3">
+
+            
+            <div class="col-6">
+
+                <div class="card shadow-sm border-primary h-100">
+
+                    <div class="card-header bg-light">
+                        <h5 class="fw-bold text-black mb-0">
+                            <span class="badge bg-primary rounded-circle">1</span>
+                            ORGANIZATION INFORMATION
+                        </h5>
+                    </div>
+
+                    <div class="card-body">
+
+                        <div class="row g-3">
+
+                            <div class="col-12">
+                                <label class="form-label fw-bold">
+                                    Organization / School Name <span class="text-danger">*</span>
+                                </label>
+                                 <select class="form-select">
+                                    <option selected>Select Your Organization / School Name</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">
+                                    Organization Type <span class="text-danger">*</span>
+                                </label>
+
+                                <select class="form-select">
+                                    <option selected>Select Type</option>
+                                    <option>School</option>
+                                    <option>College</option>
+                                    <option>Institute</option>
+                                    <option>Organization</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-12">
+                                <label class="form-label fw-bold">
+                                    Address <span class="text-danger">*</span>
+                                </label>
+
+                                <input type="text"
+                                       class="form-control"
+                                       placeholder="Enter full address">
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="form-label fw-bold">City <span class="text-danger">*</span></label>
+                                <input type="text"
+                                       class="form-control"
+                                       placeholder="Enter city">
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="form-label fw-bold">State <span class="text-danger">*</span></label>
+
+                                <select class="form-select">
+                                    <option selected>Select State</option>
+                                    <option>Andhra Pradesh</option>
+                                    <option>Telangana</option>
+                                    <option>Karnataka</option>
+                                    <option>Tamil Nadu</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="form-label fw-bold">Pincode <span class="text-danger">*</span></label>
+                                <input type="text"
+                                       class="form-control"
+                                       placeholder="Enter pincode">
+                            </div>
+
+                            <div class="col-md-12">
+                                <label class="form-label fw-bold">Website</label>
+
+                                <input type="url"
+                                       class="form-control"
+                                       placeholder="Enter website (optional)">
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        
+            <div class="col-6">
+
+                <div class="card shadow-sm border-primary h-100">
+
+                    <div class="card-header bg-light">
+                        <h5 class="fw-bold text-black mb-0">
+                            <span class="badge bg-primary rounded-circle">2</span>
+                            COORDINATOR INFORMATION
+                        </h5>
+                    </div>
+
+                    <div class="card-body">
+
+                        <div class="row g-3">
+
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">
+                                    Coordinator Name <span class="text-danger">*</span>
+                                </label>
+
+                                <input type="text"
+                                       id="bulkCoordinatorName"
+                                       class="form-control"
+                                       placeholder="Enter name">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">
+                                    Designation <span class="text-danger">*</span>
+                                </label>
+
+                                <select class="form-select">
+                                    <option selected>Select Designation</option>
+                                    <option>Principal</option>
+                                    <option>Teacher</option>
+                                    <option>Coordinator</option>
+                                    <option>Manager</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">
+                                    Mobile Number <span class="text-danger">*</span>
+                                </label>
+
+                                <input type="tel"
+                                       id="bulkCoordinatorMobile"
+                                       class="form-control"
+                                       placeholder="Enter mobile">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">
+                                    Email Address <span class="text-danger">*</span>
+                                </label>
+
+                                <input type="email"
+                                       id="bulkCoordinatorEmail"
+                                       class="form-control"
+                                       placeholder="Enter email">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">
+                                    Alternative Contact
+                                </label>
+
+                                <input type="tel"
+                                       class="form-control"
+                                       placeholder="Enter mobile (optional)">
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="col-12">
+
+                <div class="card shadow-sm border-primary">
+
+                    <div class="card-header bg-light">
+                        <h5 class="fw-bold text-black mb-0">
+                            <span class="badge bg-primary rounded-circle">3</span>
+                            PROGRAM REQUIREMENTS
+                        </h5>
+                    </div>
+
+                    <div class="card-body">
+
+                        <div class="row g-3">
+
+                            <div class="col-md-6">
+
+                                <label class="form-label fw-bold">
+                                    Interested Levels
+                                </label>
+
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox">
+                                    <label class="form-check-label">
+                                        Level 1 - Junior Innovators
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox">
+                                    <label class="form-check-label">
+                                        Level 2 - Young Technologists
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox">
+                                    <label class="form-check-label">
+                                        Level 3 - Future Engineers
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox">
+                                    <label class="form-check-label">
+                                        Level 4 - AI Professionals
+                                    </label>
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-md-6">
+
+                                <label class="form-label fw-bold">
+                                    Number of Students <span class="text-danger">*</span>
+                                </label>
+
+                                <select class="form-select">
+                                    <option selected>Select Range</option>
+                                    <option>1 - 25</option>
+                                    <option>26 - 50</option>
+                                    <option>51 - 100</option>
+                                    <option>101 - 200</option>
+                                    <option>200+</option>
+                                </select>
+
+                                <label class="form-label fw-bold mt-3">
+                                    Preferred Learning Mode <span class="text-danger">*</span>
+                                </label>
+
+                                <select class="form-select">
+                                    <option selected>Select Mode</option>
+                                    <option>Online</option>
+                                    <option>Offline</option>
+                                </select>
+
+                            </div>
+
+
+                            <div class="col-md-6">
+
+                                <label class="form-label fw-bold">
+                                    Preferred Duration <span class="text-danger">*</span>
+                                </label>
+
+                                <select class="form-select">
+                                    <option selected>Select Duration</option>
+                                    <option>1 Month</option>
+                                    <option>3 Months</option>
+                                    <option>6 Months</option>
+                                    <option>1 Year</option>
+                                </select>
+
+                            </div>
+
+
+                            <div class="col-md-6">
+
+                                <label class="form-label fw-bold">
+                                    Preferred Location <span class="text-danger">*</span>
+                                </label>
+
+                                <select class="form-select">
+                                    <option selected>Select Location</option>
+                                    <option>School Campus</option>
+                                    <option>Training Center</option>
+                                    <option>Online</option>
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-12">
+
+                <div class="card shadow-sm border-primary">
+
+                    <div class="card-header bg-light">
+                        <h5 class="fw-bold text-black mb-0">
+                            <span class="badge bg-primary rounded-circle">4</span>
+                            STUDENT LIST
+                        </h5>
+                    </div>
+
+                    <div class="card-body">
+
+                        <div class="alert alert-primary py-2">
+                            <strong>Option 1:</strong> Add Students Manually
+                        </div>
+
+                        <div id="bulkStudentRows">
+                        <div class="row g-2 student-row">
+
+                            <div class="col-md-3">
+                                <label class="form-label fw-bold">
+                                    Student Name
+                                </label>
+
+                                <input type="text"
+                                       class="form-control"
+                                       placeholder="Enter name">
+                            </div>
+
+                            <div class="col-md-2">
+                                <label class="form-label fw-bold">
+                                    Grade
+                                </label>
+
+                                <select class="form-select">
+                                    <option>Select</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                    <option>7</option>
+                                    <option>8</option>
+                                    <option>9</option>
+                                    <option>10</option>
+                                    <option>11</option>
+                                    <option>12</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-3">
+                                <label class="form-label fw-bold">
+                                    Parent / Guardian Name
+                                </label>
+
+                                <input type="text"
+                                       class="form-control"
+                                       placeholder="Parent name">
+                            </div>
+
+                            <div class="col-md-3">
+                                <label class="form-label fw-bold">
+                                    Parent Mobile
+                                </label>
+
+                                <input type="tel"
+                                       class="form-control"
+                                       placeholder="Enter mobile">
+                            </div>
+
+                            <div class="col-md-1 d-flex align-items-end">
+
+                                <button type="button"
+                                        class="btn btn-outline-danger">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+
+                            </div>
+
+                        </div>
+                        </div>
+
+                        <button type="button" id="addStudentRowBtn"
+                                class="btn btn-outline-primary btn-sm mt-3">
+                            + Add Another Student
+                        </button>
+
+
+                        <div class="alert alert-primary mt-4">
+
+                            <strong>Option 2:</strong> Upload Excel File
+
+                            <p class="mb-2 mt-2">
+                                Upload student list using our Excel template.
+                            </p>
+
+                            <a href="#" class="fw-bold">
+                                Download Excel Template
+                                <i class="bi bi-download"></i>
+                            </a>
+
+                            <div class="border border-primary rounded-3 p-4 text-center mt-3">
+                                <i class="bi bi-cloud-upload fs-2 text-primary"></i>
+
+                                <p class="mb-0">
+                                    Click to upload or drag and drop
+                                </p>
+
+                                <small>
+                                    (.xlsx, .xls file only)
+                                </small>
+
+                                <input type="file" id="bulkStudentFile" accept=".xlsx,.xls">
+                                <div id="bulkStudentFileName" class="small text-muted mt-2"></div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-6">
+
+                <div class="card shadow-sm border-primary">
+
+                    <div class="card-header bg-light">
+                        <h5 class="fw-bold text-black mb-0">
+                            <span class="badge bg-primary rounded-circle">5</span>
+                            PROGRAM CUSTOMIZATION
+                        </h5>
+                    </div>
+
+                    <div class="card-body">
+
+                        <p class="fw-bold">
+                            Select all that apply
+                        </p>
+
+                        <div class="row">
+
+                            <div class="col-md-4">
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox">
+                                    <label class="form-check-label">
+                                        Student Training
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox">
+                                    <label class="form-check-label">
+                                        Robotics Program
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox">
+                                    <label class="form-check-label">
+                                        Bootcamps
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox">
+                                    <label class="form-check-label">
+                                        Competitions
+                                    </label>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-4">
+
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox">
+                                    <label class="form-check-label">
+                                        AI & ML Program
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox">
+                                    <label class="form-check-label">
+                                        Cybersecurity Program
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox">
+                                    <label class="form-check-label">
+                                        Faculty Training
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox">
+                                    <label class="form-check-label">
+                                        Career Guidance
+                                    </label>
+                                </div>
+
+                            </div>
+
+
+                            <div class="col-md-4">
+
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox">
+                                    <label class="form-check-label">
+                                        Coding Program
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox">
+                                    <label class="form-check-label">
+                                        Workshops
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox">
+                                    <label class="form-check-label">
+                                        Project Mentorship
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox">
+                                    <label class="form-check-label">
+                                        Certification
+                                    </label>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="row mt-3">
+
+                            <div class="col-md-3">
+
+                                <div class="form-check">
+                                    <input class="form-check-input"
+                                           type="checkbox">
+
+                                    <label class="form-check-label">
+                                        Others
+                                    </label>
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-9">
+
+                                <input type="text"
+                                       class="form-control"
+                                       placeholder="Please specify">
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="col-6">
+
+                <div class="card shadow-sm border-primary">
+
+                    <div class="card-header bg-light">
+                        <h5 class="fw-bold text-black mb-0">
+                            <span class="badge bg-primary rounded-circle">6</span>
+                            ADDITIONAL REQUIREMENTS
+                        </h5>
+                    </div>
+
+                    <div class="card-body">
+
+                        <label class="form-label fw-bold">
+                            Expected Number of Students
+                            <span class="text-danger">*</span>
+                        </label>
+
+                        <select class="form-select mb-3">
+                            <option selected>Select Range</option>
+                            <option>1 - 25</option>
+                            <option>26 - 50</option>
+                            <option>51 - 100</option>
+                            <option>100+</option>
+                        </select>
+
+
+                        <label class="form-label fw-bold">
+                            Tell us about your requirements
+                        </label>
+
+                        <textarea class="form-control"
+                                  rows="4"
+                                  maxlength="500"
+                                  placeholder="Enter your requirements here..."></textarea>
+
+                        <small class="text-muted">
+                            Maximum 500 characters
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="col-12">
+
+                <div class="card shadow-sm border-primary">
+
+                    <div class="card-header bg-light">
+                        <h5 class="fw-bold text-black mb-0">
+                            <span class="badge bg-primary rounded-circle">7</span>
+                            DECLARATION
+                        </h5>
+                    </div>
+
+                    <div class="card-body">
+
+                        <div class="form-check">
+
+                            <input class="form-check-input"
+                                   type="checkbox"
+                                   required>
+
+                            <label class="form-check-label">
+                                I confirm that the information provided is
+                                accurate and I am authorized to register
+                                on behalf of the organization.
+                            </label>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="col-12">
+                <div id="bulkAdmissionAlert" class="alert d-none" role="alert"></div>
+            </div>
+
+            <div class="col-12 text-center mt-3">
+
+                <button type="submit" id="bulkSubmitBtn"
+                        class="btn btn-primary btn-lg px-5 fw-bold">
+
+                    SUBMIT & PAY ENQUIRY FEE
+
+                    <i class="bi bi-arrow-right"></i>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </form>
+
+</div>
+<footer class="ft-footer">
+    <div class="container-fluid">
+      <div class="row gy-4">
+        <div class="col-lg-3 col-md-6 ft-col">
+          <div class="d-flex align-items-center mb-3">
+            <img src="assets/images/shared/logo.png" width="52" height="52" class="rounded-3 me-2" alt="logo">
+            <div class="fw-bold">FUTURE TECH<br><span class="text-warning">SCHOOL PROGRAM</span></div>
+          </div>
+          <p class="small text-white-50">Building Future Innovators Today &mdash; empowering students from Grade 5th to 12th with future-ready technology skills through hands-on learning, real-world projects and expert mentorship.</p>
+          <div class="d-flex align-items-center mt-3">
+            <a href="https://3dwebsoftfoundation.org/" class="me-2"><img src="assets/images/home/foundation.jpeg" width="42" height="42" class="rounded-circle" alt="3DWebSoft Foundation"></a>
+            <div class="small"><a href="https://3dwebsoftfoundation.org/">3DWEBSOFT<br>Foundation</a></div>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-6 ft-col">
+          <h6>Quick Links</h6>
+          <a href="home.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Home</a>
+          <a href="about.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>About Us</a>
+          <a href="programs.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Programs</a>
+          <a href="school.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Schools</a>
+          <a href="events-workshops.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Events</a>
+          <a href="projects.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Projects</a>
+          <a href="gallery.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Gallery</a>
+          <a href="admissions-individual.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Admissions</a>
+          <a href="certifications.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Certificates</a>
+          <a href="contact.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Contact Us</a>
+        </div>
+
+        <div class="col-lg-2 col-md-6 ft-col">
+          <h6>Program Levels</h6>
+          <p class="small mb-2"><span class="bi bi-circle-fill text-warning me-1"></span>Level 1 &middot; Junior Innovators<br><span class="text-white-50 ms-3">(5th&ndash;6th Standard)</span></p>
+          <p class="small mb-2"><span class="bi bi-circle-fill text-success me-1"></span>Level 2 &middot; Young Technologists<br><span class="text-white-50 ms-3">(7th&ndash;8th Standard)</span></p>
+          <p class="small mb-2"><span class="bi bi-circle-fill text-primary me-1"></span>Level 3 &middot; Future Engineers<br><span class="text-white-50 ms-3">(9th&ndash;10th Standard)</span></p>
+          <p class="small mb-2"><span class="bi bi-circle-fill text-purple me-1" style="color:#bb16bb;"></span>Level 4 &middot; AI Professional Foundation<br><span class="text-white-50 ms-3">(11th&ndash;12th Standard)</span></p>
+        </div>
+
+        <div class="col-lg-2 col-md-6 ft-col">
+          <h6>Get In Touch</h6>
+          <p class="small mb-2"><i class="bi bi-telephone-fill me-2 text-warning"></i>+91 9108534041</p>
+          <p class="small mb-2"><i class="bi bi-envelope me-2 text-warning"></i>info@futuretech.org</p>
+          <p class="small mb-2"><i class="bi bi-globe me-2 text-warning"></i>www.futuretech.org</p>
+          <p class="small mb-2"><i class="bi bi-geo-alt-fill me-2 text-warning"></i>3DWebSoft IT Solutions,<br><span class="ms-4">Narsingi, Hyderabad,</span><br><span class="ms-4">Telangana - 500075, India</span></p>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h6>Follow Us</h6>
+          <div class="d-flex ft-social mb-3">
+            <a href="https://www.facebook.com/profile.php?id=61592302205333" class="me-2"><img src="assets/images/gallery/facebook.jpeg" alt="Facebook"></a>
+            <a href="https://www.instagram.com/3dwebsoftitsolutions" class="me-2"><img src="assets/images/gallery/instagram.jpeg" alt="Instagram"></a>
+            <a href="https://www.youtube.com/@3dwebsoftitsolutions" class="me-2"><img src="assets/images/gallery/youtube.jpeg" alt="YouTube"></a>
+            <a href="https://www.linkedin.com/company/3dwebsoft-it-solutions/"><img src="assets/images/gallery/linkedin.jpeg" alt="LinkedIn"></a>
+          </div>
+          <h6>Stay Updated</h6>
+          <p class="small text-white-50">Get the latest updates, events and opportunities.</p>
+          <form class="d-flex" onsubmit="return false;">
+            <input type="email" class="form-control form-control-sm" placeholder="Enter your email">
+            <button class="btn btn-warning btn-sm ms-2"><i class="bi bi-arrow-right"></i></button>
+          </form>
+        </div>
+      </div>
+
+      <div class="ft-brand-badges d-flex flex-wrap justify-content-center gap-4 py-4">
+        <a href="https://www.3dwebsoftitsolutions.com" target="_blank" rel="noopener" class="ft-badge-link d-flex align-items-center text-decoration-none">
+          <span class="badge rounded-pill bg-primary px-3 py-2 me-3">Developed by</span>
+          <img src="assets/images/shared/itsolutions-logo.jpeg" alt="3DWebSoft IT Solutions" class="rounded-circle me-2" width="48" height="48">
+          <span class="text-white fw-bold text-start lh-sm">3DWEBSOFT<br><span class="fw-normal">IT Solutions</span></span>
+        </a>
+        <a href="https://3dwebsoftfoundation.org/" target="_blank" rel="noopener" class="ft-badge-link d-flex align-items-center text-decoration-none">
+          <span class="badge rounded-pill bg-warning text-dark px-3 py-2 me-3">Launched BY</span>
+          <img src="assets/images/shared/foundation-logo.jpeg" alt="3DWebSoft Foundation" class="rounded-circle me-2" width="48" height="48">
+          <span class="text-white fw-bold text-start lh-sm">3DWEBSOFT<br><span class="fw-normal">Foundation</span></span>
+        </a>
+      </div>
+
+      <div class="ft-copyright text-center">
+        &copy; 2026 Future Tech School Program. All Rights Reserved. &middot; A 3DWebSoft IT Solutions initiative.
+      <br class="d-md-none"><span class="mx-2 d-none d-md-inline">&middot;</span><a href="terms.html" class="text-white-50">Terms of Service</a><span class="mx-2">&middot;</span><a href="privacy.html" class="text-white-50">Privacy Policy</a></div>
+    </div>
+  </footer>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/api-client.js"></script>
+  <script src="assets/js/data-store.js"></script>
+  <script src="assets/js/payment-flow.js"></script>
+  <script>
+    // Clone an additional student row
+    document.getElementById('addStudentRowBtn').addEventListener('click', function () {
+      const container = document.getElementById('bulkStudentRows');
+      const rows = container.querySelectorAll('.student-row');
+      const clone = rows[0].cloneNode(true);
+      clone.querySelectorAll('input').forEach(function (el) { el.value = ''; });
+      clone.querySelectorAll('select').forEach(function (el) { el.selectedIndex = 0; });
+      clone.querySelector('.btn-outline-danger').addEventListener('click', function () {
+        if (container.querySelectorAll('.student-row').length > 1) clone.remove();
+      });
+      container.appendChild(clone);
+    });
+
+    // Delete button on the first (default) row
+    document.querySelectorAll('#bulkStudentRows .btn-outline-danger').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        const rows = document.querySelectorAll('#bulkStudentRows .student-row');
+        if (rows.length > 1) btn.closest('.student-row').remove();
+      });
+    });
+
+    // Show chosen Excel file name
+    const fileInput = document.getElementById('bulkStudentFile');
+    if (fileInput) {
+      fileInput.addEventListener('change', function () {
+        document.getElementById('bulkStudentFileName').textContent =
+          fileInput.files.length ? ('Selected file: ' + fileInput.files[0].name) : '';
+      });
+    }
+
+    const bulkSubmitBtn = document.getElementById('bulkSubmitBtn');
+    const bulkAlertBox = document.getElementById('bulkAdmissionAlert');
+
+    function setBulkBtnLoading(isLoading, label) {
+      bulkSubmitBtn.disabled = isLoading;
+      bulkSubmitBtn.innerHTML = isLoading
+        ? '<span class="spinner-border spinner-border-sm me-2"></span>' + label
+        : 'SUBMIT & PAY ENQUIRY FEE <i class="bi bi-arrow-right"></i>';
+    }
+
+    document.getElementById('bulkAdmissionForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const form = e.target;
+
+      const orgName = document.getElementById('bulkOrgName').value.trim();
+      const coordinatorName = document.getElementById('bulkCoordinatorName').value.trim();
+      const coordinatorMobile = document.getElementById('bulkCoordinatorMobile').value.trim();
+      const coordinatorEmail = document.getElementById('bulkCoordinatorEmail').value.trim();
+
+      bulkAlertBox.classList.add('d-none');
+
+      if (!orgName || !coordinatorName || !coordinatorMobile) {
+        bulkAlertBox.className = 'alert alert-danger';
+        bulkAlertBox.textContent = 'Please fill in Organization Name, Coordinator Name and Mobile Number.';
+        bulkAlertBox.classList.remove('d-none');
+        bulkAlertBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
+      // Collect every labeled field on the form (skips checkboxes/file inputs)
+      const fields = FTStore.collectFields(form);
+
+      // Collect the "interested levels" + "program customization" checkboxes,
+      // and the final declaration checkbox, all in one pass.
+      const checkedBoxes = FTStore.collectCheckedLabels(form);
+
+      // Collect manually-added students as a structured list
+      const students = [];
+      form.querySelectorAll('#bulkStudentRows .student-row').forEach(function (row) {
+        const inputs = row.querySelectorAll('input[type="text"], input[type="tel"]');
+        const select = row.querySelector('select');
+        const name = inputs[0] ? inputs[0].value.trim() : '';
+        const parentName = inputs[1] ? inputs[1].value.trim() : '';
+        const parentMobile = inputs[2] ? inputs[2].value.trim() : '';
+        const grade = select ? select.value : '';
+        if (name || parentName || parentMobile) {
+          students.push({ name, grade, parentName, parentMobile });
+        }
+      });
+
+      const excelFileName = fileInput && fileInput.files.length ? fileInput.files[0].name : '';
+
+      // If a school is logged in, send their token so the backend can
+      // link this enquiry to their account automatically.
+      let schoolToken = null;
+      try {
+        schoolToken = sessionStorage.getItem('ft_backend_school_token') || null;
+      } catch (e) { /* ignore */ }
+
+      try {
+        setBulkBtnLoading(true, 'Saving your enquiry...');
+
+        const created = await FTApi.createBulkAdmission({
+          organizationName: orgName,
+          coordinatorName: coordinatorName,
+          coordinatorMobile: coordinatorMobile,
+          coordinatorEmail: coordinatorEmail,
+          students: students,
+          selections: checkedBoxes,
+          extraFields: fields,
+          excelFileName: excelFileName
+        }, schoolToken);
+
+        setBulkBtnLoading(true, 'Generating your payment QR code...');
+
+        FTPayment.payForAdmission({
+          type: 'bulk',
+          admissionId: created.admissionId,
+          payer: {
+            name: coordinatorName,
+            email: coordinatorEmail,
+            phone: coordinatorMobile
+          },
+          onSuccess: function (result) {
+            setBulkBtnLoading(false);
+            const fullReceiptUrl = window.FT_CONFIG.API_BASE_URL.replace(/\/api$/, '') + result.downloadUrl;
+            bulkAlertBox.className = 'alert alert-success';
+            bulkAlertBox.innerHTML =
+              'Payment successful! Enquiry confirmed. Receipt No: <strong>' + result.receiptNumber + '</strong>. ' +
+              '<a href="' + fullReceiptUrl + '" target="_blank" class="alert-link">Download your receipt</a>.';
+            bulkAlertBox.classList.remove('d-none');
+            bulkAlertBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            window.open(fullReceiptUrl, '_blank');
+
+            form.reset();
+            document.getElementById('bulkStudentFileName').textContent = '';
+          },
+          onError: function (message) {
+            setBulkBtnLoading(false);
+            bulkAlertBox.className = 'alert alert-danger';
+            bulkAlertBox.textContent = message;
+            bulkAlertBox.classList.remove('d-none');
+            bulkAlertBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          },
+          onDismiss: function () {
+            setBulkBtnLoading(false);
+            bulkAlertBox.className = 'alert alert-warning';
+            bulkAlertBox.textContent = 'Payment window closed. Your enquiry is saved — you can retry payment by submitting again.';
+            bulkAlertBox.classList.remove('d-none');
+          }
+        });
+      } catch (err) {
+        setBulkBtnLoading(false);
+        bulkAlertBox.className = 'alert alert-danger';
+        bulkAlertBox.textContent = err.message || 'Something went wrong. Please try again.';
+        bulkAlertBox.classList.remove('d-none');
+        bulkAlertBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en-in">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/images/shared/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/site.css">
+    <title>Individual Admissions | Future Tech School Program</title>
+     <script src="./src/script/levels.js"></script>
+    <style>
+        
+        header{
+            background-color: rgb(14, 14, 65);
+            padding-bottom: 25px;
+        }
+       .four{
+            color:rgb(187, 22, 187);
+        }  
+         footer{
+             background-color: rgb(14, 14, 65);
+            padding-bottom: 20px; 
+        }
+        .line{
+            border-bottom: 0px;
+            border-top: 0px;
+            border-left: 0px;
+            border-right: 2px solid rgb(26, 26, 83);
+        }
+        .quick:hover{
+            transform:translateY(-10px);
+            box-shadow:0 15px 35px rgba(0,0,0,.2);
+            color: rgb(211, 151, 22);
+        } 
+        .view{
+            margin-top: 150px;
+            margin-bottom: 220px;
+        }
+         
+    </style>
+</head>
+<body>
+      <header class="ft-header">
+    <nav class="navbar navbar-expand-xl ft-navbar">
+      <div class="container-fluid">
+        <a href="admissions-individual-registration.html" class="d-flex align-items-center text-decoration-none ft-logo-wrap">
+          <img src="assets/images/shared/logo.png" width="60" height="60" alt="Future Tech logo" class="rounded-3">
+          <span class="ms-2 text-white fw-bold d-none d-lg-inline" style="font-size:1.05rem;line-height:1.1;">FUTURE TECH<br><span class="text-warning" style="font-size:.8rem;">SCHOOL PROGRAM</span></span>
+        </a>
+        <button class="navbar-toggler ft-toggle-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#ftOffcanvas">
+          <span class="bi bi-list fs-1"></span>
+        </button>
+      </div>
+      <div> 
+        <button class="btn btn-warning px-4 me-2 mt-3"> <a href="student-login.html" class="text-decoration-none text-black">Student Login</a></button>
+      </div>
+    </nav>
+  </header>   
+        <section>
+            <div>
+                 <div class="row mt-3">
+                    <div class="col-7 mt-5">
+                        <div class="fs-2 fw-semibold  text-start ms-3">Individual Student Registration</div>
+                         <div class="mt-2">
+                            <span class="mt-5 ms-3">Start your journey with the Future Tech School Program and</span><br>
+                        <span class="  ms-3">build future-ready technology skills.</span>
+                         </div>
+                    </div>
+                    <div class="col-5 text-center">
+                        <img src="assets/images/admission/indivudual1.png" width="450px" height="220px">
+                    </div>
+                 </div>
+                 <div class="row mt-4">
+                     <div class="col-9 ms-3">
+                        <div id="individualAdmissionWizard">
+                        <form class="border border-2 rounded rounded-2 shadow p-4">
+                        <div class="text-primary fs-5 fw-semibold"><span class="bi bi-1-circle-fill me-2"></span>Student Information</div>
+                        <div class="row mt-3">
+                            <div class="col-4">
+                                <label class="fs-6 fw-semibold mb-2">Student Full Name<span class="text-danger ms-1">*</span></label>
+                                <input type="text" name="full name" placeholder="Enter Student Full Name" class="form-control">
+                            </div>
+                            <div class="col-4  ">
+                                <label class="fs-6 fw-semibold mb-2">Date of Birth<span class="text-danger ms-1">*</span></label>
+                                 <input type="date" name="dob" placeholder="DD/MM/YYYY" class="form-control">
+                            </div>
+                            <div class="col-4  ">
+                                <label class="fs-6 fw-semibold mb-2">Gender</label>
+                                 <select class="form-select">
+                                    <option>Select Gender</option>
+                                     <option>Female</option>
+                                      <option>Male</option>
+                                 </select>
+                            </div>
+                        </div>
+                         <div class="row mt-3">
+                            <div class="col-4">
+                                <label class="fs-6 fw-semibold mb-2">Current Grade/Class<span class="text-danger ms-1">*</span></label>
+                                 <select class="form-select">
+                                    <option>Select Grade</option>
+                                    <option>5th Grade</option>
+                                     <option>6th Grade</option>
+                                      <option>7th Grade</option>
+                                      <option>8th Grade</option>
+                                      <option>9th Grade</option>
+                                      <option>10th Grade</option>
+                                      <option>11th Grade</option>
+                                      <option>12th Grade</option>
+                                 </select>
+                            </div>
+                            <div class="col-4  ">
+                                <label class="fs-6 fw-semibold mb-2">School Name<span class="text-danger ms-1">*</span></label>
+                                  <select id="schoolSelect" class="form-select">
+                                    <option value="">Loading schools...</option>
+                                 </select>
+                                 <div class="form-text small">Don't see your school? <a href="contact.html">Contact us</a> to have it added.</div>
+                            </div>
+                            <div class="col-4  ">
+                                <label class="fs-6 fw-semibold mb-2">Board</label>
+                                 <select class="form-select">
+                                    <option>Select Board</option>
+                                     <option>SSC</option>
+                                      <option>CBSC</option>
+                                 </select>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-4">
+                                <label class="fs-6 fw-semibold mb-2">City<span class="text-danger ms-1">*</span></label>
+                                <input type="text" name="City" placeholder="Enter City" class="form-control">
+                            </div>
+                            <div class="col-4  ">
+                                <label class="fs-6 fw-semibold mb-2">State<span class="text-danger ms-1">*</span></label>
+                                 <select class="form-select">
+                                    <option>Select State</option>
+                                     <option>Telangana</option>
+                                      <option>Maharastha</option>
+                                      <option>Karnataka</option>
+                                 </select>
+                            </div>
+                            <div class="col-4  ">
+                                <label class="fs-6 fw-semibold mb-2">Pin Code</label>
+                                 <input type="text" name="pincode" placeholder="Enter Pincode" class="form-control">
+                            </div>
+                        </div>
+                    </form>
+                    <form class="mt-3 border border-2 rounded rounded-2 shadow p-4">   
+                            <div class="text-primary fs-5 fw-semibold"><span class="text-success bi bi-2-circle-fill me-2"></span>Parent / Guardian Information</div>
+                            <div class="row mt-3">
+                                <div class="col-4">
+                                <label class="fs-6 fw-semibold mb-2">Parent/Guardian Name<span class="text-danger ms-1">*</span></label>
+                                <input type="text" name="parent name" placeholder="Enter Parent/Guardian Name" class="form-control">
+                            </div>
+                            <div class="col-4  ">
+                                <label class="fs-6 fw-semibold mb-2">Relationship<span class="text-danger ms-1">*</span></label>
+                                 <select class="form-select">
+                                    <option>Select Relationship</option>
+                                     <option>Father</option>
+                                      <option>Mother</option>
+                                      <option>Guardian</option>
+                                 </select>
+                            </div>
+                            <div class="col-4  ">
+                                <label class="fs-6 fw-semibold mb-2">Mobile Number<span class="text-danger ms-1">*</span></label>
+                                 <input type="number" name="phone number" placeholder="Enter Mobile Number" class="form-control">
+                            </div>
+                            </div>
+                            <div class="row mt-4">
+                                <div class="col-4">
+                                    <label class="fs-6 fw-semibold mb-2">Email Address<span class="text-danger ms-1">*</span></label>
+                                 <input type="email" name="Email" placeholder="Enter Email Address" class="form-control">
+                                </div>
+                                <div class="col-4  ">
+                                <label class="fs-6 fw-semibold mb-2">Alternative Contact Number<span class="text-danger ms-1">*</span></label>
+                                 <input type="number" name="alternative number" placeholder="Enter Alternativ Number" class="form-control">
+                            </div>
+                            </div>
+                    </form>
+                     <form class="mt-3 border border-2 rounded rounded-2 shadow p-4">   
+                            <div class="text-primary fs-5 fw-semibold"><span class="bi bi-3-circle-fill text-warning me-2"></span> Program Selection</div>
+                            <div class="row mt-3">
+                                <div class="col-4">
+                                <label class="fs-6 fw-semibold mb-2">Select Level<span class="text-danger ms-1">*</span></label>
+                                <select id="programLevelSelect" class="form-select" onchange="showLevel(this.value)">
+                                    <option>Select Level</option>
+                                     <option  value="level1">Level-1</option>
+                                      <option value="level2">Level-2</option>
+                                      <option value="level3">Level-3</option>
+                                      <option value="level4">Level-4</option>
+                                 </select>
+                            </div>
+                            <div class="col-4  ">
+                                <label class="fs-6 fw-semibold mb-2">Preferred Learning Mode<span class="text-danger ms-1">*</span></label>
+                                 <select class="form-select">
+                                    <option>Select Mode</option>
+                                     <option>Online</option>
+                                      <option>Offline</option>
+                                 </select>
+                            </div>
+                            <div class="col-4  ">
+                                <label class="fs-6 fw-semibold mb-2">Preferred Batch<span class="text-danger ms-1">*</span></label>
+                                <select class="form-select">
+                                    <option>Select Batch</option>
+                                     <option>Batch-1(9:00-11:00)</option>
+                                      <option>Batch-2(11:00-1:00)</option>
+                                      <option>Batch-3(2:00-4:00)</option>
+                                 </select>
+                            </div>
+                        </div>
+                    </form>
+                    <form class="mt-3 border border-2 rounded rounded-2 shadow p-4">
+                        <div class="text-primary fs-5 fw-semibold"><span class="bi bi-4-circle-fill four me-2"></span>Interests & Additional Information</div>
+                        <div class="mt-4 fs-6 fw-semibold">What are you interested in?  <span class="text-secondary fw-normal">(Select all that apply)</span></div>
+                <div id="level1" style="display: none;" >
+                     <div class="ms-3 my-2">
+                        <input type="checkbox" class="form-check-input me-md-2" name="CB"><label class="fw-semibold">Computer Basics</label>
+                     </div>
+                     <div class="ms-3">
+                        <input type="checkbox" class="form-check-input me-md-2" name="IAL"><label class="fw-semibold">Introduction to Al</label>
+                     </div>
+                     <div class="ms-3 my-2">
+                        <input type="checkbox" class="form-check-input me-md-2" name="SP"><label class="fw-semibold">Scratch Programming</label>
+                     </div>
+                     <div class="ms-3">
+                        <input type="checkbox" class="form-check-input me-md-2" name="CY"><label class="fw-semibold">Cyber Safety</label>
+                     </div>
+                     <div class="ms-3 my-2">
+                        <input type="checkbox" class="form-check-input me-md-2" name="AIP"><label class="fw-semibold">Mini Al Projects</label>
+                     </div>
+                </div>
+                  <div id="level2" style="display: none;" >
+                     <div class="ms-3 my-2">
+                        <input type="checkbox" class="form-check-input me-md-2" name="CB"><label class="fw-semibold">Python Basics</label>
+                     </div>
+                     <div class="ms-3">
+                        <input type="checkbox" class="form-check-input me-md-2" name="IAL"><label class="fw-semibold">Al Tools & ChatGPT</label>
+                     </div>
+                     <div class="ms-3 my-2">
+                        <input type="checkbox" class="form-check-input me-md-2" name="SP"><label class="fw-semibold">Machine Learning Basics</label>
+                     </div>
+                     <div class="ms-3">
+                        <input type="checkbox" class="form-check-input me-md-2" name="CY"><label class="fw-semibold">Cybersecurity Basics</label>
+                     </div>
+                     <div class="ms-3 my-2">
+                        <input type="checkbox" class="form-check-input me-md-2" name="AIP"><label class="fw-semibold">Al Projects</label>
+                     </div>
+                </div>
+                  <div id="level3" style="display: none;" >
+                     <div class="ms-3 my-2">
+                        <input type="checkbox" class="form-check-input me-md-2" name="CB"><label class="fw-semibold">Python Programming</label>
+                     </div>
+                     <div class="ms-3">
+                        <input type="checkbox" class="form-check-input me-md-2" name="IAL"><label class="fw-semibold">Machine Learning</label>
+                     </div>
+                     <div class="ms-3 my-2">
+                        <input type="checkbox" class="form-check-input me-md-2" name="SP"><label class="fw-semibold">Data Science Basics</label>
+                     </div>
+                     <div class="ms-3">
+                        <input type="checkbox" class="form-check-input me-md-2" name="CY"><label class="fw-semibold">Ethical Hacking Basics</label>
+                     </div>
+                     <div class="ms-3 my-2">
+                        <input type="checkbox" class="form-check-input me-md-2" name="AIP"><label class="fw-semibold">Real-Time Projects</label>
+                     </div>
+                </div>
+                  <div id="level4" style="display: none;" >
+                     <div class="ms-3 my-2">
+                        <input type="checkbox" class="form-check-input me-md-2" name="CB"><label class="fw-semibold">Advanced Python</label>
+                     </div>
+                     <div class="ms-3">
+                        <input type="checkbox" class="form-check-input me-md-2" name="IAL"><label class="fw-semibold">Machine Learning & Al</label>
+                     </div>
+                     <div class="ms-3 my-2">
+                        <input type="checkbox" class="form-check-input me-md-2" name="SP"><label class="fw-semibold">Generative Al</label>
+                     </div>
+                     <div class="ms-3">
+                        <input type="checkbox" class="form-check-input me-md-2" name="CY"><label class="fw-semibold">Cybersecurity & Ethical Hacking</label>
+                     </div>
+                     <div class="ms-3 my-2">
+                        <input type="checkbox" class="form-check-input me-md-2" name="AIP"><label class="fw-semibold">Capstone Projects</label>
+                     </div>
+                </div>
+                    </form>
+                    <form class="mt-3 border border-2 rounded rounded-2 shadow p-4">
+                        <div class="text-primary fs-5 fw-semibold"><span class="bi bi-5-circle-fill four me-2"></span>Consent</div>
+                        <div class="mt-3">
+                                <input type="checkbox" class="form-check-input me-md-2" name="ai"><label class="fw-semibold">I confirm thet the information provied is accurate.</label>
+                            </div>
+                            <div class="mt-3">
+                                <input type="checkbox" class="form-check-input me-md-2" name="ai"><label class="fw-semibold">I am the parent/guardian or authoriced person registering this student</label>
+                            </div>
+                            <div class="mt-3">
+                                <input type="checkbox" class="form-check-input fw-bold me-md-2" name="ai"><label class="fw-semibold">I agree to be contacted regarding the Future Tech School Program.</label>
+                            </div>
+                        </form>
+                        <div id="individualAdmissionAlert" class="alert d-none" role="alert"></div>
+                        <div class="my-4 text-center">
+                            <button type="button" id="individualAdmissionSubmitBtn" class="btn btn-primary text-white fs-5 fw-semibold"><span class="bi bi-send me-2"></span>SUBMIT REGISTRATION</button>
+                        </div>
+                        </div>
+                     </div>
+                      <div class="col-2 ms-4 mt-5 ">
+                    <div class="card p-2 view">
+                        <div class="bi bi-mortarboard-fill fs-2 text-primary text-center"></div>
+                        <div class="fs-5 fw-semibold text-primary text-center">Recommended Program</div>
+                         <div class="text-center">
+                            <span>Based on selected grade,</span><br>
+                           <span>we recommend the</span><br>
+                           <span>appropriate level for you.</span>
+                         </div>
+                         <div class="text-center mt-4">
+                            <a class="text-primary mt-4 fs-6 fw-semibold text-decoration-none">View all Levels<span class="bi bi-arrow-right ms-2 fw-semibold"></span></a>
+                         </div>
+                    </div>
+                    <div class="card all p-2 ">
+                        <div class="  text-center fs-5 text-warning">Levels Overview</div>
+                        <div class=" mt-2">
+                            <div><span class="bi bi-circle-fill text-warning me-2"></span>Level 1(5th-6th Standard)</div>
+                            <div><span class="bi bi-circle-fill text-success me-2"></span>Level 2(7th-8th Standard)</div>
+                            <div><span class="bi bi-circle-fill text-primary me-2"></span>Level 3(9th-10th Standard)</div>
+                            <div><span class="bi bi-circle-fill four me-2"></span>Level 4(11th-12th Standard)</div>
+                        </div>
+                        <div class="text-center mt-4">
+                            <a href="programs.html" class="text-primary mt-4 fs-6 fw-semibold text-decoration-none">View Level Details<span class="bi bi-arrow-right ms-2 fw-semibold"></span></a>
+                        </div>
+                    </div>
+                 </div>
+                 </div>
+            </div>
+        </section> 
+        <footer class="ft-footer">
+    <div class="container-fluid">
+      <div class="row gy-4">
+        <div class="col-lg-3 col-md-6 ft-col">
+          <div class="d-flex align-items-center mb-3">
+            <img src="assets/images/shared/logo.png" width="52" height="52" class="rounded-3 me-2" alt="logo">
+            <div class="fw-bold">FUTURE TECH<br><span class="text-warning">SCHOOL PROGRAM</span></div>
+          </div>
+          <p class="small text-white-50">Building Future Innovators Today &mdash; empowering students from Grade 5th to 12th with future-ready technology skills through hands-on learning, real-world projects and expert mentorship.</p>
+          <div class="d-flex align-items-center mt-3">
+            <a href="https://3dwebsoftfoundation.org/" class="me-2"><img src="assets/images/home/foundation.jpeg" width="42" height="42" class="rounded-circle" alt="3DWebSoft Foundation"></a>
+            <div class="small"><a href="https://3dwebsoftfoundation.org/">3DWEBSOFT<br>Foundation</a></div>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-6 ft-col">
+          <h6>Quick Links</h6>
+          <a href="home.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Home</a>
+          <a href="about.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>About Us</a>
+          <a href="programs.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Programs</a>
+          <a href="school.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Schools</a>
+          <a href="events-workshops.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Events</a>
+          <a href="projects.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Projects</a>
+          <a href="gallery.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Gallery</a>
+          <a href="admissions-individual.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Admissions</a>
+          <a href="certifications.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Certificates</a>
+          <a href="contact.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Contact Us</a>
+        </div>
+
+        <div class="col-lg-2 col-md-6 ft-col">
+          <h6>Program Levels</h6>
+          <p class="small mb-2"><span class="bi bi-circle-fill text-warning me-1"></span>Level 1 &middot; Junior Innovators<br><span class="text-white-50 ms-3">(5th&ndash;6th Standard)</span></p>
+          <p class="small mb-2"><span class="bi bi-circle-fill text-success me-1"></span>Level 2 &middot; Young Technologists<br><span class="text-white-50 ms-3">(7th&ndash;8th Standard)</span></p>
+          <p class="small mb-2"><span class="bi bi-circle-fill text-primary me-1"></span>Level 3 &middot; Future Engineers<br><span class="text-white-50 ms-3">(9th&ndash;10th Standard)</span></p>
+          <p class="small mb-2"><span class="bi bi-circle-fill text-purple me-1" style="color:#bb16bb;"></span>Level 4 &middot; AI Professional Foundation<br><span class="text-white-50 ms-3">(11th&ndash;12th Standard)</span></p>
+        </div>
+
+        <div class="col-lg-2 col-md-6 ft-col">
+          <h6>Get In Touch</h6>
+          <p class="small mb-2"><i class="bi bi-telephone-fill me-2 text-warning"></i>+91 9108534041</p>
+          <p class="small mb-2"><i class="bi bi-envelope me-2 text-warning"></i>info@futuretech.org</p>
+          <p class="small mb-2"><i class="bi bi-globe me-2 text-warning"></i>www.futuretech.org</p>
+          <p class="small mb-2"><i class="bi bi-geo-alt-fill me-2 text-warning"></i>3DWebSoft IT Solutions,<br><span class="ms-4">Narsingi, Hyderabad,</span><br><span class="ms-4">Telangana - 500075, India</span></p>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h6>Follow Us</h6>
+          <div class="d-flex ft-social mb-3">
+            <a href="https://www.facebook.com/profile.php?id=61592302205333" class="me-2"><img src="assets/images/gallery/facebook.jpeg" alt="Facebook"></a>
+            <a href="https://www.instagram.com/3dwebsoftitsolutions" class="me-2"><img src="assets/images/gallery/instagram.jpeg" alt="Instagram"></a>
+            <a href="https://www.youtube.com/@3dwebsoftitsolutions" class="me-2"><img src="assets/images/gallery/youtube.jpeg" alt="YouTube"></a>
+            <a href="https://www.linkedin.com/company/3dwebsoft-it-solutions/"><img src="assets/images/gallery/linkedin.jpeg" alt="LinkedIn"></a>
+          </div>
+          <h6>Stay Updated</h6>
+          <p class="small text-white-50">Get the latest updates, events and opportunities.</p>
+          <form class="d-flex" onsubmit="return false;">
+            <input type="email" class="form-control form-control-sm" placeholder="Enter your email">
+            <button class="btn btn-warning btn-sm ms-2"><i class="bi bi-arrow-right"></i></button>
+          </form>
+        </div>
+      </div>
+
+      <div class="ft-brand-badges d-flex flex-wrap justify-content-center gap-4 py-4">
+        <a href="https://www.3dwebsoftitsolutions.com" target="_blank" rel="noopener" class="ft-badge-link d-flex align-items-center text-decoration-none">
+          <span class="badge rounded-pill bg-primary px-3 py-2 me-3">Developed by</span>
+          <img src="assets/images/shared/itsolutions-logo.jpeg" alt="3DWebSoft IT Solutions" class="rounded-circle me-2" width="48" height="48">
+          <span class="text-white fw-bold text-start lh-sm">3DWEBSOFT<br><span class="fw-normal">IT Solutions</span></span>
+        </a>
+        <a href="https://3dwebsoftfoundation.org/" target="_blank" rel="noopener" class="ft-badge-link d-flex align-items-center text-decoration-none">
+          <span class="badge rounded-pill bg-warning text-dark px-3 py-2 me-3">Launched BY</span>
+          <img src="assets/images/shared/foundation-logo.jpeg" alt="3DWebSoft Foundation" class="rounded-circle me-2" width="48" height="48">
+          <span class="text-white fw-bold text-start lh-sm">3DWEBSOFT<br><span class="fw-normal">Foundation</span></span>
+        </a>
+      </div>
+
+      <div class="ft-copyright text-center">
+        &copy; 2026 Future Tech School Program. All Rights Reserved. &middot; A 3DWebSoft IT Solutions initiative.
+      <br class="d-md-none"><span class="mx-2 d-none d-md-inline">&middot;</span><a href="terms.html" class="text-white-50">Terms of Service</a><span class="mx-2">&middot;</span><a href="privacy.html" class="text-white-50">Privacy Policy</a></div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/api-client.js"></script>
+  <script src="assets/js/data-store.js"></script>
+  <script src="assets/js/payment-flow.js"></script>
+  <script>
+    // Show the interests checklist that matches the selected level
+    function showLevel(value) {
+      ['level1', 'level2', 'level3', 'level4'].forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) el.style.display = (id === value) ? 'block' : 'none';
+      });
+    }
+
+    // Populate the "School Name" dropdown from the registered schools list
+    (async function loadSchoolOptions() {
+      const select = document.getElementById('schoolSelect');
+      try {
+        const schools = await FTApi.listSchools();
+        if (!schools.length) {
+          select.innerHTML = '<option value="">No schools registered yet — contact us</option>';
+          return;
+        }
+        select.innerHTML = '<option value="">Select Your School Name</option>' +
+          schools.map(function (s) {
+            return '<option value="' + s.id + '">' + s.schoolName.replace(/</g, '&lt;') + '</option>';
+          }).join('');
+      } catch (err) {
+        select.innerHTML = '<option value="">Could not load school list — please refresh</option>';
+      }
+    })();
+
+    const submitBtn = document.getElementById('individualAdmissionSubmitBtn');
+    const alertBox = document.getElementById('individualAdmissionAlert');
+
+    function setBtnLoading(isLoading, label) {
+      submitBtn.disabled = isLoading;
+      submitBtn.innerHTML = isLoading
+        ? '<span class="spinner-border spinner-border-sm me-2"></span>' + label
+        : '<span class="bi bi-send me-2"></span>SUBMIT & PAY REGISTRATION FEE';
+    }
+    setBtnLoading(false);
+
+    submitBtn.addEventListener('click', async function () {
+      const root = document.getElementById('individualAdmissionWizard');
+      const fields = FTStore.collectFields(root);
+
+      // Only one of the level1..level4 interest panels is visible at a time
+      let interests = [];
+      ['level1', 'level2', 'level3', 'level4'].forEach(function (id) {
+        const panel = document.getElementById(id);
+        if (panel && panel.style.display === 'block') {
+          interests = FTStore.collectCheckedLabels(panel);
+        }
+      });
+
+      const consentForm = document.querySelector('.bi-5-circle-fill').closest('form');
+      const consents = FTStore.collectCheckedLabels(consentForm);
+
+      const studentName = fields['Student Full Name'];
+      const mobile = fields['Mobile Number'];
+      const email = fields['Email Address'];
+      const programLevel = document.getElementById('programLevelSelect').value;
+      const schoolSelect = document.getElementById('schoolSelect');
+      const schoolId = schoolSelect.value;
+      const schoolNameSelected = schoolId ? schoolSelect.options[schoolSelect.selectedIndex].text : '';
+
+      alertBox.classList.add('d-none');
+
+      if (!studentName || !mobile) {
+        alertBox.className = 'alert alert-danger';
+        alertBox.textContent = 'Please fill in at least the Student Full Name and Parent/Guardian Mobile Number.';
+        alertBox.classList.remove('d-none');
+        alertBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
+      if (!schoolId) {
+        alertBox.className = 'alert alert-danger';
+        alertBox.textContent = 'Please select your school before submitting.';
+        alertBox.classList.remove('d-none');
+        alertBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
+      if (!['level1', 'level2', 'level3', 'level4'].includes(programLevel)) {
+        alertBox.className = 'alert alert-danger';
+        alertBox.textContent = 'Please select a program level before submitting.';
+        alertBox.classList.remove('d-none');
+        alertBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+
+      try {
+        setBtnLoading(true, 'Saving your registration...');
+
+        // Step 1: create the admission record on the backend, which also
+        // returns the exact fee to be paid (computed server-side).
+        const created = await FTApi.createIndividualAdmission({
+          studentName: studentName,
+          grade: fields['Current Grade/Class'] || '',
+          schoolId: schoolId,
+          schoolName: schoolNameSelected,
+          parentName: fields['Parent/Guardian Name'] || '',
+          mobile: mobile,
+          email: email || '',
+          programLevel: programLevel,
+          interests: interests,
+          consents: consents,
+          extraFields: fields
+        });
+
+        setBtnLoading(true, 'Generating your payment QR code...');
+
+        // Step 2 onward: show UPI QR code -> admin confirms -> receipt
+        FTPayment.payForAdmission({
+          type: 'individual',
+          admissionId: created.admissionId,
+          payer: {
+            name: fields['Parent/Guardian Name'] || studentName,
+            email: email || '',
+            phone: mobile
+          },
+          onSuccess: function (result) {
+            setBtnLoading(false);
+            const fullReceiptUrl = window.FT_CONFIG.API_BASE_URL.replace(/\/api$/, '') + result.downloadUrl;
+            const registrationUrl = 'student-registration-form.html?admissionId=' + encodeURIComponent(created.admissionId)
+              + '&name=' + encodeURIComponent(studentName)
+              + '&email=' + encodeURIComponent(email || '');
+            // Fallback for the registration page in case the query string gets
+            // stripped in transit (e.g. a local static server redirecting
+            // "foo.html" -> "foo" and dropping the query string along the way).
+            try {
+              sessionStorage.setItem('ft_pending_registration', JSON.stringify({
+                admissionId: created.admissionId,
+                name: studentName,
+                email: email || '',
+                savedAt: Date.now()
+              }));
+            } catch (e) { /* sessionStorage unavailable - query string is still the primary path */ }
+            alertBox.className = 'alert alert-success';
+            alertBox.innerHTML =
+              'Payment successful! Registration confirmed. Receipt No: <strong>' + result.receiptNumber + '</strong>. ' +
+              '<a href="' + fullReceiptUrl + '" target="_blank" class="alert-link">Download your receipt</a>.' +
+              '<hr class="my-2">' +
+              '<a href="' + registrationUrl + '" class="btn btn-primary btn-sm fw-bold">' +
+              '<i class="bi bi-person-plus me-1"></i>Create Your Student Login to Access Notes &amp; Quizzes</a>';
+            alertBox.classList.remove('d-none');
+            alertBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            // Trigger the download automatically too
+            window.open(fullReceiptUrl, '_blank');
+
+            root.querySelectorAll('input, select, textarea').forEach(function (el) {
+              if (el.type === 'checkbox' || el.type === 'radio') {
+                el.checked = false;
+              } else {
+                el.value = el.tagName === 'SELECT' ? el.options[0].value : '';
+              }
+            });
+          },
+          onError: function (message) {
+            setBtnLoading(false);
+            alertBox.className = 'alert alert-danger';
+            alertBox.textContent = message;
+            alertBox.classList.remove('d-none');
+            alertBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          },
+          onDismiss: function () {
+            setBtnLoading(false);
+            alertBox.className = 'alert alert-warning';
+            alertBox.textContent = 'Payment window closed. Your registration is saved — you can retry payment by submitting again.';
+            alertBox.classList.remove('d-none');
+          }
+        });
+      } catch (err) {
+        setBtnLoading(false);
+        alertBox.className = 'alert alert-danger';
+        alertBox.textContent = err.message || 'Something went wrong. Please try again.';
+        alertBox.classList.remove('d-none');
+        alertBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+  </script>
+</body>
+</html>

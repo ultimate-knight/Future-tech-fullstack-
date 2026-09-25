@@ -1,0 +1,177 @@
+/**
+ * Portal theme — used only on the authenticated student-flow pages:
+ * student-login.html, student-portal.html, level*-module*.html,
+ * level*-module*-quiz.html, level*-module*-pratical.html.
+ *
+ * Builds on the site's existing brand variables (--ft-navy, --ft-gold,
+ * defined in site.css) rather than replacing them, and adds a few more
+ * for the pieces those pages need: a success/forest tone for "passed" and
+ * completed states, a warm paper background, and hairline borders for a
+ * cleaner, ledger-style list instead of stacked shadowed cards.
+ *
+ * Load AFTER site.css. Add class="ft-portal-theme" to <body> to scope it.
+ */
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+
+.ft-portal-theme{
+  --pt-ink: var(--ft-navy, #0e0e41);
+  --pt-ink-soft:#2b2f63;
+  --pt-gold: var(--ft-gold, #ffc107);
+  --pt-forest:#1f7a4d;
+  --pt-forest-soft:#e4f4ea;
+  --pt-clay:#b23b2e;
+  --pt-clay-soft:#fbe9e7;
+  --pt-paper:#f7f6f1;
+  --pt-card:#ffffff;
+  --pt-line:#e4e1d6;
+
+  background:var(--pt-paper) !important;
+  font-family:'IBM Plex Sans', 'Poppins', sans-serif;
+}
+.ft-portal-theme h1,
+.ft-portal-theme h2,
+.ft-portal-theme h3,
+.ft-portal-theme .pt-serif{
+  font-family:'Source Serif 4', serif;
+}
+
+/* ---------- generic surfaces ---------- */
+.ft-portal-theme .pt-card{
+  background:var(--pt-card);
+  border:1px solid var(--pt-line);
+  border-radius:4px;
+  box-shadow:none;
+}
+.ft-portal-theme .pt-eyebrow{
+  color:var(--pt-ink);
+  opacity:.55;
+  font-size:13px;
+  margin-bottom:6px;
+}
+.ft-portal-theme .pt-page-title{
+  font-size:28px;
+  font-weight:700;
+  margin-bottom:6px;
+  color:var(--pt-ink);
+}
+.ft-portal-theme .pt-page-sub{
+  color:#4a4d5c;
+  font-size:14.5px;
+  max-width:62ch;
+  margin-bottom:28px;
+}
+
+/* ---------- login card ---------- */
+.ft-portal-theme .pt-login-shell{
+  min-height:78vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:40px 16px;
+}
+.ft-portal-theme .pt-login-card{
+  width:100%;
+  max-width:420px;
+  background:var(--pt-card);
+  border:1px solid var(--pt-line);
+  border-radius:4px;
+  padding:40px 36px;
+  box-shadow:0 18px 40px -24px rgba(14,14,65,.25);
+}
+.ft-portal-theme .pt-stamp{
+  width:50px;height:50px;
+  border:2px solid var(--pt-ink);
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Source Serif 4', serif;
+  font-weight:700;
+  color:var(--pt-ink);
+  margin-bottom:20px;
+}
+
+/* ---------- progress bar ---------- */
+.ft-portal-theme .pt-progress-track{
+  height:6px;background:var(--pt-line);border-radius:4px;overflow:hidden;
+  max-width:420px;margin:6px 0 26px;
+}
+.ft-portal-theme .pt-progress-fill{height:100%;background:var(--pt-forest);}
+.ft-portal-theme .pt-progress-label{font-size:13px;color:#666;margin-bottom:6px;}
+
+/* ---------- class ledger list (replaces stacked cards) ---------- */
+.ft-portal-theme .pt-ledger{border-top:1px solid var(--pt-line);}
+.ft-portal-theme .pt-ledger-row{
+  display:flex;align-items:center;gap:16px;
+  padding:16px 4px;border-bottom:1px solid var(--pt-line);
+  flex-wrap:wrap;
+}
+.ft-portal-theme .pt-ledger-num{
+  font-family:'IBM Plex Sans', monospace;
+  font-size:13px;color:#9a9a9a;width:26px;flex-shrink:0;
+}
+.ft-portal-theme .pt-ledger-status{
+  width:22px;height:22px;border-radius:50%;
+  border:1.5px solid var(--pt-line);
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  font-size:12px;color:#fff;
+}
+.ft-portal-theme .pt-ledger-status.done{background:var(--pt-forest);border-color:var(--pt-forest);}
+.ft-portal-theme .pt-ledger-main{flex:1;min-width:180px;}
+.ft-portal-theme .pt-ledger-title{font-size:15px;font-weight:600;color:#1c1c1c;}
+.ft-portal-theme .pt-ledger-meta{font-size:12.5px;color:#8b8b8b;margin-top:2px;}
+.ft-portal-theme .pt-ledger-action{
+  font-size:13.5px;font-weight:600;color:#fff;background:var(--pt-ink);
+  border:1px solid var(--pt-ink);
+  padding:8px 16px;border-radius:3px;flex-shrink:0;text-decoration:none;
+}
+.ft-portal-theme .pt-ledger-action:hover{background:var(--pt-ink-soft);color:#fff;}
+.ft-portal-theme .pt-ledger-action.secondary{
+  background:transparent;color:var(--pt-ink);border-color:var(--pt-line);
+}
+.ft-portal-theme .pt-ledger-action.secondary:hover{border-color:var(--pt-ink);}
+
+/* ---------- quiz page ---------- */
+.ft-portal-theme .pt-quiz-shell{max-width:760px;margin:0 auto;padding:44px 16px 70px;}
+.ft-portal-theme .pt-quiz-banner{
+  text-align:center;padding:22px 20px;margin-bottom:34px;
+  background:var(--pt-ink);color:#fff;border-radius:4px;
+}
+.ft-portal-theme .pt-quiz-banner .eyebrow{
+  color:var(--pt-gold);font-size:12.5px;letter-spacing:.04em;margin-bottom:4px;
+}
+.ft-portal-theme .pt-quiz-banner h1{font-size:22px;margin:0;color:#fff;}
+.ft-portal-theme [data-question]{
+  background:var(--pt-card);
+  border:1px solid var(--pt-line);
+  border-radius:4px;
+  padding:20px 22px;
+  margin-bottom:16px !important;
+}
+.ft-portal-theme [data-question] p.fw-semibold{
+  font-family:'Source Serif 4', serif;
+  font-size:17px;
+}
+.ft-portal-theme [data-question] label{cursor:pointer;}
+.ft-portal-theme .ft-quiz-result .alert{
+  border-radius:4px;border:1px solid transparent;
+}
+.ft-portal-theme .ft-quiz-result .alert-success{
+  background:var(--pt-forest-soft);color:#125533;border-color:#bfe3cd;
+}
+.ft-portal-theme .ft-quiz-result .alert-danger{
+  background:var(--pt-clay-soft);color:#7a2318;border-color:#f0c9c2;
+}
+
+/* ---------- progress tracking card on student-portal ---------- */
+.ft-portal-theme .pt-progress-item{
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+  padding:14px 16px;border:1px solid var(--pt-line);border-radius:4px;
+  margin-bottom:10px;
+}
+.ft-portal-theme .pt-progress-item .title{font-weight:600;font-size:14.5px;color:#1c1c1c;}
+.ft-portal-theme .pt-progress-item .meta{font-size:12.5px;color:#8b8b8b;margin-top:2px;}
+.ft-portal-theme .pt-badge{
+  font-size:12.5px;font-weight:700;padding:4px 10px;border-radius:12px;
+}
+.ft-portal-theme .pt-badge.pass{background:var(--pt-forest-soft);color:#125533;}
+.ft-portal-theme .pt-badge.fail{background:var(--pt-clay-soft);color:#7a2318;}
+.ft-portal-theme .pt-badge.pending{background:#eef0f5;color:#666;}

@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en-in">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/images/shared/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/site.css">
+     <title>About Us | Future Tech School Program</title>
+     <style>
+        .future{
+            font-size: 80px;
+            font-family: poppins;
+            margin-top: 140px;
+            
+        }
+        .school{
+            font-family: poppins;
+            margin-top: -50px;
+            font-size: 60px;
+        }
+        .today{
+            margin-top: -20px;
+        }
+        .view{
+            background-color: rgb(14, 14, 65);
+            border: 2px solid rgb(27, 27, 115) ;
+        }
+        .all{
+            color: rgb(14, 14, 65) ;
+        }
+        .tag{
+            margin-right: -20px;
+        }
+        .learn{
+            margin-left: 110px;
+             background-color: rgb(14, 14, 65);
+            border: 2px solid rgb(27, 27, 115) ;
+            margin-right: 180px; 
+         justify-content: center;          
+        }
+        .tags{
+            font-size: 60px;
+        }
+        .level{
+            margin-left: 110px;
+            margin-right: 180px;
+        }
+        .about:hover{
+             transform:translateY(-10px);
+            box-shadow:0 15px 35px rgba(0,0,0,.2);
+        }
+        .to{
+            color: rgb(15, 220, 15);
+        }
+        .four{
+            color:rgb(187, 22, 187);
+        }
+        footer{
+             background-color: rgb(14, 14, 65);
+             margin-top: -50px;
+            padding-bottom: 40px;
+             padding-top: 20px;
+        }
+        .line{
+            border-bottom: 0px;
+            border-top: 0px;
+            border-left: 0px;
+            border-right: 2px solid rgb(26, 26, 83);
+        }
+        .quick:hover{
+            transform:translateY(-10px);
+            box-shadow:0 15px 35px rgba(0,0,0,.2);
+            color: rgb(211, 151, 22);
+        }   
+    </style>
+</head>
+<body>
+    <header class="position-absolute ft-header container-fluid" style="z-index: 1500;">
+    <nav class="navbar navbar-expand-xl ft-navbar">
+      <div class="container-fluid">
+        <a href="home.html" class="d-flex align-items-center text-decoration-none ft-logo-wrap">
+          <img src="assets/images/shared/logo.png" width="60" height="60" alt="Future Tech logo" class="rounded-3">
+          <span class="ms-2 text-white fw-bold d-none d-lg-inline" style="font-size:1.05rem;line-height:1.1;">FUTURE TECH<br><span class="text-warning" style="font-size:.8rem;">SCHOOL PROGRAM</span></span>
+        </a>
+
+        <button class="navbar-toggler ft-toggle-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#ftOffcanvas">
+          <span class="bi bi-list fs-1"></span>
+        </button>
+
+        <div class="collapse navbar-collapse d-none d-xl-flex justify-content-end">
+          <ul class="navbar-nav align-items-center gap-1">
+            <li class="nav-item"><a href="home.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="about.html" class="nav-link active">About</a></li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Programs</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="programs.html">Programs Overview</a></li>
+                <li><a class="dropdown-item" href="programs-level1.html">Level 1 &middot; Junior Innovators</a></li>
+                <li><a class="dropdown-item" href="programs-level2.html">Level 2 &middot; Young Technologists</a></li>
+                <li><a class="dropdown-item" href="programs-level3.html">Level 3 &middot; Future Engineers</a></li>
+                <li><a class="dropdown-item" href="programs-level4.html">Level 4 &middot; AI Professional Foundation</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="methodology.html">Methodology</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Projects</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="projects.html">All Projects</a></li>
+                <li><a class="dropdown-item" href="projects-aiml.html">AI &amp; ML</a></li>
+                <li><a class="dropdown-item" href="projects-robotics.html">Robotics</a></li>
+                <li><a class="dropdown-item" href="projects-web.html">Web &amp; App</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Admissions</a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="admissions-individual.html">Individual Student</a></li>
+                <li><a class="dropdown-item" href="admissions-bulk.html">School / Bulk</a></li>
+                <li><hr class="dropdown-divider"></li>
+               <li><a class="dropdown-item" href="student-login.html"><i class="bi bi-box-arrow-in-right me-1"></i>Student Login</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">More</a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="school.html">School Programs</a></li>
+                <li><a class="dropdown-item" href="events-workshops.html">Events &amp; Workshops</a></li>
+                <li><a class="dropdown-item" href="competitions.html">Competitions</a></li>
+                <li><a class="dropdown-item" href="certifications.html">Certifications</a></li>
+                <li><a class="dropdown-item" href="admin.html">Admin Login</a></li>
+                <li><a class="dropdown-item" href="faq.html">FAQ's</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item"><a href="contact.html" class="btn btn-warning fw-bold px-4 ms-2">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="offcanvas offcanvas-end ft-offcanvas" id="ftOffcanvas">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title fw-bold">Future Tech School Program</h5>
+        <button class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a href="home.html" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="about.html" class="nav-link active">About</a></li>
+          <li class="nav-item"><a href="programs.html" class="nav-link">Programs Overview</a></li>
+          <li class="nav-item ps-3"><a href="programs-level1.html" class="nav-link small">Level 1 &middot; Junior Innovators</a></li>
+          <li class="nav-item ps-3"><a href="programs-level2.html" class="nav-link small">Level 2 &middot; Young Technologists</a></li>
+          <li class="nav-item ps-3"><a href="programs-level3.html" class="nav-link small">Level 3 &middot; Future Engineers</a></li>
+          <li class="nav-item ps-3"><a href="programs-level4.html" class="nav-link small">Level 4 &middot; AI Professional Foundation</a></li>
+          <li class="nav-item"><a href="methodology.html" class="nav-link">Methodology</a></li>
+          <li class="nav-item"><a href="projects.html" class="nav-link">Projects</a></li>
+          <li class="nav-item"><a href="school.html" class="nav-link">School Programs</a></li>
+          <li class="nav-item"><a href="events-workshops.html" class="nav-link">Events &amp; Workshops</a></li>
+          <li class="nav-item"><a href="competitions.html" class="nav-link">Competitions</a></li>
+          <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+          <li class="nav-item"><a href="certifications.html" class="nav-link">Certifications</a></li>
+          <li class="nav-item"><a href="admissions-individual.html" class="nav-link">Admissions &middot; Individual</a></li>
+          <li class="nav-item"><a href="admissions-bulk.html" class="nav-link">Admissions &middot; School / Bulk</a></li>
+          <li class="nav-item"><a href="school-login.html" class="nav-link"><i class="bi bi-box-arrow-in-right me-1"></i>School Login</a></li>
+          <li class="nav-item"><a href="partnership.html" class="nav-link">Partner With Us</a></li>
+          <li class="nav-item"><a href="faq.html" class="nav-link">FAQ's</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+    <section class="position-absolute container-fluid mt-4 ms-4" style="z-index: 1055;">
+        <div>
+             <div class="mb-5">
+                <p class="fw-bold future text-white">About Future Tech</p>  
+           <p class="text-warning school">School Program</p>
+           <p class="fs-4 fw-semibold text-white today">Building Future Innovators Today!</p>
+             </div>
+        </div>
+        <div class="mt-3 text-white fs-5">
+            <p>The Future Tech School Program is a technology-focused<br>education initiative designed to prepare students for a<br>rapidly changing digital world.</p>
+        </div>
+        <div class="mt-3 text-white fs-5">
+            <p>Launched by 3DWebSoft Foundation and developed by the<br>technology expertise of 3DWebSoft IT Solutions, the program<br>aims to introduce students to emerging technologies at an<br>early stage and help them develop the skills, creativity and<br>confidence needed to become tomorrow's innovators.</p>
+        </div>
+        <div class="mt-3 text-white fs-5">
+            <p>From 5th to 12th Standard, students progress through a<br>structured, level-based leaming journey covering Computer<br>Science, Coding & Programming, Artificial Intelligence,<br>Machine Learning, Cybersecurity, Robotics, Generative Al,<br>Data Science and Innovation.</p>
+        </div>
+        <div class="mt-3 text-white fs-5">
+            <p>Our approach goes beyond traditional classroom learning.<br>Students are encouraged to learn concepts, practice their<br>skills, build projects, present their ideas and continuously grow.</p>
+        </div>
+             <div>
+                <fieldset class="text-center mt-4 shadow">
+            <legend  class=" fs-1 text-white">Our Learning Philosophy</legend>
+        </fieldset>
+        <div class="row mt-4 learn   py-3 rounded rounded-3">
+            <div class="col-1 about">
+                <div class="bi bi-book view rounded text-center rounded-5 p-1 text-white fs-1 tag  "></div>
+                <div class="fs-3 text-white text-center">LEARN</div>
+            </div>
+            <div class="col-1 mt-3">
+                <div class="fs-3 text-warning text-center">----></div>
+            </div>
+             <div class="col-1 about">
+                <div class="bi bi-gear view rounded text-center rounded-5 p-1 text-white fs-1 tag "></div>
+                <div class="fs-3 text-white text-center">PRACTICE</div>
+            </div>
+            <div class="col-1 mt-3">
+                <div class="fs-3 text-warning text-center">----></div>
+            </div>
+             <div class="col-1 about">
+                <div class="bi bi-tools view rounded text-center rounded-5 p-1 text-white fs-1 tag "></div>
+                <div class="fs-3 text-white text-center">BUILD</div>
+            </div>
+            <div class="col-1 mt-3">
+                <div class="fs-3 text-warning text-center">----></div>
+            </div>
+             <div class="col-1 about">
+                <div class="bi bi-display view rounded text-center rounded-5 p-1 text-white fs-1 tag "></div>
+                <div class="fs-3 text-white text-center">PRESENT</div>
+            </div>
+            <div class="col-1 mt-3">
+                <div class="fs-3 text-warning text-center">----></div>
+            </div>
+            <div class="col-1 about">
+                <div class="bi bi-graph-up-arrow view rounded text-center rounded-5 p-1 text-white fs-1 tag "></div>
+                <div class="fs-3 text-white text-center">GROW</div>
+            </div>
+        </div>
+        <div class="text-center text-white mt-4 fs-5">
+            <p>We believe students learn technology best when they can experiment with it and apply their knowledge to meaningful<br>problems. Through hands-on activities, practical projects, workshops, mentorship and technology-based challenges,<br>we create opportunities for students to become active creators rather than passive users of technology.</p>
+        </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="text-warning   fs-3">Our Mission</div>
+                <div>
+                    <p class="text-white fs-5 mt-3 ">To make future-ready technology education accessible,<br>practical and engaging for students, while developing the<br>technical and personal skills they need to confidently<br>navigate the future.</p>
+                </div>
+                <div class="text-white fs-5">We aim to help students:</div>
+                <div>
+                    <p class="bi bi-check-circle-fill fs-4 text-warning"><span class="text-white fs-5 ms-3">Build strong digital and programming foundations</span></p>
+                    <p class="bi bi-check-circle-fill fs-4 text-warning"><span class="text-white fs-5 ms-3">Explore emerging technologies at an appropriate level</span></p>
+                     <p class="bi bi-check-circle-fill fs-4 text-warning"><span class="text-white fs-5 ms-3">Develop logical and problem-solving abilities</span></p>
+                      <p class="bi bi-check-circle-fill fs-4 text-warning"><span class="text-white fs-5 ms-3">Encourage creativity, innovation and curiosity</span></p>
+                       <p class="bi bi-check-circle-fill fs-4 text-warning"><span class="text-white fs-5 ms-3">Gain hands-on experience through projects</span></p>
+                        <p class="bi bi-check-circle-fill fs-4 text-warning"><span class="text-white fs-5 ms-3">Develop teamwork and communication skills</span></p>
+                         <p class="bi bi-check-circle-fill fs-4 text-warning"><span class="text-white fs-5 ms-3">Understand responsible and ethical use of technology</span></p>
+                          <p class="bi bi-check-circle-fill fs-4 text-warning"><span class="text-white fs-5 ms-3">Discover different technology and career pathways</span></p>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="text-warning fs-3">Our Vision</div>
+                <div class="text-start text-white mt-4 fs-5">
+                    <p>To empower the next generation to learn, create and<br>innovate with technology.</p>
+                </div>
+                <div class="text-start text-white mt-4 fs-5">
+                    <p>We envision a future where students don't simply consume<br>technology-they understand it, build with it and use it<br>responsibly to solve real-world problems.</p>
+                </div>
+                <div class="mt-4">
+                    <img src="assets/images/home/vision.png" width="550px" height="380px">
+                </div>
+            </div>
+        </div>
+        <div>
+            <div  class=" fs-1 text-white text-center mt-4">Why Future Tech School Program?</div>
+            <div class="text-center text-white mt-4 fs-5">
+                <p>Technology is evolving rapidly. Artificial Intelligence, automation, cybersecurity, data science and other emerging technologies<br>are becoming an increasingly important part of our world.</p>
+            </div>
+            <div class="text-center text-white mt-4 fs-5">
+                <p>The Future Tech School Program gives students an opportunity to start understanding these technologies step by step, at the<br>right stage of their education.</p>
+            </div>
+            <div class="row me-5">
+                <div class="col-2 rounded rounded-2 view shadow">
+                    <div class="text-center">
+                        <span class="bi bi-book text-center text-warning tags"></span>
+                        <p class="text-center text-white mt-2 fs-5">Conceptual<br>Learning</p>
+                        <p class="text-center text-white  fs-6">Understand the<br>fundamentals.</p>
+                    </div>
+                </div>
+                <div class="col-2  rounded rounded-2 view  shadow">
+                    <div class="text-center">
+                        <span class="bi bi-laptop text-center text-warning tags"></span>
+                        <p class="text-center text-white mt-2 fs-5">Hands-on<br>Practice</p>
+                        <p class="text-center text-white  fs-6">Learn by<br>doing.</p>
+                    </div>
+                </div>
+                <div class="col-2 view rounded rounded-2 shadow">
+                    <div class="text-center">
+                        <span class="bi bi-tools text-center text-warning tags"></span>
+                        <p class="text-center text-white mt-2 fs-5">Real-World<br>Projects</p>
+                        <p class="text-center text-white  fs-6">Turn ideas into<br>working projects.</p>
+                    </div>
+                </div>
+                <div class="col-2 view rounded rounded-2 shadow">
+                    <div class="text-center">
+                        <span class="bi bi-lightbulb text-center text-warning tags"></span>
+                        <p class="text-center text-white mt-2 fs-5">Innovation</p>
+                        <p class="text-center text-white  fs-6">Think creatively<br>and explore new<br>possibilities.</p>
+                    </div>
+                </div>
+                <div class="col-2 view rounded rounded-2 shadow">
+                    <div class="text-center">
+                        <span class="bi bi-mic text-center text-warning tags"></span>
+                        <p class="text-center text-white mt-2 fs-5">Presentation</p>
+                        <p class="text-center text-white  fs-6">Learn to<br>communicate and<br>demonstrate ideas.</p>
+                    </div>
+                </div>
+                <div class="col-2 view rounded rounded-2 shadow">
+                    <div class="text-center">
+                        <span class="bi bi-airplane-engines text-center text-warning tags"></span>
+                        <p class="text-center text-white mt-2 fs-5">Future<br>Readiness</p>
+                        <p class="text-center text-white  fs-6">Build skills for<br>further education</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class=" fs-1 text-white text-center mt-4">Our Four-Level Learning Journey</div>
+            <div class="row mt-4 text-center level justify-content-center">
+                <div class="col-2 me-4 ms-5 view rounded rounded-2 shadow about">
+                     <a href="programs-level1.html" class="text-decoration-none">
+                        <div class="text-warning text-center fs-5 mb-2"><span class="bi bi-robot fs-1 me-2"></span>Level 1<br>Junior Innovations</div>
+                    <p class=" text-white text-start fs-6">5th-6th Standard Building digital foundations through computer basics, Al awareness, Scratch programming, cyber safety and beginner projects.</p>
+                     </a>
+                </div>
+                <div class="col-2 me-4 view rounded rounded-2 shadow about">
+                     <a href="programs-level2.html" class="text-decoration-none">
+                        <div class=" fs-5 mb-2 to text-center "><span class="bi bi-code-slash fs-1 me-2 to"></span> <span class="to">Level 2</span><br> <span class="to">Young Technologies</span></div>
+                    <p class=" text-white text-start  fs-6">7th-8th Standard Introducing Python, Al tools,machine learning fundamentals, cybersecurity and Al-based projects.</p>
+                     </a>
+                </div>
+                <div class="col-2 me-4 view rounded rounded-2 shadow about">
+                    <a href="programs-level3.html" class="text-decoration-none">
+                         <div class="text-primary text-center fs-5 mb-2"><span><img src="assets/images/home/aimllogo.png" width="50px" height="50px" class="me-2 fs-1"></span>Level 3<br>Future<br> Engineers</div>
+                    <p class=" text-white text-start  fs-6">9th-10th Standard Developing deeper skills in Python, machine learning, data science, ethica cybersecurity and real-world projects.</p>
+                    </a>
+                </div>
+                <div class="col-2 me-4 view rounded rounded-2 shadow about">
+                     <a href="programs-level4.html" class="text-decoration-none">
+                        <div class=" fs-5 mb-2 four text-center  "><span class="bi bi-code-square me-2 fs-1  "></span> <span>Level 4</span><br> <span  >AI<br> Professional</span> </div>
+                    <p class=" text-white text-start  fs-6">11th-12th Standard Exploring advanced Python, AI/ML, Generative Al, cybersecurity and capstone project development.</p>
+                     </a>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-5">
+                <img src="assets/images/home/commit.png" width="500px" height="300px" class="round rounded-3">
+            </div>
+            <div class="col-7">
+                <div class="text-warning fs-5"><span class="bi bi-shield-check me-3 fs-3"></span>Our Commitment</div>
+                <p class=" text-white  fs-6">We are committed to creating a safe, engaging and practical learning environment<br>where every student gets the opportunity to explore technology, ask questions,<br>experiment with ideas and develop confidence.</p>
+                <p class=" text-white  fs-6">Our goal is not simply to teach students a particular programming language or technology.</p>
+                <span class="text-warning fs-6">Our goal is to develop future-ready learners, problem solvers and innovators.</span>
+            </div>
+        </div>
+             </div>
+    </section>
+    <div>
+        <img src="assets/images/home/abouthero1.png" width="100%" height="3400px">
+    </div>
+    <footer class="ft-footer">
+    <div class="container-fluid">
+      <div class="row gy-4">
+        <div class="col-lg-3 col-md-6 ft-col">
+          <div class="d-flex align-items-center mb-3">
+            <img src="assets/images/shared/logo.png" width="52" height="52" class="rounded-3 me-2" alt="logo">
+            <div class="fw-bold">FUTURE TECH<br><span class="text-warning">SCHOOL PROGRAM</span></div>
+          </div>
+          <p class="small text-white-50">Building Future Innovators Today &mdash; empowering students from Grade 5th to 12th with future-ready technology skills through hands-on learning, real-world projects and expert mentorship.</p>
+          <div class="d-flex align-items-center mt-3">
+            <a href="https://3dwebsoftfoundation.org/" class="me-2"><img src="assets/images/home/foundation.jpeg" width="42" height="42" class="rounded-circle" alt="3DWebSoft Foundation"></a>
+            <div class="small"><a href="https://3dwebsoftfoundation.org/">3DWEBSOFT<br>Foundation</a></div>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-6 ft-col">
+          <h6>Quick Links</h6>
+          <a href="home.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Home</a>
+          <a href="about.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>About Us</a>
+          <a href="programs.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Programs</a>
+          <a href="school.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Schools</a>
+          <a href="events-workshops.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Events</a>
+          <a href="projects.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Projects</a>
+          <a href="gallery.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Gallery</a>
+          <a href="admissions-individual.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Admissions</a>
+          <a href="certifications.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Certificates</a>
+          <a href="contact.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Contact Us</a>
+        </div>
+
+        <div class="col-lg-2 col-md-6 ft-col">
+          <h6>Program Levels</h6>
+          <p class="small mb-2"><span class="bi bi-circle-fill text-warning me-1"></span>Level 1 &middot; Junior Innovators<br><span class="text-white-50 ms-3">(5th&ndash;6th Standard)</span></p>
+          <p class="small mb-2"><span class="bi bi-circle-fill text-success me-1"></span>Level 2 &middot; Young Technologists<br><span class="text-white-50 ms-3">(7th&ndash;8th Standard)</span></p>
+          <p class="small mb-2"><span class="bi bi-circle-fill text-primary me-1"></span>Level 3 &middot; Future Engineers<br><span class="text-white-50 ms-3">(9th&ndash;10th Standard)</span></p>
+          <p class="small mb-2"><span class="bi bi-circle-fill text-purple me-1" style="color:#bb16bb;"></span>Level 4 &middot; AI Professional Foundation<br><span class="text-white-50 ms-3">(11th&ndash;12th Standard)</span></p>
+        </div>
+
+        <div class="col-lg-2 col-md-6 ft-col">
+          <h6>Get In Touch</h6>
+          <p class="small mb-2"><i class="bi bi-telephone-fill me-2 text-warning"></i>+91 9108534041</p>
+          <p class="small mb-2"><i class="bi bi-envelope me-2 text-warning"></i>info@futuretech.org</p>
+          <p class="small mb-2"><i class="bi bi-globe me-2 text-warning"></i>www.futuretech.org</p>
+          <p class="small mb-2"><i class="bi bi-geo-alt-fill me-2 text-warning"></i>3DWebSoft IT Solutions,<br><span class="ms-4">Narsingi, Hyderabad,</span><br><span class="ms-4">Telangana - 500075, India</span></p>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h6>Follow Us</h6>
+          <div class="d-flex ft-social mb-3">
+            <a href="https://www.facebook.com/profile.php?id=61592302205333" class="me-2"><img src="assets/images/gallery/facebook.jpeg" alt="Facebook"></a>
+            <a href="https://www.instagram.com/3dwebsoftitsolutions" class="me-2"><img src="assets/images/gallery/instagram.jpeg" alt="Instagram"></a>
+            <a href="https://www.youtube.com/@3dwebsoftitsolutions" class="me-2"><img src="assets/images/gallery/youtube.jpeg" alt="YouTube"></a>
+            <a href="https://www.linkedin.com/company/3dwebsoft-it-solutions/"><img src="assets/images/gallery/linkedin.jpeg" alt="LinkedIn"></a>
+          </div>
+          <h6>Stay Updated</h6>
+          <p class="small text-white-50">Get the latest updates, events and opportunities.</p>
+          <form class="d-flex" onsubmit="return false;">
+            <input type="email" class="form-control form-control-sm" placeholder="Enter your email">
+            <button class="btn btn-warning btn-sm ms-2"><i class="bi bi-arrow-right"></i></button>
+          </form>
+        </div>
+      </div>
+
+      <div class="ft-brand-badges d-flex flex-wrap justify-content-center gap-4 py-4">
+        <a href="https://www.3dwebsoftitsolutions.com" target="_blank" rel="noopener" class="ft-badge-link d-flex align-items-center text-decoration-none">
+          <span class="badge rounded-pill bg-primary px-3 py-2 me-3">Developed by</span>
+          <img src="assets/images/shared/itsolutions-logo.jpeg" alt="3DWebSoft IT Solutions" class="rounded-circle me-2" width="48" height="48">
+          <span class="text-white fw-bold text-start lh-sm">3DWEBSOFT<br><span class="fw-normal">IT Solutions</span></span>
+        </a>
+        <a href="https://3dwebsoftfoundation.org/" target="_blank" rel="noopener" class="ft-badge-link d-flex align-items-center text-decoration-none">
+          <span class="badge rounded-pill bg-warning text-dark px-3 py-2 me-3">Launched BY</span>
+          <img src="assets/images/shared/foundation-logo.jpeg" alt="3DWebSoft Foundation" class="rounded-circle me-2" width="48" height="48">
+          <span class="text-white fw-bold text-start lh-sm">3DWEBSOFT<br><span class="fw-normal">Foundation</span></span>
+        </a>
+      </div>
+
+      <div class="ft-copyright text-center">
+        &copy; 2026 Future Tech School Program. All Rights Reserved. &middot; A 3DWebSoft IT Solutions initiative.
+      <br class="d-md-none"><span class="mx-2 d-none d-md-inline">&middot;</span><a href="terms.html" class="text-white-50">Terms of Service</a><span class="mx-2">&middot;</span><a href="privacy.html" class="text-white-50">Privacy Policy</a></div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

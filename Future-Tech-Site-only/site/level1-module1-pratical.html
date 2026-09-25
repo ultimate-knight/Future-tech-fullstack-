@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/images/shared/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/site.css">
+    <link rel="stylesheet" href="assets/css/portal-theme.css">
+    <title>Module-1 Practical | Future Tech School Program</title>
+<script>window.FT_REQUIRED_LEVEL = "level1";</script>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/api-client.js"></script>
+    <script src="assets/js/level-guard.js"></script>
+</head>
+<body class="ft-portal-theme">
+    <header class="ft-header">
+    <nav class="navbar navbar-expand-xl ft-navbar">
+      <div class="container-fluid">
+        <a href="student-portal.html" class="d-flex align-items-center text-decoration-none ft-logo-wrap">
+          <img src="assets/images/shared/logo.png" width="60" height="60" alt="Future Tech logo" class="rounded-3">
+          <span class="ms-2 text-white fw-bold d-none d-lg-inline" style="font-size:1.05rem;line-height:1.1;">FUTURE TECH<br><span class="text-warning" style="font-size:.8rem;">SCHOOL PROGRAM</span></span>
+        </a>
+        <button class="navbar-toggler ft-toggle-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#ftOffcanvas">
+          <span class="bi bi-list fs-1"></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+  <section>
+    <div class="pt-quiz-shell">
+         <div class="pt-quiz-banner">
+            <div class="eyebrow">Level 1 &middot; Module 1</div>
+            <h1>Computer Basics &mdash; Practical Scenarios</h1>
+         </div>
+         <form id="quizForm">
+         <div class="mb-3" data-question="one">
+            <p class="mb-2 fs-5 fw-semibold">1. You want to type your name into a document. Which device will you use?</p>
+            <div class="d-flex flex-column">
+                 <p><input type="radio" class="form-check-input mb-1" id="one-0" name="one" value="0"><label for="one-0" class="ms-2">Mouse</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="one-1" name="one" value="1"><label for="one-1" class="ms-2">Keyboard</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="one-2" name="one" value="2"><label for="one-2" class="ms-2">Speaker</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="one-3" name="one" value="3"><label for="one-3" class="ms-2">Monitor</label></p>
+            </div>
+         </div>
+         <div class="mb-3" data-question="two">
+            <p class="mb-2 fs-5 fw-semibold">2. You want to open a file using the mouse. What should you normally do?</p>
+            <div class="d-flex flex-column">
+                 <p><input type="radio" class="form-check-input mb-1" id="two-0" name="two" value="0"><label for="two-0" class="ms-2">Double-click the file</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="two-1" name="two" value="1"><label for="two-1" class="ms-2">Press the Spacebar</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="two-2" name="two" value="2"><label for="two-2" class="ms-2">Press Enter twice without selecting</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="two-3" name="two" value="3"><label for="two-3" class="ms-2">Turn off the computer</label></p>
+            </div>
+         </div>
+         <div class="mb-3" data-question="three">
+            <p class="mb-2 fs-5 fw-semibold">3. You want to create a new folder on the desktop. Which action is appropriate?</p>
+            <div class="d-flex flex-column">
+                 <p><input type="radio" class="form-check-input mb-1" id="three-0" name="three" value="0"><label for="three-0" class="ms-2">Right-click &rarr; New &rarr; Folder</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="three-1" name="three" value="1"><label for="three-1" class="ms-2">Right-click &rarr; Delete</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="three-2" name="three" value="2"><label for="three-2" class="ms-2">Press the monitor</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="three-3" name="three" value="3"><label for="three-3" class="ms-2">Open the keyboard settings</label></p>
+            </div>
+         </div>
+         <div class="mb-3" data-question="four">
+            <p class="mb-2 fs-5 fw-semibold">4. You accidentally selected some text and want to remove it. Which key can you use?</p>
+            <div class="d-flex flex-column">
+                 <p><input type="radio" class="form-check-input mb-1" id="four-0" name="four" value="0"><label for="four-0" class="ms-2">Shift</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="four-1" name="four" value="1"><label for="four-1" class="ms-2">Delete</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="four-2" name="four" value="2"><label for="four-2" class="ms-2">Caps Lock</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="four-3" name="four" value="3"><label for="four-3" class="ms-2">Tab</label></p>
+            </div>
+         </div>
+         <div class="mb-3" data-question="five">
+            <p class="mb-2 fs-5 fw-semibold">5. You want to open a website. What should you do first?</p>
+            <div class="d-flex flex-column">
+                 <p><input type="radio" class="form-check-input mb-1" id="five-0" name="five" value="0"><label for="five-0" class="ms-2">Open a web browser</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="five-1" name="five" value="1"><label for="five-1" class="ms-2">Open Calculator</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="five-2" name="five" value="2"><label for="five-2" class="ms-2">Open Paint</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="five-3" name="five" value="3"><label for="five-3" class="ms-2">Turn off Wi-Fi</label></p>
+            </div>
+         </div>
+         <div class="mb-3" data-question="six">
+            <p class="mb-2 fs-5 fw-semibold">6. You want to save a document for later use. What should you do?</p>
+            <div class="d-flex flex-column">
+                 <p><input type="radio" class="form-check-input mb-1" id="six-0" name="six" value="0"><label for="six-0" class="ms-2">Close it without saving</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="six-1" name="six" value="1"><label for="six-1" class="ms-2">Use the Save option</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="six-2" name="six" value="2"><label for="six-2" class="ms-2">Turn off the monitor</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="six-3" name="six" value="3"><label for="six-3" class="ms-2">Delete the document</label></p>
+            </div>
+         </div>
+         <div class="mb-3" data-question="seven">
+            <p class="mb-2 fs-5 fw-semibold">7. The mouse pointer is not moving. What should you check first?</p>
+            <div class="d-flex flex-column">
+                 <p><input type="radio" class="form-check-input mb-1" id="seven-0" name="seven" value="0"><label for="seven-0" class="ms-2">Mouse connection or battery</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="seven-1" name="seven" value="1"><label for="seven-1" class="ms-2">Printer paper</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="seven-2" name="seven" value="2"><label for="seven-2" class="ms-2">Speaker volume</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="seven-3" name="seven" value="3"><label for="seven-3" class="ms-2">Screen brightness only</label></p>
+            </div>
+         </div>
+         <div class="mb-3" data-question="eight">
+            <p class="mb-2 fs-5 fw-semibold">8. You receive a message containing a link from an unknown person. What should you do?</p>
+            <div class="d-flex flex-column">
+                 <p><input type="radio" class="form-check-input mb-1" id="eight-0" name="eight" value="0"><label for="eight-0" class="ms-2">Click it immediately</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="eight-1" name="eight" value="1"><label for="eight-1" class="ms-2">Share it with friends</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="eight-2" name="eight" value="2"><label for="eight-2" class="ms-2">Avoid opening it and report/delete it if appropriate</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="eight-3" name="eight" value="3"><label for="eight-3" class="ms-2">Enter your password</label></p>
+            </div>
+         </div>
+         <div class="mb-3" data-question="nine">
+            <p class="mb-2 fs-5 fw-semibold">9. You want to rename a file. Which option can you use?</p>
+            <div class="d-flex flex-column">
+                 <p><input type="radio" class="form-check-input mb-1" id="nine-0" name="nine" value="0"><label for="nine-0" class="ms-2">Right-click the file &rarr; Rename</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="nine-1" name="nine" value="1"><label for="nine-1" class="ms-2">Turn off the computer</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="nine-2" name="nine" value="2"><label for="nine-2" class="ms-2">Open the calculator</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="nine-3" name="nine" value="3"><label for="nine-3" class="ms-2">Disconnect the keyboard</label></p>
+            </div>
+         </div>
+         <div class="mb-3" data-question="ten">
+            <p class="mb-2 fs-5 fw-semibold">10. You have finished using the computer. What is the safest action?</p>
+            <div class="d-flex flex-column">
+                 <p><input type="radio" class="form-check-input mb-1" id="ten-0" name="ten" value="0"><label for="ten-0" class="ms-2">Switch off the power directly</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="ten-1" name="ten" value="1"><label for="ten-1" class="ms-2">Shut down the computer properly</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="ten-2" name="ten" value="2"><label for="ten-2" class="ms-2">Remove the keyboard</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="ten-3" name="ten" value="3"><label for="ten-3" class="ms-2">Close the monitor only</label></p>
+            </div>
+         </div>
+         <div class="text-center my-5">
+          <button type="button" id="quizSubmitBtn" class="btn btn-success w-50">Submit</button>
+          <div id="quizResult" class="d-none"></div>
+          <button type="button" id="quizRetakeBtn" class="btn btn-outline-secondary w-50 mt-3 d-none">Retake</button>
+          <a href="student-portal.html" id="quizNextBtn" class="btn btn-primary w-50 mt-3 d-none text-decoration-none text-white">Back to Portal</a>
+         </div>
+         </form>
+    </div>
+  </section>
+  <script src="assets/js/quiz-engine.js"></script>
+  <script>
+    FTQuiz.init({
+      formId: "quizForm",
+      submitBtnId: "quizSubmitBtn",
+      retakeBtnId: "quizRetakeBtn",
+      nextBtnId: "quizNextBtn",
+      resultBoxId: "quizResult",
+      passPercent: 60,
+      level: "level1",
+      module: "module1",
+      quizId: "module1-practical",
+      questions: [
+        { name: "one", correct: "1" },
+        { name: "two", correct: "0" },
+        { name: "three", correct: "0" },
+        { name: "four", correct: "1" },
+        { name: "five", correct: "0" },
+        { name: "six", correct: "1" },
+        { name: "seven", correct: "0" },
+        { name: "eight", correct: "2" },
+        { name: "nine", correct: "0" },
+        { name: "ten", correct: "1" }
+      ]
+    });
+  </script>
+</body>
+</html>

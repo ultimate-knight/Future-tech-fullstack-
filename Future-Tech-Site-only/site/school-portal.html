@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en-in">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/images/shared/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/site.css">
+    <title>School Portal | Future Tech School Program</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f5f7fb;
+            color: #222;
+        }
+        .main-header {
+            position: relative;
+            z-index: 1000;
+            width: 100%;
+            background: #06264d;
+        }
+        .portal-section {
+            padding: 55px 0 90px;
+            min-height: 78vh;
+        }
+        .welcome-banner {
+            background: linear-gradient(145deg, #0d6efd, #084298);
+            color: #fff;
+            border-radius: 22px;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+        .welcome-banner::before {
+            content: "";
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.08);
+            top: -80px;
+            right: -70px;
+        }
+        .welcome-banner h2 { position: relative; z-index: 2; font-weight: 700; }
+        .welcome-banner p { position: relative; z-index: 2; color: rgba(255,255,255,.85); margin-bottom: 0; }
+        .portal-card {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0,0,0,.06);
+            padding: 28px;
+        }
+        .portal-card h5 { font-weight: 700; margin-bottom: 18px; }
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f2f6;
+            font-size: 14.5px;
+        }
+        .info-row:last-child { border-bottom: none; }
+        .info-row span.label { color: #888; font-weight: 500; }
+        .info-row span.value { font-weight: 600; color: #222; text-align: right; }
+        .status-pill {
+            display: inline-block;
+            padding: 5px 14px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        .status-pill.found { background: #e6f7ec; color: #198754; }
+        .status-pill.none { background: #fff3e0; color: #b1560a; }
+        .enquiry-item {
+            border: 1px solid #f0f2f6;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 14px;
+        }
+        .enquiry-item:last-child { margin-bottom: 0; }
+    </style>
+</head>
+<body>
+    <header class="ft-header">
+    <nav class="navbar navbar-expand-xl ft-navbar">
+      <div class="container-fluid">
+        <a href="school-portal.html" class="d-flex align-items-center text-decoration-none ft-logo-wrap">
+          <img src="assets/images/shared/logo.png" width="60" height="60" alt="Future Tech logo" class="rounded-3">
+          <span class="ms-2 text-white fw-bold d-none d-lg-inline" style="font-size:1.05rem;line-height:1.1;">FUTURE TECH<br><span class="text-warning" style="font-size:.8rem;">SCHOOL PROGRAM</span></span>
+        </a>
+
+        <button class="navbar-toggler ft-toggle-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#ftOffcanvas">
+          <span class="bi bi-list fs-1"></span>
+        </button>
+
+        <div class="collapse navbar-collapse d-none d-xl-flex justify-content-end">
+          <ul class="navbar-nav align-items-center gap-1">
+            <li class="nav-item"><a href="home.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Programs</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="programs.html">Programs Overview</a></li>
+                <li><a class="dropdown-item" href="programs-level1.html">Level 1 &middot; Junior Innovators</a></li>
+                <li><a class="dropdown-item" href="programs-level2.html">Level 2 &middot; Young Technologists</a></li>
+                <li><a class="dropdown-item" href="programs-level3.html">Level 3 &middot; Future Engineers</a></li>
+                <li><a class="dropdown-item" href="programs-level4.html">Level 4 &middot; AI Professional Foundation</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="methodology.html">Methodology</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Projects</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="projects.html">All Projects</a></li>
+                <li><a class="dropdown-item" href="projects-aiml.html">AI &amp; ML</a></li>
+                <li><a class="dropdown-item" href="projects-robotics.html">Robotics</a></li>
+                <li><a class="dropdown-item" href="projects-web.html">Web &amp; App</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">More</a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="school.html">School Programs</a></li>
+                <li><a class="dropdown-item" href="events-workshops.html">Events &amp; Workshops</a></li>
+                <li><a class="dropdown-item" href="competitions.html">Competitions</a></li>
+                <li><a class="dropdown-item" href="certifications.html">Certifications</a></li>
+                <li><a class="dropdown-item" href="admin.html">Admin Login</a></li>
+                <li><a class="dropdown-item" href="faq.html">FAQ's</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item"><a href="contact.html" class="btn btn-warning fw-bold px-4 ms-2">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="offcanvas offcanvas-end ft-offcanvas" id="ftOffcanvas">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title fw-bold">Future Tech School Program</h5>
+        <button class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a href="home.html" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="programs.html" class="nav-link">Programs Overview</a></li>
+          <li class="nav-item ps-3"><a href="programs-level1.html" class="nav-link small">Level 1 &middot; Junior Innovators</a></li>
+          <li class="nav-item ps-3"><a href="programs-level2.html" class="nav-link small">Level 2 &middot; Young Technologists</a></li>
+          <li class="nav-item ps-3"><a href="programs-level3.html" class="nav-link small">Level 3 &middot; Future Engineers</a></li>
+          <li class="nav-item ps-3"><a href="programs-level4.html" class="nav-link small">Level 4 &middot; AI Professional Foundation</a></li>
+          <li class="nav-item"><a href="methodology.html" class="nav-link">Methodology</a></li>
+          <li class="nav-item"><a href="projects.html" class="nav-link">Projects</a></li>
+          <li class="nav-item"><a href="school.html" class="nav-link">School Programs</a></li>
+          <li class="nav-item"><a href="events-workshops.html" class="nav-link">Events &amp; Workshops</a></li>
+          <li class="nav-item"><a href="competitions.html" class="nav-link">Competitions</a></li>
+          <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+          <li class="nav-item"><a href="certifications.html" class="nav-link">Certifications</a></li>
+          <li class="nav-item"><a href="partnership.html" class="nav-link">Partner With Us</a></li>
+          <li class="nav-item"><a href="faq.html" class="nav-link">FAQ's</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+    <section class="portal-section">
+        <div class="container">
+
+            <div id="notLoggedIn" class="text-center py-5 d-none">
+                <i class="bi bi-lock fs-1 text-muted d-block mb-3"></i>
+                <h4 class="fw-bold">You're not logged in</h4>
+                <p class="text-muted">Please log in to your school account to view your portal.</p>
+                <a href="school-login.html" class="btn btn-primary fw-bold px-4">
+                    <i class="bi bi-box-arrow-in-right me-2"></i>Go to School Login
+                </a>
+            </div>
+
+            <div id="portalContent" class="d-none">
+
+                <div class="welcome-banner d-flex justify-content-between align-items-center flex-wrap gap-3">
+                    <div>
+                        <h2 id="welcomeSchoolName">Welcome!</h2>
+                        <p>Here's an overview of your school's account with Future Tech School Program.</p>
+                    </div>
+                    <button id="logoutBtn" class="btn btn-warning fw-bold px-4">
+                        <i class="bi bi-box-arrow-right me-2"></i>Logout
+                    </button>
+                </div>
+
+                <div class="row g-4">
+
+                    <div class="col-lg-5">
+                        <div class="portal-card">
+                            <h5><i class="bi bi-person-badge me-2 text-primary"></i>Account Details</h5>
+                            <div class="info-row"><span class="label">School / Organization</span><span class="value" id="infoSchoolName">-</span></div>
+                            <div class="info-row"><span class="label">Coordinator</span><span class="value" id="infoContactName">-</span></div>
+                            <div class="info-row"><span class="label">Email</span><span class="value" id="infoEmail">-</span></div>
+                            <div class="info-row"><span class="label">Phone</span><span class="value" id="infoPhone">-</span></div>
+                            <div class="info-row"><span class="label">Account Created</span><span class="value" id="infoCreated">-</span></div>
+                        </div>
+
+                        <div class="portal-card mt-4">
+                            <h5><i class="bi bi-key me-2 text-primary"></i>Change Password</h5>
+                            <p class="text-muted small mb-3">
+                                If you're still using the temporary password we gave you, set your own here.
+                            </p>
+                            <form id="changePasswordForm">
+                                <div class="mb-3">
+                                    <label class="form-label small fw-semibold">Current Password</label>
+                                    <input type="password" id="currentPassword" class="form-control form-control-sm" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label small fw-semibold">New Password</label>
+                                    <input type="password" id="newPassword" class="form-control form-control-sm" placeholder="At least 6 characters" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label small fw-semibold">Confirm New Password</label>
+                                    <input type="password" id="confirmNewPassword" class="form-control form-control-sm" required>
+                                </div>
+                                <div id="changePasswordAlert" class="alert d-none py-2 small"></div>
+                                <button type="submit" class="btn btn-outline-primary btn-sm w-100 fw-bold">
+                                    <i class="bi bi-check-circle me-1"></i>Update Password
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-7">
+                        <div class="portal-card">
+                            <h5><i class="bi bi-clipboard-check me-2 text-primary"></i>Your Bulk / School Admission Enquiries</h5>
+                            <div id="enquiriesList"></div>
+                            <div id="noEnquiry" class="d-none">
+                                <p class="text-muted small mb-0">
+                                    You haven't submitted a bulk / school admission enquiry yet.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="portal-card mt-4">
+                            <h5><i class="bi bi-mortarboard me-2 text-primary"></i>Students Registered at Your School</h5>
+                            <p class="text-muted small mb-3" id="studentsSummary"></p>
+                            <div class="table-responsive">
+                                <table class="table table-sm align-middle" id="studentsTable" style="display:none;">
+                                    <thead>
+                                        <tr>
+                                            <th>Student</th>
+                                            <th>Grade</th>
+                                            <th>Level</th>
+                                            <th>Payment</th>
+                                            <th>Amount</th>
+                                            <th>Receipt</th>
+                                            <th>LMS Login</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="studentsTableBody"></tbody>
+                                </table>
+                            </div>
+                            <div id="noStudents" class="d-none">
+                                <p class="text-muted small mb-0">
+                                    No students have registered under your school yet.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="alert alert-light border mt-4 small">
+                    <i class="bi bi-shield-check me-1 text-success"></i>
+                    Your session is secured with a login token that expires automatically. Log out on shared devices.
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="ft-footer">
+    <div class="container-fluid">
+      <div class="row gy-4">
+        <div class="col-lg-3 col-md-6 ft-col">
+          <div class="d-flex align-items-center mb-3">
+            <img src="assets/images/shared/logo.png" width="52" height="52" class="rounded-3 me-2" alt="logo">
+            <div class="fw-bold">FUTURE TECH<br><span class="text-warning">SCHOOL PROGRAM</span></div>
+          </div>
+          <p class="small text-white-50">Building Future Innovators Today &mdash; empowering students from Grade 5th to 12th with future-ready technology skills through hands-on learning, real-world projects and expert mentorship.</p>
+          <div class="d-flex align-items-center mt-3">
+            <a href="https://3dwebsoftfoundation.org/" class="me-2"><img src="assets/images/home/foundation.jpeg" width="42" height="42" class="rounded-circle" alt="3DWebSoft Foundation"></a>
+            <div class="small"><a href="https://3dwebsoftfoundation.org/">3DWEBSOFT<br>Foundation</a></div>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-6 ft-col">
+          <h6>Quick Links</h6>
+          <a href="home.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Home</a>
+          <a href="about.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>About Us</a>
+          <a href="programs.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Programs</a>
+          <a href="school.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Schools</a>
+          <a href="events-workshops.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Events</a>
+          <a href="projects.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Projects</a>
+          <a href="gallery.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Gallery</a>
+          <a href="admissions-individual.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Admissions</a>
+          <a href="certifications.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Certificates</a>
+          <a href="contact.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Contact Us</a>
+        </div>
+
+        <div class="col-lg-2 col-md-6 ft-col">
+          <h6>Program Levels</h6>
+          <p class="small mb-2"><span class="bi bi-circle-fill text-warning me-1"></span>Level 1 &middot; Junior Innovators<br><span class="text-white-50 ms-3">(5th&ndash;6th Standard)</span></p>
+          <p class="small mb-2"><span class="bi bi-circle-fill text-success me-1"></span>Level 2 &middot; Young Technologists<br><span class="text-white-50 ms-3">(7th&ndash;8th Standard)</span></p>
+          <p class="small mb-2"><span class="bi bi-circle-fill text-primary me-1"></span>Level 3 &middot; Future Engineers<br><span class="text-white-50 ms-3">(9th&ndash;10th Standard)</span></p>
+          <p class="small mb-2"><span class="bi bi-circle-fill text-purple me-1" style="color:#bb16bb;"></span>Level 4 &middot; AI Professional Foundation<br><span class="text-white-50 ms-3">(11th&ndash;12th Standard)</span></p>
+        </div>
+
+        <div class="col-lg-2 col-md-6 ft-col">
+          <h6>Get In Touch</h6>
+          <p class="small mb-2"><i class="bi bi-telephone-fill me-2 text-warning"></i>+91 9108534041</p>
+          <p class="small mb-2"><i class="bi bi-envelope me-2 text-warning"></i>info@futuretech.org</p>
+          <p class="small mb-2"><i class="bi bi-globe me-2 text-warning"></i>www.futuretech.org</p>
+          <p class="small mb-2"><i class="bi bi-geo-alt-fill me-2 text-warning"></i>3DWebSoft IT Solutions,<br><span class="ms-4">Narsingi, Hyderabad,</span><br><span class="ms-4">Telangana - 500075, India</span></p>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h6>Follow Us</h6>
+          <div class="d-flex ft-social mb-3">
+            <a href="https://www.facebook.com/profile.php?id=61592302205333" class="me-2"><img src="assets/images/gallery/facebook.jpeg" alt="Facebook"></a>
+            <a href="https://www.instagram.com/3dwebsoftitsolutions" class="me-2"><img src="assets/images/gallery/instagram.jpeg" alt="Instagram"></a>
+            <a href="https://www.youtube.com/@3dwebsoftitsolutions" class="me-2"><img src="assets/images/gallery/youtube.jpeg" alt="YouTube"></a>
+            <a href="https://www.linkedin.com/company/3dwebsoft-it-solutions/"><img src="assets/images/gallery/linkedin.jpeg" alt="LinkedIn"></a>
+          </div>
+          <h6>Stay Updated</h6>
+          <p class="small text-white-50">Get the latest updates, events and opportunities.</p>
+          <form class="d-flex" onsubmit="return false;">
+            <input type="email" class="form-control form-control-sm" placeholder="Enter your email">
+            <button class="btn btn-warning btn-sm ms-2"><i class="bi bi-arrow-right"></i></button>
+          </form>
+        </div>
+      </div>
+
+      <div class="ft-brand-badges d-flex flex-wrap justify-content-center gap-4 py-4">
+        <a href="https://www.3dwebsoftitsolutions.com" target="_blank" rel="noopener" class="ft-badge-link d-flex align-items-center text-decoration-none">
+          <span class="badge rounded-pill bg-primary px-3 py-2 me-3">Developed by</span>
+          <img src="assets/images/shared/itsolutions-logo.jpeg" alt="3DWebSoft IT Solutions" class="rounded-circle me-2" width="48" height="48">
+          <span class="text-white fw-bold text-start lh-sm">3DWEBSOFT<br><span class="fw-normal">IT Solutions</span></span>
+        </a>
+        <a href="https://3dwebsoftfoundation.org/" target="_blank" rel="noopener" class="ft-badge-link d-flex align-items-center text-decoration-none">
+          <span class="badge rounded-pill bg-warning text-dark px-3 py-2 me-3">Launched BY</span>
+          <img src="assets/images/shared/foundation-logo.jpeg" alt="3DWebSoft Foundation" class="rounded-circle me-2" width="48" height="48">
+          <span class="text-white fw-bold text-start lh-sm">3DWEBSOFT<br><span class="fw-normal">Foundation</span></span>
+        </a>
+      </div>
+
+      <div class="ft-copyright text-center">
+        &copy; 2026 Future Tech School Program. All Rights Reserved. &middot; A 3DWebSoft IT Solutions initiative.
+      <br class="d-md-none"><span class="mx-2 d-none d-md-inline">&middot;</span><a href="terms.html" class="text-white-50">Terms of Service</a><span class="mx-2">&middot;</span><a href="privacy.html" class="text-white-50">Privacy Policy</a></div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/api-client.js"></script>
+  <script>
+    const SCHOOL_TOKEN_KEY = "ft_backend_school_token";
+    const token = sessionStorage.getItem(SCHOOL_TOKEN_KEY);
+
+    async function loadPortal() {
+      if (!token) {
+        // No session at all - send straight to the login page instead of
+        // showing this page's content/shell first.
+        window.location.replace("school-login.html");
+        return;
+      }
+
+      try {
+        const account = await FTApi.schoolMe(token);
+
+        document.getElementById("portalContent").classList.remove("d-none");
+        document.getElementById("welcomeSchoolName").textContent = "Welcome, " + account.schoolName + "!";
+        document.getElementById("infoSchoolName").textContent = account.schoolName || "-";
+        document.getElementById("infoContactName").textContent = account.contactName || "-";
+        document.getElementById("infoEmail").textContent = account.email || "-";
+        document.getElementById("infoPhone").textContent = account.phone || "-";
+        document.getElementById("infoCreated").textContent = new Date(account.createdAt).toLocaleDateString();
+
+        const enquiries = await FTApi.schoolMyBulkAdmissions(token);
+        const listBox = document.getElementById("enquiriesList");
+        const noEnquiryBox = document.getElementById("noEnquiry");
+
+        if (!enquiries.length) {
+          noEnquiryBox.classList.remove("d-none");
+        } else {
+        listBox.innerHTML = enquiries.map(function (r) {
+          const paid = r.paymentStatus === "paid";
+          const statusPill = paid
+            ? '<span class="status-pill found"><i class="bi bi-check-circle-fill me-1"></i>Paid</span>'
+            : '<span class="status-pill none"><i class="bi bi-hourglass-split me-1"></i>Payment Pending</span>';
+          const receiptLink = paid && r.receiptNumber && r.paymentRecordId
+            ? '<a href="' + window.FT_CONFIG.API_BASE_URL + '/receipts/' + r.paymentRecordId + '/download" target="_blank" class="btn btn-sm btn-outline-primary mt-2"><i class="bi bi-download me-1"></i>Download Receipt (' + r.receiptNumber + ')</a>'
+            : '';
+          const pendingActions = r.pendingPayment
+            ? '<div class="alert alert-light border py-2 px-3 mt-2 mb-0 small">' +
+                'Rs. ' + r.pendingPayment.amount.toLocaleString('en-IN') + ' &middot; Reference: <strong>' + r.pendingPayment.referenceId + '</strong>' +
+                '<div class="mt-2">' +
+                  '<button class="btn btn-sm btn-outline-success me-2" onclick="markSchoolPaymentPaid(\'' + r.pendingPayment.paymentId + '\')"><i class="bi bi-check-circle me-1"></i>Mark as Paid</button>' +
+                  '<button class="btn btn-sm btn-outline-danger" onclick="markSchoolPaymentFailed(\'' + r.pendingPayment.paymentId + '\')"><i class="bi bi-x-circle me-1"></i>Mark as Failed</button>' +
+                '</div>' +
+              '</div>'
+            : '';
+          return (
+            '<div class="enquiry-item">' +
+              '<div class="d-flex justify-content-between align-items-start flex-wrap gap-2">' +
+                '<div>' +
+                  '<div class="fw-bold">' + (r.organizationName || "-") + '</div>' +
+                  '<div class="small text-muted">Submitted ' + new Date(r.submittedAt).toLocaleString() + '</div>' +
+                '</div>' +
+                statusPill +
+              '</div>' +
+              '<div class="info-row"><span class="label">Coordinator</span><span class="value">' + (r.coordinatorName || "-") + '</span></div>' +
+              '<div class="info-row"><span class="label">Students Added</span><span class="value">' + (r.studentCount || 0) + '</span></div>' +
+              (r.amountPaid ? '<div class="info-row"><span class="label">Amount Paid</span><span class="value">Rs. ' + r.amountPaid.toLocaleString('en-IN') + '</span></div>' : '') +
+              receiptLink +
+              pendingActions +
+            '</div>'
+          );
+        }).join("");
+        }
+
+        // Load students registered at this school (individual admissions)
+        const students = await FTApi.schoolMyIndividualAdmissions(token);
+        const studentsTable = document.getElementById("studentsTable");
+        const studentsTableBody = document.getElementById("studentsTableBody");
+        const noStudentsBox = document.getElementById("noStudents");
+
+        if (!students.length) {
+          noStudentsBox.classList.remove("d-none");
+        } else {
+          studentsTable.style.display = "table";
+          const paidCount = students.filter(function (s) { return s.paymentStatus === "paid"; }).length;
+          const accountsCount = students.filter(function (s) { return s.hasStudentAccount; }).length;
+          const totalCollected = students.reduce(function (sum, s) { return sum + (s.amountPaid || 0); }, 0);
+          document.getElementById("studentsSummary").textContent =
+            students.length + " registered \u00b7 " + paidCount + " paid \u00b7 " +
+            accountsCount + " have set up their LMS login \u00b7 Rs. " + totalCollected.toLocaleString('en-IN') + " collected";
+          studentsTableBody.innerHTML = students.map(function (s) {
+            const paid = s.paymentStatus === "paid";
+            const badge = paid
+              ? '<span class="status-pill found">Paid</span>'
+              : '<span class="status-pill none">Pending</span>';
+            let accountBadge;
+            if (s.hasStudentAccount) {
+              accountBadge = '<span class="status-pill found"><i class="bi bi-check-circle-fill me-1"></i>Account Created</span>';
+            } else if (paid) {
+              accountBadge = '<span class="status-pill none"><i class="bi bi-hourglass-split me-1"></i>Not Set Up Yet</span>';
+            } else {
+              accountBadge = '<span class="text-muted small">&mdash; awaiting payment</span>';
+            }
+            const amountCell = s.amountPaid ? 'Rs. ' + s.amountPaid.toLocaleString('en-IN') : '<span class="text-muted">&mdash;</span>';
+            const receiptCell = (paid && s.receiptNumber && s.paymentRecordId)
+              ? '<a href="' + window.FT_CONFIG.API_BASE_URL + '/receipts/' + s.paymentRecordId + '/download" target="_blank" class="btn btn-sm btn-outline-primary py-0 px-2"><i class="bi bi-download"></i></a>'
+              : '<span class="text-muted">&mdash;</span>';
+            const actionCell = s.pendingPayment
+              ? '<div class="d-flex flex-column gap-1">' +
+                  '<span class="small text-muted">Ref: ' + s.pendingPayment.referenceId + '</span>' +
+                  '<div class="d-flex gap-1">' +
+                    '<button class="btn btn-sm btn-outline-success py-0 px-2" onclick="markSchoolPaymentPaid(\'' + s.pendingPayment.paymentId + '\')" title="Mark as Paid"><i class="bi bi-check-circle"></i></button>' +
+                    '<button class="btn btn-sm btn-outline-danger py-0 px-2" onclick="markSchoolPaymentFailed(\'' + s.pendingPayment.paymentId + '\')" title="Mark as Failed"><i class="bi bi-x-circle"></i></button>' +
+                  '</div>' +
+                '</div>'
+              : '<span class="text-muted">&mdash;</span>';
+            return '<tr>' +
+              '<td>' + (s.studentName || "-") + '</td>' +
+              '<td>' + (s.grade || "-") + '</td>' +
+              '<td>' + (s.programLevel || "-") + '</td>' +
+              '<td>' + badge + '</td>' +
+              '<td>' + amountCell + '</td>' +
+              '<td>' + receiptCell + '</td>' +
+              '<td>' + accountBadge + '</td>' +
+              '<td>' + actionCell + '</td>' +
+            '</tr>';
+          }).join("");
+        }
+      } catch (err) {
+        // Token likely expired/invalid - clear it and send back to login
+        // rather than leaving the (empty) portal shell on screen.
+        sessionStorage.removeItem(SCHOOL_TOKEN_KEY);
+        window.location.replace("school-login.html");
+      }
+    }
+
+    // Confirms a payment (for this school's own student or bulk enquiry)
+    // actually arrived in the school's own account. Only usable on
+    // payments this school owns - the backend enforces that regardless
+    // of what's passed here (see POST /api/schools/me/payments/:id/mark-paid).
+    async function markSchoolPaymentPaid(paymentId) {
+      if (!confirm("Mark this payment as Paid?\n\nOnly do this after checking your bank account/UPI app for a transaction matching this amount and reference. This generates the receipt and unlocks LMS access immediately.")) return;
+      try {
+        await FTApi.schoolMarkPaymentPaid(paymentId, token);
+        loadPortal();
+      } catch (err) {
+        alert(err.message || "Could not mark this payment as paid.");
+      }
+    }
+
+    // Rejects a payment claim that never actually showed up in the
+    // school's own account.
+    async function markSchoolPaymentFailed(paymentId) {
+      if (!confirm("Mark this payment as Failed? Use this when the payment never actually arrived - it does not undo a payment already marked Paid.")) return;
+      try {
+        await FTApi.schoolMarkPaymentFailed(paymentId, token);
+        loadPortal();
+      } catch (err) {
+        alert(err.message || "Could not mark this payment as failed.");
+      }
+    }
+
+    loadPortal();
+
+    document.getElementById("logoutBtn") && document.getElementById("logoutBtn").addEventListener("click", function () {
+      sessionStorage.removeItem(SCHOOL_TOKEN_KEY);
+      window.location.href = "school-login.html";
+    });
+
+    const changePasswordForm = document.getElementById("changePasswordForm");
+    if (changePasswordForm) {
+      changePasswordForm.addEventListener("submit", async function (e) {
+        e.preventDefault();
+        const alertBox = document.getElementById("changePasswordAlert");
+        const currentPassword = document.getElementById("currentPassword").value;
+        const newPassword = document.getElementById("newPassword").value;
+        const confirmNewPassword = document.getElementById("confirmNewPassword").value;
+
+        alertBox.classList.add("d-none");
+
+        if (newPassword !== confirmNewPassword) {
+          alertBox.className = "alert alert-danger py-2 small";
+          alertBox.textContent = "New password and confirmation don't match.";
+          alertBox.classList.remove("d-none");
+          return;
+        }
+
+        try {
+          await FTApi.changeSchoolPassword({ currentPassword, newPassword }, token);
+          alertBox.className = "alert alert-success py-2 small";
+          alertBox.textContent = "Password updated! Use your new password next time you log in.";
+          alertBox.classList.remove("d-none");
+          changePasswordForm.reset();
+        } catch (err) {
+          alertBox.className = "alert alert-danger py-2 small";
+          alertBox.textContent = err.message || "Could not update password.";
+          alertBox.classList.remove("d-none");
+        }
+      });
+    }
+  </script>
+</body>
+</html>

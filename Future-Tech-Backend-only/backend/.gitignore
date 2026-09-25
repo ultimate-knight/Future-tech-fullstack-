@@ -1,0 +1,18 @@
+node_modules/
+
+# Real secrets - never commit
+.env
+.env.local
+.env.*.local
+
+# Local SQLite dev database
+data/*.sqlite
+
+# Generated PDFs - contain student PII / payment data, and financial
+# settlement details. Regeneratable from the database if ever lost.
+receipts/*.pdf
+invoices/*.pdf
+
+# Logs
+npm-debug.log*
+*.log

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en-in">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/images/shared/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/site.css">
+    <title>School Registration | Future Tech School Program</title>
+    <style>
+      .card{
+        margin-left: 350px;
+      }
+    </style>
+     </head>
+     <body>
+      <header class="ft-header">
+    <nav class="navbar navbar-expand-xl ft-navbar">
+      <div class="container-fluid">
+        <a href="student-login.html" class="d-flex align-items-center text-decoration-none ft-logo-wrap">
+          <img src="assets/images/shared/logo.png" width="60" height="100" alt="Future Tech logo" class="rounded-3">
+          <span class="ms-2 text-white fw-bold d-none d-lg-inline" style="font-size:1.05rem;line-height:1.1;">FUTURE TECH<br><span class="text-warning" style="font-size:.8rem;">SCHOOL PROGRAM</span></span>
+        </a>
+        <button class="navbar-toggler ft-toggle-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#ftOffcanvas">
+          <span class="bi bi-list fs-1"></span>
+        </button>
+
+        <div class="collapse navbar-collapse d-none d-xl-flex justify-content-end">
+
+        </div>
+      </div>
+      <div> 
+        <button class="btn btn-warning px-4 me-2"> <a href="school-login.html" class="text-decoration-none text-black">School Login</a></button>
+      </div>
+    </nav>
+
+    <div class="offcanvas offcanvas-end ft-offcanvas" id="ftOffcanvas">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title fw-bold">Future Tech School Program</h5>
+        <button class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+      </div>
+    </div>
+  </header>
+  <section class="container-fluid my-4">
+     <div class="align-content-center">
+       <div class="card mt-5 w-50 shadow">
+        <div class="row mt-2 pe-3">
+          <div class="col-6">
+            <div class="ms-5">
+      <div class="fs-1 fw-semibold">
+        <span class=" justify-content-center">SCHOOL<br>STUDENT<br> <span class="text-primary">REGISTRATION</span>
+      </div>
+        <div class="mt-3 fs-5 justify-content-center">
+          <span>Begin the journey.<br>Bulid the future</span>
+      </div>
+    </div>
+          </div>
+          <div class="col-6">
+            <form id="studentRegistrationForm">
+              <div>
+                <span class="bi bi-person fs-2"></span>
+                <span class="ps-2 fs-5 fw-semibold ">Student Registration Form</span>
+              </div>
+              <div class="alert alert-light border small mt-3 mb-0" id="admissionNotice" style="display:none;">
+                Great news — your payment is confirmed! Complete this form to create your login.
+              </div>
+              <div class="mt-3">
+                <input type="text" id="regFullName" name="name" placeholder="Full Name" class="form-control" required>
+              </div>
+               <div class="mt-3">
+                <input type="date" id="regDob" name="dob" placeholder="Date of Birth" class="form-control">
+              </div>
+               <div class="mt-3">
+                <input type="text" id="regGrade" name="grade/class" placeholder="class" class="form-control">
+              </div>
+               <div class="mt-3">
+                <input type="text" id="regParentName" name="parent name" placeholder="Parent/Guardian Name" class="form-control">
+              </div>
+               <div class="mt-3">
+                <input type="tel" id="regPhone" name="phone" placeholder="Parent Mobile Number" class="form-control">
+              </div>
+               <div class="mt-3">
+                <input type="email" id="regEmail" name="email" placeholder="Student Email Address" class="form-control" required>
+              </div>
+               <div class="mt-3">
+                <input type="text" id="regAddress" name="address" placeholder="Address" class="form-control">
+              </div>
+               <div class="mt-3">
+                <input type="password" id="regPassword" name="password" placeholder="Create a Password (min 6 characters)" class="form-control" required>
+              </div>
+               <div class="mt-3">
+                <input type="password" id="regConfirmPassword" name="confirmPassword" placeholder="Confirm Password" class="form-control" required>
+              </div>
+              <div id="registrationAlert" class="alert alert-danger d-none mt-3 py-2"></div>
+              <div class="my-4 text-center">
+                <button type="submit" id="registerSubmitBtn" class="btn btn-primary w-50">Register Now<span class="bi bi-arrow-right"></span></button>
+              </div>
+              <div class="my-4">
+                <span>Already have an account?<a href="student-login.html" class="text-decoration-none text-black">Login Now</a></span>
+              </div>
+            </form>
+
+            <div id="registrationSuccess" class="alert alert-success text-center d-none">
+              <i class="bi bi-check-circle-fill fs-2 d-block mb-2"></i>
+              <h5 class="fw-bold">Account created!</h5>
+              <p class="mb-3" id="successMessage">We've emailed your login details to <strong id="successEmail"></strong>. Use them to log in to your learning portal any time.</p>
+              <a href="student-login.html" id="goToLoginBtn" class="btn btn-primary">Go to Login<span class="bi bi-arrow-right ms-2"></span></a>
+            </div>
+          </div>
+        </div>
+       </div>
+     </div>
+  </section>
+  <footer class="ft-footer">
+    <div class="container-fluid">
+      <div class="row gy-4">
+        <div class="col-lg-3 col-md-6 ft-col">
+          <div class="d-flex align-items-center mb-3">
+            <img src="assets/images/shared/logo.png" width="52" height="52" class="rounded-3 me-2" alt="logo">
+            <div class="fw-bold">FUTURE TECH<br><span class="text-warning">SCHOOL PROGRAM</span></div>
+          </div>
+          <p class="small text-white-50">Building Future Innovators Today &mdash; empowering students from Grade 5th to 12th with future-ready technology skills through hands-on learning, real-world projects and expert mentorship.</p>
+          <div class="d-flex align-items-center mt-3">
+            <a href="https://3dwebsoftfoundation.org/" class="me-2"><img src="assets/images/home/foundation.jpeg" width="42" height="42" class="rounded-circle" alt="3DWebSoft Foundation"></a>
+            <div class="small"><a href="https://3dwebsoftfoundation.org/">3DWEBSOFT<br>Foundation</a></div>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-6 ft-col">
+          <h6>Quick Links</h6>
+          <a href="home.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Home</a>
+          <a href="about.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>About Us</a>
+          <a href="programs.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Programs</a>
+          <a href="school.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Schools</a>
+          <a href="events-workshops.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Events</a>
+          <a href="projects.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Projects</a>
+          <a href="gallery.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Gallery</a>
+          <a href="admissions-individual.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Admissions</a>
+          <a href="certifications.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Certificates</a>
+          <a href="contact.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Contact Us</a>
+        </div>
+
+        <div class="col-lg-2 col-md-6 ft-col">
+          <h6>Program Levels</h6>
+          <p class="small mb-2"><span class="bi bi-circle-fill text-warning me-1"></span>Level 1 &middot; Junior Innovators<br><span class="text-white-50 ms-3">(5th&ndash;6th Standard)</span></p>
+          <p class="small mb-2"><span class="bi bi-circle-fill text-success me-1"></span>Level 2 &middot; Young Technologists<br><span class="text-white-50 ms-3">(7th&ndash;8th Standard)</span></p>
+          <p class="small mb-2"><span class="bi bi-circle-fill text-primary me-1"></span>Level 3 &middot; Future Engineers<br><span class="text-white-50 ms-3">(9th&ndash;10th Standard)</span></p>
+          <p class="small mb-2"><span class="bi bi-circle-fill text-purple me-1" style="color:#bb16bb;"></span>Level 4 &middot; AI Professional Foundation<br><span class="text-white-50 ms-3">(11th&ndash;12th Standard)</span></p>
+        </div>
+
+        <div class="col-lg-2 col-md-6 ft-col">
+          <h6>Get In Touch</h6>
+          <p class="small mb-2"><i class="bi bi-telephone-fill me-2 text-warning"></i>+91 9108534041</p>
+          <p class="small mb-2"><i class="bi bi-envelope me-2 text-warning"></i>info@futuretech.org</p>
+          <p class="small mb-2"><i class="bi bi-globe me-2 text-warning"></i>www.futuretech.org</p>
+          <p class="small mb-2"><i class="bi bi-geo-alt-fill me-2 text-warning"></i>3DWebSoft IT Solutions,<br><span class="ms-4">Narsingi, Hyderabad,</span><br><span class="ms-4">Telangana - 500075, India</span></p>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h6>Follow Us</h6>
+          <div class="d-flex ft-social mb-3">
+            <a href="https://www.facebook.com/profile.php?id=61592302205333" class="me-2"><img src="assets/images/gallery/facebook.jpeg" alt="Facebook"></a>
+            <a href="https://www.instagram.com/3dwebsoftitsolutions" class="me-2"><img src="assets/images/gallery/instagram.jpeg" alt="Instagram"></a>
+            <a href="https://www.youtube.com/@3dwebsoftitsolutions" class="me-2"><img src="assets/images/gallery/youtube.jpeg" alt="YouTube"></a>
+            <a href="https://www.linkedin.com/company/3dwebsoft-it-solutions/"><img src="assets/images/gallery/linkedin.jpeg" alt="LinkedIn"></a>
+          </div>
+          <h6>Stay Updated</h6>
+          <p class="small text-white-50">Get the latest updates, events and opportunities.</p>
+          <form class="d-flex" onsubmit="return false;">
+            <input type="email" class="form-control form-control-sm" placeholder="Enter your email">
+            <button class="btn btn-warning btn-sm ms-2"><i class="bi bi-arrow-right"></i></button>
+          </form>
+        </div>
+      </div>
+
+      <div class="ft-brand-badges d-flex flex-wrap justify-content-center gap-4 py-4">
+        <a href="https://www.3dwebsoftitsolutions.com" target="_blank" rel="noopener" class="ft-badge-link d-flex align-items-center text-decoration-none">
+          <span class="badge rounded-pill bg-primary px-3 py-2 me-3">Developed by</span>
+          <img src="assets/images/shared/itsolutions-logo.jpeg" alt="3DWebSoft IT Solutions" class="rounded-circle me-2" width="48" height="48">
+          <span class="text-white fw-bold text-start lh-sm">3DWEBSOFT<br><span class="fw-normal">IT Solutions</span></span>
+        </a>
+        <a href="https://3dwebsoftfoundation.org/" target="_blank" rel="noopener" class="ft-badge-link d-flex align-items-center text-decoration-none">
+          <span class="badge rounded-pill bg-warning text-dark px-3 py-2 me-3">Launched BY</span>
+          <img src="assets/images/shared/foundation-logo.jpeg" alt="3DWebSoft Foundation" class="rounded-circle me-2" width="48" height="48">
+          <span class="text-white fw-bold text-start lh-sm">3DWEBSOFT<br><span class="fw-normal">Foundation</span></span>
+        </a>
+      </div>
+
+      <div class="ft-copyright text-center">
+        &copy; 2026 Future Tech School Program. All Rights Reserved. &middot; A 3DWebSoft IT Solutions initiative.
+      <br class="d-md-none"><span class="mx-2 d-none d-md-inline">&middot;</span><a href="terms.html" class="text-white-50">Terms of Service</a><span class="mx-2">&middot;</span><a href="privacy.html" class="text-white-50">Privacy Policy</a></div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/api-client.js"></script>
+  <script>
+
+    // Pre-fill from the link generated after a successful payment
+    const params = new URLSearchParams(window.location.search);
+    let admissionId = params.get("admissionId");
+    let prefillName = params.get("name");
+    let prefillEmail = params.get("email");
+
+    // Fallback: some local static servers redirect "foo.html" -> "foo" for
+    // clean URLs and drop the query string in the process. If that happened,
+    // recover the same values from sessionStorage (set right before this
+    // page was opened) instead of failing the whole registration.
+    if (!admissionId) {
+      try {
+        const pending = JSON.parse(sessionStorage.getItem("ft_pending_registration") || "null");
+        // Only trust it if it was saved recently (avoid reusing a stale link
+        // from a much earlier, unrelated payment in the same browser tab).
+        if (pending && pending.admissionId && Date.now() - (pending.savedAt || 0) < 30 * 60 * 1000) {
+          admissionId = pending.admissionId;
+          prefillName = prefillName || pending.name;
+          prefillEmail = prefillEmail || pending.email;
+        }
+      } catch (e) { /* ignore - admissionId stays null, normal error message shows */ }
+    }
+
+    if (admissionId) {
+      document.getElementById("admissionNotice").style.display = "block";
+    }
+    if (prefillName) document.getElementById("regFullName").value = prefillName;
+    if (prefillEmail) document.getElementById("regEmail").value = prefillEmail;
+
+    document.getElementById("studentRegistrationForm").addEventListener("submit", async function (e) {
+      e.preventDefault();
+      const alertBox = document.getElementById("registrationAlert");
+      alertBox.classList.add("d-none");
+
+      if (!admissionId) {
+        alertBox.textContent = "Missing registration link. Please use the link provided after completing your payment.";
+        alertBox.classList.remove("d-none");
+        return;
+      }
+
+      const password = document.getElementById("regPassword").value;
+      const confirmPassword = document.getElementById("regConfirmPassword").value;
+
+      if (password !== confirmPassword) {
+        alertBox.textContent = "Passwords do not match.";
+        alertBox.classList.remove("d-none");
+        return;
+      }
+
+      const submitBtn = document.getElementById("registerSubmitBtn");
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Creating account...';
+
+      try {
+        const result = await FTApi.studentRegister({
+          admissionId: admissionId,
+          fullName: document.getElementById("regFullName").value.trim(),
+          dob: document.getElementById("regDob").value || null,
+          grade: document.getElementById("regGrade").value.trim(),
+          parentName: document.getElementById("regParentName").value.trim(),
+          phone: document.getElementById("regPhone").value.trim(),
+          email: document.getElementById("regEmail").value.trim(),
+          address: document.getElementById("regAddress").value.trim(),
+          password: password,
+        });
+
+        // Don't auto-log the student in here. Show a success message and
+        // send them to the normal login page instead, so they log in with
+        // the credentials that were (also) just emailed to them - confirms
+        // the login actually works before they rely on the email.
+        try { sessionStorage.removeItem("ft_pending_registration"); } catch (e) { /* non-critical */ }
+        // Also clear any leftover login session from a DIFFERENT student
+        // account on this browser/tab. Without this, "Go to Login" below
+        // could silently bounce straight into that old account's portal
+        // (student-login.html auto-redirects whenever a token is present)
+        // instead of showing the login form for the account just created.
+        try { sessionStorage.removeItem("ft_backend_student_token"); } catch (e) { /* non-critical */ }
+        document.getElementById("successEmail").textContent = result.student.email;
+        if (result.emailSent) {
+          document.getElementById("successMessage").textContent =
+            "We've emailed your login details to " + result.student.email + ". Use them to log in to your learning portal any time.";
+        } else {
+          document.getElementById("successMessage").innerHTML =
+            "We couldn't email your login details automatically, so please note them down now:<br>" +
+            "<strong>Email:</strong> " + result.student.email + "<br>" +
+            "<strong>Password:</strong> " + password + "<br>" +
+            "You can use these to log in to your learning portal any time.";
+        }
+        document.getElementById("studentRegistrationForm").classList.add("d-none");
+        document.getElementById("registrationSuccess").classList.remove("d-none");
+      } catch (err) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = 'Register Now<span class="bi bi-arrow-right"></span>';
+        alertBox.textContent = err.message || "Could not create your account. Please try again.";
+        alertBox.classList.remove("d-none");
+      }
+    });
+  </script>
+     </body>
+     </html>

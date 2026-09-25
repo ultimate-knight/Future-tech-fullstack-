@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/images/shared/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/site.css">
+    <link rel="stylesheet" href="assets/css/portal-theme.css">
+    <title>Module-1 Practical | Future Tech School Program</title>
+<script>window.FT_REQUIRED_LEVEL = "level4";</script>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/api-client.js"></script>
+    <script src="assets/js/level-guard.js"></script>
+</head>
+<body class="ft-portal-theme">
+    <header class="ft-header">
+    <nav class="navbar navbar-expand-xl ft-navbar">
+      <div class="container-fluid">
+        <a href="student-portal.html" class="d-flex align-items-center text-decoration-none ft-logo-wrap">
+          <img src="assets/images/shared/logo.png" width="60" height="60" alt="Future Tech logo" class="rounded-3">
+          <span class="ms-2 text-white fw-bold d-none d-lg-inline" style="font-size:1.05rem;line-height:1.1;">FUTURE TECH<br><span class="text-warning" style="font-size:.8rem;">SCHOOL PROGRAM</span></span>
+        </a>
+        <button class="navbar-toggler ft-toggle-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#ftOffcanvas">
+          <span class="bi bi-list fs-1"></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+  <section>
+    <div class="pt-quiz-shell">
+         <div class="pt-quiz-banner">
+            <div class="eyebrow">Level 4 &middot; Module 1</div>
+            <h1>AI &amp; Advanced Python &mdash; Practical Scenarios</h1>
+         </div>
+         <form id="quizForm">
+         <div class="mb-3" data-question="one">
+            <p class="mb-2 fs-5 fw-semibold">1. What is the output?<div class="ms-5">x = "25"<br>print(int(x) + 5)</div></p>
+            <div class="d-flex flex-column">
+                 <p><input type="radio" class="form-check-input mb-1" id="one-0" name="one" value="0"><label for="one-0" class="ms-2">255</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="one-1" name="one" value="1"><label for="one-1" class="ms-2">30</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="one-2" name="one" value="2"><label for="one-2" class="ms-2">25</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="one-3" name="one" value="3"><label for="one-3" class="ms-2">Error</label></p>
+            </div>
+         </div>
+         <div class="mb-3" data-question="two">
+            <p class="mb-2 fs-5 fw-semibold">2. What is the output?<div class="ms-5">numbers = [1, 2, 3, 4]<br>print([x * 2 for x in numbers])</div></p>
+            <div class="d-flex flex-column">
+                 <p><input type="radio" class="form-check-input mb-1" id="two-0" name="two" value="0"><label for="two-0" class="ms-2">[1, 2, 3, 4]</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="two-1" name="two" value="1"><label for="two-1" class="ms-2">[2, 4, 6, 8]</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="two-2" name="two" value="2"><label for="two-2" class="ms-2">[1, 4, 9, 16]</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="two-3" name="two" value="3"><label for="two-3" class="ms-2">Error</label></p>
+            </div>
+         </div>
+         <div class="mb-3" data-question="three">
+            <p class="mb-2 fs-5 fw-semibold">3. What is the output?<div class="ms-5">data = [1, 2, 2, 3, 3, 4]<br>print(set(data))</div></p>
+            <div class="d-flex flex-column">
+                 <p><input type="radio" class="form-check-input mb-1" id="three-0" name="three" value="0"><label for="three-0" class="ms-2">{1, 2, 3, 4}</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="three-1" name="three" value="1"><label for="three-1" class="ms-2">[1, 2, 2, 3, 3, 4]</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="three-2" name="three" value="2"><label for="three-2" class="ms-2">(1, 2, 3, 4)</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="three-3" name="three" value="3"><label for="three-3" class="ms-2">Error</label></p>
+            </div>
+         </div>
+         <div class="mb-3" data-question="four">
+            <p class="mb-2 fs-5 fw-semibold">4. What is the output?<div class="ms-5">square = lambda x: x * x<br>print(square(4))</div></p>
+            <div class="d-flex flex-column">
+                 <p><input type="radio" class="form-check-input mb-1" id="four-0" name="four" value="0"><label for="four-0" class="ms-2">4</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="four-1" name="four" value="1"><label for="four-1" class="ms-2">8</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="four-2" name="four" value="2"><label for="four-2" class="ms-2">16</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="four-3" name="four" value="3"><label for="four-3" class="ms-2">20</label></p>
+            </div>
+         </div>
+         <div class="mb-3" data-question="five">
+            <p class="mb-2 fs-5 fw-semibold">5. What is the output?<div class="ms-5">numbers = [1, 2, 3, 4, 5]<br>result = list(filter(lambda x: x % 2 == 0, numbers))<br>print(result)</div></p>
+            <div class="d-flex flex-column">
+                 <p><input type="radio" class="form-check-input mb-1" id="five-0" name="five" value="0"><label for="five-0" class="ms-2">[1, 3, 5]</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="five-1" name="five" value="1"><label for="five-1" class="ms-2">[2, 4]</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="five-2" name="five" value="2"><label for="five-2" class="ms-2">[1, 2, 3, 4, 5]</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="five-3" name="five" value="3"><label for="five-3" class="ms-2">[]</label></p>
+            </div>
+         </div>
+         <div class="mb-3" data-question="six">
+            <p class="mb-2 fs-5 fw-semibold">6. Which code opens a file for writing?</p>
+            <div class="d-flex flex-column">
+                 <p><input type="radio" class="form-check-input mb-1" id="six-0" name="six" value="0"><label for="six-0" class="ms-2">open("data.txt", "r")</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="six-1" name="six" value="1"><label for="six-1" class="ms-2">open("data.txt", "w")</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="six-2" name="six" value="2"><label for="six-2" class="ms-2">open("data.txt", "x")</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="six-3" name="six" value="3"><label for="six-3" class="ms-2">open("data.txt", "read")</label></p>
+            </div>
+         </div>
+         <div class="mb-3" data-question="seven">
+            <p class="mb-2 fs-5 fw-semibold">7. What will be printed?<div class="ms-5">try:<br>x = 10 / 0<br>except ZeroDivisionError:<br>print("Error")</div></p>
+            <div class="d-flex flex-column">
+                 <p><input type="radio" class="form-check-input mb-1" id="seven-0" name="seven" value="0"><label for="seven-0" class="ms-2">10</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="seven-1" name="seven" value="1"><label for="seven-1" class="ms-2">0</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="seven-2" name="seven" value="2"><label for="seven-2" class="ms-2">Error</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="seven-3" name="seven" value="3"><label for="seven-3" class="ms-2">Nothing</label></p>
+            </div>
+         </div>
+         <div class="mb-3" data-question="eight">
+            <p class="mb-2 fs-5 fw-semibold">8. What is the output?<div class="ms-5">class Student:<br>def __init__(self, name):<br>self.name = name<br>s = Student("Ravi")<br>print(s.name)</div></p>
+            <div class="d-flex flex-column">
+                 <p><input type="radio" class="form-check-input mb-1" id="eight-0" name="eight" value="0"><label for="eight-0" class="ms-2">Student</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="eight-1" name="eight" value="1"><label for="eight-1" class="ms-2">name</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="eight-2" name="eight" value="2"><label for="eight-2" class="ms-2">Ravi</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="eight-3" name="eight" value="3"><label for="eight-3" class="ms-2">Error</label></p>
+            </div>
+         </div>
+         <div class="mb-3" data-question="nine">
+            <p class="mb-2 fs-5 fw-semibold">9. What does this code create?<div class="ms-5">student = {<br>"name": "Anita",<br>"marks": 90<br>}</div></p>
+            <div class="d-flex flex-column">
+                 <p><input type="radio" class="form-check-input mb-1" id="nine-0" name="nine" value="0"><label for="nine-0" class="ms-2">List</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="nine-1" name="nine" value="1"><label for="nine-1" class="ms-2">Tuple</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="nine-2" name="nine" value="2"><label for="nine-2" class="ms-2">Dictionary</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="nine-3" name="nine" value="3"><label for="nine-3" class="ms-2">Set</label></p>
+            </div>
+         </div>
+         <div class="mb-3" data-question="ten">
+            <p class="mb-2 fs-5 fw-semibold">10. What is the output?<div class="ms-5">numbers = [1, 2, 3]<br>result = list(map(lambda x: x + 1, numbers))<br>print(result)</div></p>
+            <div class="d-flex flex-column">
+                 <p><input type="radio" class="form-check-input mb-1" id="ten-0" name="ten" value="0"><label for="ten-0" class="ms-2">[1, 2, 3]</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="ten-1" name="ten" value="1"><label for="ten-1" class="ms-2">[2, 3, 4]</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="ten-2" name="ten" value="2"><label for="ten-2" class="ms-2">[0, 1, 2]</label></p>
+                 <p><input type="radio" class="form-check-input mb-1" id="ten-3" name="ten" value="3"><label for="ten-3" class="ms-2">[1, 3, 5]</label></p>
+            </div>
+         </div>
+         <div class="text-center my-5">
+          <button type="button" id="quizSubmitBtn" class="btn btn-success w-50">Submit</button>
+          <div id="quizResult" class="d-none"></div>
+          <button type="button" id="quizRetakeBtn" class="btn btn-outline-secondary w-50 mt-3 d-none">Retake</button>
+          <a href="student-portal.html" id="quizNextBtn" class="btn btn-primary w-50 mt-3 d-none text-decoration-none text-white">Back to Portal</a>
+         </div>
+         </form>
+    </div>
+  </section>
+  <script src="assets/js/quiz-engine.js"></script>
+  <script>
+    FTQuiz.init({
+      formId: "quizForm",
+      submitBtnId: "quizSubmitBtn",
+      retakeBtnId: "quizRetakeBtn",
+      nextBtnId: "quizNextBtn",
+      resultBoxId: "quizResult",
+      passPercent: 60,
+      level: "level4",
+      module: "module1",
+      quizId: "module1-practical",
+      questions: [
+        { name: "one", correct: "1" },
+        { name: "two", correct: "1" },
+        { name: "three", correct: "0" },
+        { name: "four", correct: "2" },
+        { name: "five", correct: "1" },
+        { name: "six", correct: "1" },
+        { name: "seven", correct: "2" },
+        { name: "eight", correct: "2" },
+        { name: "nine", correct: "2" },
+        { name: "ten", correct: "1" }
+      ]
+    });
+  </script>
+</body>
+</html>
