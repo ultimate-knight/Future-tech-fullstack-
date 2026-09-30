@@ -6,5 +6,5 @@
  * backend running on your machine, the default below is usually right.
  */
 window.FT_CONFIG = {
-  API_BASE_URL: "http://localhost:5000/api",
+  API_BASE_URL: "/api",
 };
