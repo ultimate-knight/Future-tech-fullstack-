@@ -1,3 +1,4 @@
+
 const path = require("path");
 const { Sequelize } = require("sequelize");
 
@@ -18,10 +19,24 @@ if (dialect === "sqlite") {
     process.env.DB_PASSWORD,
     {
       host: process.env.DB_HOST,
-      port: process.env.DB_PORT,
+      port: Number(process.env.DB_PORT),
       dialect,
       logging: false,
-      pool: { max: 10, min: 0, acquire: 30000, idle: 10000 },
+
+      ...(dialect === "mysql" && {
+        dialectOptions: {
+          ssl: {
+            minVersion: "TLSv1.2",
+          },
+        },
+      }),
+
+      pool: {
+        max: 10,
+        min: 0,
+        acquire: 30000,
+        idle: 10000,
+      },
     }
   );
 } else {
