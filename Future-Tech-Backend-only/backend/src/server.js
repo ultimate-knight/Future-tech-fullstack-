@@ -12,6 +12,19 @@ const PORT = process.env.PORT || 5000;
 
 let server;
 
+const cors = require("cors");
+
+const allowedOrigins = (process.env.CORS_ORIGIN || "")
+  .split(",")
+  .map(origin => origin.trim())
+  .filter(Boolean);
+
+app.use(cors({
+  origin: allowedOrigins,
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+}));
+
 async function start() {
   try {
     await sequelize.authenticate();
