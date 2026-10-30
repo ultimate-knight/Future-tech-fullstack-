@@ -369,7 +369,7 @@ section.blk{padding:clamp(40px,7vw,80px) 0}
   // section never shows up empty.
   (async function loadPartnerSchools() {
     try {
-      const base = (window.FT_CONFIG && window.FT_CONFIG.API_BASE_URL) || "http://localhost:5000/api";
+      const BASE = " https://future-tech-fullstack-4.onrender.com";
       const res = await fetch(base + "/schools/with-logo");
       if (!res.ok) return;
       const schools = await res.json();
