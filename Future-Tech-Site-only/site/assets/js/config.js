@@ -11,9 +11,10 @@
  */
 (function () {
   var LOCAL_BACKEND = "http://localhost:5000/api";
+  var PRODUCTION_BACKEND = "https://future-tech-fullstack-7.onrender.com/api";
   var host = window.location.hostname;
   var isLocal = host === "localhost" || host === "127.0.0.1";
   window.FT_CONFIG = {
-    API_BASE_URL: isLocal ? LOCAL_BACKEND : "/api",
+    API_BASE_URL: isLocal ? LOCAL_BACKEND : PRODUCTION_BACKEND,
   };
 })();

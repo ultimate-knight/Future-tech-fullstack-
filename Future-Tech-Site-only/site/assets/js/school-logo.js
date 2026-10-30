@@ -56,10 +56,10 @@
   }
 
   function load(schoolId, name) {
-    var base = https://future-tech-fullstack-7.onrender.com/;
-    if (used || !schoolId) return;
+    var base = window.FT_CONFIG && window.FT_CONFIG.API_BASE_URL;
+    if (used || !schoolId || !base) return;
     used = true;
-    fetch(base + "/content/school-logo/" + encodeURIComponent(schoolId), { cache: "no-store" })
+    fetch(base.replace(/\/+$/, "") + "/content/school-logo/" + encodeURIComponent(schoolId), { cache: "no-store" })
       .then(function (r) { if (!r.ok) throw new Error("no logo"); return r.blob(); })
       .then(function (b) { place(URL.createObjectURL(b), name); })
       .catch(function () { used = false; /* no logo - show nothing */ });

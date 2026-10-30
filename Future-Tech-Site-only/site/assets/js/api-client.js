@@ -4,7 +4,11 @@
  * and turns non-2xx responses into thrown Errors with a readable message.
  */
  const FTApi = (function () {
-  const BASE = "https://future-tech-fullstack-7.onrender.com/";
+  const BASE = (window.FT_CONFIG && window.FT_CONFIG.API_BASE_URL) || "http://localhost:5000/api";
+
+  function apiUrl(path) {
+    return BASE.replace(/\/+$/, "") + "/" + path.replace(/^\/+/, "");
+  }
 
   async function request(path, { method = "GET", body, token, headers } = {}) {
     const finalHeaders = { "Content-Type": "application/json", ...(headers || {}) };
@@ -17,7 +21,7 @@
 
     let res;
     try {
-      res = await fetch(BASE + path, {
+      res = await fetch(apiUrl(path), {
         method,
         headers: finalHeaders,
         body: body !== undefined ? JSON.stringify(body) : undefined,
@@ -55,7 +59,7 @@
     // can't send an Authorization header, so fetch it as a blob and
     // trigger the save ourselves.
     downloadFile: async function (path, token, filename) {
-      const res = await fetch(BASE + path, { headers: { Authorization: "Bearer " + token } });
+      const res = await fetch(apiUrl(path), { headers: { Authorization: "Bearer " + token } });
       if (!res.ok) {
         let msg = `Download failed (${res.status}).`;
         try {
@@ -82,7 +86,7 @@
     uploadFile: async function (path, formData, token) {
       let res;
       try {
-        res = await fetch(BASE + path, {
+        res = await fetch(apiUrl(path), {
           method: "POST",
           headers: { Authorization: "Bearer " + token },
           body: formData,
@@ -114,7 +118,7 @@
     getPaymentStatus: (paymentId) => request(`/payments/${paymentId}/status`),
 
     // ---- Receipts ----
-    receiptDownloadUrl: (paymentId) => BASE + `/receipts/${paymentId}/download`,
+    receiptDownloadUrl: (paymentId) => apiUrl(`/receipts/${paymentId}/download`),
 
     // ---- School auth ----
     schoolLogin: (payload) => request("/auth/school/login", { method: "POST", body: payload }),
