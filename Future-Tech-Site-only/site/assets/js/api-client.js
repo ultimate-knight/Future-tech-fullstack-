@@ -4,7 +4,7 @@
  * and turns non-2xx responses into thrown Errors with a readable message.
  */
  const FTApi = (function () {
-  const BASE = " https://future-tech-fullstack-4.onrender.com";
+  const BASE = "https://future-tech-fullstack-7.onrender.com/";
 
   async function request(path, { method = "GET", body, token, headers } = {}) {
     const finalHeaders = { "Content-Type": "application/json", ...(headers || {}) };
