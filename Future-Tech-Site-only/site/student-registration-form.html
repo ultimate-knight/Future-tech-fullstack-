@@ -12,8 +12,12 @@
     <link rel="stylesheet" href="assets/css/site.css">
     <title>School Registration | Future Tech School Program</title>
     <style>
-      .card{
-        margin-left: 350px;
+      /* Center the registration card responsively instead of a fixed
+         350px left margin, which pushed the whole card off-screen on
+         narrow/mobile viewports (it left almost no room for content). */
+      .ft-registration-card{
+        max-width: 900px;
+        margin: 0 auto;
       }
     </style>
      </head>
@@ -38,6 +42,7 @@
       </div>
     </nav>
 
+
     <div class="offcanvas offcanvas-end ft-offcanvas" id="ftOffcanvas">
       <div class="offcanvas-header">
         <h5 class="offcanvas-title fw-bold">Future Tech School Program</h5>
@@ -47,11 +52,11 @@
   </header>
   <section class="container-fluid my-4">
      <div class="align-content-center">
-       <div class="card mt-5 w-50 shadow">
+       <div class="card mt-5 w-100 ft-registration-card shadow">
         <div class="row mt-2 pe-3">
-          <div class="col-6">
-            <div class="ms-5">
-      <div class="fs-1 fw-semibold">
+          <div class="col-12 col-md-6">
+            <div class="ms-md-5 ms-3">
+      <div class="fw-semibold" style="font-size:clamp(1.5rem, 5vw, 2.5rem);">
         <span class=" justify-content-center">SCHOOL<br>STUDENT<br> <span class="text-primary">REGISTRATION</span>
       </div>
         <div class="mt-3 fs-5 justify-content-center">
@@ -59,8 +64,8 @@
       </div>
     </div>
           </div>
-          <div class="col-6">
-            <form id="studentRegistrationForm">
+          <div class="col-12 col-md-6">
+            <form id="studentRegistrationForm" class="p-3 p-md-0">
               <div>
                 <span class="bi bi-person fs-2"></span>
                 <span class="ps-2 fs-5 fw-semibold ">Student Registration Form</span>

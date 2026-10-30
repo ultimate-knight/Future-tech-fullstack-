@@ -18,7 +18,7 @@ const {
 const { requireAdminAuth } = require("../middleware/auth");
 const generateTempPassword = require("../utils/generateTempPassword");
 const generateInvoiceNumber = require("../utils/invoiceNumber");
-const { sendSchoolCredentialsEmail, sendStudentCredentialsEmail } = require("../services/emailService");
+const { sendSchoolCredentialsEmail, sendStudentCredentialsEmail, emailFailureReason } = require("../services/emailService");
 const { confirmPaymentPaid } = require("../services/paymentService");
 const { generateSchoolInvoicePdf, generateSchoolStatementPdf, INVOICES_DIR } = require("../services/invoiceService");
 const fees = require("../config/fees");
@@ -184,6 +184,7 @@ router.post("/payments/:id/mark-paid", async (req, res) => {
     res.json(payment);
   } catch (err) {
     console.error("mark-paid error", err);
+    if (err.statusCode === 409) return res.status(409).json({ error: err.message });
     res.status(500).json({ error: "Could not mark this payment as paid." });
   }
 });
@@ -260,6 +261,7 @@ router.post(
       // account creation — the admin still sees the password below and
       // can share it manually. emailSent tells the admin UI which happened.
       let emailSent = false;
+      let emailError = null; // plain-English reason, shown in the admin UI (never contains secrets)
       try {
         await sendSchoolCredentialsEmail({
           toEmail: school.email,
@@ -270,7 +272,7 @@ router.post(
         });
         emailSent = true;
       } catch (emailErr) {
-        console.error("Could not send school welcome email:", emailErr.message);
+        emailError = emailFailureReason(emailErr); // details are already logged by emailService ([email] FAILED ...)
       }
 
       res.status(201).json({
@@ -285,6 +287,7 @@ router.post(
         // Shown once, right now, in the response only — never persisted in plain text.
         temporaryPassword: tempPassword,
         emailSent,
+        emailError,
       });
     } catch (err) {
       console.error("admin create school error", err);
@@ -306,6 +309,7 @@ router.post("/schools/:id/reset-password", async (req, res) => {
     await school.save();
 
     let emailSent = false;
+    let emailError = null;
     try {
       await sendSchoolCredentialsEmail({
         toEmail: school.email,
@@ -316,10 +320,10 @@ router.post("/schools/:id/reset-password", async (req, res) => {
       });
       emailSent = true;
     } catch (emailErr) {
-      console.error("Could not send school reset-password email:", emailErr.message);
+      emailError = emailFailureReason(emailErr); // already logged by emailService
     }
 
-    res.json({ temporaryPassword: tempPassword, emailSent });
+    res.json({ temporaryPassword: tempPassword, emailSent, emailError });
   } catch (err) {
     console.error("admin reset school password error", err);
     res.status(500).json({ error: "Could not reset password. Please try again." });
@@ -392,6 +396,87 @@ router.post(
     }
   }
 );
+
+// ---------------------------------------------------------------------
+// POST /api/admin/schools/:id/logo
+// Uploads (or replaces) a school's own logo, shown alongside the Future
+// Tech logo on their School Portal header and on their receipts. Sent as
+// a base64 data URL (small image, no multipart/multer needed) rather
+// than a binary file upload - kept simple since this project has no file
+// upload dependency anywhere else yet.
+// DELETE /api/admin/schools/:id/logo removes it (falls back to showing
+// only the Future Tech logo, same as before one was ever set).
+// ---------------------------------------------------------------------
+const LOGO_DIR = path.join(__dirname, "..", "..", "content", "school-logos");
+const LOGO_MIME_TO_EXT = { "image/png": "png", "image/jpeg": "jpg" };
+const MAX_LOGO_BYTES = 1.5 * 1024 * 1024; // 1.5MB decoded - plenty for a logo
+
+router.post("/schools/:id/logo", async (req, res) => {
+  const { logoDataUrl } = req.body || {};
+  if (!logoDataUrl || typeof logoDataUrl !== "string") {
+    return res.status(400).json({ error: "No image provided." });
+  }
+
+  // PNG/JPEG only - the receipt PDF generator (pdfkit) can't draw WEBP
+  // images, and this same logo is used on receipts, so keep both uses
+  // guaranteed to work rather than silently dropping the logo there.
+  const match = /^data:(image\/png|image\/jpeg);base64,([A-Za-z0-9+/=]+)$/.exec(logoDataUrl);
+  if (!match) {
+    return res.status(400).json({ error: "Logo must be a PNG or JPEG image." });
+  }
+  const [, mime, base64Data] = match;
+  const buffer = Buffer.from(base64Data, "base64");
+  if (buffer.length > MAX_LOGO_BYTES) {
+    return res.status(400).json({ error: "Logo image is too large (max 1.5MB)." });
+  }
+
+  try {
+    const school = await School.findByPk(req.params.id);
+    if (!school) return res.status(404).json({ error: "School not found." });
+
+    fs.mkdirSync(LOGO_DIR, { recursive: true });
+
+    // Remove any previous logo file for this school first, in case the
+    // image type (and so the extension) changed since last time.
+    if (school.logoFilename) {
+      const oldPath = path.join(LOGO_DIR, school.logoFilename);
+      if (oldPath.startsWith(LOGO_DIR + path.sep) && fs.existsSync(oldPath)) {
+        fs.unlinkSync(oldPath);
+      }
+    }
+
+    const filename = `${school.id}.${LOGO_MIME_TO_EXT[mime]}`;
+    fs.writeFileSync(path.join(LOGO_DIR, filename), buffer);
+    school.logoFilename = filename;
+    await school.save();
+
+    res.json({ ok: true, logoFilename: school.logoFilename });
+  } catch (err) {
+    console.error("admin set school logo error", err);
+    res.status(500).json({ error: "Could not save this school's logo." });
+  }
+});
+
+router.delete("/schools/:id/logo", async (req, res) => {
+  try {
+    const school = await School.findByPk(req.params.id);
+    if (!school) return res.status(404).json({ error: "School not found." });
+
+    if (school.logoFilename) {
+      const oldPath = path.join(LOGO_DIR, school.logoFilename);
+      if (oldPath.startsWith(LOGO_DIR + path.sep) && fs.existsSync(oldPath)) {
+        fs.unlinkSync(oldPath);
+      }
+      school.logoFilename = null;
+      await school.save();
+    }
+
+    res.json({ ok: true });
+  } catch (err) {
+    console.error("admin remove school logo error", err);
+    res.status(500).json({ error: "Could not remove this school's logo." });
+  }
+});
 
 // ---------------------------------------------------------------------
 // POST /api/admin/schools/:id/razorpay-account
@@ -868,17 +953,30 @@ router.post(
       const tempPassword = generateTempPassword();
       const passwordHash = await bcrypt.hash(tempPassword, 10);
 
-      const student = await Student.create({
-        admissionId: admission.id,
-        fullName,
-        grade: grade || "",
-        parentName: parentName || "",
-        phone: phone || "",
-        email: normalizedEmail,
-        passwordHash,
-      });
+      let student;
+      try {
+        student = await Student.create({
+          admissionId: admission.id,
+          fullName,
+          grade: grade || "",
+          parentName: parentName || "",
+          phone: phone || "",
+          email: normalizedEmail,
+          passwordHash,
+        });
+      } catch (createErr) {
+        // Don't leave a "paid" registration with no login behind (it would
+        // show up in the school's list), and report a duplicate email
+        // that slipped past the check above (simultaneous request) as 409.
+        await admission.destroy().catch(() => {});
+        if (createErr && createErr.name === "SequelizeUniqueConstraintError") {
+          return res.status(409).json({ error: "A student account with this email already exists." });
+        }
+        throw createErr;
+      }
 
       let emailSent = false;
+      let emailError = null;
       try {
         await sendStudentCredentialsEmail({
           toEmail: student.email,
@@ -887,7 +985,7 @@ router.post(
         });
         emailSent = true;
       } catch (emailErr) {
-        console.error("Could not send student welcome email:", emailErr.message);
+        emailError = emailFailureReason(emailErr); // already logged by emailService
       }
 
       res.status(201).json({
@@ -900,6 +998,7 @@ router.post(
         },
         temporaryPassword: tempPassword,
         emailSent,
+        emailError,
       });
     } catch (err) {
       console.error("admin add student error", err);

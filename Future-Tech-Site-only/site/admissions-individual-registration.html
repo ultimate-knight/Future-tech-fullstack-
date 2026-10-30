@@ -63,32 +63,33 @@
         <section>
             <div>
                  <div class="row mt-3">
-                    <div class="col-7 mt-5">
+                    <div class="col-12 col-md-7 mt-5">
                         <div class="fs-2 fw-semibold  text-start ms-3">Individual Student Registration</div>
                          <div class="mt-2">
                             <span class="mt-5 ms-3">Start your journey with the Future Tech School Program and</span><br>
                         <span class="  ms-3">build future-ready technology skills.</span>
                          </div>
                     </div>
-                    <div class="col-5 text-center">
+                    <div class="col-12 col-md-5 text-center mt-3 mt-md-0">
                         <img src="assets/images/admission/indivudual1.png" width="450px" height="220px">
                     </div>
                  </div>
                  <div class="row mt-4">
-                     <div class="col-9 ms-3">
+                     <div class="col-12 col-lg-9">
+                        <div id="ftResumeBanner" class="d-none mb-3"></div>
                         <div id="individualAdmissionWizard">
                         <form class="border border-2 rounded rounded-2 shadow p-4">
                         <div class="text-primary fs-5 fw-semibold"><span class="bi bi-1-circle-fill me-2"></span>Student Information</div>
                         <div class="row mt-3">
-                            <div class="col-4">
+                            <div class="col-12 col-md-4">
                                 <label class="fs-6 fw-semibold mb-2">Student Full Name<span class="text-danger ms-1">*</span></label>
                                 <input type="text" name="full name" placeholder="Enter Student Full Name" class="form-control">
                             </div>
-                            <div class="col-4  ">
+                            <div class="col-12 col-md-4">
                                 <label class="fs-6 fw-semibold mb-2">Date of Birth<span class="text-danger ms-1">*</span></label>
                                  <input type="date" name="dob" placeholder="DD/MM/YYYY" class="form-control">
                             </div>
-                            <div class="col-4  ">
+                            <div class="col-12 col-md-4">
                                 <label class="fs-6 fw-semibold mb-2">Gender</label>
                                  <select class="form-select">
                                     <option>Select Gender</option>
@@ -98,7 +99,7 @@
                             </div>
                         </div>
                          <div class="row mt-3">
-                            <div class="col-4">
+                            <div class="col-12 col-md-4">
                                 <label class="fs-6 fw-semibold mb-2">Current Grade/Class<span class="text-danger ms-1">*</span></label>
                                  <select class="form-select">
                                     <option>Select Grade</option>
@@ -112,14 +113,14 @@
                                       <option>12th Grade</option>
                                  </select>
                             </div>
-                            <div class="col-4  ">
+                            <div class="col-12 col-md-4">
                                 <label class="fs-6 fw-semibold mb-2">School Name<span class="text-danger ms-1">*</span></label>
                                   <select id="schoolSelect" class="form-select">
                                     <option value="">Loading schools...</option>
                                  </select>
                                  <div class="form-text small">Don't see your school? <a href="contact.html">Contact us</a> to have it added.</div>
                             </div>
-                            <div class="col-4  ">
+                            <div class="col-12 col-md-4">
                                 <label class="fs-6 fw-semibold mb-2">Board</label>
                                  <select class="form-select">
                                     <option>Select Board</option>
@@ -129,11 +130,11 @@
                             </div>
                         </div>
                         <div class="row mt-3">
-                            <div class="col-4">
+                            <div class="col-12 col-md-4">
                                 <label class="fs-6 fw-semibold mb-2">City<span class="text-danger ms-1">*</span></label>
                                 <input type="text" name="City" placeholder="Enter City" class="form-control">
                             </div>
-                            <div class="col-4  ">
+                            <div class="col-12 col-md-4">
                                 <label class="fs-6 fw-semibold mb-2">State<span class="text-danger ms-1">*</span></label>
                                  <select class="form-select">
                                     <option>Select State</option>
@@ -142,7 +143,7 @@
                                       <option>Karnataka</option>
                                  </select>
                             </div>
-                            <div class="col-4  ">
+                            <div class="col-12 col-md-4">
                                 <label class="fs-6 fw-semibold mb-2">Pin Code</label>
                                  <input type="text" name="pincode" placeholder="Enter Pincode" class="form-control">
                             </div>
@@ -151,11 +152,11 @@
                     <form class="mt-3 border border-2 rounded rounded-2 shadow p-4">   
                             <div class="text-primary fs-5 fw-semibold"><span class="text-success bi bi-2-circle-fill me-2"></span>Parent / Guardian Information</div>
                             <div class="row mt-3">
-                                <div class="col-4">
+                                <div class="col-12 col-md-4">
                                 <label class="fs-6 fw-semibold mb-2">Parent/Guardian Name<span class="text-danger ms-1">*</span></label>
                                 <input type="text" name="parent name" placeholder="Enter Parent/Guardian Name" class="form-control">
                             </div>
-                            <div class="col-4  ">
+                            <div class="col-12 col-md-4">
                                 <label class="fs-6 fw-semibold mb-2">Relationship<span class="text-danger ms-1">*</span></label>
                                  <select class="form-select">
                                     <option>Select Relationship</option>
@@ -164,17 +165,17 @@
                                       <option>Guardian</option>
                                  </select>
                             </div>
-                            <div class="col-4  ">
+                            <div class="col-12 col-md-4">
                                 <label class="fs-6 fw-semibold mb-2">Mobile Number<span class="text-danger ms-1">*</span></label>
                                  <input type="number" name="phone number" placeholder="Enter Mobile Number" class="form-control">
                             </div>
                             </div>
                             <div class="row mt-4">
-                                <div class="col-4">
+                                <div class="col-12 col-md-4">
                                     <label class="fs-6 fw-semibold mb-2">Email Address<span class="text-danger ms-1">*</span></label>
                                  <input type="email" name="Email" placeholder="Enter Email Address" class="form-control">
                                 </div>
-                                <div class="col-4  ">
+                                <div class="col-12 col-md-4">
                                 <label class="fs-6 fw-semibold mb-2">Alternative Contact Number<span class="text-danger ms-1">*</span></label>
                                  <input type="number" name="alternative number" placeholder="Enter Alternativ Number" class="form-control">
                             </div>
@@ -183,7 +184,7 @@
                      <form class="mt-3 border border-2 rounded rounded-2 shadow p-4">   
                             <div class="text-primary fs-5 fw-semibold"><span class="bi bi-3-circle-fill text-warning me-2"></span> Program Selection</div>
                             <div class="row mt-3">
-                                <div class="col-4">
+                                <div class="col-12 col-md-4">
                                 <label class="fs-6 fw-semibold mb-2">Select Level<span class="text-danger ms-1">*</span></label>
                                 <select id="programLevelSelect" class="form-select" onchange="showLevel(this.value)">
                                     <option>Select Level</option>
@@ -193,7 +194,7 @@
                                       <option value="level4">Level-4</option>
                                  </select>
                             </div>
-                            <div class="col-4  ">
+                            <div class="col-12 col-md-4">
                                 <label class="fs-6 fw-semibold mb-2">Preferred Learning Mode<span class="text-danger ms-1">*</span></label>
                                  <select class="form-select">
                                     <option>Select Mode</option>
@@ -201,7 +202,7 @@
                                       <option>Offline</option>
                                  </select>
                             </div>
-                            <div class="col-4  ">
+                            <div class="col-12 col-md-4">
                                 <label class="fs-6 fw-semibold mb-2">Preferred Batch<span class="text-danger ms-1">*</span></label>
                                 <select class="form-select">
                                     <option>Select Batch</option>
@@ -296,13 +297,18 @@
                                 <input type="checkbox" class="form-check-input fw-bold me-md-2" name="ai"><label class="fw-semibold">I agree to be contacted regarding the Future Tech School Program.</label>
                             </div>
                         </form>
+                        <div id="ftFeePreview" class="alert alert-light border text-center d-none mb-2" role="status"></div>
                         <div id="individualAdmissionAlert" class="alert d-none" role="alert"></div>
                         <div class="my-4 text-center">
                             <button type="button" id="individualAdmissionSubmitBtn" class="btn btn-primary text-white fs-5 fw-semibold"><span class="bi bi-send me-2"></span>SUBMIT REGISTRATION</button>
                         </div>
                         </div>
                      </div>
-                      <div class="col-2 ms-4 mt-5 ">
+                      <div class="col-12 col-lg-3 mt-4 mt-lg-5">
+                        <div class="card p-2 shadow mb-3">
+                          <div class="fs-5 fw-semibold text-center">Monthly Fee</div>
+                          <div id="ftFeeCard" class="px-2 pb-2 small"><div class="text-center text-muted">Loading fees&hellip;</div></div>
+                        </div>
                     <div class="card p-2 view">
                         <div class="bi bi-mortarboard-fill fs-2 text-primary text-center"></div>
                         <div class="fs-5 fw-semibold text-primary text-center">Recommended Program</div>
@@ -416,6 +422,7 @@
   <script src="assets/js/api-client.js"></script>
   <script src="assets/js/data-store.js"></script>
   <script src="assets/js/payment-flow.js"></script>
+  <script src="assets/js/fee-display.js"></script>
   <script>
     // Show the interests checklist that matches the selected level
     function showLevel(value) {
@@ -453,6 +460,94 @@
         : '<span class="bi bi-send me-2"></span>SUBMIT & PAY REGISTRATION FEE';
     }
     setBtnLoading(false);
+
+    // Everything that happens around the payment window, shared by a fresh
+    // submission and by "Resume payment" (which reopens a remembered payment
+    // without asking for the form to be filled in again).
+    function buildPayOptions(ctx) {
+      return {
+        type: 'individual',
+        admissionId: ctx.admissionId,
+        payer: ctx.payer,
+        months: ctx.months,
+        expectedAmount: ctx.expectedAmount,
+        remember: { studentName: ctx.studentName, email: ctx.email },
+        onSuccess: function (result) {
+          setBtnLoading(false);
+          document.getElementById('ftResumeBanner').classList.add('d-none');
+          document.getElementById('ftFeePreview').classList.add('d-none');
+          const fullReceiptUrl = window.FT_CONFIG.API_BASE_URL.replace(/\/api$/, '') + result.downloadUrl;
+          const registrationUrl = 'student-registration-form.html?admissionId=' + encodeURIComponent(ctx.admissionId)
+            + '&name=' + encodeURIComponent(ctx.studentName)
+            + '&email=' + encodeURIComponent(ctx.email);
+          // Fallback for the registration page in case the query string gets
+          // stripped in transit (e.g. a local static server redirecting
+          // "foo.html" -> "foo" and dropping the query string along the way).
+          try {
+            sessionStorage.setItem('ft_pending_registration', JSON.stringify({
+              admissionId: ctx.admissionId,
+              name: ctx.studentName,
+              email: ctx.email,
+              savedAt: Date.now()
+            }));
+          } catch (e) { /* sessionStorage unavailable - query string is still the primary path */ }
+          alertBox.className = 'alert alert-success';
+          alertBox.innerHTML =
+            'Payment successful! Registration confirmed. Receipt No: <strong>' + result.receiptNumber + '</strong>. ' +
+            '<a href="' + fullReceiptUrl + '" target="_blank" class="alert-link">Download your receipt</a>.' +
+            '<hr class="my-2">' +
+            '<a href="' + registrationUrl + '" class="btn btn-primary btn-sm fw-bold">' +
+            '<i class="bi bi-person-plus me-1"></i>Create Your Student Login to Access Notes &amp; Quizzes</a>';
+          alertBox.classList.remove('d-none');
+          alertBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+          // Trigger the download automatically too
+          window.open(fullReceiptUrl, '_blank');
+
+          document.getElementById('individualAdmissionWizard').querySelectorAll('input, select, textarea').forEach(function (el) {
+            if (el.type === 'checkbox' || el.type === 'radio') {
+              el.checked = false;
+            } else {
+              el.value = el.tagName === 'SELECT' ? el.options[0].value : '';
+            }
+          });
+        },
+        onError: function (message) {
+          setBtnLoading(false);
+          alertBox.className = 'alert alert-danger';
+          alertBox.textContent = message;
+          alertBox.classList.remove('d-none');
+          alertBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        },
+        onDismiss: function (info) {
+          setBtnLoading(false);
+          alertBox.className = 'alert alert-warning';
+          alertBox.textContent = (info && info.remembered)
+            ? 'Payment window closed. Your registration and payment are saved on this device — use "Resume payment" above any time to check on it or continue. You do not need to fill the form again.'
+            : 'Payment window closed. Your registration is saved — you can retry payment by submitting again.';
+          alertBox.classList.remove('d-none');
+          showResumeBanner();
+        }
+      };
+    }
+
+    // "You have a payment awaiting verification" banner (reads the payment this browser remembers)
+    function showResumeBanner() {
+      FTPayment.offerResume(document.getElementById('ftResumeBanner'), function (pending) {
+        return buildPayOptions({
+          admissionId: pending.admissionId,
+          payer: pending.payer || { name: pending.studentName, email: pending.email, phone: '' },
+          studentName: pending.studentName || '',
+          email: pending.email || ''
+        });
+      });
+    }
+    showResumeBanner();
+
+    // Fee card, live "fee for the level you picked" line
+    FTFees.renderFeeCard(document.getElementById('ftFeeCard'));
+    FTFees.bindPreview(document.getElementById('programLevelSelect'), document.getElementById('ftFeePreview'));
+    FTFees.renderCounts(document.getElementById('ftRegistrationCard'), document.getElementById('ftRegistrationRows'));
 
     submitBtn.addEventListener('click', async function () {
       const root = document.getElementById('individualAdmissionWizard');
@@ -525,67 +620,21 @@
 
         setBtnLoading(true, 'Generating your payment QR code...');
 
-        // Step 2 onward: show UPI QR code -> admin confirms -> receipt
-        FTPayment.payForAdmission({
-          type: 'individual',
+        // Step 2 onward: show UPI QR code -> school/admin confirms -> receipt
+        FTPayment.payForAdmission(buildPayOptions({
           admissionId: created.admissionId,
+          studentName: studentName,
+          email: email || '',
           payer: {
             name: fields['Parent/Guardian Name'] || studentName,
             email: email || '',
             phone: mobile
           },
-          onSuccess: function (result) {
-            setBtnLoading(false);
-            const fullReceiptUrl = window.FT_CONFIG.API_BASE_URL.replace(/\/api$/, '') + result.downloadUrl;
-            const registrationUrl = 'student-registration-form.html?admissionId=' + encodeURIComponent(created.admissionId)
-              + '&name=' + encodeURIComponent(studentName)
-              + '&email=' + encodeURIComponent(email || '');
-            // Fallback for the registration page in case the query string gets
-            // stripped in transit (e.g. a local static server redirecting
-            // "foo.html" -> "foo" and dropping the query string along the way).
-            try {
-              sessionStorage.setItem('ft_pending_registration', JSON.stringify({
-                admissionId: created.admissionId,
-                name: studentName,
-                email: email || '',
-                savedAt: Date.now()
-              }));
-            } catch (e) { /* sessionStorage unavailable - query string is still the primary path */ }
-            alertBox.className = 'alert alert-success';
-            alertBox.innerHTML =
-              'Payment successful! Registration confirmed. Receipt No: <strong>' + result.receiptNumber + '</strong>. ' +
-              '<a href="' + fullReceiptUrl + '" target="_blank" class="alert-link">Download your receipt</a>.' +
-              '<hr class="my-2">' +
-              '<a href="' + registrationUrl + '" class="btn btn-primary btn-sm fw-bold">' +
-              '<i class="bi bi-person-plus me-1"></i>Create Your Student Login to Access Notes &amp; Quizzes</a>';
-            alertBox.classList.remove('d-none');
-            alertBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-            // Trigger the download automatically too
-            window.open(fullReceiptUrl, '_blank');
-
-            root.querySelectorAll('input, select, textarea').forEach(function (el) {
-              if (el.type === 'checkbox' || el.type === 'radio') {
-                el.checked = false;
-              } else {
-                el.value = el.tagName === 'SELECT' ? el.options[0].value : '';
-              }
-            });
-          },
-          onError: function (message) {
-            setBtnLoading(false);
-            alertBox.className = 'alert alert-danger';
-            alertBox.textContent = message;
-            alertBox.classList.remove('d-none');
-            alertBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          },
-          onDismiss: function () {
-            setBtnLoading(false);
-            alertBox.className = 'alert alert-warning';
-            alertBox.textContent = 'Payment window closed. Your registration is saved — you can retry payment by submitting again.';
-            alertBox.classList.remove('d-none');
-          }
-        });
+          // The server works out the real amount; this is just what the page
+          // showed, so a stale page is refused instead of charging a different fee.
+          months: FTFees.months() || undefined,
+          expectedAmount: FTFees.total(programLevel) || undefined
+        }));
       } catch (err) {
         setBtnLoading(false);
         alertBox.className = 'alert alert-danger';

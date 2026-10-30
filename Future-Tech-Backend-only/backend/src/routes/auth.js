@@ -100,8 +100,6 @@ router.post(
   }
 );
 
-module.exports = router;
-
 // ---------------------------------------------------------------------
 // STUDENT LMS ACCOUNTS
 // Registration is gated by a successful payment — you cannot create a
@@ -147,17 +145,33 @@ router.post(
       }
 
       const passwordHash = await bcrypt.hash(password, 10);
-      const student = await Student.create({
-        admissionId,
-        fullName,
-        dob: dob || null,
-        grade: grade || admission.grade || "",
-        parentName: parentName || admission.parentName || "",
-        phone: phone || admission.mobile || "",
-        address: address || "",
-        email: normalizedEmail,
-        passwordHash,
-      });
+      let student;
+      try {
+        student = await Student.create({
+          admissionId,
+          fullName,
+          dob: dob || null,
+          grade: grade || admission.grade || "",
+          parentName: parentName || admission.parentName || "",
+          phone: phone || admission.mobile || "",
+          address: address || "",
+          email: normalizedEmail,
+          passwordHash,
+        });
+      } catch (createErr) {
+        // The checks above are not atomic: two requests at the same instant
+        // can both pass them, and then the database's UNIQUE constraints
+        // (email, admissionId) stop the second one. That is a normal
+        // "already taken" answer, not a server error. Work out which one it
+        // was by looking, rather than parsing dialect-specific error text.
+        if (createErr && createErr.name === "SequelizeUniqueConstraintError") {
+          if (await Student.findOne({ where: { admissionId } })) {
+            return res.status(409).json({ error: "A student account already exists for this registration. Please log in instead." });
+          }
+          return res.status(409).json({ error: "An account with this email already exists. Please log in instead." });
+        }
+        throw createErr;
+      }
 
       // Best-effort welcome email with the portal link and their password
       // (user's explicit request — students forget passwords, this is
@@ -165,11 +179,23 @@ router.post(
       // just because SMTP isn't configured or a send fails.
       let emailSent = false;
       try {
-        await sendStudentWelcomeEmail({ toEmail: student.email, fullName: student.fullName, password });
+        // Site the student is on right now -> used to build the login URL
+        // when STUDENT_PORTAL_LOGIN_URL isn't set in .env.
+        let siteOrigin = req.headers.origin || null;
+        if (!siteOrigin && req.headers.referer) {
+          try { siteOrigin = new URL(req.headers.referer).origin; } catch (e) { /* ignore */ }
+        }
+        await sendStudentWelcomeEmail({
+          toEmail: student.email,
+          fullName: student.fullName,
+          password,
+          loginUrl: siteOrigin,
+        });
         emailSent = true;
       } catch (emailErr) {
         console.error("Could not send student welcome email. Full error below:");
         console.error(emailErr);
+        console.error("(Account WAS created; the student is shown their details on screen instead.)");
       }
 
       const token = signToken({ role: "student", id: student.id, email: student.email });

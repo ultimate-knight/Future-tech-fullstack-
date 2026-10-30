@@ -1,744 +1,533 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang="en">
 <head>
-    <meta charset='utf-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel="shortcut icon" href="assets/images/shared/favicon.ico">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/site.css">
-    <title>Level 3 Curriculum | Future Tech School Program</title>
-    <style>
-        .main-header { 
-        position: relative; 
-        z-index: 1000; 
-        width: 100%; 
-        background: #06264d; 
-        }
-       
-        .level3-curriculum {
-                width: 92%;
-                max-width: 1200px;
-                margin: 50px auto;
-            }
-
-        .level3-card {
-            display: grid;
-            grid-template-columns: 220px 1fr;
-            min-height: 260px;
-
-            background: #ffffff;
-
-            border: 1px solid #b8d3f5;
-            border-radius: 15px;
-
-            margin-bottom: 18px;
-
-            overflow: hidden;
-
-            box-shadow: 0 3px 12px rgba(0,0,0,0.04);
-
-                transition: 0.3s;
-            }
-
-            .level3-card:hover {
-                transform: translateY(-3px);
-                box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-            }
-
-
-            .course-left {
-                position: relative;
-
-                padding: 45px 20px 25px;
-
-                text-align: center;
-
-                border-right: 2px dotted #c7d8eb;
-
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .course-number {
-                position: absolute;
-
-                top: 0;
-                left: 0;
-
-                width: 110px;
-                height: 65px;
-
-                color: white;
-
-                font-size: 34px;
-                font-weight: 700;
-
-                padding-top: 7px;
-
-                border-radius: 15px 0 35px 0;
-            }
-
-
-            .python-card .course-number {
-                background: #1261c9;
-            }
-
-            .ml-card .course-number {
-                background: #079c91;
-            }
-
-            .data-card .course-number {
-                background: #f28a00;
-            }
-
-            .hacking-card .course-number {
-                background: #6139a6;
-            }
-
-            .projects-card .course-number {
-                background: #1261c9;
-            }
-
-
-            .course-icon {
-                width: 90px;
-                height: 90px;
-
-                display: flex;
-                align-items: center;
-                justify-content: center;
-
-                margin-bottom: 10px;
-
-                font-size: 65px;
-            }
-
-            .python-card .course-icon {
-                color: #1768c9;
-            }
-
-            .ml-card .course-icon {
-                color: #079c91;
-            }
-
-            .data-card .course-icon {
-                color: #f28a00;
-            }
-
-            .hacking-card .course-icon {
-                color: #6139a6;
-            }
-
-            .projects-card .course-icon {
-                color: #1768c9;
-            }
-
-
-            .course-left h2 {
-                color: #102f63;
-
-                font-size: 24px;
-                font-weight: 700;
-
-                line-height: 1.2;
-
-                margin: 5px 0 0;
-            }
-
-
-            .course-content {
-                display: grid;
-
-                grid-template-columns: 1fr 1fr;
-
-                padding: 28px 25px;
-
-                gap: 35px;
-            }
-
-            .content-column {
-                padding-left: 5px;
-            }
-
-            .content-column h3,
-            .project-content h3 {
-
-                display: inline-flex;
-
-                align-items: center;
-
-                gap: 8px;
-
-                color: white;
-
-                font-size: 16px;
-
-                font-weight: 600;
-
-                padding: 5px 15px;
-
-                border-radius: 20px;
-
-                margin-bottom: 12px;
-            }
-        
-
-            .python-card h3 {
-                background: #1261c9;
-            }
-
-            .ml-card h3 {
-                background: #079c91;
-            }
-
-            .data-card h3 {
-                background: #f28a00;
-            }
-
-            .hacking-card h3 {
-                background: #6139a6;
-            }
-
-            .projects-card h3 {
-                background: #1261c9;
-            }
-
-
-            .content-column ul,
-            .project-content ul {
-
-                margin: 0;
-
-                padding-left: 20px;
-
-                color: #182235;
-
-                font-size: 15px;
-
-                line-height: 1.65;
-            }
-
-            .content-column li,
-            .project-content li {
-                margin-bottom: 2px;
-            }
-
-            .python-card li::marker {
-                color: #1261c9;
-            }
-
-            .ml-card li::marker {
-                color: #079c91;
-            }
-
-            .data-card li::marker {
-                color: #f28a00;
-            }
-
-            .hacking-card li::marker {
-                color: #6139a6;
-            }
-
-            .projects-card li::marker {
-                color: #1261c9;
-            }
-
-            .content-column h4 {
-                font-size: 17px;
-
-                color: #162b4d;
-
-                margin: 5px 0 8px;
-            }
-
-            .content-column p {
-                color: #303b4d;
-
-                font-size: 15px;
-
-                margin-bottom: 8px;
-            }
-
-            .projects-card {
-                grid-template-columns: 220px 1fr;
-            }
-
-            .project-content {
-                padding: 30px 30px;
-            }
-
-            .project-intro {
-                font-size: 16px;
-
-                font-weight: 600;
-
-                color: #172033;
-
-                margin-bottom: 10px;
-            }
-
-            .project-content ul {
-                max-width: 500px;
-            }
-
-            @media (max-width: 900px) {
-
-                .level3-card {
-                    grid-template-columns: 180px 1fr;
-                }
-
-                .course-content {
-                    grid-template-columns: 1fr;
-                    gap: 20px;
-                }
-
-                .course-left h2 {
-                    font-size: 20px;
-                }
-
-                .course-number {
-                    width: 90px;
-                    font-size: 28px;
-                }
-            }
-
-
-            @media (max-width: 600px) {
-
-                .level3-curriculum {
-                    width: 94%;
-                    margin: 30px auto;
-                }
-
-                .level3-card,
-                .projects-card {
-                    grid-template-columns: 1fr;
-                }
-
-                .course-left {
-                    min-height: 210px;
-
-                    border-right: none;
-                    border-bottom: 2px dotted #c7d8eb;
-                }
-
-                .course-number {
-                    width: 100px;
-                    height: 55px;
-                    font-size: 26px;
-                }
-
-                .course-content {
-                    padding: 25px 20px;
-
-                    grid-template-columns: 1fr;
-                }
-
-                .content-column ul,
-                .project-content ul {
-                    font-size: 14px;
-                }
-
-                .course-left h2 {
-                    font-size: 22px;
-                }
-
-                .project-content {
-                    padding: 25px 20px;
-                }
-            }
-
-            .final-outcome {
-                padding: 70px 8%;
-                background: #2856c2;
-            }
-
-            .outcome-box {
-                background: #ffffff;
-                border: 1px solid #d6e2f5;
-                border-radius: 20px;
-                overflow: hidden;
-                display: flex;
-                align-items: stretch;
-                min-height: 330px;
-                box-shadow: 0 10px 35px rgba(0, 40, 100, 0.08);
-            }
-
-            .final-outcome {
-                padding: 60px 0;
-                background: #f5f8ff;
-            }
-
-            .outcome-box {
-                display: flex;
-                align-items: stretch;
-                background: #4e9db3;
-                border: 1px solid #c9d9ef;
-                border-radius: 20px;
-                overflow: hidden;
-                min-height: 350px;
-                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
-            }
-
-            .outcome-img {
-                width: 42%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background: #4e9db3;
-                padding: 30px;
-            }
-
-            .outcome-img img {
-                width: 100%;
-                max-width: 430px;
-                height: auto;
-                object-fit: contain;
-                display: block;
-            }
-
-            .outcome-content {
-                width: 58%;
-                padding: 40px 45px;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-            }
-
-            .outcome-label {
-                display: inline-block;
-                width: fit-content;
-                background: #075fc4;
-                color: #ffffff;
-                padding: 8px 20px;
-                border-radius: 20px;
-
-                font-size: 14px;
-                font-weight: 700;
-                letter-spacing: 1px;
-                margin-bottom: 18px;
-            }
-
-            .outcome-content h2 {
-                font-size: 20px;
-                line-height: 1.6;
-                font-weight: 600;
-                color: #172b4d;
-                margin-bottom: 18px;
-            }
-
-            .outcome-line {
-                width: 100%;
-                height: 1px;
-                background: #d8e2ef;
-                margin: 5px 0 20px;
-            }
-
-            .outcome-content h3 {
-                font-size: 32px;
-                line-height: 1.2;
-                font-weight: 800;
-                color: #063b7a;
-                margin-bottom: 12px;
-            }
-
-            .outcome-content p {
-                font-size: 16px;
-                color: #66758a;
-                margin-bottom: 22px;
-            }
-
-            .outcome-buttons {
-                display: flex;
-                align-items: center;
-                gap: 15px;
-                flex-wrap: wrap;
-            }
-
-            .outcome-btn {
-                display: inline-flex;
-                align-items: center;
-                gap: 8px;
-
-                background: linear-gradient(
-                    135deg,
-                    #075fc4,
-                    #063b7a
-                );
-
-                color: #ffffff;
-                text-decoration: none;
-
-                padding: 12px 22px;
-                border-radius: 8px;
-
-                font-size: 14px;
-                font-weight: 700;
-
-                transition: 0.3s;
-            }
-
-            .outcome-btn:hover {
-                color: #ffffff;
-                transform: translateY(-3px);
-                box-shadow: 0 8px 18px rgba(7, 95, 196, 0.25);
-            }
-
-            .outcome-btn i {
-                font-size: 17px;
-            }
-
-            .next-btn {
-                display: inline-flex;
-                align-items: center;
-                gap: 7px;
-
-                color: #075fc4;
-                background: #eef5ff;
-
-                border: 1px solid #bcd2ef;
-                text-decoration: none;
-
-                padding: 11px 18px;
-                border-radius: 8px;
-
-                font-size: 13px;
-                font-weight: 600;
-
-                transition: 0.3s;
-            }
-
-            .next-btn:hover {
-                background: #075fc4;
-                color: #ffffff;
-                border-color: #075fc4;
-            }
-
-            @media (max-width: 991px) {
-
-                .outcome-img {
-                    width: 40%;
-                    padding: 20px;
-                }
-
-                .outcome-content {
-                    width: 60%;
-                    padding: 35px 30px;
-                }
-
-                .outcome-content h2 {
-                    font-size: 18px;
-                }
-
-                .outcome-content h3 {
-                    font-size: 28px;
-                }
-            }
-
-            @media (max-width: 767px) {
-
-                .final-outcome {
-                    padding: 45px 15px;
-                }
-
-                .outcome-box {
-                    flex-direction: column;
-                }
-
-                .outcome-img {
-                    width: 100%;
-                    min-height: 230px;
-                    padding: 25px;
-                }
-
-                .outcome-img img {
-                    max-width: max-content;
-                    max-height: max-content;
-                }
-
-                .outcome-content {
-                    width: 100%;
-                    padding: 30px 22px;
-                }
-
-                .outcome-label {
-                    font-size: 12px;
-                    padding: 7px 15px;
-                }
-
-                .outcome-content h2 {
-                    font-size: 16px;
-                    line-height: 1.5;
-                }
-
-                .outcome-content h3 {
-                    font-size: 25px;
-                }
-
-                .outcome-content p {
-                    font-size: 14px;
-                }
-
-                .outcome-buttons {
-                    flex-direction: column;
-                    align-items: flex-start;
-                }
-
-                .outcome-btn,
-                .next-btn {
-                    width: 100%;
-                    justify-content: center;
-                }
-            }
-
-            .outcome-content {
-                width: 65%;
-                padding: 45px 50px;
-            }
-
-            .outcome-label {
-                display: inline-block;
-                background: #075fc4;
-                color: #ffffff;
-
-                padding: 8px 20px;
-                border-radius: 20px;
-
-                font-size: 14px;
-                font-weight: 700;
-                letter-spacing: 1px;
-            }
-
-            .outcome-content h2 {
-                margin-top: 22px;
-                max-width: 750px;
-
-                font-size: 20px;
-                line-height: 1.6;
-                font-weight: 600;
-
-                color: #15294a;
-            }
-
-            .outcome-line {
-                width: 100%;
-                height: 1px;
-                background: #d9e2ef;
-                margin: 22px 0;
-            }
-
-            .outcome-content h3 {
-                font-size: 32px;
-                line-height: 1.2;
-                font-weight: 800;
-
-                color: #063b7a;
-
-                margin-bottom: 12px;
-            }
-
-            .outcome-content p {
-                font-size: 16px;
-                color: #5c6b7d;
-                margin-bottom: 25px;
-            }
-
-            .outcome-btn {
-                display: inline-flex;
-                align-items: center;
-                gap: 10px;
-
-                background: linear-gradient(
-                    135deg,
-                    #075fc4,
-                    #063b7a);
-
-                color: #ffffff;
-                text-decoration: none;
-
-                padding: 13px 25px;
-                border-radius: 8px;
-
-                font-size: 14px;
-                font-weight: 700;
-
-                transition: 0.3s;
-            }
-
-            .outcome-btn:hover {
-                color: #ffffff;
-                transform: translateY(-3px);
-                box-shadow: 0 8px 20px rgba(7,95,196,0.25);
-            }
-
-            .outcome-btn i {
-                font-size: 17px;
-            }
-            .next-btn{
-                    display: inline-flex;
-                    align-items: center;
-                    gap: 10px;
-                
-                    background: linear-gradient(
-                        135deg,
-                        #075fc4,
-                        #063b7a);
-
-                    color: #ffffff;
-                    text-decoration: none;
-
-                    padding: 13px 25px;
-                    border-radius: 8px;
-
-                    font-size: 14px;
-                    font-weight: 700;
-
-                    transition: 0.3s;
-                }
-
-            .next-btn:hover {
-                color: #ffffff;
-                transform: translateY(-3px);
-                box-shadow: 0 8px 20px rgba(7,95,196,0.25);
-            }
-
-            .next-btn i {
-                font-size: 17px;
-            }
-            footer{
-                background-color: rgb(14, 14, 65);
-                margin-top: -50px;
-                padding-bottom: 40px;
-                padding-top: 20px;
-            }
-            .line{
-                border-bottom: 0px;
-                border-top: 0px;
-                border-left: 0px;
-                border-right: 2px solid rgb(26, 26, 83);
-            }
-            .quick:hover{
-                transform:translateY(-10px);
-                box-shadow:0 15px 35px rgba(0,0,0,.2);
-                color: rgb(211, 151, 22);
-            } 
-            .to{
-                color: rgb(15, 220, 15);
-            }
-            .four{
-                color:rgb(187, 22, 187);
-            }
-            
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="assets/images/shared/favicon.ico">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<title>Level 3 Curriculum | Future Tech School Program</title>
+<style>
+  .level3-curriculum {
+          width: 92%;
+          max-width: 1200px;
+          margin: 50px auto;
+      }
+    .level3-card {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      min-height: 260px;
+      background: #ffffff;
+      border: 1px solid #b8d3f5;
+border-radius: 15px;
+margin-bottom: 18px;
+overflow: hidden;
+box-shadow: 0 3px 12px rgba(0,0,0,0.04);
+    transition: 0.3s;
+}
+.level3-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+.course-left {
+    position: relative;
+    padding: 45px 20px 25px;
+    text-align: center;
+    border-right: 2px dotted #c7d8eb;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.course-number {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 110px;
+    height: 65px;
+    color: white;
+    font-size: 34px;
+    font-weight: 700;
+    padding-top: 7px;
+    border-radius: 15px 0 35px 0;
+}
+.python-card .course-number {
+    background: #6139a6;
+}
+.ml-card .course-number {
+    background: #6139a6;
+}
+.data-card .course-number {
+    background: #6139a6;
+}
+.hacking-card .course-number {
+    background: #6139a6;
+}
+.projects-card .course-number {
+    background: #6139a6;
+}
+.course-icon {
+    width: 90px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    font-size: 65px;
+}
+.python-card .course-icon {
+    color: #6139a6;
+}
+.ml-card .course-icon {
+    color: #6139a6;
+}
+.data-card .course-icon {
+    color: #6139a6;
+}
+.hacking-card .course-icon {
+    color: #6139a6;
+}
+.projects-card .course-icon {
+    color: #6139a6;
+}
+.course-left h2 {
+    color: #102f63;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 5px 0 0;
+}
+.course-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 28px 25px;
+    gap: 35px;
+}
+.content-column {
+    padding-left: 5px;
+}
+.content-column h3,
+.project-content h3 {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 5px 15px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+}
+.python-card h3 {
+    background: #6139a6;
+}
+.ml-card h3 {
+    background: #6139a6;
+}
+.data-card h3 {
+    background: #6139a6;
+}
+.hacking-card h3 {
+    background: #6139a6;
+}
+.projects-card h3 {
+    background: #6139a6;
+}
+.content-column ul,
+.project-content ul {
+    margin: 0;
+    padding-left: 20px;
+    color: #182235;
+    font-size: 15px;
+    line-height: 1.65;
+}
+.content-column li,
+.project-content li {
+    margin-bottom: 2px;
+}
+.python-card li::marker {
+    color: #6139a6;
+}
+.ml-card li::marker {
+    color: #6139a6;
+}
+.data-card li::marker {
+    color: #6139a6;
+}
+.hacking-card li::marker {
+    color: #6139a6;
+}
+.projects-card li::marker {
+    color: #6139a6;
+}
+.content-column h4 {
+    font-size: 17px;
+    color: #162b4d;
+    margin: 5px 0 8px;
+}
+.content-column p {
+    color: #303b4d;
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+.projects-card {
+    grid-template-columns: 220px 1fr;
+}
+.project-content {
+    padding: 30px 30px;
+}
+.project-intro {
+    font-size: 16px;
+    font-weight: 600;
+    color: #172033;
+    margin-bottom: 10px;
+}
+.project-content ul {
+    max-width: 500px;
+}
+@media (max-width: 900px) {
+    .level3-card {
+        grid-template-columns: 180px 1fr;
+    }
+    .course-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .course-left h2 {
+        font-size: 20px;
+    }
+    .course-number {
+        width: 90px;
+        font-size: 28px;
+    }
+}
+@media (max-width: 600px) {
+    .level3-curriculum {
+        width: 94%;
+        margin: 30px auto;
+    }
+    .level3-card,
+    .projects-card {
+        grid-template-columns: 1fr;
+}
+.course-left {
+    min-height: 210px;
+    border-right: none;
+    border-bottom: 2px dotted #c7d8eb;
+}
+.course-number {
+    width: 100px;
+    height: 55px;
+    font-size: 26px;
+}
+.course-content {
+    padding: 25px 20px;
+    grid-template-columns: 1fr;
+}
+.content-column ul,
+.project-content ul {
+    font-size: 14px;
+}
+.course-left h2 {
+    font-size: 22px;
+}
+.project-content {
+        padding: 25px 20px;
+    }
+}
+.final-outcome {
+    padding: 70px 8%;
+    background: #2856c2;
+}
+.outcome-box {
+    background: #ffffff;
+    border: 1px solid #d6e2f5;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    align-items: stretch;
+    min-height: 330px;
+    box-shadow: 0 10px 35px rgba(0, 40, 100, 0.08);
+}
+.final-outcome {
+    padding: 60px 0;
+    background: #f5f8ff;
+}
+.outcome-box {
+    display: flex;
+    align-items: stretch;
+    background: #4e9db3;
+    border: 1px solid #c9d9ef;
+    border-radius: 20px;
+    overflow: hidden;
+    min-height: 350px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+}
+.outcome-img {
+    width: 42%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #4e9db3;
+    padding: 30px;
+}
+.outcome-img img {
+    width: 100%;
+    max-width: 430px;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+.outcome-content {
+    width: 58%;
+    padding: 40px 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.outcome-label {
+    display: inline-block;
+    width: fit-content;
+    background: #075fc4;
+    color: #ffffff;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 18px;
+}
+.outcome-content h2 {
+    font-size: 20px;
+    line-height: 1.6;
+    font-weight: 600;
+    color: #172b4d;
+    margin-bottom: 18px;
+}
+.outcome-line {
+    width: 100%;
+    height: 1px;
+    background: #d8e2ef;
+    margin: 5px 0 20px;
+}
+.outcome-content h3 {
+    font-size: 32px;
+    line-height: 1.2;
+    font-weight: 800;
+    color: #063b7a;
+    margin-bottom: 12px;
+}
+.outcome-content p {
+    font-size: 16px;
+    color: #66758a;
+    margin-bottom: 22px;
+}
+.outcome-buttons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+.outcome-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(
+         135deg,
+         #075fc4,
+         #063b7a
+    );
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    transition: 0.3s;
+}
+.outcome-btn:hover {
+    color: #ffffff;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(7, 95, 196, 0.25);
+}
+.outcome-btn i {
+    font-size: 17px;
+}
+.next-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: #075fc4;
+    background: #eef5ff;
+    border: 1px solid #bcd2ef;
+    text-decoration: none;
+    padding: 11px 18px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+.next-btn:hover {
+    background: #075fc4;
+    color: #ffffff;
+    border-color: #075fc4;
+}
+@media (max-width: 991px) {
+    .outcome-img {
+        width: 40%;
+        padding: 20px;
+    }
+    .outcome-content {
+        width: 60%;
+        padding: 35px 30px;
+    }
+    .outcome-content h2 {
+        font-size: 18px;
+    }
+    .outcome-content h3 {
+        font-size: 28px;
+    }
+}
+@media (max-width: 767px) {
+    .final-outcome {
+        padding: 45px 15px;
+    }
+    .outcome-box {
+        flex-direction: column;
+    }
+    .outcome-img {
+        width: 100%;
+        min-height: 230px;
+        padding: 25px;
+    }
+    .outcome-img img {
+        max-width: max-content;
+        max-height: max-content;
+    }
+    .outcome-content {
+        width: 100%;
+        padding: 30px 22px;
+    }
+    .outcome-label {
+        font-size: 12px;
+        padding: 7px 15px;
+    }
+    .outcome-content h2 {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+    .outcome-content h3 {
+        font-size: 25px;
+    }
+    .outcome-content p {
+        font-size: 14px;
+    }
+    .outcome-buttons {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .outcome-btn,
+    .next-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+.outcome-content {
+    width: 65%;
+    padding: 45px 50px;
+}
+.outcome-label {
+    display: inline-block;
+    background: #075fc4;
+    color: #ffffff;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+.outcome-content h2 {
+    margin-top: 22px;
+    max-width: 750px;
+    font-size: 20px;
+    line-height: 1.6;
+    font-weight: 600;
+    color: #15294a;
+}
+.outcome-line {
+    width: 100%;
+    height: 1px;
+    background: #d9e2ef;
+    margin: 22px 0;
+}
+.outcome-content h3 {
+    font-size: 32px;
+    line-height: 1.2;
+    font-weight: 800;
+    color: #063b7a;
+    margin-bottom: 12px;
+}
+.outcome-content p {
+    font-size: 16px;
+    color: #5c6b7d;
+    margin-bottom: 25px;
+}
+.outcome-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(
+      135deg,
+      #075fc4,
+      #063b7a);
+    color: #ffffff;
+    text-decoration: none;
+    padding: 13px 25px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    transition: 0.3s;
+}
+.outcome-btn:hover {
+    color: #ffffff;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(7,95,196,0.25);
+}
+.outcome-btn i {
+    font-size: 17px;
+}
+.next-btn{
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(
+         135deg,
+         #075fc4,
+         #063b7a);
+      color: #ffffff;
+              text-decoration: none;
+              padding: 13px 25px;
+              border-radius: 8px;
+              font-size: 14px;
+              font-weight: 700;
+              transition: 0.3s;
+          }
+      .next-btn:hover {
+          color: #ffffff;
+          transform: translateY(-3px);
+          box-shadow: 0 8px 20px rgba(7,95,196,0.25);
+      }
+      .next-btn i {
+          font-size: 17px;
+      }
+  </style>
 </head>
 <body>
-   <header class="ft-header">
+<header class="ft-header">
     <nav class="navbar navbar-expand-xl ft-navbar">
       <div class="container-fluid">
         <a href="home.html" class="d-flex align-items-center text-decoration-none ft-logo-wrap">
@@ -839,325 +628,251 @@
       </div>
     </div>
   </header>
-        
-    <section class="level3-curriculum">
-
-        
-        <div class="level3-card python-card">
-
-            <div class="course-left">
-                <div class="course-number">01</div>
-
-                <div class="course-icon">
-                    <i class="bi bi-filetype-py"></i>
-                </div>
-
-                <h2>Python<br>Programming</h2>
-            </div>
-
-            <div class="course-content">
-
-                <div class="content-column">
-                    <h3>
-                        <i class="bi bi-grid-3x3-gap-fill"></i>
-                        Topics
-                    </h3>
-
-                    <ul>
-                        <li>Advanced Python fundamentals</li>
-                        <li>Functions</li>
-                        <li>Modules</li>
-                        <li>File handling</li>
-                        <li>Exception handling</li>
-                        <li>Data structures</li>
-                        <li>Object-oriented programming concepts</li>
-                        <li>Problem solving</li>
-                        <li>Algorithmic thinking</li>
-                    </ul>
-                </div>
-
-                <div class="content-column">
-                    <h3>
-                        <i class="bi bi-folder-fill"></i>
-                        Projects
-                    </h3>
-
-                    <ul>
-                        <li>Student Management System</li>
-                        <li>Expense Tracker</li>
-                        <li>Quiz Application</li>
-                        <li>File Automation Tool</li>
-                        <li>Data Processing Application</li>
-                    </ul>
-                </div>
-
-            </div>
+ <section class="level3-curriculum">
+    <div class="level3-card ml-card">
+      <div class="course-left">
+           <div class="course-number">01</div>
+           <div class="course-icon">
+             <i class="bi bi-cpu"></i>
+           </div>
+           <h2>Python<br>Programming</h2>
+      </div>
+      <div class="course-content">
+<div class="content-column">
+  <h3>
+    <i class="bi bi-grid-3x3-gap-fill"></i>
+    Topics
+  </h3>
+  <ul>
+    <li>Introduction to Python & Programming Logic</li>
+    <li>Python Setup & Development Environment</li>
+    <li>Variables, Data Types & Type Conversion</li>
+    <li>Input, Output & Operators</li>
+    <li>Conditional Statements</li>
+    <li>Nested Conditions & Decision Making</li>
+    <li>Loops – for & while</li>
+    <li>Strings & String Operations</li>
+    <li>Functions & Modular Programming</li>
+  </ul>
+</div>
+<div class="content-column">
+  <h3>
+    <i class="bi bi-folder-fill"></i>
+    Practical Activity
+  </h3>
+  <ul>
+    <li>Write simple problem-solving programs</li>
+    <li>Install Python and work with VS Code/IDLE</li>
+    <li>Build a student information program </li>
+    <li>Build multiplication tables and counting programs</li>
+    <li>Create reusable calculator functions</li>
+  </ul>
+    </div>
+  </div>
+</div>
+<div class="level3-card hacking-card">
+  <div class="course-left">
+    <div class="course-number">02</div>
+    <div class="course-icon">
+         <i class="bi bi-diagram-3"></i>
+    </div>
+    <h2>Machine<br>Learning</h2>
+  </div>
+  <div class="course-content">
+    <div class="content-column">
+         <h3>
+           <i class="bi bi-grid-3x3-gap-fill"></i>
+           Topics
+         </h3>
+         <ul>
+           <li>Introduction to Machine Learning</li>
+           <li>AI vs Machine Learning </li>
+           <li>Machine Learning Workflow</li>
+           <li>Features & Target Variables</li>
+           <li>Data Collection & Preparation</li>
+           <li>Exploratory Data Analysis (EDA)</li>
+           <li>Training & Testing Data</li>
+           <li>Supervised Learning</li>
+           <li>Unsupervised Learning</li>
+         </ul>
+    </div>
+    <div class="content-column">
+         <h3>
+           <i class="bi bi-shield-check"></i>
+           Practical Activity
+         </h3>
+         <ul>
+           <li>Understand ML workflow with a real-world example</li>
+           <li>Build a complete ML workflow</li>
+           <li>Explore a real-world dataset</li>
+           <li>Handle missing, duplicate, and incorrect data</li>
+         </ul>
+    </div>
+  </div>
+</div>
+<div class="level3-card hacking-card">
+  <div class="course-left">
+    <div class="course-number">03</div>
+    <div class="course-icon">
+    <i class="bi bi-bar-chart-line-fill"></i>
+  </div>
+  <h2>Data Science<br>Basics</h2>
+</div>
+<div class="course-content">
+  <div class="content-column">
+    <h3>
+         <i class="bi bi-grid-3x3-gap-fill"></i>
+         Topics
+    </h3>
+    <ul>
+         <li>Introduction to Data Science</li>
+         <li>Data Science vs AI vs ML</li>
+         <li>Types of Data</li>
+         <li>Data Sources & Data Collection</li>
+         <li>Datasets & Data Tables</li>
+         <li>Introduction to Python for Data Science</li>
+         <li>NumPy Basics</li>
+         <li>Data Selection & Filtering</li>
+         <li>Pandas Basics</li>
+    </ul>
+  </div>
+  <div class="content-column">
+    <h3>
+         <i class="bi bi-shield-check"></i>
+           Practical Activity
+         </h3>
+         <ul>
+           <li>Explore how data science is used in daily life</li>
+           <li>Identify numerical, categorical, and text data</li>
+           <li>Create and explore a student dataset</li>
+           <li>Find missing, duplicate, and incorrect data</li>
+         </ul>
+    </div>
+  </div>
+</div>
+<div class="level3-card hacking-card">
+  <div class="course-left">
+    <div class="course-number">04</div>
+    <div class="course-icon">
+         <i class="bi bi-broadcast"></i>
+    </div>
+    <h2>Ethical Hacking<br>Basics</h2>
+  </div>
+<div class="course-content">
+  <div class="content-column">
+    <h3>
+      <i class="bi bi-grid-3x3-gap-fill"></i>
+      Topics
+    </h3>
+    <ul>
+      <li>Introduction to Ethical Hacking</li>
+      <li>Cybersecurity vs Ethical Hacking </li>
+      <li>Types of Hackers</li>
+      <li>Cyber Ethics & Legal Awareness</li>
+      <li>Information Security Basics</li>
+      <li>Phishing & Social Engineering</li>
+      <li>Malware & Common Threats</li>
+      <li>Firewalls & Network Protection</li>
+      <li>Vulnerability & Risk Assessment</li>
+    </ul>
+  </div>
+  <div class="content-column">
+    <h3>
+      <i class="bi bi-shield-check"></i>
+      Practical Activity
+    </h3>
+    <p>All security activities are performed only in a safe, authorized practice environment.</p>
+             <ul>
+               <li>Understand ethical vs unethical hacking</li>
+               <li>Identify common security risks</li>
+               <li>Identify simulated phishing messages</li>
+               <li>Learn the purpose of network addresses</li>
+             </ul>
+         </div>
+      </div>
+    </div>
+    <div class="level3-card hacking-card">
+<div class="course-left">
+         <div class="course-number">05</div>
+         <div class="course-icon">
+             <i class="bi bi-lightbulb"></i>
+         </div>
+         <h2>Real Time <br>Projects</h2>
+      </div>
+      <div class="course-content">
+         <div class="content-column">
+             <h3>
+               <i class="bi bi-grid-3x3-gap-fill"></i>
+               Topics
+             </h3>
+    <ul>
+         <li>Student Attendance Management System</li>
+         <li>School Library Management System</li>
+         <li>Personal Expense Tracker</li>
+         <li>Online Quiz Application</li>
+         <li>Student Performance Prediction</li>
+         <li>Smart Traffic Safety System</li>
+         <li>Smart Water Usage Monitor</li>
+         <li>Weather Information Dashboard</li>
+         <li>School Energy Monitoring Dashboard</li>
+    </ul>
+  </div>
+  <div class="content-column">
+    <h3>
+         <i class="bi bi-shield-check"></i>
+         Technologies Used
+    </h3>
+    <ul>
+         <li>Python, data handling</li>
+         <li>Forms, Python, data management</li>
+         <li>APIs, data visualization</li>
+         <li>Cybersecurity, Python</li>
+         <li>Data collection, visualization</li>
+    </ul>
+  </div>
+</div>
+    </div>
+  </section>
+  <section class="final-outcome" id="level3-outcome">
+    <div class="container">
+      <div class="outcome-box">
+        <div class="outcome-img">
+            <img src="assets/images/programs/9th -10th standard.png" alt="Level 3 Final Outcome">
         </div>
-
-
-        
-        <div class="level3-card ml-card">
-
-            <div class="course-left">
-                <div class="course-number">02</div>
-
-                <div class="course-icon">
-                    <i class="bi bi-cpu"></i>
-                </div>
-
-                <h2>Machine<br>Learning</h2>
-            </div>
-
-            <div class="course-content">
-
-                <div class="content-column">
-                    <h3>
-                        <i class="bi bi-grid-3x3-gap-fill"></i>
-                        Topics
-                    </h3>
-
-                    <ul>
-                        <li>Machine learning workflow</li>
-                        <li>Supervised learning</li>
-                        <li>Unsupervised learning</li>
-                        <li>Data preparation</li>
-                        <li>Training and testing</li>
-                        <li>Classification</li>
-                        <li>Regression</li>
-                        <li>Model evaluation</li>
-                        <li>Real-world ML applications</li>
-                    </ul>
-                </div>
-
-                <div class="content-column">
-                    <h3>
-                        <i class="bi bi-folder-fill"></i>
-                        Example Projects
-                    </h3>
-
-                    <ul>
-                        <li>Student performance prediction</li>
-                        <li>Basic classification system</li>
-                        <li>Simple recommendation system</li>
-                        <li>Dataset prediction project</li>
-                    </ul>
-                </div>
-
-            </div>
+        <div class="outcome-content">
+             <span class="outcome-label">
+               LEVEL 3 FINAL OUTCOME
+             </span>
+             <h2>
+               Students gain practical exposure to multiple
+               technology domains and learn how technology
+               can be used to solve real-world problems.
+             </h2>
+             <div class="outcome-line"></div>
+             <h3>
+               Start Solving<br>
+               Real-World Problems
+             </h3>
+             <p>
+               Develop technology skills through projects
+               and practical learning.
+             </p>
+             <div class="outcome-buttons">
+               <a href="admissions-individual-registration.html" class="outcome-btn">
+                   ENROLL NOW
+                   <i class="bi bi-arrow-right"></i>
+               </a>
+               <a href="programs-level4.html" class="next-btn">
+                   Level 4
+                   <i class="bi bi-arrow-right"></i>
+                   AI Professional Foundation
+               </a>
+             </div>
         </div>
-
-        <div class="level3-card data-card">
-
-            <div class="course-left">
-                <div class="course-number">03</div>
-
-                <div class="course-icon">
-                    <i class="bi bi-bar-chart-fill"></i>
-                </div>
-
-                <h2>Data Science<br>Basics</h2>
-            </div>
-
-            <div class="course-content">
-
-                <div class="content-column">
-                    <h3>
-                        <i class="bi bi-grid-3x3-gap-fill"></i>
-                        Topics
-                    </h3>
-
-                    <ul>
-                        <li>Introduction to Data Science</li>
-                        <li>Types of data</li>
-                        <li>Data collection</li>
-                        <li>Data cleaning</li>
-                        <li>Data analysis</li>
-                        <li>Basic statistics</li>
-                        <li>Data visualization</li>
-                        <li>Finding patterns</li>
-                        <li>Interpreting results</li>
-                    </ul>
-                </div>
-
-                <div class="content-column">
-
-                    <h3>
-                        <i class="bi bi-folder-fill"></i>
-                        Project
-                    </h3>
-
-                    <h4>Student Performance Analytics</h4>
-
-                    <p>
-                        Students can analyze sample data to identify:
-                    </p>
-
-                    <ul>
-                        <li>Average marks</li>
-                        <li>Subject performance</li>
-                        <li>Attendance patterns</li>
-                        <li>Performance trends</li>
-                    </ul>
-
-                </div>
-
-            </div>
-        </div>
-
-
-        
-        <div class="level3-card hacking-card">
-
-            <div class="course-left">
-                <div class="course-number">04</div>
-
-                <div class="course-icon">
-                    <i class="bi bi-shield-lock-fill"></i>
-                </div>
-
-                <h2>Ethical Hacking<br>Basics</h2>
-            </div>
-
-            <div class="course-content">
-
-                <div class="content-column">
-                    <h3>
-                        <i class="bi bi-grid-3x3-gap-fill"></i>
-                        Topics
-                    </h3>
-
-                    <ul>
-                        <li>Cybersecurity fundamentals</li>
-                        <li>Ethical hacking concepts</li>
-                        <li>Network security</li>
-                        <li>Common vulnerabilities</li>
-                        <li>Web security awareness</li>
-                        <li>Authentication</li>
-                        <li>Security testing concepts</li>
-                        <li>Secure practices</li>
-                        <li>Cyber ethics</li>
-                    </ul>
-                </div>
-
-                <div class="content-column">
-
-                    <h3>
-                        <i class="bi bi-shield-check"></i>
-                        Practical Environment
-                    </h3>
-
-                    <p>
-                        All security activities should be performed only in:
-                    </p>
-
-                    <ul>
-                        <li>Authorized labs</li>
-                        <li>Local environments</li>
-                        <li>Simulated networks</li>
-                        <li>Educational platforms</li>
-                    </ul>
-
-                </div>
-
-            </div>
-        </div>
-
-
-    
-        <div class="level3-card projects-card">
-
-            <div class="course-left">
-                <div class="course-number">05</div>
-
-                <div class="course-icon">
-                    <i class="bi bi-lightbulb"></i>
-                </div>
-
-                <h2>Real-Time<br>Projects</h2>
-            </div>
-
-            <div class="project-content">
-
-                <p class="project-intro">
-                    Students start developing larger projects.
-                </p>
-
-                <h3>
-                    <i class="bi bi-folder-fill"></i>
-                    Example Projects
-                </h3>
-
-                <ul>
-                    <li>AI Attendance System</li>
-                    <li>Student Performance Analytics</li>
-                    <li>Cybersecurity Awareness Platform</li>
-                    <li>AI Recommendation Project</li>
-                    <li>Data Visualization Dashboard</li>
-                </ul>
-
-            </div>
-
-        </div>
-
-    </section>
-    <section class="final-outcome" id="level3-outcome">
-
-        <div class="container">
-
-            <div class="outcome-box">
-
-                
-                <div class="outcome-img">
-                    <img src="assets/images/contact/outcome.png" alt="Level 3 Final Outcome">
-                </div>
-
-                <div class="outcome-content">
-
-                    <span class="outcome-label">
-                        LEVEL 3 FINAL OUTCOME
-                    </span>
-
-                    <h2>
-                        Students gain practical exposure to multiple
-                        technology domains and learn how technology
-                        can be used to solve real-world problems.
-                    </h2>
-
-                    <div class="outcome-line"></div>
-
-                    <h3>
-                        Start Solving<br>
-                        Real-World Problems
-                    </h3>
-
-                    <p>
-                        Develop technology skills through projects
-                        and practical learning.
-                    </p>
-
-                    <div class="outcome-buttons">
-
-                        <a href="admissions-individual-registration.html" class="outcome-btn">
-                            ENROLL NOW
-                            <i class="bi bi-arrow-right"></i>
-                        </a>
-
-                        <a href="programs-level4.html" class="next-btn">
-                            Level 4
-                            <i class="bi bi-arrow-right"></i>
-                            AI Professional Foundation
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-    <footer class="ft-footer">
+      </div>
+    </div>
+  </section>
+<footer class="ft-footer">
         <div class="container-fluid">
           <div class="row gy-4">
             <div class="col-lg-3 col-md-6 ft-col">
@@ -1264,4 +979,4 @@
         
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-</html>
+</html>

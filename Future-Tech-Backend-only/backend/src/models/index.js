@@ -8,6 +8,9 @@ const BulkAdmission = require("./BulkAdmission");
 const Payment = require("./Payment");
 const Student = require("./Student");
 const QuizResult = require("./QuizResult");
+const ClassProgress = require("./ClassProgress");
+const ClassContent = require("./ClassContent");
+const LiveClass = require("./LiveClass");
 const SchoolInvoice = require("./SchoolInvoice");
 
 // ---- Associations ----
@@ -26,6 +29,9 @@ Student.belongsTo(IndividualAdmission, { foreignKey: "admissionId", constraints:
 Student.hasMany(QuizResult, { foreignKey: "studentId", constraints: false });
 QuizResult.belongsTo(Student, { foreignKey: "studentId", constraints: false });
 
+Student.hasMany(ClassProgress, { foreignKey: "studentId", constraints: false });
+ClassProgress.belongsTo(Student, { foreignKey: "studentId", constraints: false });
+
 School.hasMany(SchoolInvoice, { foreignKey: "schoolId", constraints: false });
 SchoolInvoice.belongsTo(School, { foreignKey: "schoolId", constraints: false });
 
@@ -39,5 +45,8 @@ module.exports = {
   Payment,
   Student,
   QuizResult,
+  ClassProgress,
+  ClassContent,
+  LiveClass,
   SchoolInvoice,
 };

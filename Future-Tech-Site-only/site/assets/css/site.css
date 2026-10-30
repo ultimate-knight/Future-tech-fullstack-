@@ -138,3 +138,118 @@ body{
   font-size: .85rem;
   font-weight: 600;
 }
+
+/* ===================================================================
+   Responsive Design — Tablet & Mobile
+   =================================================================== */
+
+/* Prevent accidental horizontal scrolling */
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Make images responsive by default */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ---------- Tablet ---------- */
+
+@media (max-width: 991.98px) {
+
+  .ft-navbar {
+    padding: .6rem 1rem;
+  }
+
+  .ft-page-hero {
+    padding: 120px 5% 50px;
+  }
+
+  .ft-footer {
+    padding: 40px 5% 20px;
+  }
+
+  .ft-footer .ft-col {
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,.15);
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+  }
+
+  .ft-footer .ft-col:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 767.98px) {
+
+  body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  .ft-navbar {
+    padding: .5rem .75rem;
+  }
+
+  .ft-page-hero {
+    padding: 100px 20px 40px;
+    text-align: center;
+  }
+
+  .ft-footer {
+    padding: 35px 20px 20px;
+    text-align: center;
+  }
+
+  .ft-footer .ft-col {
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,.15);
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+  }
+
+  .ft-footer .ft-social {
+    justify-content: center;
+  }
+
+  .ft-footer .ft-quick-link:hover {
+    transform: none;
+  }
+
+  .ft-brand-badges {
+    text-align: center;
+  }
+}
+
+/* ---------- Small Mobile ---------- */
+
+@media (max-width: 480px) {
+
+  .ft-navbar {
+    padding: .5rem .6rem;
+  }
+
+  .ft-page-hero {
+    padding: 90px 15px 35px;
+  }
+
+  .ft-footer {
+    padding: 30px 15px 15px;
+  }
+
+  .ft-footer .ft-social a img {
+    width: 34px;
+    height: 34px;
+  }
+
+  .ft-footer .ft-copyright {
+    font-size: .8rem;
+  }
+}

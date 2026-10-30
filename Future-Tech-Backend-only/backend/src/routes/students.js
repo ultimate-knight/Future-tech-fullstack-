@@ -1,5 +1,5 @@
 const express = require("express");
-const { Student, IndividualAdmission } = require("../models");
+const { Student, IndividualAdmission, School } = require("../models");
 const { requireStudentAuth } = require("../middleware/auth");
 
 const router = express.Router();
@@ -10,6 +10,13 @@ router.get("/me", requireStudentAuth, async (req, res) => {
   if (!student) return res.status(404).json({ error: "Account not found." });
 
   const admission = await IndividualAdmission.findByPk(student.admissionId);
+
+  // Lets the student LMS header show their OWN school's logo next to the
+  // Future Tech logo, the same way the School Portal already does.
+  let school = null;
+  if (admission && admission.schoolId) {
+    school = await School.findByPk(admission.schoolId, { attributes: ["id", "logoFilename"] });
+  }
 
   res.json({
     id: student.id,
@@ -22,6 +29,8 @@ router.get("/me", requireStudentAuth, async (req, res) => {
     dob: student.dob,
     programLevel: admission ? admission.programLevel : null,
     createdAt: student.createdAt,
+    schoolId: school ? school.id : null,
+    hasSchoolLogo: !!(school && school.logoFilename),
   });
 });
 

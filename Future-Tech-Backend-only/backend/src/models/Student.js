@@ -32,6 +32,14 @@ const Student = sequelize.define(
       allowNull: false,
       unique: true,
       validate: { isEmail: true },
+      // The email IS the login username, and login looks it up lower-cased
+      // (routes/auth.js). Store it the same way no matter which code path
+      // creates the account, so a mixed-case value can never end up in the
+      // table where the student could not log in with it - and so uniqueness
+      // behaves the same on SQLite (case-sensitive) and MySQL (not).
+      set(value) {
+        this.setDataValue("email", typeof value === "string" ? value.trim().toLowerCase() : value);
+      },
     },
     passwordHash: { type: DataTypes.STRING, allowNull: false },
   },

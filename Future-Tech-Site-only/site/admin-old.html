@@ -1,0 +1,1609 @@
+<!DOCTYPE html>
+<html lang="en-in">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="shortcut icon" href="assets/images/shared/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/site.css">
+    <title>Admin Dashboard | Future Tech School Program</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f5f7fb;
+            color: #222;
+        }
+        .admin-header {
+            background: #06264d;
+            color: #fff;
+            padding: 18px 0;
+        }
+        .admin-header .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .admin-header .brand span.title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            line-height: 1.15;
+        }
+        .admin-header .brand span.title small {
+            display: block;
+            color: #ffc107;
+            font-weight: 600;
+            font-size: .68rem;
+            letter-spacing: 1px;
+        }
+        .stat-card {
+            border: none;
+            border-radius: 16px;
+            padding: 22px;
+            color: #fff;
+            box-shadow: 0 10px 30px rgba(0,0,0,.08);
+        }
+        .stat-card .stat-num {
+            font-size: 2.1rem;
+            font-weight: 700;
+        }
+        .stat-card.bg-1 { background: linear-gradient(145deg, #0d6efd, #084298); }
+        .stat-card.bg-2 { background: linear-gradient(145deg, #198754, #0f5132); }
+        .stat-card.bg-3 { background: linear-gradient(145deg, #fd7e14, #b1560a); }
+        .panel {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,.06);
+            padding: 24px;
+        }
+        .nav-tabs .nav-link {
+            font-weight: 600;
+            color: #444;
+        }
+        .nav-tabs .nav-link.active {
+            color: #0d6efd;
+        }
+        table.admin-table th {
+            white-space: nowrap;
+            font-size: .82rem;
+            text-transform: uppercase;
+            letter-spacing: .04em;
+            color: #6c757d;
+        }
+        table.admin-table td {
+            vertical-align: middle;
+            font-size: .92rem;
+        }
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #888;
+        }
+        #loginGate {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #06264d, #0d6efd);
+        }
+        #loginGate .card {
+            border: none;
+            border-radius: 18px;
+            box-shadow: 0 20px 60px rgba(0,0,0,.25);
+        }
+        .badge-soft-primary { background: #e7f1ff; color: #0d6efd; }
+        .badge-soft-success { background: #e6f7ec; color: #198754; }
+        .badge-soft-warning { background: #fff3e0; color: #b1560a; }
+    </style>
+</head>
+<body>
+
+    <!-- ============= LOGIN GATE ============= -->
+    <div id="loginGate">
+        <div class="card p-4" style="width: 100%; max-width: 380px;">
+            <div class="card-body">
+                <div class="text-center mb-4">
+                    <img src="assets/images/shared/logo.png" width="60" height="60" class="rounded-3 mb-3" alt="logo">
+                    <h4 class="fw-bold mb-1">Admin Login</h4>
+                    <p class="text-muted small mb-0">Future Tech School Program</p>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Admin Email</label>
+                    <input type="email" id="adminEmail" class="form-control" placeholder="Enter admin email">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Password</label>
+                    <input type="password" id="adminPassword" class="form-control" placeholder="Enter password">
+                </div>
+                <div id="loginError" class="alert alert-danger py-2 d-none"></div>
+                <button id="loginBtn" class="btn btn-primary w-100 fw-bold">
+                    <i class="bi bi-unlock-fill me-2"></i>Login
+                </button>
+                <p class="small text-muted mt-3 mb-0">
+                    The first admin account is created automatically from <code>ADMIN_EMAIL</code> /
+                    <code>ADMIN_PASSWORD</code> in the backend's <code>.env</code> file the first time the
+                    server starts. Change the password there before going live.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============= ADMIN DASHBOARD ============= -->
+    <div id="adminApp" class="d-none">
+
+        <header class="admin-header">
+            <div class="container-fluid px-4 d-flex justify-content-between align-items-center flex-wrap gap-2">
+                <div class="brand">
+                    <img src="assets/images/shared/logo.png" width="46" height="46" class="rounded-3" alt="logo">
+                    <span class="title">FUTURE TECH<br><small>ADMIN DASHBOARD</small></span>
+                </div>
+                <div class="d-flex align-items-center gap-2">
+                    <a href="home.html" class="btn btn-outline-light btn-sm">
+                        <i class="bi bi-globe me-1"></i>View Website
+                    </a>
+                    <button id="refreshBtn" class="btn btn-outline-light btn-sm">
+                        <i class="bi bi-arrow-clockwise me-1"></i>Refresh
+                    </button>
+                    <button id="adminChangePasswordBtn" class="btn btn-outline-light btn-sm">
+                        <i class="bi bi-key me-1"></i>Change Password
+                    </button>
+                    <button id="logoutBtn" class="btn btn-warning btn-sm fw-bold">
+                        <i class="bi bi-box-arrow-right me-1"></i>Logout
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="container-fluid px-4 py-4">
+
+            <!-- Data source notice -->
+            <div class="alert alert-light border d-flex align-items-start gap-2 mb-4">
+                <i class="bi bi-shield-check fs-5 text-success"></i>
+                <div class="small">
+                    This dashboard is connected to the live backend database — every contact message, admission,
+                    and payment made through the website appears here in real time.
+                </div>
+            </div>
+
+            <!-- Stat cards -->
+            <div class="row g-3 mb-4">
+                <div class="col-md-3">
+                     <div class="stat-card bg-1">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <div class="small text-uppercase opacity-75 fw-semibold">Contact Messages</div>
+                                <div class="stat-num" id="countContact">0</div>
+                            </div>
+                            <i class="bi bi-envelope-fill fs-2 opacity-75"></i>
+                        </div>
+                    </div> 
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card bg-2">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <div class="small text-uppercase opacity-75 fw-semibold">Individual Admissions</div>
+                                <div class="stat-num" id="countIndividual">0</div>
+                            </div>
+                            <i class="bi bi-mortarboard-fill fs-2 opacity-75"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card bg-3">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <div class="small text-uppercase opacity-75 fw-semibold">Bulk / School Enquiries</div>
+                                <div class="stat-num" id="countBulk">0</div>
+                            </div>
+                            <i class="bi bi-building-fill fs-2 opacity-75"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card" style="background: linear-gradient(145deg, #6f42c1, #4a2a80);">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <div class="small text-uppercase opacity-75 fw-semibold">Total Revenue</div>
+                                <div class="stat-num" id="totalRevenue" style="font-size:1.6rem;">Rs. 0</div>
+                            </div>
+                            <i class="bi bi-cash-coin fs-2 opacity-75"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Panel with tabs -->
+            <div class="panel">
+                <ul class="nav nav-tabs mb-3" id="adminTabs">
+                    <li class="nav-item">
+                        <button class="nav-link active" data-tab="contact">
+                            <i class="bi bi-envelope me-1"></i>Contact Messages
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link" data-tab="admission_individual">
+                            <i class="bi bi-mortarboard me-1"></i>Individual Admissions
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link" data-tab="admission_bulk">
+                            <i class="bi bi-building me-1"></i>Bulk / School Enquiries
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link" data-tab="payments">
+                            <i class="bi bi-credit-card me-1"></i>Payments
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link" data-tab="schools">
+                            <i class="bi bi-building-gear me-1"></i>School Accounts
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link" data-tab="students">
+                            <i class="bi bi-person-video3 me-1"></i>Students
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link" data-tab="class_content">
+                            <i class="bi bi-collection-play me-1"></i>Class Content
+                        </button>
+                    </li>
+                </ul>
+
+                <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+                    <input type="text" id="searchBox" class="form-control" style="max-width:320px;" placeholder="Search this table...">
+                    <div class="d-flex gap-2">
+                        <button id="addSchoolBtn" class="btn btn-primary btn-sm d-none">
+                            <i class="bi bi-plus-lg me-1"></i>Add School
+                        </button>
+                        <button id="addStudentBtn" class="btn btn-primary btn-sm d-none">
+                            <i class="bi bi-person-plus me-1"></i>Add Student
+                        </button>
+                        <button id="exportCsvBtn" class="btn btn-outline-primary btn-sm">
+                            <i class="bi bi-download me-1"></i>Export CSV
+                        </button>
+                        <button id="clearAllBtn" class="btn btn-outline-danger btn-sm">
+                            <i class="bi bi-trash me-1"></i>Clear All
+                        </button>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table admin-table align-middle">
+                        <thead id="tableHead"></thead>
+                        <tbody id="tableBody"></tbody>
+                    </table>
+                </div>
+
+                <div id="emptyState" class="empty-state d-none">
+                    <i class="bi bi-inbox fs-1 d-block mb-2"></i>
+                    No submissions yet.
+                </div>
+
+                <!-- Class Content tab - a different shape of UI (per-class
+                     PDF/video management) than the generic table above, so
+                     it's a separate panel shown/hidden instead of reusing
+                     the table renderer. -->
+                <div id="classContentPanel" class="d-none">
+                    <div class="d-flex flex-wrap gap-2 align-items-end mb-3">
+                        <div>
+                            <label class="form-label small mb-1">Level</label>
+                            <select id="ccLevelSelect" class="form-select form-select-sm">
+                                <option value="level1">Level 1</option>
+                                <option value="level2">Level 2</option>
+                                <option value="level3">Level 3</option>
+                                <option value="level4">Level 4</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="form-label small mb-1">Module</label>
+                            <select id="ccModuleSelect" class="form-select form-select-sm">
+                                <option value="module1">Module 1</option>
+                                <option value="module2">Module 2</option>
+                                <option value="module3">Module 3</option>
+                                <option value="module4">Module 4</option>
+                                <option value="module5">Module 5</option>
+                            </select>
+                        </div>
+                        <button id="ccAddClassBtn" class="btn btn-primary btn-sm">
+                            <i class="bi bi-plus-lg me-1"></i>Add Class
+                        </button>
+                    </div>
+
+                    <div class="card p-3 mb-3">
+                        <div class="fw-semibold small mb-2"><i class="bi bi-camera-video-fill me-1"></i>Live Class Meeting Link</div>
+                        <div class="d-flex flex-wrap gap-2">
+                            <input type="url" id="ccLiveClassUrl" class="form-control form-control-sm" style="max-width:360px;" placeholder="https://meet.google.com/...">
+                            <input type="text" id="ccLiveClassNote" class="form-control form-control-sm" style="max-width:260px;" placeholder="Optional note, e.g. Every Mon/Wed 5pm">
+                            <button id="ccSaveLiveClassBtn" class="btn btn-outline-primary btn-sm">Save</button>
+                        </div>
+                        <div class="form-text">Shown as a "Join Live Class" button at the top of this level/module's page. Leave the link blank and save to remove the button.</div>
+                    </div>
+
+                    <div id="ccAlert" class="alert d-none py-2 small"></div>
+
+                    <div class="table-responsive">
+                        <table class="table admin-table align-middle">
+                            <thead>
+                                <tr><th>#</th><th>Title</th><th>PDF</th><th>Video</th><th class="text-end">Actions</th></tr>
+                            </thead>
+                            <tbody id="ccTableBody"></tbody>
+                        </table>
+                    </div>
+                    <div id="ccEmptyState" class="empty-state d-none">
+                        <i class="bi bi-inbox fs-1 d-block mb-2"></i>
+                        No classes yet for this level/module - click "Add Class" to create the first one.
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Detail modal -->
+    <div class="modal fade" id="detailModal" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold">Submission Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="detailModalBody"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add School modal -->
+    <input type="file" id="schoolLogoFileInput" accept="image/png,image/jpeg" class="d-none">
+
+    <div class="modal fade" id="addSchoolModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold">Add School Account</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addSchoolForm">
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">School / Organization Name *</label>
+                            <input type="text" id="newSchoolName" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Coordinator Name</label>
+                            <input type="text" id="newSchoolContact" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Email Address *</label>
+                            <input type="email" id="newSchoolEmail" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Phone Number</label>
+                            <input type="tel" id="newSchoolPhone" class="form-control">
+                        </div>
+                        <div id="addSchoolAlert" class="alert alert-danger d-none py-2"></div>
+                        <button type="submit" class="btn btn-primary w-100 fw-bold">
+                            <i class="bi bi-key me-1"></i>Create Account &amp; Generate Password
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Student modal -->
+    <div class="modal fade" id="addStudentModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold">Add Student Account</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="small text-muted">Creates an LMS login directly — no payment flow. Use this for a student who paid/enrolled outside the normal registration form (e.g. offline/cash).</p>
+                    <form id="addStudentForm">
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Full Name *</label>
+                            <input type="text" id="newStudentName" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Email Address *</label>
+                            <input type="email" id="newStudentEmail" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">School *</label>
+                            <select id="newStudentSchool" class="form-select" required>
+                                <option value="">Loading schools…</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Program Level *</label>
+                            <select id="newStudentLevel" class="form-select" required>
+                                <option value="">Select a level</option>
+                                <option value="level1">Level 1 — Junior Innovators</option>
+                                <option value="level2">Level 2 — Young Technologists</option>
+                                <option value="level3">Level 3 — Future Engineers</option>
+                                <option value="level4">Level 4 — AI Professional Foundation</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Grade / Class</label>
+                            <input type="text" id="newStudentGrade" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Parent / Guardian Name</label>
+                            <input type="text" id="newStudentParent" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Phone Number</label>
+                            <input type="tel" id="newStudentPhone" class="form-control">
+                        </div>
+                        <div id="addStudentAlert" class="alert alert-danger d-none py-2"></div>
+                        <button type="submit" class="btn btn-primary w-100 fw-bold">
+                            <i class="bi bi-key me-1"></i>Create Account &amp; Generate Password
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Generate School Invoice modal -->
+    <div class="modal fade" id="generateInvoiceModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold">Generate Settlement Invoice</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="mb-1"><strong id="invoiceSchoolName">-</strong></p>
+                    <p class="small text-muted mb-3" id="invoiceUninvoicedSummary"></p>
+                    <form id="generateInvoiceForm">
+                        <input type="hidden" id="invoiceSchoolId">
+                        <div class="row g-2 mb-3">
+                            <div class="col-6">
+                                <label class="form-label fw-semibold small">Period Start (optional)</label>
+                                <input type="date" id="invoicePeriodStart" class="form-control form-control-sm">
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label fw-semibold small">Period End (optional)</label>
+                                <input type="date" id="invoicePeriodEnd" class="form-control form-control-sm">
+                            </div>
+                        </div>
+                        <p class="small text-muted mb-3">Leave both blank to cover every payment for this school that hasn't been invoiced yet.</p>
+                        <div class="row g-2 mb-3">
+                            <div class="col-6">
+                                <label class="form-label fw-semibold small">Platform Commission %</label>
+                                <input type="number" id="invoiceCommissionPercent" class="form-control form-control-sm" min="0" max="100" step="0.1" required>
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label fw-semibold small">GST on Commission %</label>
+                                <input type="number" id="invoiceGstPercent" class="form-control form-control-sm" min="0" max="100" step="0.1" value="18" required>
+                            </div>
+                        </div>
+                        <p class="small text-muted mb-3">
+                            <i class="bi bi-info-circle me-1"></i>This computes the arithmetic only — confirm GST rate/applicability with your accountant before treating the PDF as an official tax invoice.
+                        </p>
+                        <div id="generateInvoiceAlert" class="alert alert-danger d-none py-2"></div>
+                        <button type="submit" class="btn btn-success w-100 fw-bold">
+                            <i class="bi bi-receipt me-1"></i>Generate &amp; Download Invoice
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Credentials Display modal -->
+    <div class="modal fade" id="credentialsModal" tabindex="-1" data-bs-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title fw-bold"><i class="bi bi-check-circle-fill me-2"></i>Login Credentials Ready</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-warning small">
+                        <i class="bi bi-exclamation-triangle-fill me-1"></i>
+                        This password is shown <strong>only once</strong> and cannot be retrieved again later.
+                        Copy it now and send it to the school (WhatsApp, email, or print it out) before closing this window.
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold small text-uppercase text-secondary">Username (Email)</label>
+                        <div class="input-group">
+                            <input type="text" id="credUsername" class="form-control" readonly>
+                            <button class="btn btn-outline-secondary" type="button" onclick="copyCred('credUsername')"><i class="bi bi-clipboard"></i></button>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold small text-uppercase text-secondary">Temporary Password</label>
+                        <div class="input-group">
+                            <input type="text" id="credPassword" class="form-control fw-bold" readonly>
+                            <button class="btn btn-outline-secondary" type="button" onclick="copyCred('credPassword')"><i class="bi bi-clipboard"></i></button>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary w-100 fw-bold" onclick="copyCredMessage()">
+                        <i class="bi bi-chat-dots me-1"></i>Copy Ready-to-Send Message
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin's own Change Password modal -->
+    <div class="modal fade" id="adminChangePasswordModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold">Change Your Password</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="adminChangePasswordForm">
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Current Password</label>
+                            <input type="password" id="adminCurrentPassword" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">New Password</label>
+                            <input type="password" id="adminNewPassword" class="form-control" placeholder="At least 6 characters" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Confirm New Password</label>
+                            <input type="password" id="adminConfirmNewPassword" class="form-control" required>
+                        </div>
+                        <div id="adminChangePasswordAlert" class="alert d-none py-2"></div>
+                        <button type="submit" class="btn btn-primary w-100 fw-bold">
+                            <i class="bi bi-check-circle me-1"></i>Update Password
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/api-client.js"></script>
+    <script>
+        const ADMIN_TOKEN_KEY = "ft_admin_token";
+
+        const TABS = {
+            contact: {
+                label: "Contact Messages",
+                columns: ["Name", "Email", "Phone", "Subject", "Message"],
+                fetcher: (token) => FTApi.adminContacts(token),
+                deleter: (id, token) => FTApi.adminDeleteContact(id, token),
+                row: (r) => [r.name || "-", r.email || "-", r.phone || "-", r.subject || "-", truncate(r.message, 60)],
+                detail: (r) => [
+                    ["Name", r.name], ["Email", r.email], ["Phone", r.phone],
+                    ["Subject", r.subject], ["Message", r.message]
+                ],
+                dateField: "createdAt"
+            },
+            admission_individual: {
+                label: "Individual Admissions",
+                columns: ["Student Name", "Grade", "School", "Parent Name", "Mobile", "Payment"],
+                fetcher: (token) => FTApi.adminIndividualAdmissions(token),
+                deleter: (id, token) => FTApi.adminDeleteIndividual(id, token),
+                row: (r) => [
+                    r.studentName || "-",
+                    r.grade || "-",
+                    (r.School && r.School.schoolName) || r.schoolName || "-",
+                    r.parentName || "-",
+                    r.mobile || "-",
+                    paymentBadge(r.paymentStatus)
+                ],
+                detail: (r) => {
+                    const rows = [
+                        ["Student Name", r.studentName], ["Grade", r.grade],
+                        ["School", (r.School && r.School.schoolName) || r.schoolName],
+                        ["Parent/Guardian", r.parentName], ["Mobile", r.mobile], ["Email", r.email],
+                        ["Program Level", r.programLevel], ["Payment Status", r.paymentStatus]
+                    ];
+                    rows.push(["Interests Selected", (r.interests || []).join(", ") || "-"]);
+                    rows.push(["Consents Given", (r.consents || []).join(", ") || "-"]);
+                    return rows;
+                },
+                dateField: "createdAt"
+            },
+            admission_bulk: {
+                label: "Bulk / School Enquiries",
+                columns: ["Organization", "Coordinator", "Mobile", "Email", "# Students", "Payment"],
+                fetcher: (token) => FTApi.adminBulkAdmissions(token),
+                deleter: (id, token) => FTApi.adminDeleteBulk(id, token),
+                row: (r) => [
+                    r.organizationName || "-",
+                    r.coordinatorName || "-",
+                    r.coordinatorMobile || "-",
+                    r.coordinatorEmail || "-",
+                    String(r.studentCount || 0),
+                    paymentBadge(r.paymentStatus)
+                ],
+                detail: (r) => {
+                    const rows = [
+                        ["Organization", r.organizationName], ["Coordinator", r.coordinatorName],
+                        ["Mobile", r.coordinatorMobile], ["Email", r.coordinatorEmail],
+                        ["Payment Status", r.paymentStatus]
+                    ];
+                    rows.push(["Program / Requirement Selections", (r.selections || []).join(", ") || "-"]);
+                    if (r.excelFileName) rows.push(["Uploaded Excel File", r.excelFileName]);
+                    if (r.students && r.students.length) {
+                        rows.push(["Students Added Manually", r.students.map(function (s) {
+                            return (s.name || "Unnamed") + " (Grade " + (s.grade || "-") + ") \u2014 Parent: " +
+                                (s.parentName || "-") + ", " + (s.parentMobile || "-");
+                        }).join("\n")]);
+                    }
+                    return rows;
+                },
+                dateField: "createdAt"
+            },
+            payments: {
+                label: "Payments",
+                columns: ["Type", "School", "Amount", "Status", "Payer", "Receipt No", "Reference"],
+                fetcher: (token) => FTApi.adminPayments(token),
+                deleter: null,
+                row: (r) => [
+                    r.type === "individual" ? "Individual" : "Bulk",
+                    r.schoolName || "\u2014",
+                    "Rs. " + (r.amount || 0).toLocaleString("en-IN"),
+                    paymentBadge(r.status === "paid" ? "paid" : r.status),
+                    r.payerName || "-",
+                    r.receiptNumber || "-",
+                    r.referenceId || "-"
+                ],
+                detail: (r) => [
+                    ["Type", r.type], ["School", r.schoolName || "\u2014"],
+                    ["Amount", "Rs. " + (r.amount || 0).toLocaleString("en-IN")],
+                    ["Status", r.status], ["Payer Name", r.payerName], ["Payer Email", r.payerEmail],
+                    ["Payer Phone", r.payerPhone], ["Receipt Number", r.receiptNumber],
+                    ["Payment Reference (UPI note)", r.referenceId],
+                    ["Confirmed by", r.markedPaidByAdminId ? ("Platform admin (" + r.markedPaidByAdminId + ")") : r.markedPaidBySchoolId ? "The school itself" : null],
+                    ["Confirmed at", r.markedPaidAt ? new Date(r.markedPaidAt).toLocaleString() : null]
+                ],
+                dateField: "createdAt",
+                customActions: (r) => r.status === "pending" ? `
+                    <button class="btn btn-sm btn-outline-success" onclick="markPaymentPaid('${r.id}')" title="Mark as Paid - only after checking the bank account/UPI app for a matching transaction">
+                        <i class="bi bi-check-circle"></i>
+                    </button>
+                    <button class="btn btn-sm btn-outline-danger" onclick="markPaymentFailed('${r.id}')" title="Mark as Failed - reject a payment claim that never showed up">
+                        <i class="bi bi-x-circle"></i>
+                    </button>
+                ` : ""
+            },
+            schools: {
+                label: "School Accounts",
+                columns: ["School Name", "Coordinator", "Email", "Phone", "Status", "UPI Settlement", "Collected", "Uninvoiced"],
+                fetcher: async (token) => {
+                    const [schools, revenue] = await Promise.all([
+                        FTApi.adminSchools(token),
+                        FTApi.adminSchoolsRevenue(token)
+                    ]);
+                    const revenueBySchool = new Map(revenue.map(function (x) { return [x.schoolId, x]; }));
+                    return schools.map(function (s) {
+                        return Object.assign({}, s, revenueBySchool.get(s.id) || { revenue: 0, uninvoicedRevenue: 0, paidCount: 0 });
+                    });
+                },
+                deleter: null,
+                row: (r) => [
+                    r.schoolName || "-", r.contactName || "-", r.email || "-", r.phone || "-",
+                    r.isActive === false
+                        ? '<span class="badge bg-danger-subtle text-danger">Suspended</span>'
+                        : '<span class="badge badge-soft-success">Active</span>',
+                    upiBadge(r.upiVpa),
+                    'Rs. ' + (r.revenue || 0).toLocaleString('en-IN'),
+                    (r.uninvoicedRevenue || 0) > 0
+                        ? '<span class="fw-bold text-warning">Rs. ' + r.uninvoicedRevenue.toLocaleString('en-IN') + '</span>'
+                        : '<span class="text-muted">Rs. 0</span>'
+                ],
+                detail: (r) => [
+                    ["School Name", r.schoolName], ["Coordinator", r.contactName],
+                    ["Email", r.email], ["Phone", r.phone],
+                    ["Status", r.isActive === false ? "Suspended" : "Active"],
+                    ["Logo", r.logoFilename ? "Uploaded (shown on their portal header + receipts)" : "Not set - only the Future Tech logo is shown"],
+                    ["UPI Settlement", r.upiVpa ? (r.upiVpa + " (" + (r.upiPayeeName || r.schoolName) + ")") : "Not set - payments use the platform's default UPI ID"],
+                    ["Total collected", 'Rs. ' + (r.revenue || 0).toLocaleString('en-IN') + ' across ' + (r.paidCount || 0) + ' payment(s)'],
+                    ["Not yet invoiced", 'Rs. ' + (r.uninvoicedRevenue || 0).toLocaleString('en-IN')]
+                ],
+                dateField: "createdAt",
+                customActions: (r) => `
+                    <button class="btn btn-sm btn-outline-warning" onclick="resetSchoolPassword('${r.id}', '${(r.schoolName || '').replace(/'/g, "\\'")}')" title="Reset password">
+                        <i class="bi bi-key"></i>
+                    </button>
+                    <button class="btn btn-sm ${r.isActive === false ? 'btn-outline-success' : 'btn-outline-danger'}" onclick="toggleSchoolStatus('${r.id}', '${(r.schoolName || '').replace(/'/g, "\\'")}', ${r.isActive === false})" title="${r.isActive === false ? 'Reactivate' : 'Suspend'}">
+                        <i class="bi ${r.isActive === false ? 'bi-play-circle' : 'bi-pause-circle'}"></i>
+                    </button>
+                    <button class="btn btn-sm btn-outline-primary" onclick="setSchoolUpi('${r.id}', '${(r.schoolName || '').replace(/'/g, "\\'")}', '${r.upiVpa || ''}', '${(r.upiPayeeName || '').replace(/'/g, "\\'")}')" title="Set this school's own UPI ID for direct settlement">
+                        <i class="bi bi-qr-code"></i>
+                    </button>
+                    <button class="btn btn-sm ${r.logoFilename ? 'btn-outline-info' : 'btn-outline-secondary'}" onclick="pickSchoolLogo('${r.id}', '${(r.schoolName || '').replace(/'/g, "\\'")}', ${r.logoFilename ? 'true' : 'false'})" title="${r.logoFilename ? 'Replace or remove logo' : 'Upload a logo for this school'}">
+                        <i class="bi bi-image"></i>
+                    </button>
+                    <button class="btn btn-sm btn-outline-success" onclick="openGenerateInvoiceModal('${r.id}', '${(r.schoolName || '').replace(/'/g, "\\'")}', ${r.commissionPercentOverride !== null && r.commissionPercentOverride !== undefined ? r.commissionPercentOverride : 'null'}, ${r.uninvoicedRevenue || 0})" title="Generate settlement invoice">
+                        <i class="bi bi-receipt"></i>
+                    </button>
+                    <button class="btn btn-sm btn-outline-secondary" onclick="viewSchoolInvoices('${r.id}', '${(r.schoolName || '').replace(/'/g, "\\'")}')" title="View / re-download past invoices">
+                        <i class="bi bi-clock-history"></i>
+                    </button>
+                    <button class="btn btn-sm btn-outline-dark" onclick="downloadSchoolStatement('${r.id}', '${(r.schoolName || '').replace(/'/g, "\\'")}')" title="Download full payment statement (everything, not just uninvoiced)">
+                        <i class="bi bi-list-columns-reverse"></i>
+                    </button>
+                `
+            },
+            students: {
+                label: "Students",
+                columns: ["Full Name", "Email", "Grade", "Program Level", "School", "Source"],
+                fetcher: (token) => FTApi.adminStudents(token),
+                deleter: (id, token) => FTApi.adminDeleteStudent(id, token),
+                row: (r) => [
+                    r.fullName || "-", r.email || "-", r.grade || "-",
+                    (r.programLevel || "-").toUpperCase(), r.schoolName || "-",
+                    r.addedByAdmin ? '<span class="badge bg-info-subtle text-info">Added by admin</span>' : '<span class="badge badge-soft-success">Self-registered</span>'
+                ],
+                detail: (r) => [
+                    ["Full Name", r.fullName], ["Email", r.email], ["Grade", r.grade],
+                    ["Parent/Guardian", r.parentName], ["Phone", r.phone],
+                    ["Program Level", (r.programLevel || "-").toUpperCase()],
+                    ["School", r.schoolName],
+                    ["Account source", r.addedByAdmin ? "Added directly by admin" : "Self-registered after payment"]
+                ],
+                dateField: "createdAt"
+            }
+        };
+
+        function upiBadge(vpa) {
+            if (vpa) return '<span class="badge badge-soft-success" title="' + vpa + '">Direct to school</span>';
+            return '<span class="badge bg-secondary-subtle text-secondary">Platform default</span>';
+        }
+
+        let currentTab = "contact";
+        let currentData = [];
+
+        function paymentBadge(status) {
+            if (status === "paid") return '<span class="badge badge-soft-success">Paid</span>';
+            if (status === "failed") return '<span class="badge bg-danger-subtle text-danger">Failed</span>';
+            return '<span class="badge badge-soft-warning">Pending</span>';
+        }
+
+        function truncate(str, n) {
+            if (!str) return "-";
+            return str.length > n ? str.slice(0, n) + "\u2026" : str;
+        }
+
+        function escapeHtml(str) {
+            return String(str)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;");
+        }
+
+        function getToken() {
+            return sessionStorage.getItem(ADMIN_TOKEN_KEY);
+        }
+
+        // ---------- Login ----------
+        function checkLogin() {
+            if (getToken()) {
+                document.getElementById("loginGate").classList.add("d-none");
+                document.getElementById("adminApp").classList.remove("d-none");
+                renderAll();
+            }
+        }
+
+        document.getElementById("loginBtn").addEventListener("click", async function () {
+            const email = document.getElementById("adminEmail").value.trim();
+            const password = document.getElementById("adminPassword").value;
+            const err = document.getElementById("loginError");
+            err.classList.add("d-none");
+
+            try {
+                const result = await FTApi.adminLogin({ email, password });
+                sessionStorage.setItem(ADMIN_TOKEN_KEY, result.token);
+                checkLogin();
+            } catch (e) {
+                err.textContent = e.message || "Login failed. Please try again.";
+                err.classList.remove("d-none");
+            }
+        });
+
+        document.getElementById("adminPassword").addEventListener("keydown", function (e) {
+            if (e.key === "Enter") document.getElementById("loginBtn").click();
+        });
+
+        document.getElementById("logoutBtn").addEventListener("click", function () {
+            sessionStorage.removeItem(ADMIN_TOKEN_KEY);
+            location.reload();
+        });
+
+        document.getElementById("adminChangePasswordBtn").addEventListener("click", function () {
+            document.getElementById("adminChangePasswordForm").reset();
+            document.getElementById("adminChangePasswordAlert").classList.add("d-none");
+            bootstrap.Modal.getOrCreateInstance(document.getElementById("adminChangePasswordModal")).show();
+        });
+
+        document.getElementById("adminChangePasswordForm").addEventListener("submit", async function (e) {
+            e.preventDefault();
+            const alertBox = document.getElementById("adminChangePasswordAlert");
+            alertBox.classList.add("d-none");
+
+            const currentPassword = document.getElementById("adminCurrentPassword").value;
+            const newPassword = document.getElementById("adminNewPassword").value;
+            const confirmNewPassword = document.getElementById("adminConfirmNewPassword").value;
+
+            if (newPassword !== confirmNewPassword) {
+                alertBox.className = "alert alert-danger py-2";
+                alertBox.textContent = "New password and confirmation don't match.";
+                alertBox.classList.remove("d-none");
+                return;
+            }
+
+            try {
+                await FTApi.adminChangePassword({ currentPassword, newPassword }, getToken());
+                alertBox.className = "alert alert-success py-2";
+                alertBox.textContent = "Password updated successfully!";
+                alertBox.classList.remove("d-none");
+                setTimeout(() => {
+                    bootstrap.Modal.getInstance(document.getElementById("adminChangePasswordModal")).hide();
+                }, 1200);
+            } catch (err) {
+                alertBox.className = "alert alert-danger py-2";
+                alertBox.textContent = err.message || "Could not update password.";
+                alertBox.classList.remove("d-none");
+            }
+        });
+
+        // ---------- Tabs ----------
+        document.querySelectorAll("#adminTabs .nav-link").forEach(function (btn) {
+            btn.addEventListener("click", function () {
+                document.querySelectorAll("#adminTabs .nav-link").forEach(b => b.classList.remove("active"));
+                btn.classList.add("active");
+                currentTab = btn.dataset.tab;
+                document.getElementById("searchBox").value = "";
+                if (currentTab === "class_content") {
+                    renderClassContentPanel();
+                } else {
+                    showClassContentPanel(false);
+                    renderTable();
+                }
+            });
+        });
+
+        // ---------- Class Content tab (separate panel, not the generic table) ----------
+        function showClassContentPanel(show) {
+            document.getElementById("classContentPanel").classList.toggle("d-none", !show);
+            document.querySelector(".table-responsive").classList.toggle("d-none", show);
+            document.getElementById("searchBox").closest(".d-flex").classList.toggle("d-none", show);
+            if (show) {
+                // Hide the generic tab's "no submissions" state while our
+                // panel is showing; renderTable() manages it normally again
+                // once the admin switches back to any other tab.
+                document.getElementById("emptyState").classList.add("d-none");
+            }
+        }
+
+        function ccAlert(message, isError) {
+            const box = document.getElementById("ccAlert");
+            box.textContent = message;
+            box.className = "alert py-2 small " + (isError ? "alert-danger" : "alert-success");
+            setTimeout(() => box.classList.add("d-none"), 4000);
+        }
+
+        async function renderClassContentPanel() {
+            showClassContentPanel(true);
+            const level = document.getElementById("ccLevelSelect").value;
+            const moduleParam = document.getElementById("ccModuleSelect").value;
+            const token = getToken();
+            const tbody = document.getElementById("ccTableBody");
+            const empty = document.getElementById("ccEmptyState");
+            tbody.innerHTML = "<tr><td colspan='5' class='text-center text-muted py-4'>Loading...</td></tr>";
+            empty.classList.add("d-none");
+
+            try {
+                const rows = await FTApi.adminListClassContent(level, moduleParam, token);
+                if (!rows.length) {
+                    tbody.innerHTML = "";
+                    empty.classList.remove("d-none");
+                } else {
+                    tbody.innerHTML = rows.map(function (r) {
+                        const pdfStatus = r.pdfFilename
+                            ? '<span class="badge text-bg-success">Uploaded</span>'
+                            : '<span class="badge text-bg-secondary">None</span>';
+                        const videoStatus = r.videoFilename
+                            ? '<span class="badge text-bg-success">Uploaded</span>'
+                            : (r.videoUrl ? '<span class="badge text-bg-info">Link set</span>' : '<span class="badge text-bg-secondary">None</span>');
+                        return `<tr>
+                            <td>${r.classNumber}</td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm" style="min-width:220px;"
+                                       value="${escapeHtml(r.title)}" onchange="ccUpdateTitle('${r.id}', this.value)">
+                            </td>
+                            <td>
+                                ${pdfStatus}
+                                <label class="btn btn-sm btn-outline-primary ms-1 mb-0">
+                                    <i class="bi bi-upload"></i>
+                                    <input type="file" accept="application/pdf" class="d-none" onchange="ccUploadPdf('${r.id}', this)">
+                                </label>
+                            </td>
+                            <td>
+                                ${videoStatus}
+                                <label class="btn btn-sm btn-outline-primary ms-1 mb-0" title="Upload a video file">
+                                    <i class="bi bi-upload"></i>
+                                    <input type="file" accept="video/mp4,video/webm,video/ogg,video/quicktime" class="d-none" onchange="ccUploadVideo('${r.id}', this)">
+                                </label>
+                                <button class="btn btn-sm btn-outline-secondary ms-1" title="Set an external video link (YouTube/Drive/etc.) instead" onclick="ccSetVideoUrl('${r.id}', '${(r.videoUrl || '').replace(/'/g, "&#39;")}')">
+                                    <i class="bi bi-link-45deg"></i>
+                                </button>
+                            </td>
+                            <td class="text-end">
+                                <button class="btn btn-sm btn-outline-danger" onclick="ccDeleteClass('${r.id}')"><i class="bi bi-trash"></i></button>
+                            </td>
+                        </tr>`;
+                    }).join("");
+                }
+            } catch (e) {
+                tbody.innerHTML = `<tr><td colspan="5" class="text-center text-danger py-4">${escapeHtml(e.message || "Could not load classes.")}</td></tr>`;
+            }
+
+            try {
+                const live = await FTApi.adminGetLiveClass(level, moduleParam, token);
+                document.getElementById("ccLiveClassUrl").value = live.meetingUrl || "";
+                document.getElementById("ccLiveClassNote").value = live.note || "";
+            } catch (e) { /* non-critical */ }
+        }
+
+        document.getElementById("ccLevelSelect").addEventListener("change", renderClassContentPanel);
+        document.getElementById("ccModuleSelect").addEventListener("change", renderClassContentPanel);
+
+        document.getElementById("ccAddClassBtn").addEventListener("click", async function () {
+            const title = prompt("Title for the new class:");
+            if (!title || !title.trim()) return;
+            const level = document.getElementById("ccLevelSelect").value;
+            const moduleParam = document.getElementById("ccModuleSelect").value;
+            try {
+                await FTApi.adminCreateClassContent(level, moduleParam, { title: title.trim() }, getToken());
+                renderClassContentPanel();
+            } catch (e) {
+                ccAlert(e.message || "Could not add class.", true);
+            }
+        });
+
+        async function ccUpdateTitle(id, title) {
+            if (!title || !title.trim()) return;
+            try {
+                await FTApi.adminUpdateClassContent(id, { title: title.trim() }, getToken());
+                ccAlert("Title updated.", false);
+            } catch (e) {
+                ccAlert(e.message || "Could not update title.", true);
+                renderClassContentPanel();
+            }
+        }
+
+        async function ccDeleteClass(id) {
+            if (!confirm("Delete this class? Its PDF and video (if any) will be removed too. This cannot be undone.")) return;
+            try {
+                await FTApi.adminDeleteClassContent(id, getToken());
+                renderClassContentPanel();
+            } catch (e) {
+                ccAlert(e.message || "Could not delete class.", true);
+            }
+        }
+
+        async function ccUploadPdf(id, inputEl) {
+            const file = inputEl.files && inputEl.files[0];
+            inputEl.value = "";
+            if (!file) return;
+            try {
+                await FTApi.adminUploadClassPdf(id, file, getToken());
+                ccAlert("PDF uploaded.", false);
+                renderClassContentPanel();
+            } catch (e) {
+                ccAlert(e.message || "Could not upload PDF.", true);
+            }
+        }
+
+        async function ccUploadVideo(id, inputEl) {
+            const file = inputEl.files && inputEl.files[0];
+            inputEl.value = "";
+            if (!file) return;
+            ccAlert("Uploading video, this can take a while for large files...", false);
+            try {
+                await FTApi.adminUploadClassVideo(id, file, getToken());
+                ccAlert("Video uploaded.", false);
+                renderClassContentPanel();
+            } catch (e) {
+                ccAlert(e.message || "Could not upload video.", true);
+            }
+        }
+
+        async function ccSetVideoUrl(id, currentUrl) {
+            const url = prompt("External video link (YouTube/Drive/Vimeo/etc.) - leave blank to clear:", currentUrl || "");
+            if (url === null) return; // cancelled
+            try {
+                await FTApi.adminUpdateClassContent(id, { videoUrl: url.trim() }, getToken());
+                renderClassContentPanel();
+            } catch (e) {
+                ccAlert(e.message || "Could not set video link.", true);
+            }
+        }
+
+        document.getElementById("ccSaveLiveClassBtn").addEventListener("click", async function () {
+            const level = document.getElementById("ccLevelSelect").value;
+            const moduleParam = document.getElementById("ccModuleSelect").value;
+            const meetingUrl = document.getElementById("ccLiveClassUrl").value.trim();
+            const note = document.getElementById("ccLiveClassNote").value.trim();
+            try {
+                await FTApi.adminSetLiveClass(level, moduleParam, { meetingUrl, note }, getToken());
+                ccAlert(meetingUrl ? "Live class link saved." : "Live class link removed.", false);
+            } catch (e) {
+                ccAlert(e.message || "Could not save live class link.", true);
+            }
+        });
+
+        // ---------- Render ----------
+        async function renderAll() {
+            const token = getToken();
+            try {
+                const summary = await FTApi.adminSummary(token);
+                document.getElementById("countContact").textContent = summary.contacts;
+                document.getElementById("countIndividual").textContent = summary.individualAdmissions;
+                document.getElementById("countBulk").textContent = summary.bulkAdmissions;
+                document.getElementById("totalRevenue").textContent = "Rs. " + summary.totalRevenue.toLocaleString("en-IN");
+            } catch (e) {
+                if (e.message && e.message.includes("expired")) {
+                    sessionStorage.removeItem(ADMIN_TOKEN_KEY);
+                    location.reload();
+                    return;
+                }
+            }
+            renderTable();
+        }
+
+        async function renderTable() {
+            const config = TABS[currentTab];
+            const token = getToken();
+            const tbody = document.getElementById("tableBody");
+            const thead = document.getElementById("tableHead");
+            const emptyState = document.getElementById("emptyState");
+            const clearAllBtn = document.getElementById("clearAllBtn");
+            const addSchoolBtn = document.getElementById("addSchoolBtn");
+            const addStudentBtn = document.getElementById("addStudentBtn");
+
+            clearAllBtn.style.display = config.deleter ? "inline-block" : "none";
+            addSchoolBtn.classList.toggle("d-none", currentTab !== "schools");
+            addStudentBtn.classList.toggle("d-none", currentTab !== "students");
+
+            thead.innerHTML = "<tr><th>Submitted</th>" +
+                config.columns.map(c => `<th>${escapeHtml(c)}</th>`).join("") +
+                "<th class='text-end'>Actions</th></tr>";
+            tbody.innerHTML = "<tr><td colspan='10' class='text-center text-muted py-4'>Loading...</td></tr>";
+            emptyState.classList.add("d-none");
+
+            try {
+                const data = await config.fetcher(token);
+                currentData = data;
+
+                const search = document.getElementById("searchBox").value.trim().toLowerCase();
+                const filtered = search
+                    ? data.filter(r => JSON.stringify(r).toLowerCase().includes(search))
+                    : data;
+
+                if (!filtered.length) {
+                    tbody.innerHTML = "";
+                    emptyState.classList.remove("d-none");
+                    return;
+                }
+
+                tbody.innerHTML = filtered.map(function (r) {
+                    const cells = config.row(r).map(v => `<td>${v}</td>`).join("");
+                    const when = new Date(r[config.dateField]).toLocaleString();
+                    const deleteBtn = config.deleter
+                        ? `<button class="btn btn-sm btn-outline-danger" onclick="deleteRecord('${r.id}')"><i class="bi bi-trash"></i></button>`
+                        : "";
+                    const customBtns = config.customActions ? config.customActions(r) : "";
+                    return `<tr>
+                        <td class="text-muted small">${when}</td>
+                        ${cells}
+                        <td class="text-end">
+                            <button class="btn btn-sm btn-outline-primary me-1" onclick="viewDetail('${r.id}')"><i class="bi bi-eye"></i></button>
+                            ${customBtns}
+                            ${deleteBtn}
+                        </td>
+                    </tr>`;
+                }).join("");
+            } catch (e) {
+                tbody.innerHTML = `<tr><td colspan="10" class="text-center text-danger py-4">${escapeHtml(e.message || "Could not load data.")}</td></tr>`;
+                if (e.message && e.message.includes("expired")) {
+                    sessionStorage.removeItem(ADMIN_TOKEN_KEY);
+                    setTimeout(() => location.reload(), 1200);
+                }
+            }
+        }
+
+        function viewDetail(id) {
+            const config = TABS[currentTab];
+            const record = currentData.find(r => r.id === id);
+            if (!record) return;
+            const rows = config.detail(record);
+            const body = document.getElementById("detailModalBody");
+            body.innerHTML = `<p class="text-muted small mb-3">Submitted: ${new Date(record[config.dateField]).toLocaleString()}</p>` +
+                rows.map(([k, v]) => `
+                    <div class="mb-3">
+                        <div class="fw-semibold small text-uppercase text-secondary">${escapeHtml(k)}</div>
+                        <div style="white-space:pre-wrap;">${escapeHtml(v || "-")}</div>
+                    </div>
+                `).join("");
+            new bootstrap.Modal(document.getElementById("detailModal")).show();
+        }
+
+        async function deleteRecord(id) {
+            const config = TABS[currentTab];
+            if (!config.deleter) return;
+            if (!confirm("Delete this record? This cannot be undone.")) return;
+            try {
+                await config.deleter(id, getToken());
+                renderAll();
+            } catch (e) {
+                alert(e.message || "Could not delete this record.");
+            }
+        }
+
+        document.getElementById("clearAllBtn").addEventListener("click", async function () {
+            const config = TABS[currentTab];
+            if (!config.deleter) return;
+            if (!confirm(`Delete ALL "${config.label}" records shown below? This cannot be undone.`)) return;
+            try {
+                await Promise.all(currentData.map(r => config.deleter(r.id, getToken())));
+                renderAll();
+            } catch (e) {
+                alert(e.message || "Could not clear records.");
+            }
+        });
+
+        document.getElementById("refreshBtn").addEventListener("click", renderAll);
+        document.getElementById("searchBox").addEventListener("input", renderTable);
+
+        document.getElementById("exportCsvBtn").addEventListener("click", function () {
+            const config = TABS[currentTab];
+            if (!currentData.length) { alert("Nothing to export."); return; }
+
+            const header = ["Submitted", ...config.columns];
+            const rows = currentData.map(r => [
+                new Date(r[config.dateField]).toLocaleString(),
+                ...config.row(r).map(v => String(v).replace(/<[^>]*>/g, ""))
+            ]);
+
+            const csv = [header, ...rows]
+                .map(row => row.map(cell => `"${String(cell).replace(/"/g, '""')}"`).join(","))
+                .join("\n");
+
+            const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = currentTab + "-export.csv";
+            a.click();
+            URL.revokeObjectURL(url);
+        });
+
+        // ---------- Add School / Reset Password / Suspend ----------
+        document.getElementById("addSchoolBtn").addEventListener("click", function () {
+            document.getElementById("addSchoolForm").reset();
+            document.getElementById("addSchoolAlert").classList.add("d-none");
+            bootstrap.Modal.getOrCreateInstance(document.getElementById("addSchoolModal")).show();
+        });
+
+        document.getElementById("addSchoolForm").addEventListener("submit", async function (e) {
+            e.preventDefault();
+            const alertBox = document.getElementById("addSchoolAlert");
+            alertBox.classList.add("d-none");
+
+            const payload = {
+                schoolName: document.getElementById("newSchoolName").value.trim(),
+                contactName: document.getElementById("newSchoolContact").value.trim(),
+                email: document.getElementById("newSchoolEmail").value.trim(),
+                phone: document.getElementById("newSchoolPhone").value.trim(),
+            };
+
+            try {
+                const result = await FTApi.adminCreateSchool(payload, getToken());
+                bootstrap.Modal.getInstance(document.getElementById("addSchoolModal")).hide();
+                showCredentials(result.school.email, result.temporaryPassword, result.school.schoolName, "school");
+                renderAll();
+            } catch (err) {
+                alertBox.textContent = err.message || "Could not create school account.";
+                alertBox.classList.remove("d-none");
+            }
+        });
+
+        async function resetSchoolPassword(id, schoolName) {
+            if (!confirm(`Generate a new password for "${schoolName}"? Their old password will stop working immediately.`)) return;
+            try {
+                const result = await FTApi.adminResetSchoolPassword(id, getToken());
+                const record = currentData.find(r => r.id === id);
+                showCredentials(record ? record.email : "", result.temporaryPassword, schoolName, "school");
+            } catch (err) {
+                alert(err.message || "Could not reset password.");
+            }
+        }
+
+        async function toggleSchoolStatus(id, schoolName, isSuspended) {
+            const warning = isSuspended
+                ? `Reactivate "${schoolName}"? They'll be able to log in again immediately.`
+                : `Suspend "${schoolName}"? They will be logged out and blocked from logging in again until reactivated.`;
+            if (!confirm(warning)) return;
+            try {
+                await FTApi.adminToggleSchoolStatus(id, getToken());
+                renderAll();
+            } catch (err) {
+                alert(err.message || "Could not update school status.");
+            }
+        }
+
+        // Marks a payment paid after the admin has manually checked the
+        // bank account/UPI app for a transaction matching its amount +
+        // reference id (shown in the Payments tab detail view). This is
+        // the entire "fraud check" in the UPI flow - see UPI_PAYMENTS.md -
+        // so the confirm dialog exists to make sure that check actually
+        // happened rather than being clicked reflexively.
+        async function markPaymentPaid(id) {
+            if (!confirm("Mark this payment as Paid?\n\nOnly do this after checking your bank account/UPI app for a transaction matching this payment's amount and reference. This generates the receipt and unlocks LMS access immediately.")) return;
+            try {
+                await FTApi.adminMarkPaymentPaid(id, getToken());
+                renderAll();
+            } catch (err) {
+                alert(err.message || "Could not mark this payment as paid.");
+            }
+        }
+
+        // Rejects a payment claim that never actually showed up in the
+        // bank account/UPI app after a reasonable wait.
+        async function markPaymentFailed(id) {
+            if (!confirm("Mark this payment as Failed? Use this when the payment never actually arrived - it does not undo a payment already marked Paid.")) return;
+            try {
+                await FTApi.adminMarkPaymentFailed(id, getToken());
+                renderAll();
+            } catch (err) {
+                alert(err.message || "Could not mark this payment as failed.");
+            }
+        }
+
+        // Sets a school's own UPI ID so future payments for that school's
+        // students/enrollments pay straight into the school's own bank
+        // account (via any UPI app) instead of the platform's default. See
+        // UPI_PAYMENTS.md. Leave blank to clear it and fall back to the
+        // platform default again.
+        async function setSchoolUpi(id, schoolName, currentVpa, currentPayeeName) {
+            const vpa = prompt(
+                `UPI ID for "${schoolName}" (looks like name@bank, e.g. chaitanyaschool@okhdfcbank).\n\n` +
+                `Every payment for this school's students will show a QR code paying directly into this account. ` +
+                `Leave blank to clear it and fall back to the platform's default UPI ID.`,
+                currentVpa || ""
+            );
+            if (vpa === null) return; // cancelled
+            const trimmedVpa = vpa.trim();
+
+            let payeeName = currentPayeeName || schoolName;
+            if (trimmedVpa) {
+                const enteredName = prompt(
+                    `Payee name to show in the payer's UPI app for "${schoolName}":`,
+                    currentPayeeName || schoolName
+                );
+                if (enteredName === null) return; // cancelled
+                payeeName = enteredName.trim();
+            }
+
+            try {
+                await FTApi.adminSetSchoolUpi(id, {
+                    upiVpa: trimmedVpa || null,
+                    upiPayeeName: trimmedVpa ? (payeeName || null) : null,
+                }, getToken());
+                renderAll();
+            } catch (err) {
+                alert(err.message || "Could not update this school's UPI details.");
+            }
+        }
+
+        // ---------- School logo (upload / replace / remove) ----------
+        // Sent as a base64 data URL rather than a multipart file upload -
+        // keeps this consistent with the rest of the admin UI (plain JSON
+        // requests via FTApi) without pulling in a new upload library.
+        const MAX_LOGO_UPLOAD_BYTES = 1.5 * 1024 * 1024; // must match admin.js server-side limit
+        let logoUploadSchoolId = null;
+
+        function pickSchoolLogo(id, schoolName, hasLogo) {
+            if (hasLogo) {
+                const remove = confirm(
+                    `"${schoolName}" already has a logo set.\n\n` +
+                    `Click OK to REMOVE it (falls back to showing only the Future Tech logo), ` +
+                    `or Cancel to pick a new image to replace it with instead.`
+                );
+                if (remove) {
+                    removeSchoolLogo(id, schoolName);
+                    return;
+                }
+            }
+            logoUploadSchoolId = id;
+            document.getElementById("schoolLogoFileInput").click();
+        }
+
+        async function removeSchoolLogo(id, schoolName) {
+            try {
+                await FTApi.adminRemoveSchoolLogo(id, getToken());
+                renderAll();
+            } catch (err) {
+                alert(err.message || `Could not remove the logo for "${schoolName}".`);
+            }
+        }
+
+        document.getElementById("schoolLogoFileInput").addEventListener("change", async function (e) {
+            const file = e.target.files && e.target.files[0];
+            const schoolId = logoUploadSchoolId;
+            e.target.value = ""; // allow picking the same file again later
+            if (!file || !schoolId) return;
+
+            if (!["image/png", "image/jpeg"].includes(file.type)) {
+                alert("Please choose a PNG or JPEG image.");
+                return;
+            }
+            if (file.size > MAX_LOGO_UPLOAD_BYTES) {
+                alert("That image is too large - please use one under 1.5MB.");
+                return;
+            }
+
+            try {
+                const dataUrl = await new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.onload = () => resolve(reader.result);
+                    reader.onerror = () => reject(new Error("Could not read that file."));
+                    reader.readAsDataURL(file);
+                });
+                await FTApi.adminSetSchoolLogo(schoolId, dataUrl, getToken());
+                renderAll();
+            } catch (err) {
+                alert(err.message || "Could not upload this logo.");
+            }
+        });
+
+        // ---------- Generate School Invoice ----------
+        function openGenerateInvoiceModal(schoolId, schoolName, commissionOverride, uninvoicedRevenue) {
+            document.getElementById("generateInvoiceForm").reset();
+            document.getElementById("generateInvoiceAlert").classList.add("d-none");
+            document.getElementById("invoiceSchoolId").value = schoolId;
+            document.getElementById("invoiceSchoolName").textContent = schoolName;
+            document.getElementById("invoiceUninvoicedSummary").textContent =
+                "Rs. " + (uninvoicedRevenue || 0).toLocaleString('en-IN') + " collected but not yet invoiced.";
+            document.getElementById("invoiceCommissionPercent").value =
+                (commissionOverride !== null && commissionOverride !== undefined) ? commissionOverride : 0;
+            document.getElementById("invoiceGstPercent").value = 18;
+            bootstrap.Modal.getOrCreateInstance(document.getElementById("generateInvoiceModal")).show();
+        }
+
+        document.getElementById("generateInvoiceForm").addEventListener("submit", async function (e) {
+            e.preventDefault();
+            const alertBox = document.getElementById("generateInvoiceAlert");
+            alertBox.classList.add("d-none");
+
+            const schoolId = document.getElementById("invoiceSchoolId").value;
+            const periodStart = document.getElementById("invoicePeriodStart").value;
+            const periodEnd = document.getElementById("invoicePeriodEnd").value;
+
+            if ((periodStart && !periodEnd) || (!periodStart && periodEnd)) {
+                alertBox.textContent = "Set both a period start and end, or leave both blank.";
+                alertBox.classList.remove("d-none");
+                return;
+            }
+
+            const payload = {
+                commissionPercent: Number(document.getElementById("invoiceCommissionPercent").value),
+                gstPercent: Number(document.getElementById("invoiceGstPercent").value),
+            };
+            if (periodStart && periodEnd) {
+                payload.periodStart = new Date(periodStart + "T00:00:00").toISOString();
+                payload.periodEnd = new Date(periodEnd + "T23:59:59").toISOString();
+            }
+
+            let result;
+            try {
+                result = await FTApi.adminGenerateSchoolInvoice(schoolId, payload, getToken());
+            } catch (err) {
+                // Generation itself failed - nothing was created, nothing changed.
+                alertBox.textContent = err.message || "Could not generate invoice.";
+                alertBox.classList.remove("d-none");
+                return;
+            }
+
+            // The invoice now EXISTS server-side and its payments are locked to
+            // it, no matter what happens next - so from here on we always close
+            // the modal and refresh the table, even if the download itself hits
+            // a problem. A failed download is a "click to retry", not a failed
+            // generation.
+            bootstrap.Modal.getInstance(document.getElementById("generateInvoiceModal")).hide();
+            renderAll();
+
+            try {
+                await FTApi.downloadFile(result.downloadUrl, getToken(), result.invoice.invoiceNumber + ".pdf");
+            } catch (err) {
+                alert(
+                    "Invoice " + result.invoice.invoiceNumber + " was generated, but the PDF download failed (" +
+                    (err.message || "unknown error") + ").\n\nUse the \"View Invoices\" button on this school to re-download it."
+                );
+                return;
+            }
+
+            alert(
+                "Invoice " + result.invoice.invoiceNumber + " generated.\n\n" +
+                "Total collected: Rs. " + result.invoice.totalCollected.toLocaleString('en-IN') + "\n" +
+                "Commission (" + result.invoice.commissionPercent + "%): Rs. " + result.invoice.commissionAmount.toLocaleString('en-IN') + "\n" +
+                "GST (" + result.invoice.gstPercent + "%): Rs. " + result.invoice.gstAmount.toLocaleString('en-IN') + "\n" +
+                "Net payable to school: Rs. " + result.invoice.netPayableToSchool.toLocaleString('en-IN')
+            );
+        });
+
+        // ---------- View Past Invoices ----------
+        async function viewSchoolInvoices(schoolId, schoolName) {
+            let invoices;
+            try {
+                invoices = await FTApi.adminSchoolInvoices(schoolId, getToken());
+            } catch (err) {
+                alert(err.message || "Could not load invoices for this school.");
+                return;
+            }
+            if (!invoices.length) {
+                alert('No invoices have been generated yet for "' + schoolName + '".');
+                return;
+            }
+            const lines = invoices.map(function (inv) {
+                return inv.invoiceNumber + " — " + new Date(inv.createdAt).toLocaleDateString('en-IN') +
+                    " — Rs. " + inv.totalCollected.toLocaleString('en-IN') + " collected, Rs. " +
+                    inv.netPayableToSchool.toLocaleString('en-IN') + " net payable";
+            });
+            const choice = prompt(
+                '"' + schoolName + '" — past invoices (' + invoices.length + '):\n\n' + lines.join("\n") +
+                "\n\nType an invoice number above to re-download it, or Cancel to close.",
+                invoices[0].invoiceNumber
+            );
+            if (!choice) return;
+            const match = invoices.find(function (inv) { return inv.invoiceNumber === choice.trim(); });
+            if (!match) {
+                alert("No invoice with that number in the list above.");
+                return;
+            }
+            try {
+                await FTApi.downloadFile("/admin/invoices/" + match.id + "/download", getToken(), match.invoiceNumber + ".pdf");
+            } catch (err) {
+                alert(err.message || "Could not download that invoice.");
+            }
+        }
+
+        // ---------- Payment Statement (everything, invoiced or not) ----------
+        async function downloadSchoolStatement(schoolId, schoolName) {
+            const rangeInput = prompt(
+                'Download full payment statement for "' + schoolName + '".\n\n' +
+                "Leave blank for every payment ever made. Or enter a date range as dd-mm-yyyy,dd-mm-yyyy " +
+                "(e.g. 01-09-2026,30-09-2026):",
+                ""
+            );
+            if (rangeInput === null) return; // cancelled
+
+            let startDate, endDate;
+            const trimmed = rangeInput.trim();
+            if (trimmed) {
+                const parts = trimmed.split(",").map(function (s) { return s.trim(); });
+                if (parts.length !== 2) {
+                    alert("Enter two dates separated by a comma, e.g. 01-09-2026,30-09-2026 — or leave blank.");
+                    return;
+                }
+                const toIso = function (ddmmyyyy) {
+                    const m = ddmmyyyy.match(/^(\d{2})-(\d{2})-(\d{4})$/);
+                    return m ? (m[3] + "-" + m[2] + "-" + m[1]) : null;
+                };
+                const startIso = toIso(parts[0]);
+                const endIso = toIso(parts[1]);
+                if (!startIso || !endIso) {
+                    alert("Dates must be in dd-mm-yyyy format, e.g. 01-09-2026.");
+                    return;
+                }
+                startDate = startIso + "T00:00:00";
+                endDate = endIso + "T23:59:59";
+            }
+
+            try {
+                const url = FTApi.adminSchoolStatementUrl(schoolId, startDate, endDate);
+                await FTApi.downloadFile(url, getToken(), schoolName + " - Payment Statement.pdf");
+            } catch (err) {
+                alert(err.message || "Could not generate the payment statement.");
+            }
+        }
+
+        // ---------- Add Student ----------
+        document.getElementById("addStudentBtn").addEventListener("click", async function () {
+            document.getElementById("addStudentForm").reset();
+            document.getElementById("addStudentAlert").classList.add("d-none");
+
+            const select = document.getElementById("newStudentSchool");
+            select.innerHTML = '<option value="">Loading schools…</option>';
+            try {
+                const schools = await FTApi.adminSchools(getToken());
+                select.innerHTML = '<option value="">Select a school</option>' +
+                    schools.map(s => `<option value="${s.id}">${escapeHtml(s.schoolName)}${s.isActive === false ? " (suspended)" : ""}</option>`).join("");
+            } catch (e) {
+                select.innerHTML = '<option value="">Could not load schools — close and retry</option>';
+            }
+
+            bootstrap.Modal.getOrCreateInstance(document.getElementById("addStudentModal")).show();
+        });
+
+        document.getElementById("addStudentForm").addEventListener("submit", async function (e) {
+            e.preventDefault();
+            const alertBox = document.getElementById("addStudentAlert");
+            alertBox.classList.add("d-none");
+
+            const payload = {
+                fullName: document.getElementById("newStudentName").value.trim(),
+                email: document.getElementById("newStudentEmail").value.trim(),
+                schoolId: document.getElementById("newStudentSchool").value,
+                programLevel: document.getElementById("newStudentLevel").value,
+                grade: document.getElementById("newStudentGrade").value.trim(),
+                parentName: document.getElementById("newStudentParent").value.trim(),
+                phone: document.getElementById("newStudentPhone").value.trim(),
+            };
+
+            try {
+                const result = await FTApi.adminAddStudent(payload, getToken());
+                bootstrap.Modal.getInstance(document.getElementById("addStudentModal")).hide();
+                showCredentials(result.student.email, result.temporaryPassword, result.student.fullName);
+                renderAll();
+            } catch (err) {
+                alertBox.textContent = err.message || "Could not create student account.";
+                alertBox.classList.remove("d-none");
+            }
+        });
+
+        let lastCredName = "";
+        let lastCredAccountType = "school";
+
+        function showCredentials(username, password, name, accountType) {
+            lastCredName = name || "";
+            lastCredAccountType = accountType || "school";
+            document.getElementById("credUsername").value = username;
+            document.getElementById("credPassword").value = password;
+            bootstrap.Modal.getOrCreateInstance(document.getElementById("credentialsModal")).show();
+        }
+
+        function copyCred(fieldId) {
+            const el = document.getElementById(fieldId);
+            el.select();
+            navigator.clipboard.writeText(el.value).catch(() => document.execCommand("copy"));
+        }
+
+        function copyCredMessage() {
+            const username = document.getElementById("credUsername").value;
+            const password = document.getElementById("credPassword").value;
+            const isStudent = lastCredAccountType === "student";
+            const message =
+                `Hi! Your Future Tech School Program login is ready.\n\n` +
+                `${isStudent ? "Student" : "School"}: ${lastCredName}\n` +
+                `Login page: [your website]/${isStudent ? "student-login.html" : "school-login.html"}\n` +
+                `Username: ${username}\n` +
+                `Temporary Password: ${password}\n\n` +
+                `Please log in and keep this password safe.`;
+            navigator.clipboard.writeText(message).then(() => {
+                alert("Message copied! Paste it into WhatsApp, email, or SMS.");
+            }).catch(() => {
+                alert("Could not copy automatically. Please copy the username/password fields manually.");
+            });
+        }
+
+        checkLogin();
+    </script>
+</body>
+</html>

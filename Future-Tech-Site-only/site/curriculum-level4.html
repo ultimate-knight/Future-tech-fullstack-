@@ -1,636 +1,407 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Level 4 Curriculum | Future Tech School Program</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel="shortcut icon" href="assets/images/shared/favicon.ico">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/site.css">
-    <style>
-        .intro {
-            max-width: 850px;
-            margin: 50px auto;
-            text-align: center;
-            padding: 0 20px;
-        }
-        .section-label {
-            color: #5534b8;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-
-        .intro h2,
-        .skills-section h2 {
-            font-size: 28px;
-            color: #172a46;
-            margin: 7px 0 10px;
-        }
-
-        .intro p {
-            font-size: 13px;
-            color: #687386;
-        }
-
-        .level4-curriculum {
-            width: 92%;
-            max-width: 1200px;
-            margin: 50px auto;
-        }
-
-        .level4-card {
-            display: grid;
-            grid-template-columns: 220px 1fr;
-
-            min-height: 260px;
-
-            background: #ffffff;
-
-            border: 1px solid #e8eef6;
-
-            border-radius: 15px;
-
-            margin-bottom: 20px;
-
-            overflow: hidden;
-
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-
-            transition: 0.3s;
-        }
-
-        .level4-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.10);
-        }
-
-        .course-left {
-            position: relative;
-
-            padding: 45px 20px 25px;
-
-            text-align: center;
-
-            border-right: 2px dotted #c7d8eb;
-
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        .course-number {
-            position: absolute;
-
-            top: 0;
-            left: 0;
-
-            width: 110px;
-            height: 65px;
-
-            color: white;
-
-            font-size: 34px;
-            font-weight: 700;
-
-            padding-top: 7px;
-
-            border-radius: 15px 0 35px 0;
-        }
-
-        .python-card .course-number {
-            background: #287bdc;
-        }
-
-        .ml-card .course-number {
-            background: #5534b8;
-        }
-
-        .data-card .course-number {
-            background: #287bdc;
-        }
-
-        .hacking-card .course-number {
-            background: #5534b8;
-        }
-
-        .projects-card .course-number {
-            background: #287bdc;
-        }
-
-
-        .course-icon {
-            width: 90px;
-            height: 90px;
-
-            display: flex;
-
-            align-items: center;
-            justify-content: center;
-
-            margin-bottom: 10px;
-
-            font-size: 65px;
-        }
-
-        .python-card .course-icon {
-            color: #287bdc;
-        }
-
-        .ml-card .course-icon {
-            color: #5534b8;
-        }
-
-        .data-card .course-icon {
-            color: #287bdc;
-        }
-
-        .hacking-card .course-icon {
-            color: #5534b8;
-        }
-
-        .projects-card .course-icon {
-            color: #287bdc;
-        }
-
-
-        .course-left h2 {
-            color: #172a46;
-
-            font-size: 23px;
-
-            font-weight: 700;
-
-            line-height: 1.2;
-
-            margin: 5px 0 0;
-        }
-
-        .course-content {
-            display: grid;
-
-            grid-template-columns: 1fr 1fr;
-
-            padding: 28px 25px;
-
-            gap: 35px;
-        }
-        .content-column {
-            padding-left: 5px;
-        }
-        .content-column h3,
-        .project-content h3 {
-
-            display: inline-flex;
-
-            align-items: center;
-
-            gap: 8px;
-
-            color: white;
-
-            font-size: 15px;
-
-            font-weight: 600;
-
-            padding: 6px 15px;
-
-            border-radius: 20px;
-
-            margin-bottom: 12px;
-        }
-        .python-card h3 {
-            background: #287bdc;
-        }
-
-        .ml-card h3 {
-            background: #5534b8;
-        }
-
-        .data-card h3 {
-            background: #287bdc;
-        }
-
-        .hacking-card h3 {
-            background: #5534b8;
-        }
-
-        .projects-card h3 {
-            background: #287bdc;
-        }
-        .content-column ul,
-        .project-content ul {
-
-            margin: 0;
-
-            padding-left: 20px;
-
-            color: #182235;
-
-            font-size: 14px;
-
-            line-height: 1.65;
-        }
-
-        .content-column li,
-        .project-content li {
-            margin-bottom: 3px;
-        }
-
-
-        .python-card li::marker,
-        .data-card li::marker,
-        .projects-card li::marker {
-            color: #287bdc;
-        }
-
-        .ml-card li::marker,
-        .hacking-card li::marker {
-            color: #5534b8;
-        }
-
-
-        .content-column h4 {
-            font-size: 17px;
-
-            color: #162b4d;
-
-            margin: 5px 0 8px;
-        }
-
-        .content-column p {
-
-            color: #303b4d;
-
-            font-size: 13px;
-
-            margin-bottom: 8px;
-        }
-
-
-        .project-content {
-            padding: 30px;
-        }
-
-        .project-intro {
-
-            font-size: 14px;
-
-            font-weight: 600;
-
-            color: #172033;
-
-            margin-bottom: 10px;
-        }
-
-        .capstone-section {
-
-            background: #0b2942;
-
-            padding: 65px 6%;
-
-            margin-top: 55px;
-        }
-
-        .capstone-heading {
-
-            max-width: 850px;
-
-            margin: 0 auto 35px;
-
-            text-align: center;
-        }
-
-        .capstone-heading .section-label {
-            color: #67b4ff;
-        }
-
-        .capstone-heading h2 {
-
-            color: white;
-
-            font-size: 32px;
-
-            margin: 5px 0 10px;
-        }
-
-        .capstone-heading p {
-
-            color: #b8c8d8;
-
-            font-size: 13px;
-        }
-
-        .capstone-grid {
-
-            max-width: 1100px;
-
-            margin: auto;
-
-            display: grid;
-
-            grid-template-columns: repeat(4, 1fr);
-
-            gap: 18px;
-        }
-
-        .capstone-mini-card {
-
-            background: white;
-
-            padding: 24px 20px;
-
-            border-radius: 12px;
-
-            min-height: 300px;
-        }
-
-        .mini-icon {
-
-            font-size: 34px;
-
-            margin-bottom: 10px;
-        }
-
-        .capstone-mini-card h4 {
-
-            font-size: 16px;
-
-            color: #172a46;
-
-            margin: 0 0 10px;
-        }
-        .capstone-mini-card p {
-
-            font-size: 11px;
-
-            color: #778190;
-
-            margin-bottom: 8px;
-        }
-
-        .capstone-mini-card ul {
-
-            padding-left: 18px;
-
-            margin: 0;
-        }
-
-        .capstone-mini-card li {
-
-            font-size: 11px;
-
-            color: #5d6878;
-
-            margin-bottom: 6px;
-        }
-
-        .skills-section {
-
-            max-width: 1050px;
-
-            margin: 65px auto;
-
-            padding: 0 20px;
-
-            text-align: center;
-        }
-
-        .skills-grid {
-
-            display: grid;
-
-            grid-template-columns: repeat(4, 1fr);
-
-            gap: 12px;
-
-            margin-top: 25px;
-        }
-        .skills-grid div {
-
-            background: white;
-
-            border: 1px solid #e6ebf2;
-
-            border-radius: 8px;
-
-            padding: 13px 8px;
-
-            font-size: 11px;
-
-            font-weight: 600;
-
-            color: #445164;
-
-            transition: 0.3s;
-        }
-
-        .skills-grid div:hover {
-
-            transform: translateY(-3px);
-
-            border-color: #287bdc;
-
-            box-shadow:
-                0 5px 15px rgba(40, 123, 220, 0.12);
-        }
-
-        .final-outcome {
-
-            padding: 60px 0;
-
-            background: #f5f8ff;
-        }
-
-        .outcome-box {
-
-            max-width: 1100px;
-
-            margin: auto;
-
-            background: white;
-
-            border: 1px solid #d6e2f5;
-
-            border-radius: 20px;
-
-            overflow: hidden;
-
-            display: flex;
-
-            align-items: stretch;
-
-            min-height: 350px;
-
-            box-shadow:
-                0 10px 30px rgba(0, 0, 0, 0.07);
-        }
-        .outcome-visual {
-
-            width: 38%;
-
-            background: #0b2942;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            padding: 30px;
-        }
-        .outcome-visual-inner {
-            text-align: center;
-            color: white;
-        }
-        .big-number {
-            font-size: 85px;
-            font-weight: 800;
-            color: #287bdc;
-            display: block;
-        }
-        .outcome-visual-inner h3 {
-
-            font-size: 25px;
-
-            margin: 5px 0;
-
-            color: white;
-        }
-
-        .outcome-visual-inner p {
-
-            font-size: 13px;
-
-            color: #b8c8d8;
-        }
-
-        .outcome-content {
-
-            width: 62%;
-
-            padding: 45px 50px;
-
-            display: flex;
-
-            flex-direction: column;
-
-            justify-content: center;
-        }
-
-        .outcome-label {
-
-            display: inline-block;
-
-            width: fit-content;
-
-            background: #5534b8;
-
-            color: white;
-
-            padding: 8px 20px;
-
-            border-radius: 20px;
-
-            font-size: 13px;
-
-            font-weight: 700;
-
-            letter-spacing: 1px;
-        }
-
-        .outcome-content h2 {
-
-            margin-top: 22px;
-
-            font-size: 28px;
-
-            line-height: 1.3;
-
-            color: #172a46;
-        }
-
-        .outcome-line {
-
-            width: 100%;
-
-            height: 1px;
-
-            background: #d9e2ef;
-
-            margin: 15px 0 20px;
-        }
-        .outcome-content p {
-            font-size: 13px;
-            color: #5f6b7a;
-            margin-bottom: 0;
-        }
-        .cta {
-            background: #287bdc;
-            padding: 40px 8%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 30px;
-        }
-        .cta span {
-            color: #cce5ff;
-
-            font-size: 10px;
-
-            font-weight: 700;
-
-            letter-spacing: 1px;
-        }
-
-        .cta h2 {
-
-            color: white;
-
-            font-size: 25px;
-
-            margin: 3px 0;
-        }
-
-        .cta p {
-
-            color: #e4f2ff;
-
-            font-size: 12px;
-        }
-
-        .enroll-btn {
-
-            background: white;
-
-            color: #287bdc;
-
-            padding: 12px 25px;
-
-            border-radius: 6px;
-
-            font-size: 12px;
-
-            font-weight: 700;
-
-            white-space: nowrap;
-
-            text-decoration: none;
-
-            transition: 0.3s;
-        }
-
-        .enroll-btn:hover {
-
-            background: #172a46;
-
-            color: white;
-        }.final-outcome {
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="assets/images/shared/favicon.ico">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<title>Level 4 Curriculum | Future Tech School Program</title>
+<style>
+    .intro {
+        max-width: 850px;
+        margin: 50px auto;
+        text-align: center;
+        padding: 0 20px;
+    }
+    .section-label {
+        color: #5534b8;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+.intro h2,
+.skills-section h2 {
+    font-size: 28px;
+    color: #172a46;
+    margin: 7px 0 10px;
+}
+.intro p {
+    font-size: 13px;
+    color: #687386;
+}
+.level4-curriculum {
+    width: 92%;
+    max-width: 1200px;
+    margin: 50px auto;
+}
+.level4-card {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    min-height: 260px;
+    background: #ffffff;
+    border: 1px solid #e8eef6;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    transition: 0.3s;
+}
+.level4-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.10);
+}
+.course-left {
+    position: relative;
+    padding: 45px 20px 25px;
+    text-align: center;
+    border-right: 2px dotted #c7d8eb;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.course-number {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 110px;
+    height: 65px;
+    color: white;
+    font-size: 34px;
+    font-weight: 700;
+    padding-top: 7px;
+    border-radius: 15px 0 35px 0;
+}
+.python-card .course-number {
+    background: #287bdc;
+}
+.ml-card .course-number {
+    background: #287bdc;
+}
+.data-card .course-number {
+    background: #287bdc;
+}
+.hacking-card .course-number {
+    background: #287bdc;
+}
+.projects-card .course-number {
+    background: #287bdc;
+}
+.course-icon {
+    width: 90px;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    font-size: 65px;
+}
+.python-card .course-icon {
+    color: #287bdc;
+}
+.ml-card .course-icon {
+    color: #287bdc;
+}
+.data-card .course-icon {
+    color: #287bdc;
+}
+.hacking-card .course-icon {
+    color: #287bdc;
+}
+.projects-card .course-icon {
+    color: #287bdc;
+}
+.course-left h2 {
+    color: #172a46;
+    font-size: 23px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 5px 0 0;
+}
+.course-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 28px 25px;
+    gap: 35px;
+}
+.content-column {
+    padding-left: 5px;
+}
+.content-column h3,
+.project-content h3 {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 6px 15px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+}
+.python-card h3 {
+    background: #287bdc;
+}
+.ml-card h3 {
+    background: #287bdc;
+}
+.data-card h3 {
+    background: #287bdc;
+}
+.hacking-card h3 {
+    background: #287bdc;
+}
+.projects-card h3 {
+    background: #287bdc;
+}
+.content-column ul,
+.project-content ul {
+    margin: 0;
+    padding-left: 20px;
+    color: #182235;
+    font-size: 14px;
+    line-height: 1.65;
+}
+.content-column li,
+.project-content li {
+    margin-bottom: 3px;
+}
+.python-card li::marker,
+.data-card li::marker,
+.projects-card li::marker {
+    color: #287bdc;
+}
+.ml-card li::marker,
+.hacking-card li::marker {
+    color: #287bdc;
+}
+.content-column h4 {
+    font-size: 17px;
+    color: #287bdc;
+    margin: 5px 0 8px;
+}
+.content-column p {
+    color: #287bdc;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+.project-content {
+    padding: 30px;
+}
+.project-intro {
+    font-size: 14px;
+    font-weight: 600;
+    color: #172033;
+    margin-bottom: 10px;
+}
+.capstone-section {
+    background: #0b2942;
+    padding: 65px 6%;
+    margin-top: 55px;
+}
+.capstone-heading {
+    max-width: 850px;
+    margin: 0 auto 35px;
+    text-align: center;
+}
+.capstone-heading .section-label {
+    color: #67b4ff;
+}
+.capstone-heading h2 {
+    color: white;
+    font-size: 32px;
+    margin: 5px 0 10px;
+}
+.capstone-heading p {
+    color: #b8c8d8;
+    font-size: 13px;
+}
+.capstone-grid {
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+.capstone-mini-card {
+    background: white;
+    padding: 24px 20px;
+    border-radius: 12px;
+    min-height: 300px;
+}
+.mini-icon {
+    font-size: 34px;
+    margin-bottom: 10px;
+}
+.capstone-mini-card h4 {
+    font-size: 16px;
+    color: #172a46;
+    margin: 0 0 10px;
+}
+.capstone-mini-card p {
+    font-size: 11px;
+    color: #778190;
+    margin-bottom: 8px;
+}
+.capstone-mini-card ul {
+    padding-left: 18px;
+    margin: 0;
+}
+.capstone-mini-card li {
+    font-size: 11px;
+    color: #5d6878;
+    margin-bottom: 6px;
+}
+.skills-section {
+    max-width: 1050px;
+    margin: 65px auto;
+    padding: 0 20px;
+    text-align: center;
+}
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 25px;
+}
+.skills-grid div {
+    background: white;
+    border: 1px solid #e6ebf2;
+    border-radius: 8px;
+    padding: 13px 8px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #445164;
+    transition: 0.3s;
+}
+.skills-grid div:hover {
+    transform: translateY(-3px);
+    border-color: #287bdc;
+    box-shadow:
+      0 5px 15px rgba(40, 123, 220, 0.12);
+}
+.final-outcome {
+    padding: 60px 0;
+    background: #f5f8ff;
+}
+.outcome-box {
+    max-width: 1100px;
+    margin: auto;
+    background: white;
+    border: 1px solid #d6e2f5;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    align-items: stretch;
+    min-height: 350px;
+    box-shadow:
+      0 10px 30px rgba(0, 0, 0, 0.07);
+}
+.outcome-visual {
+    width: 38%;
+    background: #0b2942;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+.outcome-visual-inner {
+    text-align: center;
+    color: white;
+}
+.big-number {
+    font-size: 85px;
+    font-weight: 800;
+    color: #287bdc;
+    display: block;
+}
+.outcome-visual-inner h3 {
+    font-size: 25px;
+    margin: 5px 0;
+    color: white;
+}
+.outcome-visual-inner p {
+    font-size: 13px;
+    color: #b8c8d8;
+}
+.outcome-content {
+    width: 62%;
+    padding: 45px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.outcome-label {
+    display: inline-block;
+    width: fit-content;
+    background: #5534b8;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+.outcome-content h2 {
+    margin-top: 22px;
+    font-size: 28px;
+    line-height: 1.3;
+    color: #172a46;
+}
+.outcome-line {
+    width: 100%;
+    height: 1px;
+    background: #d9e2ef;
+    margin: 15px 0 20px;
+}
+.outcome-content p {
+    font-size: 13px;
+    color: #5f6b7a;
+    margin-bottom: 0;
+}
+.cta {
+    background: #287bdc;
+    padding: 40px 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+.cta span {
+    color: #cce5ff;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+      .cta h2 {
+          color: white;
+          font-size: 25px;
+          margin: 3px 0;
+      }
+      .cta p {
+          color: #e4f2ff;
+          font-size: 12px;
+      }
+      .enroll-btn {
+          background: white;
+          color: #287bdc;
+          padding: 12px 25px;
+          border-radius: 6px;
+          font-size: 12px;
+          font-weight: 700;
+          white-space: nowrap;
+          text-decoration: none;
+          transition: 0.3s;
+      }
+      .enroll-btn:hover {
+          background: #172a46;
+          color: white;
+      }.final-outcome {
     width: 100%;
     padding: 25px 10px;
     background: #f5f8ff;
@@ -650,143 +421,88 @@
 }
 .outcome-image {
     width: 30%;
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 }
 .outcome-image img {
     width: 300%;
-
     max-width: 300px;
-
     height: 220px;
-
     object-fit: cover;
-
     display: block;
-
     border-radius: 0;
-
     box-shadow: none;
 }
 .outcome-content {
     width: 60%;
-
     padding: 5px 5px;
-
     display: flex;
-
     flex-direction: column;
-
     justify-content: center;
-
     align-items: flex-start;
 }
 .outcome-label {
     display: inline-block;
-
     background: #0869c7;
-
     color: white;
-
     font-size: 13px;
-
     font-weight: 700;
-
     letter-spacing: 0.5px;
-
     padding: 10px 20px;
-
     border-radius: 25px;
-
     margin-bottom: 38px;
 }
 .outcome-description {
     max-width: 680px;
-
     color: #172a46;
-
     font-size: 18px;
-
     font-weight: 500;
-
     line-height: 1.55;
-
     margin: 0 0 25px 0;
 }
 .outcome-line {
     width: 100%;
-
     height: 1px;
-
     background: rgba(255, 255, 255, 0.65);
-
     margin: 0 0 24px 0;
 }
 .outcome-content h2 {
     margin: 0;
-
     color: #064b91;
-
     font-size: 34px;
-
     font-weight: 800;
-
     line-height: 1.15;
 }
-
-
 .outcome-subtitle {
     color: #738090;
-
     font-size: 15px;
-
     margin: 12px 0 26px 0;
 }
-
 .outcome-buttons {
     display: flex;
-
     align-items: center;
-
     gap: 14px;
-
     flex-wrap: wrap;
 }
 .outcome-enroll-btn {
     display: inline-flex;
     align-items: center;
-
     justify-content: center;
-
     gap: 12px;
-
     min-width: 165px;
-
     padding: 15px 22px;
-
     background: #0869c7;
-
     color: white;
-
     text-decoration: none;
-
     font-size: 13px;
-
     font-weight: 700;
-
     border-radius: 7px;
-
     transition: 0.3s;
 }
 .outcome-enroll-btn:hover {
     background: #064b91;
-
     color: white;
-
     transform: translateY(-2px);
 }
 .outcome-enroll-btn i {
@@ -794,48 +510,31 @@
 }
 .outcome-level-btn {
     display: inline-flex;
-
     align-items: center;
-
     justify-content: center;
-
     gap: 9px;
-
     padding: 15px 20px;
-
     background: #064b91;
-
     color: white;
-
     border: 1px solid white;
-
     text-decoration: none;
-
     font-size: 13px;
-
     font-weight: 700;
-
     border-radius: 7px;
-
     transition: 0.3s;
 }
 .outcome-level-btn:hover {
     background: #0869c7;
-
     color: white;
-
     transform: translateY(-2px);
 }
-
 .outcome-level-btn span {
     margin-left: 2px;
 }
 @media (max-width: 900px) {
     .outcome-box {
         width: 94%;
-
         padding: 35px 30px;
-
         gap: 35px;
     }
     .outcome-image {
@@ -860,57 +559,72 @@
     }
     .outcome-box {
         width: 90%;
-        padding: 30px;
-        flex-direction: row;
-        gap: 25px;
-        align-items: stretch;
-    }
-    .outcome-image {
-        width: 40%;
-        height: 20%;
-    }
-    .outcome-image {
-        width: 100%;
-        max-width: 350%;
-        height: 240;
-        padding: 0%;
-    }
-    .outcome-content {
-        width: 100%;
-        padding: 0;
-    }
-    .outcome-label {
-        margin-bottom: 22px;
-        font-size: 11px;
-        padding: 9px 16px;
-    }
-    .outcome-description {
-        font-size: 15px;
-
-        line-height: 1.5;
-    }
-    .outcome-content h2 {
-        font-size: 27px;
+    padding: 30px;
+    flex-direction: row;
+    gap: 25px;
+    align-items: stretch;
+}
+.outcome-image {
+    width: 40%;
+    height: 20%;
+}
+.outcome-image {
+    width: 100%;
+    max-width: 350%;
+    height: 240;
+    padding: 0%;
+}
+.outcome-content {
+    width: 100%;
+    padding: 0;
+}
+.outcome-label {
+    margin-bottom: 22px;
+    font-size: 11px;
+    padding: 9px 16px;
+}
+.outcome-description {
+    font-size: 15px;
+    line-height: 1.5;
+}
+.outcome-content h2 {
+    font-size: 27px;
     }
     .outcome-subtitle {
-        font-size: 13px;
+         font-size: 13px;
     }
     .outcome-buttons {
-        width: 100%;
-        flex-direction: column;
-        align-items: stretch;
+         width: 100%;
+         flex-direction: column;
+         align-items: stretch;
     }
     .outcome-enroll-btn,
     .outcome-level-btn {
-        width: 100%;
-        box-sizing: border-box;
-        text-align: none;
+         width: 100%;
+         box-sizing: border-box;
+         text-align: none;
     }
 }
-    </style>
+    
+/* --- phone/tablet layout (added: original had no rules for the cards) --- */
+@media (max-width: 900px){
+  .level4-card,.projects-card{grid-template-columns:1fr}
+  .course-left{border-right:0;border-bottom:2px dotted #c7d8eb;min-height:200px}
+  .course-content{grid-template-columns:1fr;gap:20px;padding:25px 20px}
+  .project-content{padding:25px 20px}
+  .capstone-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width: 650px){
+  .capstone-grid{grid-template-columns:1fr}
+  .outcome-box{flex-direction:column !important;width:94%;padding:22px 18px}
+  .outcome-image{width:100%;max-width:none;height:auto}
+  .outcome-image img{width:100%;max-width:100%;height:auto;max-height:240px;object-fit:cover}
+  .outcome-content{width:100%;padding:0}
+}
+</style>
 </head>
 <body>
-    <header class="ft-header">
+<header class="ft-header">
     <nav class="navbar navbar-expand-xl ft-navbar">
       <div class="container-fluid">
         <a href="home.html" class="d-flex align-items-center text-decoration-none ft-logo-wrap">
@@ -1011,307 +725,288 @@
       </div>
     </div>
   </header>
-   <section class="intro">
-    <span class="section-label">LEVEL 4 CURRICULUM</span>
-    <h2>Advanced Technology Learning Journey</h2>
-    <p>Level 4 introduces students to advanced programming,artificial intelligence, Generative AI, cybersecurity and real-world technology projects.</p>
+ <section class="intro">
+  <span class="section-label">LEVEL 4 CURRICULUM</span>
+  <h2>Advanced Technology Learning Journey</h2>
+  <p>Level 4 introduces students to advanced programming, artificial intelligence, Generative AI, cybersecurity and real-world technology projects.</p>
 </section>
 <main id="curriculum">
 <section class="level4-curriculum">
 <div class="level4-card python-card">
-    <div class="course-left">
-        <div class="course-number">01</div>
-        <div class="course-icon">
-            <i class="bi bi-filetype-py"></i>
-        </div>
-        <h2>
-            Advanced<br>
-            Python
-        </h2>
+  <div class="course-left">
+    <div class="course-number">01</div>
+    <div class="course-icon">
+      <i class="bi bi-filetype-py"></i>
     </div>
-    <div class="course-content">
-        <div class="content-column">
-            <h3><i class="bi bi-grid-3x3-gap-fill"></i>Topics</h3>
-            <ul>
-                <li>Advanced Python</li>
-                <li>Object-oriented programming</li>
-                <li>Advanced data structures</li>
-                <li>File handling</li>
-                <li>APIs</li>
-                <li>Exception handling</li>
-                <li>Modules</li>
-                <li>Packages</li>
-                <li>Automation</li>
-                <li>Clean coding practices</li>
-            </ul>
-        </div>
-        <div class="content-column">
-            <h3><i class="bi bi-folder-fill"></i>Project Examples</h3>
-            <ul>
-                <li>⚙️ Automation application</li>
-                <li>📊 Data processing tool</li>
-                <li>🔗 API-based application</li>
-                <li>🎓 Student management application</li>
-            </ul>
-        </div>
-    </div>
+    <h2>
+      Advanced<br>
+      Python
+    </h2>
+</div>
+<div class="course-content">
+  <div class="content-column">
+    <h3><i class="bi bi-grid-3x3-gap-fill"></i>Topics</h3>
+    <ul>
+         <li>Advanced Python Introduction</li>
+         <li>Python Best Practices & Clean Code</li>
+         <li>Advanced variables & Data Types</li>
+         <li>Strings & Advanced Text Processing</li>
+         <li>Dictionaries & Nested Data Structures</li>
+         <li>Advanced Functions</li>
+         <li>File Handling & Data Processing</li>
+         <li>Exception Handling & Debugging</li>
+         <li>Python Libraries & APIs</li>
+         <li>Automation with Python</li>
+    </ul>
+  </div>
+  <div class="content-column">
+    <h3><i class="bi bi-folder-fill"></i>Practical Activity</h3>
+    <ul>
+         <li>Refactor an existing Python program</li>
+         <li>Work with type conversion and complex data structures</li>
+         <li>Solve data-processing problems using comprehensions</li>
+         <li>Read, write, filter, and analyze CSV datasets</li>
+         <li>Build a small OOP application</li>
+         <li>Create a simple CRUD-based database application</li>
+         <li>Develop and present a complete Python application</li>
+         <li>Create and use custom Python modules</li>
+    </ul>
+  </div>
+</div>
 </div>
 <div class="level4-card ml-card">
-    <div class="course-left">
-        <div class="course-number">02</div>
-        <div class="course-icon">
-            <i class="bi bi-cpu"></i>
-        </div>
-        <h2>
-            Machine<br>
-            Learning & AI
-        </h2>
-
+  <div class="course-left">
+    <div class="course-number">02</div>
+    <div class="course-icon">
+         <i class="bi bi-cpu"></i>
     </div>
-    <div class="course-content">
-        <div class="content-column">
-            <h3>
-                <i class="bi bi-grid-3x3-gap-fill"></i>
-                Topics
-            </h3>
-            <ul>
-                <li>ML workflow</li>
-                <li>Data preparation</li>
-                <li>Feature concepts</li>
-                <li>Classification</li>
-                <li>Regression</li>
-                <li>Model evaluation</li>
-                <li>Neural-network concepts</li>
-                <li>Computer vision</li>
-                <li>Natural language processing</li>
-                <li>AI applications</li>
-            </ul>
-        </div>
-        <div class="content-column">
-            <h3>
-                <i class="bi bi-folder-fill"></i>
-                Project Ideas
-            </h3>
-            <ul>
-                <li>📈 Prediction system</li>
-                <li>🖼️ Image classification</li>
-                <li>⭐ Recommendation system</li>
-                <li>📊 AI analytics application</li>
-            </ul>
-        </div>
+    <h2>
+         Machine<br>
+         Learning & AI
+    </h2>
+  </div>
+  <div class="course-content">
+    <div class="content-column">
+         <h3>
+           <i class="bi bi-grid-3x3-gap-fill"></i>
+           Topics
+         </h3>
+         <ul>
+           <li>Advanced AI & Machine Learning Introduction</li>
+           <li>End-to-End ML Workflow</li>
+           <li>Data Preprocessing</li>
+           <li>Feature Engineering</li>
+           <li>K-Nearest Neighbors (KNN)</li>
+           <li>Support Vector Machines (SVM)</li>
+           <li>Model Evaluation & Validation</li>
+           <li>Deep Learning Basics</li>
+           <li>Natural Language Processing (NLP)</li>
+           <li>AI Ethics, Bias, Privacy & Responsible AI</li>
+         </ul>
     </div>
+    <div class="content-column">
+         <h3>
+           <i class="bi bi-folder-fill"></i>
+           Practical Activity
+         </h3>
+         <ul>
+           <li>Build a complete ML pipeline</li>
+           <li>Clean and prepare a real dataset</li>
+           <li>Select and create useful features</li>
+           <li>Build a simple classification model</li>
+           <li>Improve a model using parameter tuning</li>
+           <li>Analyze ethical issues in an AI system</li>
+         </ul>
+    </div>
+  </div>
 </div>
 <div class="level4-card data-card">
-    <div class="course-left">
-        <div class="course-number">03</div>
-        <div class="course-icon">
-            <i class="bi bi-stars"></i>
-        </div>
-        <h2>Generative<br>AI
-        </h2>
+  <div class="course-left">
+    <div class="course-number">03</div>
+    <div class="course-icon">
+         <i class="bi bi-stars"></i>
     </div>
-    <div class="course-content">
-        <div class="content-column">
-            <h3>
-                <i class="bi bi-grid-3x3-gap-fill"></i>
-                Topics
-            </h3>
-            <ul>
-                <li>Generative AI</li>
-
-                <li>Large Language Models</li>
-
-                <li>Prompt engineering</li>
-
-                <li>AI-assisted coding</li>
-
-                <li>Text generation</li>
-
-                <li>Image generation concepts</li>
-
-                <li>AI productivity</li>
-
-                <li>AI research</li>
-
-                <li>AI limitations</li>
-
-                <li>Hallucination awareness</li>
-
-                <li>Responsible AI</li>
-            </ul>
-        </div>
-        <div class="content-column">
-            <h3>
-                <i class="bi bi-folder-fill"></i>
-                Projects
-            </h3>
-            <ul>
-                <li>🤖 AI Study Assistant</li>
-
-                <li>💬 AI Chatbot</li>
-
-                <li>🧠 Prompt-Based Learning Assistant</li>
-
-                <li>✍️ AI Content Assistant</li>
-            </ul>
-        </div>
+    <h2>Generative<br>AI
+    </h2>
+  </div>
+  <div class="course-content">
+    <div class="content-column">
+         <h3>
+           <i class="bi bi-grid-3x3-gap-fill"></i>
+           Topics
+         </h3>
+         <ul>
+           <li>Introduction to Generative AI</li>
+           <li>Generative AI Tools & Platforms</li>
+           <li>AI for Text Generation</li>
+           <li>AI Image Generation</li>
+           <li>Generative AI APIs</li>
+           <li>AI for Coding & Programming</li>
+           <li>Generative AI Capstone Project</li>
+           <li>AI Audio & Speech Generation</li>
+           <li>Large Language Models (LLMs)</li>
+         </ul>
     </div>
+    <div class="content-column">
+         <h3>
+           <i class="bi bi-folder-fill"></i>
+           Practical Activity
+         </h3>
+         <ul>
+           <li>Explore real-world Generative AI applications</li>
+           <li>Understand the relationship between them</li>
+           <li>Understand how text-generation models work</li>
+           <li>Use role, context, constraints, and examples</li>
+           <li>Write effective prompts</li>
+           <li>Explore AI-generated speech and audio</li>
+         </ul>
+    </div>
+  </div>
 </div>
 <div class="level4-card hacking-card">
-    <div class="course-left">
-        <div class="course-number">04</div>
-        <div class="course-icon">
-            <i class="bi bi-shield-lock-fill"></i>
-        </div>
-        <h2>
-            Cybersecurity<br>
-            & Ethical Hacking
-        </h2>
+  <div class="course-left">
+    <div class="course-number">04</div>
+    <div class="course-icon">
+      <i class="bi bi-shield-lock-fill"></i>
     </div>
-    <div class="course-content">
-        <div class="content-column">
-            <h3><i class="bi bi-grid-3x3-gap-fill"></i>Topics</h3>
-            <ul>
-                <li>Network security</li>
-
-                <li>Web security concepts</li>
-
-                <li>Authentication</li>
-
-                <li>Authorization</li>
-
-                <li>Vulnerability concepts</li>
-
-                <li>Security testing</li>
-
-                <li>Secure coding</li>
-
-                <li>Encryption concepts</li>
-
-                <li>Threat awareness</li>
-
-                <li>Ethical hacking methodology</li>
-            </ul>
-        </div>
-        <div class="content-column">
-            <h3><i class="bi bi-shield-check"></i>Practical Learning</h3>
-            <p>
-                Students use controlled educational
-                environments to understand cybersecurity
-                concepts safely.</p>
-            <ul>
-                <li> Cybersecurity labs</li>
-                <li> CTF environments</li>
-                <li>Simulated systems</li>
-                <li>Local vulnerable applications</li>
-            </ul>
-        </div>
+    <h2>
+      Cybersecurity<br>
+      & Ethical Hacking
+    </h2>
+  </div>
+  <div class="course-content">
+    <div class="content-column">
+      <h3><i class="bi bi-grid-3x3-gap-fill"></i>Topics</h3>
+      <ul>
+           <li>Advanced Cybersecurity Introduction</li>
+           <li>Ethical Hacking & Cyber Laws</li>
+           <li>CIA Triad & Security Principles</li>
+           <li>Network Security</li>
+           <li>Networking Fundamentals for Security</li>
+           <li>Web Application Security</li>
+           <li>Security Scanning & Reconnaissance Concepts </li>
+           <li>Security Monitoring & Log Analysis</li>
+           <li>Cloud, Mobile & IoT Security</li>
+           <li>OWASP Top 10 Concepts</li>
+      </ul>
     </div>
+    <div class="content-column">
+      <h3><i class="bi bi-shield-check"></i>Practical Activity</h3>
+      <p>
+           Students use controlled educational
+           environments to understand cybersecurity
+           concepts safely.</p>
+         <ul>
+           <li>Understand modern cybersecurity threats</li>
+           <li>Study authorization, ethics, and responsible disclosure</li>
+           <li>Understand IP, DNS, TCP/IP, ports, and protocols</li>
+           <li>Configure a firewall in an authorized lab</li>
+         </ul>
+    </div>
+  </div>
 </div>
 <div class="level4-card projects-card">
-    <div class="course-left">
-        <div class="course-number">05</div>
-        <div class="course-icon"><i class="bi bi-lightbulb"></i></div>
-        <h2>Capstone<br>Projects</h2>
-    </div>
-    <div class="project-content">
-        <h3><i class="bi bi-folder-fill"></i>Final Projects</h3>
-        <p class="project-intro">
-            The highlight of Level 4. Students select a
-            problem,research it, design a solution and build
-            a working prototype.
-        </p>
-        <ul>
-            <li>AI Study Assistant</li>
-            <li>Smart Agriculture System</li>
-            <li>AI Career Assistant</li>
-            <li>Cybersecurity Awareness Platform</li>
-        </ul>
-    </div>
+  <div class="course-left">
+    <div class="course-number">05</div>
+    <div class="course-icon"><i class="bi bi-lightbulb"></i></div>
+    <h2>Capstone<br>Projects</h2>
+  </div>
+  <div class="project-content">
+    <h3><i class="bi bi-folder-fill"></i>Final Projects</h3>
+    <ul>
+         <li>AI-Powered Student Study Assistant</li>
+         <li>Smart School Management System</li>
+         <li>AI-Based Attendance Analysis System</li>
+         <li>AI Book Recommendation System</li>
+         <li>AI School Information Chatbot</li>
+         <li>Weather Data Analysis & Prediction</li>
+         <li>Cybersecurity Awareness Platform</li>
+         <li>AI-Based Sentiment Analysis System</li>
+    </ul>
+  </div>
 </div>
 </section>
 <section class="capstone-section" id="projects">
-    <div class="capstone-heading">
-        <h2>Capstone Projects</h2>
-        <p>The highlight of Level 4. Students select a problem,research it, design a solution and build a working prototype.</p>
+  <div class="capstone-heading">
+    <h2>Practical Activity</h2>
+  </div>
+  <div class="capstone-grid">
+    <div class="capstone-mini-card">
+      <div class="mini-icon"></div>
+      <h4>AI Study Assistant</h4>
+      <p>Possible features:</p>
+      <ul>
+           <li>Student questions</li>
+           <li>AI explanations</li>
+           <li>Study resources</li>
+           <li>Quiz generation</li>
+      </ul>
     </div>
-    <div class="capstone-grid">
-        <div class="capstone-mini-card">
-            <div class="mini-icon">🤖</div>
-            <h4>AI Study Assistant</h4>
-            <p>Possible features:</p>
-            <ul>
-                <li>Student questions</li>
-                <li>AI explanations</li>
-                <li>Study resources</li>
-                <li>Quiz generation</li>
-            </ul>
-        </div>
-        <div class="capstone-mini-card">
-            <div class="mini-icon">🌱</div>
-            <h4>Smart Agriculture System</h4>
-            <p>Possible technologies:</p>
-            <ul>
-                <li>IoT</li>
-                <li>Sensors</li>
-                <li>Python</li>
-                <li>AI / ML</li>
-                <li>Dashboard</li>
-            </ul>
-        </div>
-        <div class="capstone-mini-card">
-            <div class="mini-icon">💼</div>
-            <h4>AI Career Assistant</h4>
-            <p>Possible features:</p>
-            <ul>
-                <li>Student profile</li>
-                <li>Skill analysis</li>
-                <li>Career recommendations</li>
-                <li>Learning roadmap</li>
-            </ul>
-        </div>
-        <div class="capstone-mini-card">
-            <div class="mini-icon">🔐</div>
-            <h4>Cybersecurity Awareness Platform</h4>
-            <p>Possible features:</p>
-            <ul>
-                <li>Security lessons</li>
-                <li>Phishing awareness</li>
-                <li>Security quizzes</li>
-                <li>Password education</li>
-            </ul>
-        </div>
+    <div class="capstone-mini-card">
+      <div class="mini-icon"></div>
+      <h4>Smart Agriculture System</h4>
+      <p>Possible technologies:</p>
+      <ul>
+           <li>IoT</li>
+           <li>Sensors</li>
+           <li>Python</li>
+           <li>AI / ML</li>
+           <li>Dashboard</li>
+      </ul>
     </div>
+    <div class="capstone-mini-card">
+      <div class="mini-icon"></div>
+      <h4>AI Career Assistant</h4>
+      <p>Possible features:</p>
+      <ul>
+           <li>Student profile</li>
+           <li>Skill analysis</li>
+           <li>Career recommendations</li>
+           <li>Learning roadmap</li>
+      </ul>
+    </div>
+    <div class="capstone-mini-card">
+      <div class="mini-icon"></div>
+      <h4>Cybersecurity Awareness Platform</h4>
+      <p>Possible features:</p>
+      <ul>
+           <li>Security lessons</li>
+           <li>Phishing awareness</li>
+           <li>Security quizzes</li>
+           <li>Password education</li>
+      </ul>
+    </div>
+  </div>
 </section>
 <section class="final-outcome" id="level4-outcome">
-    <div class="outcome-box">
-        <div class="outcome-image">
-            <img src="assets/images/admission/curriculum-4.jpeg"
-                 alt="Level 4 Students Learning Technology">
-        </div>
-        <div class="outcome-content">
-            <div class="outcome-label">
-                LEVEL 4 FINAL OUTCOME
-            </div>
-            <p class="outcome-description">
-                Students complete an advanced technology
-                learning journey and develop a capstone
-                project demonstrating their ability to apply
-                technology to a real-world problem.
-            </p>
-            <div class="outcome-line"></div>
-            <h2>Learn. Build. Innovate.</h2>
-            <p class="outcome-subtitle">Develop technology skills through projects and practical learning.</p>
-            <div class="outcome-buttons">
-                <a href="admissions-individual-registration.html"class="outcome-enroll-btn">ENROLL NOW<i class="bi bi-arrow-right"></i></a>
-                <a href="programs-level4.html"class="outcome-level-btn">Level 4<i class="bi bi-arrow-right"></i>
-                    <span>AI Professional Foundation</span></a>
-            </div>
-        </div>
+  <div class="outcome-box">
+    <div class="outcome-image">
+      <img src="assets/images/admission/curriculum-4.jpeg"
+           alt="Level 4 Students Learning Technology">
     </div>
+    <div class="outcome-content">
+      <div class="outcome-label">
+           LEVEL 4 FINAL OUTCOME
+      </div>
+      <p class="outcome-description">
+           Students complete an advanced technology
+           learning journey and develop a capstone
+           project demonstrating their ability to apply
+           technology to a real-world problem.
+      </p>
+      <div class="outcome-line"></div>
+      <h2>Learn. Build. Innovate.</h2>
+       <p class="outcome-subtitle">Develop technology skills through projects and practical learning.</p>
+      <div class="outcome-buttons">
+       <a href="admissions-individual-registration.html" class="outcome-enroll-btn">ENROLL NOW<i class="bi bi-arrow-right"></i></a>
+         <a href="programs-level4.html" class="outcome-level-btn">Level 4<i class="bi bi-arrow-right"></i>
+             <span>AI Professional Foundation</span></a>
+      </div>
+    </div>
+  </div>
 </section>
 </main>
-    <footer class="ft-footer">
+  <footer class="ft-footer">
     <div class="container-fluid">
       <div class="row gy-4">
         <div class="col-lg-3 col-md-6 ft-col">
@@ -1393,4 +1088,4 @@
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-</html>
+</html>

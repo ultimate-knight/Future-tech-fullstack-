@@ -9,18 +9,40 @@ const router = express.Router();
 
 // GET /api/schools/list
 // PUBLIC — no auth. Used to populate the "Your School" dropdown on the
-// individual admission form. Only returns id + name, nothing sensitive,
-// and only schools whose account is currently active.
+// individual admission form AND the public "Our Partner Schools" list on
+// school.html. Only returns id + name + whether a logo exists - nothing
+// sensitive - and only schools whose account is currently ACTIVE (a school
+// the Super Admin has suspended is hidden; an account that exists but is
+// suspended is not a current partner).
 router.get("/list", async (req, res) => {
   try {
     const records = await School.findAll({
       where: { isActive: true },
+      attributes: ["id", "schoolName", "logoFilename"],
+      order: [["schoolName", "ASC"]],
+    });
+    res.json(records.map((s) => ({ id: s.id, schoolName: s.schoolName, hasLogo: !!s.logoFilename })));
+  } catch (err) {
+    console.error("schools list error", err);
+    res.status(500).json({ error: "Could not load school list." });
+  }
+});
+
+// GET /api/schools/with-logo
+// PUBLIC — no auth. Used by the public home page's "Our Partner Schools"
+// section. Only active schools that have actually uploaded a logo -
+// nothing sensitive, just enough to render a logo grid.
+router.get("/with-logo", async (req, res) => {
+  try {
+    const { Op } = require("sequelize");
+    const records = await School.findAll({
+      where: { isActive: true, logoFilename: { [Op.ne]: null } },
       attributes: ["id", "schoolName"],
       order: [["schoolName", "ASC"]],
     });
     res.json(records);
   } catch (err) {
-    console.error("schools list error", err);
+    console.error("schools with-logo list error", err);
     res.status(500).json({ error: "Could not load school list." });
   }
 });
@@ -36,6 +58,10 @@ router.get("/me", requireSchoolAuth, async (req, res) => {
     email: school.email,
     phone: school.phone,
     createdAt: school.createdAt,
+    // true/false only - the actual image is fetched separately via
+    // GET /api/content/school-logo/:id (needs this school's own token),
+    // so the portal only needs to know whether to show it.
+    hasLogo: !!school.logoFilename,
   });
 });
 
@@ -132,7 +158,13 @@ router.get("/me/individual-admissions", requireSchoolAuth, async (req, res) => {
         // reference to check against the bank/UPI app.
         pendingPayment:
           payment && payment.status === "pending"
-            ? { paymentId: payment.id, amount: payment.amount, referenceId: payment.referenceId }
+            ? {
+                paymentId: payment.id,
+                amount: payment.amount,
+                referenceId: payment.referenceId,
+                paymentMonths: payment.paymentMonths || null,
+                monthlyFee: payment.monthlyFee || null,
+              }
             : null,
       };
     })
@@ -211,6 +243,7 @@ router.post("/me/payments/:id/mark-paid", requireSchoolAuth, async (req, res) =>
     res.json({ ok: true });
   } catch (err) {
     console.error("school mark-paid error", err);
+    if (err.statusCode === 409) return res.status(409).json({ error: err.message });
     res.status(500).json({ error: "Could not mark this payment as paid." });
   }
 });

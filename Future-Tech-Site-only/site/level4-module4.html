@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/images/shared/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/site.css">
+    <link rel="stylesheet" href="assets/css/portal-theme.css">
+    <title>Level 4 Module 4 | Future Tech School Program</title>
+<script>window.FT_REQUIRED_LEVEL = "level4";</script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/api-client.js"></script>
+    <script src="assets/js/level-guard.js"></script>
+    <script src="assets/js/school-logo.js"></script>
+</head>
+<body class="ft-portal-theme">
+    <header class="ft-header">
+    <nav class="navbar navbar-expand-xl ft-navbar">
+      <div class="container-fluid">
+        <a href="student-portal.html" class="d-flex align-items-center text-decoration-none ft-logo-wrap">
+          <img src="assets/images/shared/logo.png" width="60" height="60" alt="Future Tech logo" class="rounded-3">
+          <span class="ms-2 text-white fw-bold d-none d-lg-inline" style="font-size:1.05rem;line-height:1.1;">FUTURE TECH<br><span class="text-warning" style="font-size:.8rem;">SCHOOL PROGRAM</span></span>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Shown instead of the module content if this module isn't unlocked
+       yet (the previous module isn't complete). -->
+  <div id="lockedNotice" class="container text-center my-5 d-none" style="max-width:600px;">
+    <i class="bi bi-lock-fill text-warning" style="font-size:3rem;"></i>
+    <h2 class="pt-serif mt-3">Module 4 is locked</h2>
+    <p class="text-muted" id="lockedReason">Complete the previous module first to unlock this one.</p>
+    <a href="student-portal.html" class="btn btn-primary mt-2">Back to Student Portal</a>
+  </div>
+
+  <section class="mt-4" id="moduleContent" style="display:none;">
+    <div class="container" style="max-width:820px;">
+        <div class="text-end mb-2 d-none" id="liveClassBanner">
+          <a href="javascript:void(0)" id="liveClassBtn" target="_blank" rel="noopener"
+             class="btn btn-danger btn-sm text-decoration-none px-3">
+            <span class="bi bi-camera-video-fill me-2"></span>Live Class
+          </a>
+          <div class="small text-muted mt-1" id="liveClassNote"></div>
+        </div>
+
+        <p class="pt-eyebrow text-center mb-1"><a href="student-portal.html" class="text-decoration-none" style="color:inherit;">Student Portal</a> &nbsp;/&nbsp; Level 4</p>
+        <h1 class="pt-page-title pt-serif text-center">Module 4 &mdash; Cybersecurity & Ethical Hacking</h1>
+        <p class="pt-page-sub text-center mx-auto">Open each class's notes PDF or recorded video. Completing every class here unlocks the next module.</p>
+
+        <div class="pt-progress-label text-center" id="progressLabel"></div>
+        <div class="pt-progress-track mx-auto"><div class="pt-progress-fill" id="progressFill"></div></div>
+
+        <div class="pt-ledger mt-4" id="classLedger"></div>
+
+        <div class="text-center mt-5 mb-5">
+            <a href="student-portal.html" class="btn btn-outline-secondary py-2 px-4 text-decoration-none">
+                <span class="bi bi-arrow-left me-2"></span>Back to Student Portal
+            </a>
+        </div>
+     </div>
+  </section>
+
+  <!-- Recorded-video player - used for a class whose video was uploaded
+       directly (not an external link, which just opens in a new tab). -->
+  <div class="modal fade" id="videoModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="videoModalTitle">Recorded Video</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body p-0 bg-black">
+          <video id="videoPlayer" controls style="width:100%;max-height:70vh;"></video>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <script>
+      var CLASSES = []; // populated by loadClasses() before first render
+      var openedFiles = [];
+
+      function apiBase() {
+        return (window.FT_CONFIG && window.FT_CONFIG.API_BASE_URL) || "http://localhost:5000/api";
+      }
+
+      async function checkUnlocked() {
+        try {
+          var res = await fetch(
+            apiBase() + "/content/module-status/" + window.FT_REQUIRED_LEVEL,
+            { headers: { Authorization: "Bearer " + (window.FT_STUDENT_TOKEN || "") } }
+          );
+          if (!res.ok) throw new Error("Could not check module status");
+          var data = await res.json();
+          var entry = (data.modules || []).find(function (m) { return m.module === "module4"; });
+          if (!entry || !entry.unlocked) {
+            document.getElementById("lockedNotice").classList.remove("d-none");
+            return false;
+          }
+          return true;
+        } catch (e) {
+          console.error("Could not check module unlock status", e);
+          // Fail open rather than trap the student behind a broken check.
+          return true;
+        }
+      }
+
+      async function loadClasses() {
+        try {
+          var res = await fetch(
+            apiBase() + "/content/classes/" + window.FT_REQUIRED_LEVEL + "/module4",
+            { headers: { Authorization: "Bearer " + (window.FT_STUDENT_TOKEN || "") } }
+          );
+          if (!res.ok) throw new Error("Could not load classes");
+          CLASSES = await res.json();
+        } catch (e) {
+          console.error("Could not load class list", e);
+          CLASSES = [];
+        }
+        await loadOpened();
+      }
+
+      async function loadLiveClass() {
+        try {
+          var res = await fetch(
+            apiBase() + "/content/live-class/" + window.FT_REQUIRED_LEVEL + "/module4",
+            { headers: { Authorization: "Bearer " + (window.FT_STUDENT_TOKEN || "") } }
+          );
+          if (!res.ok) return;
+          var data = await res.json();
+          if (data.meetingUrl) {
+            document.getElementById("liveClassBtn").href = data.meetingUrl;
+            document.getElementById("liveClassNote").textContent = data.note || "";
+            document.getElementById("liveClassBanner").classList.remove("d-none");
+          }
+        } catch (e) {
+          console.error("Could not load live class info", e);
+        }
+      }
+
+      async function loadOpened() {
+        try {
+          var res = await fetch(
+            apiBase() + "/class-progress/me?level=" + encodeURIComponent(window.FT_REQUIRED_LEVEL) + "&module=module4",
+            { headers: { Authorization: "Bearer " + (window.FT_STUDENT_TOKEN || "") } }
+          );
+          if (!res.ok) throw new Error("Could not load progress");
+          var data = await res.json();
+          openedFiles = data.files || [];
+        } catch (e) {
+          console.error("Could not load class progress", e);
+          openedFiles = [];
+        }
+        renderLedger();
+      }
+
+      function markOpened(classId) {
+        if (openedFiles.indexOf(classId) === -1) {
+          openedFiles.push(classId);
+          renderLedger();
+        }
+        fetch(apiBase() + "/class-progress", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + (window.FT_STUDENT_TOKEN || ""),
+          },
+          body: JSON.stringify({ level: window.FT_REQUIRED_LEVEL, module: "module4", file: classId }),
+        }).catch(function (e) { console.error("Could not save class progress", e); });
+      }
+
+      function openPdf(classId, filename) {
+        var base = apiBase();
+        var lvl = window.FT_REQUIRED_LEVEL;
+        var url = base + "/content/pdf/" + lvl + "/module4/" + filename +
+                  "?token=" + encodeURIComponent(window.FT_STUDENT_TOKEN || "");
+        window.open(url, "_blank");
+        markOpened(classId);
+      }
+
+      function openVideo(classId, title, videoFile, videoUrl) {
+        if (videoUrl) {
+          window.open(videoUrl, "_blank");
+          markOpened(classId);
+          return;
+        }
+        var base = apiBase();
+        var lvl = window.FT_REQUIRED_LEVEL;
+        var url = base + "/content/video/" + lvl + "/module4/" + videoFile +
+                  "?token=" + encodeURIComponent(window.FT_STUDENT_TOKEN || "");
+        document.getElementById("videoModalTitle").textContent = title;
+        var player = document.getElementById("videoPlayer");
+        player.src = url;
+        new bootstrap.Modal(document.getElementById("videoModal")).show();
+        markOpened(classId);
+      }
+      document.getElementById("videoModal").addEventListener("hidden.bs.modal", function () {
+        var player = document.getElementById("videoPlayer");
+        player.pause();
+        player.removeAttribute("src");
+        player.load();
+      });
+
+      function renderLedger() {
+        var opened = openedFiles;
+        var ledger = document.getElementById("classLedger");
+        if (!CLASSES.length) {
+          ledger.innerHTML = '<p class="text-center text-muted">No classes have been added for this module yet. Check back soon.</p>';
+          document.getElementById("progressLabel").textContent = "0 / 0 classes opened";
+          document.getElementById("progressFill").style.width = "0%";
+          return;
+        }
+        ledger.innerHTML = CLASSES.map(function (c) {
+          var num = c.classNumber;
+          var isOpened = opened.indexOf(c.id) !== -1;
+          var hasVideo = !!(c.videoFile || c.videoUrl);
+          var titleEsc = String(c.title).replace(/'/g, "&#39;");
+          var pdfBtn = c.pdfFile
+            ? '<a href="javascript:void(0)" onclick="openPdf(\'' + c.id + '\',\'' + c.pdfFile + '\')" class="pt-ledger-action ' + (isOpened ? "secondary" : "") + '">' +
+              (isOpened ? "Reopen PDF" : "Open PDF") + '</a>'
+            : '';
+          var videoBtn = hasVideo
+            ? '<a href="javascript:void(0)" onclick="openVideo(\'' + c.id + '\',\'' + titleEsc + '\',' +
+              (c.videoFile ? "'" + c.videoFile + "'" : 'null') + ',' +
+              (c.videoUrl ? "'" + c.videoUrl + "'" : 'null') + ')" class="pt-ledger-action secondary ms-2">' +
+              '<span class="bi bi-play-circle me-1"></span>Recorded Video</a>'
+            : '';
+          var noContent = (!c.pdfFile && !hasVideo)
+            ? '<span class="text-muted small">Content coming soon</span>'
+            : '';
+          return (
+            '<div class="pt-ledger-row">' +
+              '<div class="pt-ledger-num">' + String(num).padStart(2, "0") + '</div>' +
+              '<div class="pt-ledger-status ' + (isOpened ? "done" : "") + '">' + (isOpened ? "&#10003;" : "") + '</div>' +
+              '<div class="pt-ledger-main">' +
+                '<div class="pt-ledger-title">Class ' + num + ': ' + c.title + '</div>' +
+                '<div class="pt-ledger-meta">' + (isOpened ? "Opened" : (c.pdfFile ? "PDF notes" : "")) + (hasVideo ? (c.pdfFile ? " &middot; Video available" : "Video available") : "") + '</div>' +
+              '</div>' +
+              pdfBtn + videoBtn + noContent +
+            '</div>'
+          );
+        }).join("");
+
+        var total = CLASSES.length || 1;
+        document.getElementById("progressLabel").textContent =
+          opened.length + " / " + CLASSES.length + " classes opened";
+        document.getElementById("progressFill").style.width =
+          Math.round((opened.length / total) * 100) + "%";
+      }
+
+      (async function init() {
+        var unlocked = await checkUnlocked();
+        if (!unlocked) return;
+        document.getElementById("moduleContent").style.display = "";
+        loadClasses();
+        loadLiveClass();
+      })();
+    </script>
+</body>
+</html>

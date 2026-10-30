@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/assets/images/schoolevents/shared/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/site.css">
+    <title>School Programs | Future Tech School Program</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #ffffff;
+            color: #09295c;
+        }
+        .main-header { 
+        position: relative; 
+        z-index: 1000; 
+        width: 100%; 
+        background: #06264d; 
+        }
+        .school-hero {
+            min-height: 560px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background-color: #f7fbff;
+            background-image:linear-gradient(90deg,#ffffff 0%,rgba(255,255,255,0.05) 100%),url("assets/images/schoolevents/schoolpage/schoolpic.png");
+            background-size: cover;
+            background-position: center right;
+            background-repeat: no-repeat;
+        }
+        .hero-content {
+            max-width: 560px;
+            padding: 70px 0;
+            position: relative;
+            z-index: 2;
+        }
+        .hero-small-title {
+            color: #0a4da8;
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+        .hero-content h1 {
+            color: #06265c;
+            font-size: 50px;
+            line-height: 1.08;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        .hero-content h1 span {
+            color: #f2b900;
+        }
+        .hero-content p {
+            color: #364d6c;
+            font-size: 17px;
+            line-height: 1.65;
+            max-width: 500px;
+            margin-bottom: 28px;
+        }
+        .school-list-section {
+            padding: 65px 0;
+            background: #f5f9fd;
+        }
+        .school-card {
+            height: 100%;
+            padding: 30px 25px;
+            background: #ffffff;
+            border: 1px solid #dce5ef;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 5px 18px rgba(5, 40, 90, 0.06);
+            transition: 0.3s;
+        }
+        .school-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(5, 40, 90, 0.12);
+        }
+        .school-icon {
+            width: 65px;
+            height: 65px;
+            margin: 0 auto 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #eaf3ff;
+            color: #0752b8;
+            border-radius: 50%;
+            font-size: 28px;
+        }
+        .school-card h4 {
+            color: #06265c;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .school-card p {
+            color: #687990;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        .schools-get {
+            padding: 65px 0;
+            background: #ffffff;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .section-title h2 {
+            color: #06265c;
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+        .section-title p {
+            color: #687990;
+            font-size: 15px;
+            margin: 0;
+        }
+        .benefit-card {
+            height: 100%;
+            padding: 28px 22px;
+            background: #ffffff;
+            border: 1px solid #dce5ef;
+            border-radius: 10px;
+            box-shadow: 0 5px 18px rgba(5, 40, 90, 0.05);
+            transition: 0.3s;
+        }
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(5, 40, 90, 0.12);
+        }
+        .benefit-icon {
+            width: 52px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #eaf3ff;
+            color: #0752b8;
+            border-radius: 10px;
+            font-size: 25px;
+            margin-bottom: 18px;
+        }
+        .benefit-card h4 {
+            color: #09295c;
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 9px;
+        }
+        .benefit-card p {
+            color: #697990;
+            font-size: 13px;
+            line-height: 1.6;
+            margin: 0;
+        }
+        .implementation-section {
+            padding: 60px 0;
+            background: #f5f9fd;
+        }
+        .implementation-box {
+            border: 1px solid #dbe5f0;
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 30px 20px;
+        }
+        .model-card {
+            height: 100%;
+            text-align: center;
+            border: 1px solid #e1e7ee;
+            border-radius: 10px;
+            padding: 25px 15px;
+            background: #ffffff;
+            transition: 0.3s;
+        }
+        .model-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(5,40,90,0.08);
+        }
+        .model-icon {
+            width: 55px;
+            height: 55px;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #edf5ff;
+            color: #084ea8;
+            border-radius: 10px;
+            font-size: 25px;
+        }
+        .model-card h5 {
+            color: #09295c;
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 9px;
+        }
+        .model-card p {
+            color: #687990;
+            font-size: 12px;
+            line-height: 1.6;
+            margin: 0;
+        }
+        footer{
+             background-color: rgb(14, 14, 65);
+             margin-top: 60px;
+            padding-bottom: 40px;
+            padding-top: 20px;
+        }
+        .line{
+            border-bottom: 0px;
+            border-top: 0px;
+            border-left: 0px;
+            border-right: 2px solid rgb(26, 26, 83);
+        }
+        .quick:hover{
+            transform:translateY(-10px);
+            box-shadow:0 15px 35px rgba(0,0,0,.2);
+            color: rgb(211, 151, 22);
+        } 
+         .to{
+            color: rgb(15, 220, 15);
+        }
+        .four{
+            color:rgb(187, 22, 187);
+        }
+        .school-list-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.55);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }       
+        .school-list-overlay.active {
+            display: flex;
+        }
+        .school-receipt {
+            position: relative;
+            width: 100%;
+            max-width: 550px;
+            max-height: 85vh;
+            overflow-y: auto;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 6px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        .school-close {
+            position: absolute;
+            top: 12px;
+            right: 15px;
+            width: 38px;
+            height: 38px;
+            border: none;
+            border-radius: 50%;
+            background: #f1f1f1;
+            color: #06265c;
+            font-size: 28px;
+            line-height: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .school-close:hover {
+            background: #dc3545;
+            color: #ffffff;
+        }
+        .receipt-header {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 2px dashed #cfd8e3;
+        }
+        .receipt-header i {
+            font-size: 42px;
+            color: #0752b8;
+        }
+        .receipt-header h2 {
+            margin: 10px 0 5px;
+            color: #06265c;
+            font-size: 28px;
+            font-weight: 800;
+        }
+        .receipt-header p {
+            margin: 0;
+            color: #687990;
+            font-size: 14px;
+        } 
+        .school-items {
+            padding: 15px 0;
+        }
+        .school-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 16px 5px;
+            border-bottom: 1px dashed #d5dce5;
+        }
+        .school-number {
+            min-width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #eaf3ff;
+            color: #0752b8;
+            border-radius: 50%;
+            font-size: 13px;
+            font-weight: 700;
+        }
+        .school-item h5 {
+            margin: 0 0 4px;
+            color: #06265c;
+            font-size: 16px;
+            font-weight: 700;
+        }
+        .school-item p {
+            margin: 0;
+            color: #687990;
+            font-size: 13px;
+        }
+        .receipt-footer {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 2px dashed #cfd8e3;
+            color: #687990;
+            font-size: 12px;
+        }
+        @media (max-width: 576px) {
+            .school-receipt {
+                padding: 25px 20px;
+            }
+            .receipt-header h2 {
+                font-size: 23px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="ft-header">
+    <nav class="navbar navbar-expand-xl ft-navbar">
+      <div class="container-fluid">
+        <a href="home.html" class="d-flex align-items-center text-decoration-none ft-logo-wrap">
+          <img src="assets/images/shared/logo.png" width="60" height="60" alt="Future Tech logo" class="rounded-3">
+          <span class="ms-2 text-white fw-bold d-none d-lg-inline" style="font-size:1.05rem;line-height:1.1;">FUTURE TECH<br><span class="text-warning" style="font-size:.8rem;">SCHOOL PROGRAM</span></span>
+        </a>
+
+        <button class="navbar-toggler ft-toggle-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#ftOffcanvas">
+          <span class="bi bi-list fs-1"></span>
+        </button>
+
+        <div class="collapse navbar-collapse d-none d-xl-flex justify-content-end">
+          <ul class="navbar-nav align-items-center gap-1">
+            <li class="nav-item"><a href="home.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Programs</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="programs.html">Programs Overview</a></li>
+                <li><a class="dropdown-item" href="programs-level1.html">Level 1 &middot; Junior Innovators</a></li>
+                <li><a class="dropdown-item" href="programs-level2.html">Level 2 &middot; Young Technologists</a></li>
+                <li><a class="dropdown-item" href="programs-level3.html">Level 3 &middot; Future Engineers</a></li>
+                <li><a class="dropdown-item" href="programs-level4.html">Level 4 &middot; AI Professional Foundation</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="methodology.html">Methodology</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Projects</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="projects.html">All Projects</a></li>
+                <li><a class="dropdown-item" href="projects-aiml.html">AI &amp; ML</a></li>
+                <li><a class="dropdown-item" href="projects-robotics.html">Robotics</a></li>
+                <li><a class="dropdown-item" href="projects-web.html">Web &amp; App</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Admissions</a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="admissions-individual.html">Individual Student</a></li>
+                <li><a class="dropdown-item" href="admissions-bulk.html">School / Bulk</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="school-login.html"><i class="bi bi-box-arrow-in-right me-1"></i>School Login</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">More</a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item active" href="school.html">School Programs</a></li>
+                <li><a class="dropdown-item" href="events-workshops.html">Events &amp; Workshops</a></li>
+                <li><a class="dropdown-item" href="competitions.html">Competitions</a></li>
+                <li><a class="dropdown-item" href="certifications.html">Certifications</a></li>
+                <li><a class="dropdown-item" href="admin.html">Admin Login</a></li>
+                <li><a class="dropdown-item" href="faq.html">FAQ's</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item"><a href="contact.html" class="btn btn-warning fw-bold px-4 ms-2">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="offcanvas offcanvas-end ft-offcanvas" id="ftOffcanvas">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title fw-bold">Future Tech School Program</h5>
+        <button class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a href="home.html" class="nav-link">Home</a></li>
+          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+          <li class="nav-item"><a href="programs.html" class="nav-link">Programs Overview</a></li>
+          <li class="nav-item ps-3"><a href="programs-level1.html" class="nav-link small">Level 1 &middot; Junior Innovators</a></li>
+          <li class="nav-item ps-3"><a href="programs-level2.html" class="nav-link small">Level 2 &middot; Young Technologists</a></li>
+          <li class="nav-item ps-3"><a href="programs-level3.html" class="nav-link small">Level 3 &middot; Future Engineers</a></li>
+          <li class="nav-item ps-3"><a href="programs-level4.html" class="nav-link small">Level 4 &middot; AI Professional Foundation</a></li>
+          <li class="nav-item"><a href="methodology.html" class="nav-link">Methodology</a></li>
+          <li class="nav-item"><a href="projects.html" class="nav-link">Projects</a></li>
+          <li class="nav-item"><a href="school.html" class="nav-link">School Programs</a></li>
+          <li class="nav-item"><a href="events-workshops.html" class="nav-link">Events &amp; Workshops</a></li>
+          <li class="nav-item"><a href="competitions.html" class="nav-link">Competitions</a></li>
+          <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+          <li class="nav-item"><a href="certifications.html" class="nav-link">Certifications</a></li>
+          <li class="nav-item"><a href="admissions-individual.html" class="nav-link">Admissions &middot; Individual</a></li>
+          <li class="nav-item"><a href="admissions-bulk.html" class="nav-link">Admissions &middot; School / Bulk</a></li>
+          <li class="nav-item"><a href="school-login.html" class="nav-link"><i class="bi bi-box-arrow-in-right me-1"></i>School Login</a></li>
+          <li class="nav-item"><a href="partnership.html" class="nav-link">Partner With Us</a></li>
+          <li class="nav-item"><a href="faq.html" class="nav-link">FAQ's</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+    <section class="school-hero"> 
+        <div class="container"> 
+            <div class="hero-content"> 
+                <div class="hero-small-title">FOR SCHOOLS</div> 
+                <h1> Bring Future-Ready <span>Technology</span> Education to Your School </h1> 
+                <p> Empower your students with future-ready technology education through hands-on learning in AI, robotics, coding, cybersecurity, and emerging technologies.</p>
+                <button class="btn btn-warning px-4 py-3 fw-bold" onclick="showSchools()"><i class="bi bi-building me-2"></i>Our Partner Schools - Building a Future-Ready Generation</button> 
+            </div> 
+        </div> 
+    </section>
+    <section id="schoolList" class="school-list-overlay">
+        <div class="school-receipt">
+            <button class="school-close" onclick="hideSchools()">&times;</button>
+            <div class="receipt-header">
+                <i class="bi bi-building"></i>
+                <h2>List of Schools</h2>
+                <p>Our Partner Schools</p>
+            </div>
+            <div class="school-items">
+                <div class="school-item">
+                    <span class="school-number">01</span>
+                    <div>
+                        <h5>ABC International School</h5>
+                        <p>Hyderabad, Telangana</p>
+                    </div>
+                </div>
+                <div class="school-item">
+                    <span class="school-number">02</span>
+                    <div>
+                        <h5>Delhi Public School</h5>
+                        <p>Hyderabad, Telangana</p>
+                    </div>
+                </div>
+                <div class="school-item">
+                    <span class="school-number">03</span>
+                    <div>
+                        <h5>Future Kids School</h5>
+                        <p>Bengaluru, Karnataka</p>
+                    </div>
+                </div>
+                <div class="school-item">
+                    <span class="school-number">04</span>
+                    <div>
+                        <h5>St. Mary's High School</h5>
+                        <p>Vijayawada, Andhra Pradesh</p>
+                    </div>
+                </div>
+                <div class="school-item">
+                    <span class="school-number">05</span>
+                    <div>
+                        <h5>Techno Smart School</h5>
+                        <p>Chennai, Tamil Nadu</p>
+                    </div>
+                </div>
+            </div>
+            <div class="receipt-footer">
+                <span>Future-Ready Technology Education</span>
+            </div>
+        </div>
+    </section>
+    <section class="schools-get">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Schools Get</h2>
+                <p>Everything your school needs to build future-ready technology skills.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="benefit-card">
+                        <div class="benefit-icon"><i class="bi bi-book"></i></div>
+                        <h4>STEM & Technology Curriculum</h4>
+                        <p>A structured technology-integrated curriculum designed to develop practical skills and future-ready thinking. </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="benefit-card">
+                        <div class="benefit-icon"><i class="bi bi-person-workspace"></i></div>
+                        <h4>Expert Teacher Training</h4>
+                        <p>Equip teachers with the knowledge and tools required to confidently deliver technology education. </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="benefit-card">
+                        <div class="benefit-icon"><i class="bi bi-cpu"></i> </div>
+                        <h4> Hands-on Labs & Tools </h4>
+                        <p> Give students practical experience through modern technology tools, projects and hands-on activities.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="benefit-card">
+                        <div class="benefit-icon"><i class="bi bi-trophy"></i></div>
+                        <h4>Competitions & Hackathons</h4>
+                        <p> Encourage students to showcase their skills through exciting competitions and innovation challenges.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="benefit-card">
+                        <div class="benefit-icon"><i class="bi bi-bar-chart"></i></div>
+                        <h4>Student Assessments & Reports</h4>
+                        <p>Track student progress with structured assessments, feedback and learning reports.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="benefit-card">
+                        <div class="benefit-icon"><i class="bi bi-headset"></i></div>
+                        <h4>Complete Implementation Support</h4>
+                        <p>Get ongoing support throughout curriculum implementation, training and student programs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="implementation-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Implementation Models</h2>
+                <p>Choose the model that best fits your school's needs.</p>
+            </div>
+            <div class="implementation-box">
+                <div class="row g-3">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="model-card">
+                            <div class="model-icon"><i class="bi bi-people"></i></div>
+                            <h5>Weekly Classes</h5>
+                            <p>Regular technology classes designed specifically for students.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="model-card">
+                            <div class="model-icon"><i class="bi bi-easel2"></i></div>
+                            <h5>Workshops</h5>
+                            <p>Short-term skill-based workshops focused on practical learning.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="model-card">
+                            <div class="model-icon"><i class="bi bi-mortarboard"></i></div>
+                            <h5>Bootcamps</h5>
+                            <p>Intensive hands-on bootcamps that build real-world technology skills. </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="model-card">
+                            <div class="model-icon"><i class="bi bi-calendar-event"></i></div>
+                            <h5>Annual Program</h5>
+                            <p>A complete year-long technology education program for your school.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="ft-footer">
+        <div class="container-fluid">
+          <div class="row gy-4">
+            <div class="col-lg-3 col-md-6 ft-col">
+              <div class="d-flex align-items-center mb-3">
+                <img src="assets/images/shared/logo.png" width="52" height="52" class="rounded-3 me-2" alt="logo">
+                <div class="fw-bold">FUTURE TECH<br><span class="text-warning">SCHOOL PROGRAM</span></div>
+              </div>
+              <p class="small text-white-50">Building Future Innovators Today &mdash; empowering students from Grade 5th to 12th with future-ready technology skills through hands-on learning, real-world projects and expert mentorship.</p>
+            </div>
+    
+            <div class="col-lg-2 col-md-6 ft-col">
+              <h6>Quick Links</h6>
+              <a href="home.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Home</a>
+              <a href="about.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>About Us</a>
+              <a href="programs.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Programs</a>
+              <a href="school.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Schools</a>
+              <a href="events-workshops.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Events</a>
+              <a href="projects.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Projects</a>
+              <a href="gallery.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Gallery</a>
+              <a href="admissions-individual.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Admissions</a>
+              <a href="certifications.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Certificates</a>
+              <a href="contact.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Contact Us</a>
+            </div>
+    
+            <div class="col-lg-2 col-md-6 ft-col">
+              <h6>Program Levels</h6>
+              <p class="small mb-2">
+                <a href="curriculum-level1.html" class="ft-quick-link">
+                  <span class="bi bi-circle-fill text-warning me-1"></span>Level 1 &middot; Junior Innovators
+                  <br><span class="text-white-50 ms-3">(5th&ndash;6th Standard)</span>
+                </a>
+              </p>
+              <p class="small mb-2">
+                <a href="curriculum-level2.html" class="ft-quick-link">
+                  <span class="bi bi-circle-fill text-success me-1"></span>Level 2 &middot; Young Technologists
+                  <br><span class="text-white-50 ms-3">(7th&ndash;8th Standard)</span>
+                </a>
+              </p>
+              <p class="small mb-2">
+                <a href="curriculum-level3.html" class="ft-quick-link">
+                  <span class="bi bi-circle-fill text-primary me-1"></span>Level 3 &middot; Future Engineers
+                  <br><span class="text-white-50 ms-3">(9th&ndash;10th Standard)</span>
+                </a>
+              </p>
+              <p class="small mb-2">
+                <a href="curriculum-level4.html" class="ft-quick-link">
+                  <span class="bi bi-circle-fill me-1" style="color:#bb16bb;"></span>Level 4 &middot; AI Professional Foundation
+                  <br><span class="text-white-50 ms-3">(11th&ndash;12th Standard)</span>
+                </a>
+              </p>
+            </div>
+    
+            <div class="col-lg-2 col-md-6 ft-col">
+              <h6>Get In Touch</h6>
+              <p class="small mb-2"><i class="bi bi-telephone-fill me-2 text-warning"></i>+91 9108534041</p>
+              <p class="small mb-2"><i class="bi bi-envelope me-2 text-warning"></i>info@futuretech.org</p>
+              <p class="small mb-2"><i class="bi bi-globe me-2 text-warning"></i>www.futuretech.org</p>
+              <p class="small mb-2"><i class="bi bi-geo-alt-fill me-2 text-warning"></i>3DWebSoft IT Solutions,<br><span class="ms-4">Narsingi, Hyderabad,</span><br><span class="ms-4">Telangana - 500075, India</span></p>
+            </div>
+    
+            <div class="col-lg-3 col-md-6">
+              <h6>Follow Us</h6>
+              <div class="d-flex ft-social mb-3">
+                <a href="https://www.facebook.com/profile.php?id=61592302205333" class="me-2"><img src="assets/images/gallery/facebook.jpeg" alt="Facebook"></a>
+                <a href="https://www.instagram.com/3dwebsoftitsolutions" class="me-2"><img src="assets/images/gallery/instagram.jpeg" alt="Instagram"></a>
+                <a href="https://www.youtube.com/@3dwebsoftitsolutions" class="me-2"><img src="assets/images/gallery/youtube.jpeg" alt="YouTube"></a>
+                <a href="https://www.linkedin.com/company/3dwebsoft-it-solutions/"><img src="assets/images/gallery/linkedin.jpeg" alt="LinkedIn"></a>
+              </div>
+              <h6>Stay Updated</h6>
+              <p class="small text-white-50">Get the latest updates, events and opportunities.</p>
+              <form class="d-flex" onsubmit="return false;">
+                <input type="email" class="form-control form-control-sm" placeholder="Enter your email">
+                <button class="btn btn-warning btn-sm ms-2"><i class="bi bi-arrow-right"></i></button>
+              </form>
+            </div>
+          </div>
+    
+          <div class="ft-brand-badges d-flex flex-wrap justify-content-center gap-5 py-4">
+            <a href="https://www.3dwebsoftitsolutions.com" target="_blank" rel="noopener"
+               class="ft-badge-link d-flex flex-column align-items-center text-decoration-none text-center">
+              <img src="assets/images/shared/itsolutions-logo.jpeg"
+                   alt="3DWebSoft IT Solutions" class="rounded-circle mb-2" width="60" height="60">
+              <span class="text-white fw-bold lh-sm">3DWEBSOFT<br><span class="fw-normal">IT Solutions</span></span>
+              <span class="badge rounded-pill bg-primary px-3 py-2 mt-2">Developed by</span>
+            </a>
+    
+            <a href="https://3dwebsoftfoundation.org/" target="_blank" rel="noopener"
+               class="ft-badge-link d-flex flex-column align-items-center text-decoration-none text-center">
+              <img src="assets/images/shared/foundation-logo.jpeg"
+                   alt="3DWebSoft Foundation" class="rounded-circle mb-2" width="60" height="60">
+              <span class="text-white fw-bold lh-sm">3DWEBSOFT<br><span class="fw-normal">Foundation</span></span>
+              <span class="badge rounded-pill bg-warning text-dark px-3 py-2 mt-2">Launched by</span>
+            </a>
+          </div>
+    
+    
+          <div class="ft-copyright text-center">
+            &copy; 2026 Future Tech School Program. All Rights Reserved. &middot; A 3DWebSoft IT Solutions initiative.
+          <br class="d-md-none"><span class="mx-2 d-none d-md-inline">&middot;</span><a href="terms.html" class="text-white-50">Terms of Service</a><span class="mx-2">&middot;</span><a href="privacy.html" class="text-white-50">Privacy Policy</a></div>
+        </div>
+      </footer>
+    <script>
+        function showSchools() {
+            document.getElementById("schoolList").classList.add("active");
+            document.body.style.overflow = "hidden";
+        }
+
+        function hideSchools() {
+            document.getElementById("schoolList").classList.remove("active");
+            document.body.style.overflow = "auto";
+        }
+    </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

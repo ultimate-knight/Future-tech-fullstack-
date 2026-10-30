@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en-in">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/images/shared/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/site.css">
+    <link rel="stylesheet" href="assets/css/portal-theme.css">
+    <title>Student Portal | Future Tech School Program</title>
+    <style>
+        .portal-section {
+            padding: 55px 0 90px;
+            min-height: 78vh;
+        }
+        .welcome-banner {
+            background: linear-gradient(165deg, var(--ft-navy), var(--ft-navy-dark));
+            color: #fff;
+            border-radius: 4px;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+        .welcome-banner::before {
+            content: "";
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.08);
+            top: -80px;
+            right: -70px;
+        }
+        .welcome-banner h2 { position: relative; z-index: 2; font-weight: 700; }
+        .welcome-banner p { position: relative; z-index: 2; color: rgba(255,255,255,.85); margin-bottom: 0; }
+        .portal-card {
+            background: #fff;
+            border: 1px solid #e4e1d6;
+            border-radius: 4px;
+            padding: 28px;
+            height: 100%;
+        }
+        .portal-card h5 { font-weight: 700; margin-bottom: 18px; }
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f2f6;
+            font-size: 14.5px;
+        }
+        .info-row:last-child { border-bottom: none; }
+        .info-row span.label { color: #888; font-weight: 500; }
+        .info-row span.value { font-weight: 600; color: #222; text-align: right; }
+        .coming-soon-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 16px;
+            border: 1px dashed #dbe1ea;
+            border-radius: 14px;
+            margin-bottom: 12px;
+            color: #888;
+        }
+        .coming-soon-item i { font-size: 22px; color: #0d6efd; }
+    </style>
+</head>
+<body class="ft-portal-theme">
+    <header class="ft-header">
+    <nav class="navbar navbar-expand-xl ft-navbar">
+      <div class="container-fluid">
+        <a href="student-portal.html" class="d-flex align-items-center text-decoration-none ft-logo-wrap">
+          <img src="assets/images/shared/logo.png" width="60" height="100" alt="Future Tech logo" class="rounded-3">
+          <span class="ms-2 text-white fw-bold d-none d-lg-inline" style="font-size:1.05rem;line-height:1.1;">FUTURE TECH<br><span class="text-warning" style="font-size:.8rem;">SCHOOL PROGRAM</span></span>
+        </a>
+
+        <button class="navbar-toggler ft-toggle-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#ftOffcanvas">
+          <span class="bi bi-list fs-1"></span>
+        </button>
+        
+      </div>
+    </nav>
+    <div class="offcanvas offcanvas-end ft-offcanvas" id="ftOffcanvas">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title fw-bold">Future Tech School Program</h5>
+        <button class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+      </div>
+    </div>
+  </header>
+
+    <section class="portal-section">
+        <div class="container">
+
+            <div id="notLoggedIn" class="text-center py-5 d-none">
+                <i class="bi bi-lock fs-1 text-muted d-block mb-3"></i>
+                <h4 class="fw-bold">You're not logged in</h4>
+                <p class="text-muted">Please log in to your student account to view your portal.</p>
+                <a href="student-login.html" class="btn btn-primary fw-bold px-4">
+                    <i class="bi bi-box-arrow-in-right me-2"></i>Go to Student Login
+                </a>
+            </div>
+
+            <div id="portalContent" class="d-none">
+
+                <div class="welcome-banner d-flex justify-content-between align-items-center flex-wrap gap-3">
+                    <div>
+                        <h2 id="welcomeStudentName">Welcome!</h2>
+                        <p>Here's your Future Tech School Program learning space.</p>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <button id="logoutBtn" class="btn btn-warning fw-bold px-4">
+                            <i class="bi bi-box-arrow-right me-2"></i>Logout
+                        </button>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+
+                    <div class="col-lg-5">
+                        <div class="portal-card">
+                            <h5><i class="bi bi-person-badge me-2 text-primary"></i>My Details</h5>
+                            <div class="info-row"><span class="label">Full Name</span><span class="value" id="infoFullName">-</span></div>
+                            <div class="info-row"><span class="label">Email</span><span class="value" id="infoEmail">-</span></div>
+                            <div class="info-row"><span class="label">Grade</span><span class="value" id="infoGrade">-</span></div>
+                            <div class="info-row"><span class="label">Program Level</span><span class="value" id="infoProgramLevel">-</span></div>
+                            <div class="info-row"><span class="label">Parent/Guardian</span><span class="value" id="infoParentName">-</span></div>
+                            <div class="info-row"><span class="label">Phone</span><span class="value" id="infoPhone">-</span></div>
+                            <div class="info-row"><span class="label">Account Created</span><span class="value" id="infoCreated">-</span></div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-7">
+                        <div class="portal-card">
+                            <h5><i class="bi bi-mortarboard me-2 text-primary"></i>Your Learning Space</h5>
+                            <div id="learningSpaceLinks">
+                                <div class="coming-soon-item">
+                                    <i class="bi bi-hourglass-split"></i>
+                                    <div><div class="fw-semibold text-dark">Loading your content&hellip;</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="portal-card">
+                            <h5><i class="bi bi-graph-up me-2 text-primary"></i>Progress Tracking</h5>
+                            <div id="progressList">
+                                <div class="coming-soon-item">
+                                    <i class="bi bi-hourglass-split"></i>
+                                    <div><div class="fw-semibold text-dark">Loading your progress&hellip;</div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="alert alert-light border mt-4 small">
+                    <i class="bi bi-shield-check me-1 text-success"></i>
+                    Your session is secured with a login token that expires automatically. Log out on shared devices.
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/api-client.js"></script>
+  <script src="assets/js/school-logo.js" data-manual></script>
+  <script>
+    const STUDENT_TOKEN_KEY = "ft_backend_student_token";
+    const token = sessionStorage.getItem(STUDENT_TOKEN_KEY);
+
+    async function loadPortal() {
+      if (!token) {
+        // No session at all - send straight to the login page instead of
+        // showing this page's content/shell first.
+        window.location.replace("student-login.html");
+        return;
+      }
+
+      try {
+        const student = await FTApi.studentMe(token);
+
+        document.getElementById("portalContent").classList.remove("d-none");
+        document.getElementById("welcomeStudentName").textContent = "Welcome, " + student.fullName + "!";
+        document.getElementById("infoFullName").textContent = student.fullName || "-";
+        document.getElementById("infoEmail").textContent = student.email || "-";
+        document.getElementById("infoGrade").textContent = student.grade || "-";
+        document.getElementById("infoProgramLevel").textContent = student.programLevel || "-";
+        document.getElementById("infoParentName").textContent = student.parentName || "-";
+        document.getElementById("infoPhone").textContent = student.phone || "-";
+        document.getElementById("infoCreated").textContent = new Date(student.createdAt).toLocaleDateString();
+
+        FTSchoolLogo.forStudent(student);
+
+        renderLearningSpace(student.programLevel);
+        renderProgress(token, student.programLevel);
+      } catch (err) {
+        // Token invalid/expired - clear it and send back to login rather
+        // than leaving the (empty) portal shell on screen.
+        sessionStorage.removeItem(STUDENT_TOKEN_KEY);
+        window.location.replace("student-login.html");
+      }
+    }
+
+    const LEVEL_LABELS = { level1: "Level 1", level2: "Level 2", level3: "Level 3", level4: "Level 4" };
+
+    async function renderLearningSpace(programLevel) {
+      const container = document.getElementById("learningSpaceLinks");
+      if (!programLevel || !LEVEL_LABELS[programLevel]) {
+        container.innerHTML =
+          '<div class="coming-soon-item"><i class="bi bi-info-circle"></i>' +
+          '<div><div class="fw-semibold text-dark">No program level on file</div>' +
+          '<div class="small">Contact support if this looks wrong.</div></div></div>';
+        return;
+      }
+
+      const label = LEVEL_LABELS[programLevel];
+      let modules = [];
+      try {
+        const res = await fetch(
+          (window.FT_CONFIG.API_BASE_URL) + "/content/module-status/" + programLevel,
+          { headers: { Authorization: "Bearer " + token } }
+        );
+        if (res.ok) {
+          const data = await res.json();
+          modules = data.modules || [];
+        }
+      } catch (e) {
+        console.error("Could not load module status", e);
+      }
+
+      if (!modules.length) {
+        container.innerHTML =
+          '<div class="coming-soon-item"><i class="bi bi-hourglass-split"></i>' +
+          '<div><div class="fw-semibold text-dark">No classes set up yet</div>' +
+          '<div class="small">Check back soon.</div></div></div>';
+        return;
+      }
+
+      container.innerHTML = modules.map(function (m) {
+        const num = m.moduleNumber;
+        const title = "Module " + num;
+
+        if (!m.unlocked) {
+          return (
+            '<div class="coming-soon-item" style="border-style:solid;border-color:#dbe1ea;color:#999;">' +
+              '<i class="bi bi-lock-fill"></i><div>' +
+              '<div class="fw-semibold">' + title + ' &mdash; Locked</div>' +
+              '<div class="small">Complete Module ' + (num - 1) + ' to unlock this.</div></div></div>'
+          );
+        }
+
+        if (num === 1) {
+          // Module 1 is the only module with a real quiz + practical built
+          // so far - show all three the way this always has.
+          return [
+            { href: programLevel + "-module1.html", icon: "bi-journal-text", title: "Module 1 Notes", sub: label + " &middot; PDF class notes" },
+            { href: programLevel + "-module1-quiz.html", icon: "bi-patch-question", title: "Module 1 Quiz", sub: label + " &middot; test your understanding" },
+            { href: programLevel + "-module1-pratical.html", icon: "bi-code-slash", title: "Module 1 Practical", sub: label + " &middot; hands-on exercise" },
+          ].map(function (item) {
+            return '<a href="' + item.href + '" class="text-decoration-none">' +
+              '<div class="coming-soon-item" style="border-style:solid;border-color:#dbe1ea;color:#222;">' +
+              '<i class="bi ' + item.icon + '"></i><div>' +
+              '<div class="fw-semibold text-dark">' + item.title + '</div>' +
+              '<div class="small">' + item.sub + '</div></div></div></a>';
+          }).join("");
+        }
+
+        const progress = m.totalClasses ? (m.openedClasses + " / " + m.totalClasses + " classes opened") : "No classes yet";
+        return (
+          '<a href="' + programLevel + '-module' + num + '.html" class="text-decoration-none">' +
+            '<div class="coming-soon-item" style="border-style:solid;border-color:#dbe1ea;color:#222;">' +
+            '<i class="bi bi-journal-text"></i><div>' +
+            '<div class="fw-semibold text-dark">' + title + ' Notes' + (m.complete ? ' &middot; <span class="text-success">Complete</span>' : '') + '</div>' +
+            '<div class="small">' + label + ' &middot; ' + progress + '</div></div></div></a>'
+        );
+      }).join("");
+    }
+
+    // Quiz IDs this program currently has, in the order they should be
+    // shown. Extend this as more modules/quizzes are added — no other
+    // code needs to change, results just won't appear until attempted.
+    const QUIZ_LABELS = {
+      "module1-quiz": "Module 1 &middot; Quiz",
+      "module1-practical": "Module 1 &middot; Practical",
+    };
+
+    async function renderProgress(token, programLevel) {
+      const container = document.getElementById("progressList");
+      if (!programLevel) {
+        container.innerHTML =
+          '<div class="coming-soon-item"><i class="bi bi-info-circle"></i>' +
+          '<div><div class="fw-semibold text-dark">No program level on file</div></div></div>';
+        return;
+      }
+
+      let results = [];
+      try {
+        const data = await FTApi.myQuizResults(token);
+        results = (data.results || []).filter((r) => r.level === programLevel);
+      } catch (err) {
+        container.innerHTML =
+          '<div class="coming-soon-item"><i class="bi bi-exclamation-triangle"></i>' +
+          '<div><div class="fw-semibold text-dark">Could not load progress right now</div>' +
+          '<div class="small">Try refreshing the page.</div></div></div>';
+        return;
+      }
+
+      const byQuizId = {};
+      results.forEach((r) => { byQuizId[r.quizId] = r; });
+
+      const rows = Object.keys(QUIZ_LABELS).map((quizId) => {
+        const label = QUIZ_LABELS[quizId];
+        const r = byQuizId[quizId];
+        if (!r) {
+          return (
+            '<div class="pt-progress-item">' +
+              '<div><div class="title">' + label + '</div><div class="meta">Not attempted yet</div></div>' +
+              '<span class="pt-badge pending">Not started</span>' +
+            '</div>'
+          );
+        }
+        const badge = r.passed
+          ? '<span class="pt-badge pass">Passed</span>'
+          : '<span class="pt-badge fail">Not passed</span>';
+        const attemptWord = r.attempts === 1 ? "attempt" : "attempts";
+        return (
+          '<div class="pt-progress-item">' +
+            '<div><div class="title">' + label + '</div>' +
+            '<div class="meta">Best score ' + r.bestScore + '% &middot; ' + r.attempts + ' ' + attemptWord + '</div></div>' +
+            badge +
+          '</div>'
+        );
+      });
+
+      container.innerHTML = rows.join("");
+    }
+
+    loadPortal();
+
+    document.getElementById("logoutBtn") && document.getElementById("logoutBtn").addEventListener("click", function () {
+      sessionStorage.removeItem(STUDENT_TOKEN_KEY);
+      window.location.href = "student-login.html";
+    });
+  </script>
+</body>
+</html>

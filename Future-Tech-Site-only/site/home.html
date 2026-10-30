@@ -1,72 +1,65 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en-in">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="assets/images/shared/favicon.ico">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/site.css">
-     <title>Future Tech School Program | Home</title>
-     <style>
-        .future{
-            font-size: 80px;
-            font-family: poppins;
-            margin-top: 140px;
-            
-        }
-        .school{
-            font-family: poppins;
-            margin-top: -50px;
-            font-size: 60px;
-        }
-        .today{
-            margin-top: -20px;
-        }
-        .view{
-            background-color: rgb(14, 14, 65);
-            border: 2px solid rgb(27, 27, 115) ;
-        }
-        .all{
-            color: rgb(14, 14, 65) ;
-        }
-        .skill{
-            margin-left: -80px;
-        } 
-        .home:hover{
-            transform:translateY(-10px);
-            box-shadow:0 15px 35px rgba(0,0,0,.2);
-        }
-        footer{
-             background-color: rgb(14, 14, 65);
-              
-            padding-bottom: 20px;
-            padding-top: 20px;
-        }
-        .line{
-            border-bottom: 0px;
-            border-top: 0px;
-            border-left: 0px;
-            border-right: 2px solid rgb(26, 26, 83);
-        }
-        .quick:hover{
-            transform:translateY(-10px);
-            box-shadow:0 15px 35px rgba(0,0,0,.2);
-            color: rgb(211, 151, 22);
-        } 
-         .to{
-            color: rgb(15, 220, 15);
-        }
-        .four{
-            color:rgb(187, 22, 187);
-        }  
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="assets/images/shared/favicon.ico">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<title>Future Tech School Program | Home</title>
+<style>
+:root{--navy:rgb(14,14,65);--navy2:#14145c;--line:rgba(255,255,255,.14);--gold:#ffc107;--blue:#2f7dff}
+html{scroll-behavior:smooth}
+body{background:#0a0a2e;color:#fff;font-family:Poppins,system-ui,sans-serif;overflow-x:hidden}
+img{max-width:100%;height:auto}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+section.blk{padding:clamp(40px,7vw,80px) 0}
+.sec-title{font-weight:700;font-size:clamp(1.5rem,4vw,2.3rem);text-align:center;margin-bottom:.4rem}
+.sec-sub{text-align:center;color:#c9cdf0;max-width:640px;margin:0 auto 2rem}
+.panel{background:var(--navy);border:1px solid #1b1b73;border-radius:18px}
+/* hero */
+.hero{position:relative;padding:clamp(40px,6vw,80px) 0 clamp(40px,6vw,70px);
+ background:radial-gradient(circle at 80% 30%,#0b3b9a 0,transparent 55%),linear-gradient(160deg,#07072a,#0e0e41 60%,#0a1a5c)}
+.hero h1{font-weight:800;line-height:1.05;font-size:clamp(2.2rem,6.5vw,4.4rem);margin:0}
+.hero h1 span{display:block;color:var(--gold);font-size:.62em;margin-top:.15em}
+.tag{display:inline-block;border:1px solid var(--blue);color:#8db4ff;border-radius:10px;padding:.3rem .9rem;font-size:.9rem;margin-bottom:1rem}
+.hero p.lead{color:#e3e6ff;font-size:clamp(1rem,2.2vw,1.2rem);max-width:520px;margin:1.2rem 0 1.6rem}
+.hero-img{border-radius:22px;box-shadow:0 20px 60px rgba(0,0,0,.55);width:100%}
+.btn-ft{font-weight:600;padding:.75rem 1.8rem;border-radius:10px}
+/* stats */
+.stats{margin-top:-34px;position:relative;z-index:2}
+.stat{display:flex;align-items:center;gap:14px;padding:18px}
+.stat i{font-size:1.6rem;background:#1a1a6e;border-radius:50%;width:56px;height:56px;display:grid;place-items:center;flex:none}
+.stat b{display:block;font-size:1.5rem;line-height:1.1}
+.stat small{color:#c9cdf0}
+/* cards */
+.card-ft{background:var(--navy);border:1px solid #1b1b73;border-radius:16px;padding:22px 14px;text-align:center;height:100%;transition:transform .2s,box-shadow .2s}
+.card-ft:hover{transform:translateY(-6px);box-shadow:0 14px 30px rgba(0,0,0,.4)}
+.card-ft img{width:72px;height:72px;object-fit:contain;margin-bottom:12px}
+.card-ft div{font-weight:600}
+.feat{display:flex;gap:14px;align-items:flex-start}
+.feat i{font-size:1.9rem;color:var(--gold);flex:none}
+.feat b{display:block}
+.feat span{color:#c9cdf0;font-size:.95rem}
+.pill{display:flex;gap:14px;align-items:center;padding:16px 18px}
+.pill img{width:52px;height:52px;object-fit:contain}
+.lvl{display:block;text-decoration:none;color:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 12px;text-align:center;height:100%;transition:.2s}
+.lvl:hover{border-color:var(--gold);transform:translateY(-4px);color:#fff}
+.lvl b{display:block;color:#6ea2ff;font-size:1.3rem}
+.lvl small{color:#c9cdf0}
+.photo{border-radius:18px;width:100%;object-fit:cover;aspect-ratio:16/10;box-shadow:0 16px 40px rgba(0,0,0,.45)}
+.cta{text-align:center;padding:clamp(28px,5vw,56px) 20px}
+.ft-footer .ft-col{border-right:0}
+@media (min-width:992px){.ft-footer .ft-col{border-right:1px solid rgba(255,255,255,.15)}}
+@media (max-width:575.98px){.stats{margin-top:-20px}.stat{padding:12px}.stat i{width:46px;height:46px;font-size:1.3rem}.stat b{font-size:1.05rem;white-space:nowrap}.hero .btn{width:100%}}
+</style>
 </head>
 <body>
-    <header class="position-absolute ft-header container-fluid" style="z-index: 1500;">
+<header class="ft-header sticky-top">
     <nav class="navbar navbar-expand-xl ft-navbar">
       <div class="container-fluid">
         <a href="home.html" class="d-flex align-items-center text-decoration-none ft-logo-wrap">
@@ -158,7 +151,7 @@
           <li class="nav-item"><a href="school.html" class="nav-link">School Programs</a></li>
           <li class="nav-item"><a href="events-workshops.html" class="nav-link">Events &amp; Workshops</a></li>
           <li class="nav-item"><a href="competitions.html" class="nav-link">Competitions</a></li>
-          <li class="nav-item"><a href="gallery.html" class="nav-link active">Gallery</a></li>
+          <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
           <li class="nav-item"><a href="certifications.html" class="nav-link">Certifications</a></li>
           <li class="nav-item"><a href="admissions-individual.html" class="nav-link">Admissions &middot; Individual</a></li>
           <li class="nav-item"><a href="admissions-bulk.html" class="nav-link">Admissions &middot; School / Bulk</a></li>
@@ -170,305 +163,104 @@
       </div>
     </div>
   </header>
-    <section class="position-absolute container-fluid mt-4 ms-4" style="z-index: 1055;">
-         <div>
-             <div class="mb-5">
-                <p class="fw-bold future text-white">FUTURE TECH</p>  
-           <p class="text-warning school">SCHOOL PROGRAM </p>
-           <p class="fs-4 fw-semibold text-white today">Building Future Innovators Today!</p>
-             </div>
-             <div>
-                <p class="fs-5 fw-semibold text-white mt-5">Empowering students from Grade 5th to 12th<br>with future-ready technology skills through<br>hands-on learning, real-world projects and<br>expert mentorship.</p>
-             </div>
-             <div class="mt-5">
-                <button class="btn btn-warning p-2 fs-5 fw-semibold px-5 mt-4 me-3"> <a class="text-decoration-none text-black" href="admissions-individual-registration.html">ENROLL NOW</a></button>
-             </div>
-        </div>
-        <div class="row mt-5 view me-5 p-2 rounded rounded-4 shadow">
-            <div class="col-3">
-                 <div class="row p-2 border border-bottom-0 border-top-0 border-start-0">
-                    <div class="col-4 mt-3 text-center ">
-                        <span class="bi bi-people text-white fs-1 view  p-3 fw-semibold rounded rounded-5  "></span>
-                    </div>
-                    <div class="col-8">
-                        <span class="text-white ms-2 fs-2 fw-semibold ms-2">300+</span>
-                       <p class="  fs-5 fw-semibold text-white">Total Hours</p>
-                    </div>
-                 </div>
-                 
-            </div>
-            <div class="col-3">
-                 <div class="row p-2 border border-bottom-0 border-top-0 border-start-0">
-                    <div class="col-4 mt-3 text-center ">
-                        <span class="bi bi-calendar3 text-white fs-1 view  p-3 fw-semibold rounded rounded-5  "></span>
-                    </div>
-                    <div class="col-8">
-                        <span class="text-white ms-2 fs-2 fw-semibold ms-2">5<span class="fs-5 ms-1">Months</span>
-                       <p class="  fs-5 fw-semibold text-white">Program</p>
-                    </div>
-                 </div>  
-            </div>
-             <div class="col-3">
-                 <div class="row p-2 border border-bottom-0 border-top-0 border-start-0">
-                    <div class="col-4 mt-3 text-center ">
-                        <span class="bi bi-bezier text-white fs-1 view  p-3 fw-semibold rounded rounded-5  "></span>
-                    </div>
-                    <div class="col-8">
-                        <span class="text-white ms-2 fs-2 fw-semibold ms-2">4<span class="fs-5 ms-1">Levels</span>
-                       <p class="  fs-5 fw-semibold text-white">Structured</p>
-                    </div>
-                 </div>  
-            </div>
-            <div class="col-3">
-                 <div class="row p-2 ">
-                    <div class="col-4 mt-3 text-center ">
-                        <span class="bi bi-gift text-white fs-1 view  p-3 fw-semibold rounded rounded-5  "></span>
-                    </div>
-                    <div class="col-8">
-                        <span class="text-white ms-2 fs-2 fw-semibold ms-2">100+</span>
-                       <p class="  fs-5 fw-semibold text-white">Projects</p>
-                    </div>
-                 </div>  
-            </div>
-        </div>
-        <div>
-            <p class="text-white fs-1 fw-semibold mt-5 text-center">WHAT STUDENTS WILL LEARN</p>
-        </div>
-        <div class="row ms-5 mt-4">
-            <div class="col-2 ms-5">
-                <div class="card view shadow p-4 home">
-                    <div class="card-body text-center">
-                        <img src="assets/images/home/aimllogo.png" width="100px" height="100px" class="text-center">
-                        <div class="fs-5 text-white mt-4">AI & ML</div>
-                        <span class="fs-5 text-white mb-4">Fundamentals</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="card view shadow p-4 home">
-                    <div class="card-body text-center">
-                        <img src="assets/images/home/roboticslogo.png" width="100px" height="100px" class="text-center ">
-                        <div class="fs-5 text-white mt-4">Robotics &</div>
-                        <span class="fs-5 text-white mb-4">Automation</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="card view shadow p-4 home">
-                    <div class="card-body text-center">
-                        <img src="assets/images/home/codinglogo.png" width="100px" height="100px" class="text-center ">
-                        <div class="fs-5 text-white mt-4">Coding &</div>
-                        <span class="fs-5 text-white mb-4">Programming</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="card view shadow p-4 home">
-                    <div class="card-body text-center">
-                        <img src="assets/images/home/innovation.png" width="100px" height="100px" class="text-center ">
-                        <div class="fs-5 text-white mt-4">Innovation &</div>
-                        <span class="fs-5 text-white mb-4">Creativity</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="card view shadow p-4 home">
-                    <div class="card-body text-center">
-                        <img src="assets/images/home/careerlogo.png" width="100px" height="100px" class="text-center ">
-                        <div class="fs-5 text-white mt-4">Career</div>
-                        <span class="fs-5 text-white mb-4">Development</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-         <div class="row mt-4 ms-2 me-5">
-            <div class="col-5 ms-3">
-                <div class="row mt-5 ">
-                    <div class="col-3  ">
-                        <img src="assets/images/home/skill.png" width="80px" height="80px" class="ms-3">
-                    </div>
-                    <div class="col-9  ">
-                        <div class="fs-3 ms-1 text-white skill">SKILLS TODAY</div>
-                        <div class="fs-3 ms-1 text-warning skill">LEAD TOMORROW</div>
-                    </div>
-                </div>
-                <div class="text-white fs-5 mt-2">Preparing students for a future<br>full of opportunities and innovation.</div>
-            </div>
-            <div class="col-2 mt-5" >
-                <div>
-                    <img src="assets/images/home/expert.png" width="80px" height="80px">
-                    <div class="fs-4 fw-semibold text-white">EXPERT<br>MENTORS</div>
-                </div>
-            </div>
-             <div class="col-2 mt-5" >
-                <div>
-                    <img src="assets/images/home/hand.png" width="80px" height="80px">
-                    <div class="fs-4 fw-semibold text-white">HANDS-ON<br>LEARNING</div>
-                </div>
-            </div>
-             <div class="col-2 mt-5" >
-                <div>
-                    <img src="assets/images/home/real.png" width="80px" height="80px">
-                    <div class="fs-4 fw-semibold text-white text-start">REAL-WORLD<br>PROJECTS</div>
-                </div>
-            </div>
-            <div class="row mt-5">
-              <div class="col-5">
-                <div class="border border-1 w-50 rounded rounded-3 text-center ms-4 p-2">
-                  <span class="p-1 fs-5 text-primary">Learn . Build . Innovate</span>
-                </div>
-                 <div class="mt-4">
-                  <span class="fs-1 fw-semibold text-white">Your Learning Journey</span>
-                  <div class="text-white mt-3">
-                    <span>
-                      Future Tech School Program LMS is your digital learning companion to<br> explore , learn and build the skills of tomorrow.
-                    </span>
-                    <div class="text-primary mt-4">
-                      <span>Let's build the future, together!</span>
-                    </div>
-                  </div>
-                 </div>
-                 <div class="mt-4">
-                  <button class="btn btn-primary"><a class="text-decoration-none text-white p-2" href="programs.html">Explore Courses</a></button>
-                 </div>
-              </div>
-              <div class="col-6 ms-4">
-                <img src="assets/images/home/home3.png" width="600px" height="300px" class="rounded rounded-3 ms-5">
-              </div>
-            </div>
-            <div class="row mt-5">
-              <div class="col-3">
-                <div class="row">
-                  <div class="col-2">
-                    <span class="bi bi-book fs-1 text-white"></span>
-                  </div>
-                  <div class="col-9">
-                    <p class="fw-semibold text-white mb-1">Interactive Lessons</p>
-                    <p class="text-white">Engaging content with videos, quizzes & more</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-3">
-                <div class="row">
-                  <div class="col-2">
-                    <span class="bi bi-command fs-1 text-white"></span>
-                  </div>
-                  <div class="col-9">
-                    <p class="fw-semibold text-white mb-1">Hands-on Projects</p>
-                    <p class="text-white">Real-world projects to apply your learning</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-3">
-                <div class="row">
-                  <div class="col-2">
-                    <span class="bi bi-bar-chart fs-1 text-white"></span>
-                  </div>
-                  <div class="col-9">
-                    <p class="fw-semibold text-white mb-1">Track Progress</p>
-                    <p class="text-white">Monitor your growth and achievements</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-3">
-                <div class="row">
-                  <div class="col-2">
-                    <span class="bi bi-suit-club fs-1 text-white"></span>
-                  </div>
-                  <div class="col-9">
-                    <p class="fw-semibold text-white mb-1">Student Community</p>
-                    <p class="text-white">Collaborate, share ideas and grow together</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row mt-4">
-              <div class="view card shadow text-white col-5 p-3 ">
-                <div class="row">
-                  <div class="col-2">
-                    <span class="bi bi-house fs-1 mt-5"></span>
-                  </div>
-                  <div class="col-10">
-                    <div class="fs-3 fw-semibold">Future-Ready Skills for Future<br> Innovators</div>
-                    <p>Learn Coding, AI, Robotics, App Development and more<br> with expert guidance and hands-on experience.</p>
-                    <div class="fs-5 fw-semibold text-primary"><a href="programs.html" class="text-decoration-none">Start Learning Today</a><span class="bi bi-arrow-right ms-2"></span></div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-7 pb-5 card view mt-3">
-                <div class="row mt-5">
-                  <div class="col-3 border border-bottom-0 border-top-0 border-start-0 text-white">
-                    <div class="fs-1 fw-semibold">10,000+</div>
-                    <div>Students Learning</div>
-                  </div>
-                  <div class="col-3 border border-bottom-0 border-top-0 border-start-0 text-white">
-                    <div  class="fs-1 fw-semibold">500+</div>
-                    <div>Partner Schools</div>
-                  </div>
-                  <div class="col-3 border border-bottom-0 border-top-0 border-start-0 text-white">
-                    <div  class="fs-1 fw-semibold">50+</div>
-                    <div>Courses & Modules</div>
-                  </div>
-                  <div class="col-3 text-white">
-                    <div  class="fs-1 fw-semibold">100+</div>
-                    <div>Projects Completed</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-             <div class="mt-4 card view text-white pb-5 px-5" >
-              <div>
-              <div class="fs-2 fw-semibold text-center mt-3">Explore Learning Levels</div>
-              <p class="text-center">Structured learning paths designed for students from Grade 5th to 12th.</p>
-            </div>
-            <div class="row justify-content-center mt-3">
-              <div class="col-2 text-center border border-1 me-4 rounded rounded-3">
-                 <a href="programs-level1.html" class="text-decoration-none text-white">
-                  <div class="fs-4 fw-semibold text-primary">Level 1</div>
-                <p>Digital Foundations</p>
-                 </a>
-              </div>
-              <div class="col-2 text-center border border-1 me-4 rounded rounded-3">
-                 <a href="programs-level2.html" class="text-decoration-none text-white">
-                  <div class="fs-4 fw-semibold text-primary">Level 2</div>
-                <p>Coding & Creativity</p>
-                 </a>
-              </div>
-              <div class="col-2 text-center border border-1 me-4 rounded rounded-3">
-                <a href="programs-level3.html" class="text-decoration-none text-white">
-                   <div class="fs-4 fw-semibold text-primary">Level 3</div>
-                <p>AI & Application Development</p>
-                </a>
-              </div>
-              <div class="col-2 text-center border border-1 me-4 rounded rounded-3">
-                 <a href="programs-level4.html" class="text-decoration-none text-white">
-                  <div class="fs-4 fw-semibold text-primary">Level 4</div>
-                <p>Real-World Projects</p>
-                 </a>
-              </div>
-            </div>
-             </div>
-             <div class="view mt-3 p-5 rounded rounded-3 text-center">
-              <div class="text-white fs-1 fw-semibold">Built for Schools</div>
-              <p class="text-white fs-5">Give your students a guided, practical technology-learning experience with progress tracking and project-based learning.</p>
-             </div>
-             <div class="view mt-3 p-5 rounded rounded-3 text-center">
-              <div class="text-white fs-1 fw-semibold">Learning Resources</div>
-              <p class="text-white fs-5">Lessons, videos, quizzes, projects and technology resources — all in one place.</p>
-             </div>
-             <div class="view mt-3 p-5 rounded rounded-3 text-center">
-              <div class="text-white fs-1 fw-semibold">Student Login</div>
-              <p class="text-white fs-5">Students can access their assigned learning dashboard using the credentials provided by their school.</p>
-              <div class="mt-5">
-                <button class="btn btn-primary px-3 py-2 fs-5 fw-semibold"><a href="student-login.html" class="text-decoration-none text-white">Login to LMS</a></button>
-              </div>
-             </div>
-        </div>
-    </section>
-    <div>
-        <img src="assets/images/home/home-hero1.png" width="100%" height="3270px">
-    </div>
-    <footer class="ft-footer">
+<main>
+<section class="hero">
+ <div class="wrap"><div class="row align-items-center g-4 g-lg-5">
+  <div class="col-lg-6 order-2 order-lg-1 text-center text-lg-start">
+   <span class="tag">Learn . Build . Innovate</span>
+   <h1>FUTURE TECH<span>SCHOOL PROGRAM</span></h1>
+   <p class="lead mx-auto mx-lg-0">Empowering students from Grade 5th to 12th with future-ready technology skills through hands-on learning, real-world projects and expert mentorship.</p>
+   <a class="btn btn-warning btn-ft me-sm-2 mb-2" href="admissions-individual-registration.html">ENROLL NOW</a>
+   <a class="btn btn-outline-light btn-ft mb-2" href="programs.html">Explore Courses</a>
+  </div>
+  <div class="col-lg-6 order-1 order-lg-2">
+   <img class="hero-img" src="assets/images/home/home3.png" alt="Students learning coding and robotics" width="1536" height="1024" fetchpriority="high">
+  </div>
+ </div></div>
+</section>
+
+<div class="wrap stats"><div class="panel"><div class="row g-0">
+ <div class="col-6 col-lg-3"><div class="stat"><i class="bi bi-clock-history"></i><div><b>300+</b><small>Total Hours</small></div></div></div>
+ <div class="col-6 col-lg-3"><div class="stat"><i class="bi bi-calendar3"></i><div><b>5 Months</b><small>Program</small></div></div></div>
+ <div class="col-6 col-lg-3"><div class="stat"><i class="bi bi-bezier"></i><div><b>4 Levels</b><small>Structured</small></div></div></div>
+ <div class="col-6 col-lg-3"><div class="stat"><i class="bi bi-gift"></i><div><b>100+</b><small>Projects</small></div></div></div>
+</div></div></div>
+
+<!-- <section class="blk pt-0" id="partnerSchoolsSection" style="display:none;"><div class="wrap">
+  <br>
+  <br>
+ <h2 class="sec-title">OUR PARTNER SCHOOLS</h2>
+ <p class="sec-sub">Schools already running the Future Tech School Program.</p>
+ <div id="partnerSchoolsGrid" class="row g-3 justify-content-center align-items-center"></div>
+</div></section> -->
+
+<section class="blk"><div class="wrap">
+ <h2 class="sec-title">WHAT STUDENTS WILL LEARN</h2>
+ <p class="sec-sub">Practical skills across the technologies shaping tomorrow.</p>
+ <div class="row g-3 justify-content-center">
+  <div class="col-6 col-md-4 col-lg"><div class="card-ft"><img src="assets/images/home/aimllogo.png" alt=""><div>AI &amp; ML Fundamentals</div></div></div>
+  <div class="col-6 col-md-4 col-lg"><div class="card-ft"><img src="assets/images/home/roboticslogo.png" alt=""><div>Robotics &amp; Automation</div></div></div>
+  <div class="col-6 col-md-4 col-lg"><div class="card-ft"><img src="assets/images/home/codinglogo.png" alt=""><div>Coding &amp; Programming</div></div></div>
+  <div class="col-6 col-md-4 col-lg"><div class="card-ft"><img src="assets/images/home/innovation.png" alt=""><div>Innovation &amp; Creativity</div></div></div>
+  <div class="col-12 col-md-4 col-lg"><div class="card-ft"><img src="assets/images/home/careerlogo.png" alt=""><div>Career Development</div></div></div>
+ </div>
+</div></section>
+
+<section class="blk pt-0"><div class="wrap"><div class="row g-3">
+ <div class="col-12 col-lg-5"><div class="panel pill h-100"><img src="assets/images/home/skill.png" alt=""><div><b class="d-block">SKILLS TODAY</b><b class="text-warning">LEAD TOMORROW</b><div class="small text-white-50">Preparing students for a future full of opportunities and innovation.</div></div></div></div>
+ <div class="col-4 col-lg-2"><div class="panel pill h-100 flex-column text-center"><img src="assets/images/home/expert.png" alt=""><b class="small">EXPERT MENTORS</b></div></div>
+ <div class="col-4 col-lg-2"><div class="panel pill h-100 flex-column text-center"><img src="assets/images/home/hand.png" alt=""><b class="small">HANDS-ON LEARNING</b></div></div>
+ <div class="col-4 col-lg-3"><div class="panel pill h-100 flex-column text-center"><img src="assets/images/home/real.png" alt=""><b class="small">REAL-WORLD PROJECTS</b></div></div>
+</div></div></section>
+
+<section class="blk pt-0"><div class="wrap"><div class="row align-items-center g-4 g-lg-5">
+ <div class="col-lg-6">
+  <img class="photo" src="assets/images/home/vision.png" alt="A Future Innovator exploring AI and technology" loading="lazy" width="1672" height="941">
+ </div>
+ <div class="col-lg-6">
+  <span class="tag">Learn . Build . Innovate</span>
+  <h2 class="fw-bold" style="font-size:clamp(1.6rem,4vw,2.4rem)">Your Learning Journey</h2>
+  <p class="text-white-50 mt-2">Future Tech School Program LMS is your digital learning companion to explore, learn and build the skills of tomorrow.</p>
+  <p class="text-info fw-semibold">Let's build the future, together!</p>
+  <div class="row g-3 mt-1">
+   <div class="col-sm-6"><div class="feat"><i class="bi bi-book"></i><div><b>Interactive Lessons</b><span>Videos, notes and quizzes</span></div></div></div>
+   <div class="col-sm-6"><div class="feat"><i class="bi bi-command"></i><div><b>Hands-on Projects</b><span>Apply your learning</span></div></div></div>
+   <div class="col-sm-6"><div class="feat"><i class="bi bi-bar-chart"></i><div><b>Track Progress</b><span>Monitor your growth</span></div></div></div>
+   <div class="col-sm-6"><div class="feat"><i class="bi bi-people"></i><div><b>Student Community</b><span>Share ideas, grow together</span></div></div></div>
+  </div>
+  <a class="btn btn-primary btn-ft mt-4" href="programs.html">Explore Courses</a>
+ </div>
+</div></div></section>
+
+<section class="blk pt-0"><div class="wrap"><div class="panel" style="padding:clamp(22px,4vw,44px) clamp(14px,3vw,36px)">
+ <h2 class="sec-title">Explore Learning Levels</h2>
+ <p class="sec-sub">Structured learning paths designed for students from Grade 5th to 12th.</p>
+ <div class="row g-3">
+  <div class="col-6 col-lg-3"><a class="lvl" href="programs-level1.html"><b>Level 1</b><small>Digital Foundations</small></a></div>
+  <div class="col-6 col-lg-3"><a class="lvl" href="programs-level2.html"><b>Level 2</b><small>Coding &amp; Creativity</small></a></div>
+  <div class="col-6 col-lg-3"><a class="lvl" href="programs-level3.html"><b>Level 3</b><small>AI &amp; Application Development</small></a></div>
+  <div class="col-6 col-lg-3"><a class="lvl" href="programs-level4.html"><b>Level 4</b><small>Real-World Projects</small></a></div>
+ </div>
+</div></div></section>
+
+<section class="blk pt-0"><div class="wrap"><div class="row g-4 align-items-center">
+ <div class="col-lg-6 order-lg-2"><img class="photo" src="assets/images/home/commit.png" alt="Students learning together on a laptop" loading="lazy" width="1536" height="1024"></div>
+ <div class="col-lg-6 order-lg-1">
+  <h2 class="fw-bold" style="font-size:clamp(1.6rem,4vw,2.3rem)">Built for Schools</h2>
+  <p class="text-white-50">Give your students a guided, practical technology-learning experience with progress tracking and project-based learning.</p>
+  <h3 class="fw-bold h4 mt-4">Learning Resources</h3>
+  <p class="text-white-50">Lessons, videos, quizzes, projects and technology resources &mdash; all in one place.</p>
+  <a class="btn btn-outline-warning btn-ft" href="school.html">School Programs</a>
+ </div>
+</div></div></section>
+
+<section class="blk pt-0"><div class="wrap"><div class="panel cta">
+ <h2 class="fw-bold" style="font-size:clamp(1.5rem,4vw,2.2rem)">Student Login</h2>
+ <p class="text-white-50 mx-auto" style="max-width:560px">Students can access their assigned learning dashboard using the credentials provided by their school.</p>
+ <a class="btn btn-primary btn-ft mt-2" href="student-login.html">Login to LMS</a>
+</div></div></section>
+</main>
+<footer class="ft-footer">
     <div class="container-fluid">
       <div class="row gy-4">
         <div class="col-lg-3 col-md-6 ft-col">
@@ -570,6 +362,48 @@
       <br class="d-md-none"><span class="mx-2 d-none d-md-inline">&middot;</span><a href="terms.html" class="text-white-50">Terms of Service</a><span class="mx-2">&middot;</span><a href="privacy.html" class="text-white-50">Privacy Policy</a></div>
     </div>
   </footer>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/api-client.js"></script>
+<script src="assets/js/school-logo.js"></script>
+<script>
+  // "Our Partner Schools" - shows each school's own logo (uploaded by
+  // the admin) next to the Future Tech logo on the home page. Hidden
+  // entirely until at least one school actually has a logo set, so the
+  // section never shows up empty.
+  (async function loadPartnerSchools() {
+    try {
+      const base = (window.FT_CONFIG && window.FT_CONFIG.API_BASE_URL) || "http://localhost:5000/api";
+      const res = await fetch(base + "/schools/with-logo");
+      if (!res.ok) return;
+      const schools = await res.json();
+      if (!schools.length) return;
+
+      const grid = document.getElementById("partnerSchoolsGrid");
+      // Logos are fetched (not <img src>) because the API blocks plain
+      // cross-origin image loads; each logo is added once it has loaded.
+      await Promise.all(schools.map(async function (s) {
+        try {
+          const r = await fetch(base + "/content/school-logo/" + s.id, { cache: "no-store" });
+          if (!r.ok) return;
+          const col = document.createElement("div");
+          col.className = "col-6 col-md-3 col-lg-2 text-center";
+          const img = document.createElement("img");
+          img.src = URL.createObjectURL(await r.blob());
+          img.alt = s.schoolName + " logo";
+          img.title = s.schoolName;
+          img.style.cssText = "max-width:100%;max-height:130px;object-fit:contain;background:#fff;border-radius:10px;padding:8px;";
+          col.appendChild(img);
+          grid.appendChild(col);
+        } catch (e) { /* skip this school */ }
+      }));
+      if (!grid.children.length) return;
+
+      document.getElementById("partnerSchoolsSection").style.display = "";
+    } catch (e) {
+      console.error("Could not load partner schools", e);
+    }
+  })();
+</script>
 </body>
 </html>

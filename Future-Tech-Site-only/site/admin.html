@@ -250,6 +250,11 @@
                             <i class="bi bi-person-video3 me-1"></i>Students
                         </button>
                     </li>
+                    <li class="nav-item">
+                        <button class="nav-link" data-tab="class_content">
+                            <i class="bi bi-collection-play me-1"></i>Class Content
+                        </button>
+                    </li>
                 </ul>
 
                 <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
@@ -281,6 +286,62 @@
                     <i class="bi bi-inbox fs-1 d-block mb-2"></i>
                     No submissions yet.
                 </div>
+
+                <!-- Class Content tab - a different shape of UI (per-class
+                     PDF/video management) than the generic table above, so
+                     it's a separate panel shown/hidden instead of reusing
+                     the table renderer. -->
+                <div id="classContentPanel" class="d-none">
+                    <div class="d-flex flex-wrap gap-2 align-items-end mb-3">
+                        <div>
+                            <label class="form-label small mb-1">Level</label>
+                            <select id="ccLevelSelect" class="form-select form-select-sm">
+                                <option value="level1">Level 1</option>
+                                <option value="level2">Level 2</option>
+                                <option value="level3">Level 3</option>
+                                <option value="level4">Level 4</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="form-label small mb-1">Module</label>
+                            <select id="ccModuleSelect" class="form-select form-select-sm">
+                                <option value="module1">Module 1</option>
+                                <option value="module2">Module 2</option>
+                                <option value="module3">Module 3</option>
+                                <option value="module4">Module 4</option>
+                                <option value="module5">Module 5</option>
+                            </select>
+                        </div>
+                        <button id="ccAddClassBtn" class="btn btn-primary btn-sm">
+                            <i class="bi bi-plus-lg me-1"></i>Add Class
+                        </button>
+                    </div>
+
+                    <div class="card p-3 mb-3">
+                        <div class="fw-semibold small mb-2"><i class="bi bi-camera-video-fill me-1"></i>Live Class Meeting Link</div>
+                        <div class="d-flex flex-wrap gap-2">
+                            <input type="url" id="ccLiveClassUrl" class="form-control form-control-sm" style="max-width:360px;" placeholder="https://meet.google.com/...">
+                            <input type="text" id="ccLiveClassNote" class="form-control form-control-sm" style="max-width:260px;" placeholder="Optional note, e.g. Every Mon/Wed 5pm">
+                            <button id="ccSaveLiveClassBtn" class="btn btn-outline-primary btn-sm">Save</button>
+                        </div>
+                        <div class="form-text">Shown as a "Live Class" button at the top-right of this level/module's page (opens the Google Meet link). Leave the link blank and save to remove the button.</div>
+                    </div>
+
+                    <div id="ccAlert" class="alert d-none py-2 small"></div>
+
+                    <div class="table-responsive">
+                        <table class="table admin-table align-middle">
+                            <thead>
+                                <tr><th>#</th><th>Title</th><th>PDF</th><th>Video</th><th class="text-end">Actions</th></tr>
+                            </thead>
+                            <tbody id="ccTableBody"></tbody>
+                        </table>
+                    </div>
+                    <div id="ccEmptyState" class="empty-state d-none">
+                        <i class="bi bi-inbox fs-1 d-block mb-2"></i>
+                        No classes yet for this level/module - click "Add Class" to create the first one.
+                    </div>
+                </div>
             </div>
 
         </main>
@@ -300,6 +361,8 @@
     </div>
 
     <!-- Add School modal -->
+    <input type="file" id="schoolLogoFileInput" accept="image/png,image/jpeg" class="d-none">
+
     <div class="modal fade" id="addSchoolModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -448,6 +511,8 @@
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
+                    <!-- Filled by showCredentials(): did the login email actually go out? -->
+                    <div id="credEmailStatus" class="alert small d-none" role="status"></div>
                     <div class="alert alert-warning small">
                         <i class="bi bi-exclamation-triangle-fill me-1"></i>
                         This password is shown <strong>only once</strong> and cannot be retrieved again later.
@@ -645,6 +710,7 @@
                     ["School Name", r.schoolName], ["Coordinator", r.contactName],
                     ["Email", r.email], ["Phone", r.phone],
                     ["Status", r.isActive === false ? "Suspended" : "Active"],
+                    ["Logo", r.logoFilename ? "Uploaded (shown on their portal header + receipts)" : "Not set - only the Future Tech logo is shown"],
                     ["UPI Settlement", r.upiVpa ? (r.upiVpa + " (" + (r.upiPayeeName || r.schoolName) + ")") : "Not set - payments use the platform's default UPI ID"],
                     ["Total collected", 'Rs. ' + (r.revenue || 0).toLocaleString('en-IN') + ' across ' + (r.paidCount || 0) + ' payment(s)'],
                     ["Not yet invoiced", 'Rs. ' + (r.uninvoicedRevenue || 0).toLocaleString('en-IN')]
@@ -659,6 +725,9 @@
                     </button>
                     <button class="btn btn-sm btn-outline-primary" onclick="setSchoolUpi('${r.id}', '${(r.schoolName || '').replace(/'/g, "\\'")}', '${r.upiVpa || ''}', '${(r.upiPayeeName || '').replace(/'/g, "\\'")}')" title="Set this school's own UPI ID for direct settlement">
                         <i class="bi bi-qr-code"></i>
+                    </button>
+                    <button class="btn btn-sm ${r.logoFilename ? 'btn-outline-info' : 'btn-outline-secondary'}" onclick="pickSchoolLogo('${r.id}', '${(r.schoolName || '').replace(/'/g, "\\'")}', ${r.logoFilename ? 'true' : 'false'})" title="${r.logoFilename ? 'Replace or remove logo' : 'Upload a logo for this school'}">
+                        <i class="bi bi-image"></i>
                     </button>
                     <button class="btn btn-sm btn-outline-success" onclick="openGenerateInvoiceModal('${r.id}', '${(r.schoolName || '').replace(/'/g, "\\'")}', ${r.commissionPercentOverride !== null && r.commissionPercentOverride !== undefined ? r.commissionPercentOverride : 'null'}, ${r.uninvoicedRevenue || 0})" title="Generate settlement invoice">
                         <i class="bi bi-receipt"></i>
@@ -801,8 +870,184 @@
                 btn.classList.add("active");
                 currentTab = btn.dataset.tab;
                 document.getElementById("searchBox").value = "";
-                renderTable();
+                if (currentTab === "class_content") {
+                    renderClassContentPanel();
+                } else {
+                    showClassContentPanel(false);
+                    renderTable();
+                }
             });
+        });
+
+        // ---------- Class Content tab (separate panel, not the generic table) ----------
+        function showClassContentPanel(show) {
+            document.getElementById("classContentPanel").classList.toggle("d-none", !show);
+            document.querySelector(".table-responsive").classList.toggle("d-none", show);
+            document.getElementById("searchBox").closest(".d-flex").classList.toggle("d-none", show);
+            if (show) {
+                // Hide the generic tab's "no submissions" state while our
+                // panel is showing; renderTable() manages it normally again
+                // once the admin switches back to any other tab.
+                document.getElementById("emptyState").classList.add("d-none");
+            }
+        }
+
+        function ccAlert(message, isError) {
+            const box = document.getElementById("ccAlert");
+            box.textContent = message;
+            box.className = "alert py-2 small " + (isError ? "alert-danger" : "alert-success");
+            setTimeout(() => box.classList.add("d-none"), 4000);
+        }
+
+        async function renderClassContentPanel() {
+            showClassContentPanel(true);
+            const level = document.getElementById("ccLevelSelect").value;
+            const moduleParam = document.getElementById("ccModuleSelect").value;
+            const token = getToken();
+            const tbody = document.getElementById("ccTableBody");
+            const empty = document.getElementById("ccEmptyState");
+            tbody.innerHTML = "<tr><td colspan='5' class='text-center text-muted py-4'>Loading...</td></tr>";
+            empty.classList.add("d-none");
+
+            try {
+                const rows = await FTApi.adminListClassContent(level, moduleParam, token);
+                if (!rows.length) {
+                    tbody.innerHTML = "";
+                    empty.classList.remove("d-none");
+                } else {
+                    tbody.innerHTML = rows.map(function (r) {
+                        const pdfStatus = r.pdfFilename
+                            ? '<span class="badge text-bg-success">Uploaded</span>'
+                            : '<span class="badge text-bg-secondary">None</span>';
+                        const videoStatus = r.videoFilename
+                            ? '<span class="badge text-bg-success">Uploaded</span>'
+                            : (r.videoUrl ? '<span class="badge text-bg-info">Link set</span>' : '<span class="badge text-bg-secondary">None</span>');
+                        return `<tr>
+                            <td>${r.classNumber}</td>
+                            <td>
+                                <input type="text" class="form-control form-control-sm" style="min-width:220px;"
+                                       value="${escapeHtml(r.title)}" onchange="ccUpdateTitle('${r.id}', this.value)">
+                            </td>
+                            <td>
+                                ${pdfStatus}
+                                <label class="btn btn-sm btn-outline-primary ms-1 mb-0">
+                                    <i class="bi bi-upload"></i>
+                                    <input type="file" accept="application/pdf" class="d-none" onchange="ccUploadPdf('${r.id}', this)">
+                                </label>
+                            </td>
+                            <td>
+                                ${videoStatus}
+                                <label class="btn btn-sm btn-outline-primary ms-1 mb-0" title="Upload a video file">
+                                    <i class="bi bi-upload"></i>
+                                    <input type="file" accept="video/mp4,video/webm,video/ogg,video/quicktime" class="d-none" onchange="ccUploadVideo('${r.id}', this)">
+                                </label>
+                                <button class="btn btn-sm btn-outline-secondary ms-1" title="Set an external video link (YouTube/Drive/etc.) instead" onclick="ccSetVideoUrl('${r.id}', '${(r.videoUrl || '').replace(/'/g, "&#39;")}')">
+                                    <i class="bi bi-link-45deg"></i>
+                                </button>
+                            </td>
+                            <td class="text-end">
+                                <button class="btn btn-sm btn-outline-danger" onclick="ccDeleteClass('${r.id}')"><i class="bi bi-trash"></i></button>
+                            </td>
+                        </tr>`;
+                    }).join("");
+                }
+            } catch (e) {
+                tbody.innerHTML = `<tr><td colspan="5" class="text-center text-danger py-4">${escapeHtml(e.message || "Could not load classes.")}</td></tr>`;
+            }
+
+            try {
+                const live = await FTApi.adminGetLiveClass(level, moduleParam, token);
+                document.getElementById("ccLiveClassUrl").value = live.meetingUrl || "";
+                document.getElementById("ccLiveClassNote").value = live.note || "";
+            } catch (e) { /* non-critical */ }
+        }
+
+        document.getElementById("ccLevelSelect").addEventListener("change", renderClassContentPanel);
+        document.getElementById("ccModuleSelect").addEventListener("change", renderClassContentPanel);
+
+        document.getElementById("ccAddClassBtn").addEventListener("click", async function () {
+            const title = prompt("Title for the new class:");
+            if (!title || !title.trim()) return;
+            const level = document.getElementById("ccLevelSelect").value;
+            const moduleParam = document.getElementById("ccModuleSelect").value;
+            try {
+                await FTApi.adminCreateClassContent(level, moduleParam, { title: title.trim() }, getToken());
+                renderClassContentPanel();
+            } catch (e) {
+                ccAlert(e.message || "Could not add class.", true);
+            }
+        });
+
+        async function ccUpdateTitle(id, title) {
+            if (!title || !title.trim()) return;
+            try {
+                await FTApi.adminUpdateClassContent(id, { title: title.trim() }, getToken());
+                ccAlert("Title updated.", false);
+            } catch (e) {
+                ccAlert(e.message || "Could not update title.", true);
+                renderClassContentPanel();
+            }
+        }
+
+        async function ccDeleteClass(id) {
+            if (!confirm("Delete this class? Its PDF and video (if any) will be removed too. This cannot be undone.")) return;
+            try {
+                await FTApi.adminDeleteClassContent(id, getToken());
+                renderClassContentPanel();
+            } catch (e) {
+                ccAlert(e.message || "Could not delete class.", true);
+            }
+        }
+
+        async function ccUploadPdf(id, inputEl) {
+            const file = inputEl.files && inputEl.files[0];
+            inputEl.value = "";
+            if (!file) return;
+            try {
+                await FTApi.adminUploadClassPdf(id, file, getToken());
+                ccAlert("PDF uploaded.", false);
+                renderClassContentPanel();
+            } catch (e) {
+                ccAlert(e.message || "Could not upload PDF.", true);
+            }
+        }
+
+        async function ccUploadVideo(id, inputEl) {
+            const file = inputEl.files && inputEl.files[0];
+            inputEl.value = "";
+            if (!file) return;
+            ccAlert("Uploading video, this can take a while for large files...", false);
+            try {
+                await FTApi.adminUploadClassVideo(id, file, getToken());
+                ccAlert("Video uploaded.", false);
+                renderClassContentPanel();
+            } catch (e) {
+                ccAlert(e.message || "Could not upload video.", true);
+            }
+        }
+
+        async function ccSetVideoUrl(id, currentUrl) {
+            const url = prompt("External video link (YouTube/Drive/Vimeo/etc.) - leave blank to clear:", currentUrl || "");
+            if (url === null) return; // cancelled
+            try {
+                await FTApi.adminUpdateClassContent(id, { videoUrl: url.trim() }, getToken());
+                renderClassContentPanel();
+            } catch (e) {
+                ccAlert(e.message || "Could not set video link.", true);
+            }
+        }
+
+        document.getElementById("ccSaveLiveClassBtn").addEventListener("click", async function () {
+            const level = document.getElementById("ccLevelSelect").value;
+            const moduleParam = document.getElementById("ccModuleSelect").value;
+            const meetingUrl = document.getElementById("ccLiveClassUrl").value.trim();
+            const note = document.getElementById("ccLiveClassNote").value.trim();
+            try {
+                await FTApi.adminSetLiveClass(level, moduleParam, { meetingUrl, note }, getToken());
+                ccAlert(meetingUrl ? "Live class link saved." : "Live class link removed.", false);
+            } catch (e) {
+                ccAlert(e.message || "Could not save live class link.", true);
+            }
         });
 
         // ---------- Render ----------
@@ -973,7 +1218,7 @@
             try {
                 const result = await FTApi.adminCreateSchool(payload, getToken());
                 bootstrap.Modal.getInstance(document.getElementById("addSchoolModal")).hide();
-                showCredentials(result.school.email, result.temporaryPassword, result.school.schoolName, "school");
+                showCredentials(result.school.email, result.temporaryPassword, result.school.schoolName, "school", result);
                 renderAll();
             } catch (err) {
                 alertBox.textContent = err.message || "Could not create school account.";
@@ -986,7 +1231,7 @@
             try {
                 const result = await FTApi.adminResetSchoolPassword(id, getToken());
                 const record = currentData.find(r => r.id === id);
-                showCredentials(record ? record.email : "", result.temporaryPassword, schoolName, "school");
+                showCredentials(record ? record.email : "", result.temporaryPassword, schoolName, "school", result);
             } catch (err) {
                 alert(err.message || "Could not reset password.");
             }
@@ -1068,6 +1313,67 @@
                 alert(err.message || "Could not update this school's UPI details.");
             }
         }
+
+        // ---------- School logo (upload / replace / remove) ----------
+        // Sent as a base64 data URL rather than a multipart file upload -
+        // keeps this consistent with the rest of the admin UI (plain JSON
+        // requests via FTApi) without pulling in a new upload library.
+        const MAX_LOGO_UPLOAD_BYTES = 1.5 * 1024 * 1024; // must match admin.js server-side limit
+        let logoUploadSchoolId = null;
+
+        function pickSchoolLogo(id, schoolName, hasLogo) {
+            if (hasLogo) {
+                const remove = confirm(
+                    `"${schoolName}" already has a logo set.\n\n` +
+                    `Click OK to REMOVE it (falls back to showing only the Future Tech logo), ` +
+                    `or Cancel to pick a new image to replace it with instead.`
+                );
+                if (remove) {
+                    removeSchoolLogo(id, schoolName);
+                    return;
+                }
+            }
+            logoUploadSchoolId = id;
+            document.getElementById("schoolLogoFileInput").click();
+        }
+
+        async function removeSchoolLogo(id, schoolName) {
+            try {
+                await FTApi.adminRemoveSchoolLogo(id, getToken());
+                renderAll();
+            } catch (err) {
+                alert(err.message || `Could not remove the logo for "${schoolName}".`);
+            }
+        }
+
+        document.getElementById("schoolLogoFileInput").addEventListener("change", async function (e) {
+            const file = e.target.files && e.target.files[0];
+            const schoolId = logoUploadSchoolId;
+            e.target.value = ""; // allow picking the same file again later
+            if (!file || !schoolId) return;
+
+            if (!["image/png", "image/jpeg"].includes(file.type)) {
+                alert("Please choose a PNG or JPEG image.");
+                return;
+            }
+            if (file.size > MAX_LOGO_UPLOAD_BYTES) {
+                alert("That image is too large - please use one under 1.5MB.");
+                return;
+            }
+
+            try {
+                const dataUrl = await new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.onload = () => resolve(reader.result);
+                    reader.onerror = () => reject(new Error("Could not read that file."));
+                    reader.readAsDataURL(file);
+                });
+                await FTApi.adminSetSchoolLogo(schoolId, dataUrl, getToken());
+                renderAll();
+            } catch (err) {
+                alert(err.message || "Could not upload this logo.");
+            }
+        });
 
         // ---------- Generate School Invoice ----------
         function openGenerateInvoiceModal(schoolId, schoolName, commissionOverride, uninvoicedRevenue) {
@@ -1256,7 +1562,7 @@
             try {
                 const result = await FTApi.adminAddStudent(payload, getToken());
                 bootstrap.Modal.getInstance(document.getElementById("addStudentModal")).hide();
-                showCredentials(result.student.email, result.temporaryPassword, result.student.fullName);
+                showCredentials(result.student.email, result.temporaryPassword, result.student.fullName, "student", result);
                 renderAll();
             } catch (err) {
                 alertBox.textContent = err.message || "Could not create student account.";
@@ -1267,11 +1573,36 @@
         let lastCredName = "";
         let lastCredAccountType = "school";
 
-        function showCredentials(username, password, name, accountType) {
+        // `result` is the API response; it carries emailSent and, when the email
+        // could not be sent, emailError (a plain-English reason, never a secret).
+        function showCredentials(username, password, name, accountType, result) {
             lastCredName = name || "";
             lastCredAccountType = accountType || "school";
             document.getElementById("credUsername").value = username;
             document.getElementById("credPassword").value = password;
+
+            const status = document.getElementById("credEmailStatus");
+            if (result && result.emailSent) {
+                status.className = "alert alert-success small";
+                status.textContent = "";
+                const icon = document.createElement("i");
+                icon.className = "bi bi-envelope-check-fill me-1";
+                status.appendChild(icon);
+                status.appendChild(document.createTextNode("The login details were emailed to " + username + ". It can still take a minute to arrive - ask them to check spam too."));
+            } else if (result) {
+                status.className = "alert alert-danger small";
+                status.textContent = "";
+                const icon = document.createElement("i");
+                icon.className = "bi bi-envelope-exclamation-fill me-1";
+                const b = document.createElement("strong");
+                b.textContent = "The email was NOT sent. ";
+                status.appendChild(icon);
+                status.appendChild(b);
+                status.appendChild(document.createTextNode((result.emailError || "Unknown reason.") + " Share the details below manually. The server log has a line starting with [email] with more detail; running \"npm run email:diagnose\" on the server tests the mail settings."));
+            } else {
+                status.classList.add("d-none");
+            }
+            if (result) status.classList.remove("d-none");
             bootstrap.Modal.getOrCreateInstance(document.getElementById("credentialsModal")).show();
         }
 

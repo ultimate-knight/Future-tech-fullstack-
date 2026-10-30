@@ -13,9 +13,11 @@ const admissionRoutes = require("./routes/admissions");
 const paymentRoutes = require("./routes/payments");
 const receiptRoutes = require("./routes/receipts");
 const adminRoutes = require("./routes/admin");
+const adminClassContentRoutes = require("./routes/adminClassContent");
 const configRoutes = require("./routes/config");
 const contentRoutes = require("./routes/content");
 const quizResultRoutes = require("./routes/quizResults");
+const classProgressRoutes = require("./routes/classProgress");
 
 const app = express();
 
@@ -54,7 +56,7 @@ app.use(
 app.use(compression());
 app.use(
   express.json({
-    limit: "2mb",
+    limit: "4mb",
   })
 );
 
@@ -74,6 +76,11 @@ const generalLimiter = rateLimit({
   standardHeaders: true,
   legacyHeaders: false,
   message: { error: "Too many requests. Please try again later." },
+  // The payment QR modal polls GET /payments/:id/status every few seconds;
+  // that route has its own dedicated limiters (src/routes/payments.js), so it
+  // must not also eat the shared 300-requests budget - otherwise two open
+  // payment windows on one network block everything else (logins included).
+  skip: (req) => req.method === "GET" && /^\/payments\/[^/]+\/status$/.test(req.path),
 });
 app.use("/api", generalLimiter);
 
@@ -107,8 +114,10 @@ app.use("/api/admissions", admissionRoutes);
 app.use("/api/payments", paymentRoutes);
 app.use("/api/receipts", receiptRoutes);
 app.use("/api/admin", adminRoutes);
+app.use("/api/admin", adminClassContentRoutes);
 app.use("/api/content", contentRoutes);
 app.use("/api/quiz-results", quizResultRoutes);
+app.use("/api/class-progress", classProgressRoutes);
 
 // 404 handler
 app.use((req, res) => res.status(404).json({ error: "Not found." }));

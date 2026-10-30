@@ -10,18 +10,28 @@
     const finalHeaders = { "Content-Type": "application/json", ...(headers || {}) };
     if (token) finalHeaders["Authorization"] = "Bearer " + token;
 
+    // Never leave a page waiting forever on a server that accepted the
+    // connection but never answers.
+    const controller = typeof AbortController !== "undefined" ? new AbortController() : null;
+    const timer = controller ? setTimeout(() => controller.abort(), 30000) : null;
+
     let res;
     try {
       res = await fetch(BASE + path, {
         method,
         headers: finalHeaders,
         body: body !== undefined ? JSON.stringify(body) : undefined,
+        signal: controller ? controller.signal : undefined,
       });
     } catch (networkErr) {
+      if (timer) clearTimeout(timer);
       throw new Error(
-        "Could not reach the server. Please check your connection and make sure the backend is running."
+        networkErr && networkErr.name === "AbortError"
+          ? "The server is taking too long to respond. Please try again in a moment."
+          : "Could not reach the server. Please check your connection and make sure the backend is running."
       );
     }
+    if (timer) clearTimeout(timer);
 
     let data = null;
     try {
@@ -31,7 +41,9 @@
     }
 
     if (!res.ok) {
-      throw new Error((data && data.error) || `Request failed (${res.status}).`);
+      const err = new Error((data && data.error) || `Request failed (${res.status}).`);
+      err.status = res.status; // lets callers tell "rate limited" (429) from "not found" (404) etc.
+      throw err;
     }
     return data;
   }
@@ -61,6 +73,27 @@
       a.click();
       a.remove();
       setTimeout(() => URL.revokeObjectURL(url), 5000);
+    },
+
+    // ---- Authenticated file upload (PDF / video) ----
+    // Unlike the small base64-JSON school-logo upload, PDFs/videos go
+    // through here as real multipart/form-data - don't set Content-Type
+    // yourself, the browser fills in the correct multipart boundary.
+    uploadFile: async function (path, formData, token) {
+      let res;
+      try {
+        res = await fetch(BASE + path, {
+          method: "POST",
+          headers: { Authorization: "Bearer " + token },
+          body: formData,
+        });
+      } catch (networkErr) {
+        throw new Error("Could not reach the server. Please check your connection and make sure the backend is running.");
+      }
+      let data = null;
+      try { data = await res.json(); } catch (e) { /* no JSON body */ }
+      if (!res.ok) throw new Error((data && data.error) || `Upload failed (${res.status}).`);
+      return data;
     },
 
     // ---- Public config ----
@@ -95,6 +128,7 @@
 
     // ---- School directory (public) ----
     listSchools: () => request("/schools/list"),
+    getIndividualAdmissionStats: () => request("/admissions/individual/stats"),
 
     // ---- Admin auth + data ----
     adminLogin: (payload) => request("/auth/admin/login", { method: "POST", body: payload }),
@@ -118,6 +152,10 @@
     adminSchoolsRevenue: (token) => request("/admin/schools/revenue", { token }),
     adminSetSchoolUpi: (id, payload, token) =>
       request(`/admin/schools/${id}/upi`, { method: "POST", body: payload, token }),
+    adminSetSchoolLogo: (id, logoDataUrl, token) =>
+      request(`/admin/schools/${id}/logo`, { method: "POST", body: { logoDataUrl }, token }),
+    adminRemoveSchoolLogo: (id, token) =>
+      request(`/admin/schools/${id}/logo`, { method: "DELETE", token }),
     // Legacy - see the note on POST /schools/:id/razorpay-account in admin.js. No UI calls this anymore.
     adminSetSchoolRazorpayAccount: (id, payload, token) =>
       request(`/admin/schools/${id}/razorpay-account`, { method: "POST", body: payload, token }),
@@ -133,6 +171,30 @@
     adminDeleteStudent: (id, token) => request(`/admin/students/${id}`, { method: "DELETE", token }),
     adminChangePassword: (payload, token) =>
       request("/admin/me/change-password", { method: "POST", body: payload, token }),
+
+    // ---- Class content (per-class PDF/video) + Live Class link ----
+    adminListClassContent: (level, moduleParam, token) =>
+      request(`/admin/class-content/${level}/${moduleParam}`, { token }),
+    adminCreateClassContent: (level, moduleParam, payload, token) =>
+      request(`/admin/class-content/${level}/${moduleParam}`, { method: "POST", body: payload, token }),
+    adminUpdateClassContent: (id, payload, token) =>
+      request(`/admin/class-content/${id}`, { method: "PATCH", body: payload, token }),
+    adminDeleteClassContent: (id, token) =>
+      request(`/admin/class-content/${id}`, { method: "DELETE", token }),
+    adminUploadClassPdf: (id, file, token) => {
+      const fd = new FormData();
+      fd.append("pdf", file);
+      return FTApi.uploadFile(`/admin/class-content/${id}/pdf`, fd, token);
+    },
+    adminUploadClassVideo: (id, file, token) => {
+      const fd = new FormData();
+      fd.append("video", file);
+      return FTApi.uploadFile(`/admin/class-content/${id}/video`, fd, token);
+    },
+    adminGetLiveClass: (level, moduleParam, token) =>
+      request(`/admin/live-class/${level}/${moduleParam}`, { token }),
+    adminSetLiveClass: (level, moduleParam, payload, token) =>
+      request(`/admin/live-class/${level}/${moduleParam}`, { method: "PUT", body: payload, token }),
 
     // ---- Student LMS accounts (payment-gated registration) ----
     studentRegister: (payload) => request("/auth/student/register", { method: "POST", body: payload }),

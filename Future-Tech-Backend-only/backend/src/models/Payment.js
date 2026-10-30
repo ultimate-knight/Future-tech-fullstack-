@@ -18,6 +18,19 @@ const Payment = sequelize.define(
     amount: { type: DataTypes.INTEGER, allowNull: false }, // in rupees
     currency: { type: DataTypes.STRING, defaultValue: "INR" },
 
+    // What this amount was calculated FROM (individual payments only; all
+    // nullable so old rows and bulk payments are unaffected). The server
+    // sets amount = monthlyFee x paymentMonths from the admission's level -
+    // never from anything the browser sends - and stores the inputs here so
+    // every payment record says exactly which student, which level and which
+    // payment period it covers. studentName is a snapshot for the admin /
+    // school views; admissionId remains the real link to the student's
+    // registration (and from there to their LMS account).
+    studentName: { type: DataTypes.STRING, allowNull: true },
+    programLevel: { type: DataTypes.STRING, allowNull: true }, // level1..level4
+    paymentMonths: { type: DataTypes.INTEGER, allowNull: true }, // e.g. 5
+    monthlyFee: { type: DataTypes.INTEGER, allowNull: true }, // rupees per month
+
     // Our own human-readable, roughly-sequential reference (e.g.
     // FTPAY-2026-000123) — see utils/paymentReference.js. Doubles as the
     // UPI transaction reference/note shown to the payer, so it's the same

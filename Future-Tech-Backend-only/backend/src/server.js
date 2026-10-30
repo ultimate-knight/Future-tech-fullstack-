@@ -6,6 +6,7 @@ validateEnv();
 const app = require("./app");
 const { sequelize } = require("./models");
 const ensureAdminExists = require("./scripts/ensureAdmin");
+const { logEmailConfigStatus } = require("./services/emailService");
 
 const PORT = process.env.PORT || 5000;
 
@@ -16,12 +17,17 @@ async function start() {
     await sequelize.authenticate();
     console.log(`Database connected (${process.env.DB_DIALECT || "sqlite"}).`);
 
-    // Creates/updates tables to match the models. In production, prefer
-    // proper migrations (e.g. sequelize-cli) instead of sync({ alter }).
-    await sequelize.sync({ alter: process.env.NODE_ENV !== "production" });
+    // Creates any MISSING tables. It does NOT alter existing ones on every
+    // start any more: on MySQL, sync({ alter: true }) adds another copy of every
+    // unique index on each start until MySQL fails with "Too many keys
+    // specified; max 64 keys allowed". To apply a schema change (new
+    // columns) run `npm run db:init`; or set DB_SYNC_ALTER=true in .env to
+    // get the old alter-on-start behaviour (SQLite development only).
+    await sequelize.sync({ alter: process.env.DB_SYNC_ALTER === "true" });
     console.log("Database synced.");
 
     await ensureAdminExists();
+    logEmailConfigStatus();
 
     server = app.listen(PORT, () => {
       console.log(`Future Tech backend listening on http://localhost:${PORT}`);

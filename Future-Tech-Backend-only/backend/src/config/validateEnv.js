@@ -117,6 +117,34 @@ function validateEnv() {
   }
 
   // -------------------------------------------------------------------
+  // 4. Individual fees are MONTHLY (config/fees.js). A non-numeric value
+  //    would make every payment amount NaN, so that is a hard stop in any
+  //    environment. Old lump-sum FEE_LEVEL_n variables are ignored now.
+  // -------------------------------------------------------------------
+  [1, 2, 3, 4].forEach((n) => {
+    const raw = process.env[`FEE_MONTHLY_LEVEL_${n}`];
+    if (raw !== undefined && raw !== "" && !(Number.isInteger(Number(raw)) && Number(raw) > 0)) {
+      errors.push(`FEE_MONTHLY_LEVEL_${n} must be a whole number of rupees greater than 0 (got "${raw}").`);
+    }
+    if (process.env[`FEE_LEVEL_${n}`]) {
+      warnings.push(
+        `FEE_LEVEL_${n} is set but is no longer used - individual fees are now FEE_MONTHLY_LEVEL_${n} x 5 months. You can delete FEE_LEVEL_${n} from .env.`
+      );
+    }
+  });
+
+  // -------------------------------------------------------------------
+  // 5. Email: a half-filled SMTP block is the classic reason mail "is
+  //    configured but never sends".
+  // -------------------------------------------------------------------
+  const smtpKeys = ["SMTP_HOST", "SMTP_USER", "SMTP_PASSWORD"];
+  const smtpSet = smtpKeys.filter((k) => String(process.env[k] || "").trim());
+  if (smtpSet.length > 0 && smtpSet.length < smtpKeys.length) {
+    const empty = smtpKeys.filter((k) => !smtpSet.includes(k));
+    warnings.push(`SMTP is only partly configured - ${empty.join(", ")} empty - so NO emails will be sent. Run: npm run email:diagnose`);
+  }
+
+  // -------------------------------------------------------------------
   // Report
   // -------------------------------------------------------------------
   if (warnings.length > 0) {

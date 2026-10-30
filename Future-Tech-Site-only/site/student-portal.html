@@ -77,10 +77,18 @@
           <img src="assets/images/shared/logo.png" width="60" height="100" alt="Future Tech logo" class="rounded-3">
           <span class="ms-2 text-white fw-bold d-none d-lg-inline" style="font-size:1.05rem;line-height:1.1;">FUTURE TECH<br><span class="text-warning" style="font-size:.8rem;">SCHOOL PROGRAM</span></span>
         </a>
+
+        <!-- This student's own school's logo (if that school has
+             uploaded one via the admin dashboard) - shown opposite the
+             Future Tech logo above. Hidden entirely when there is none. -->
+        <img id="schoolOwnLogo" src="" alt="" width="100" height="100"
+             class="rounded-3 d-none ms-auto me-3 bg-white p-1"
+             style="object-fit:contain;">
+
         <button class="navbar-toggler ft-toggle-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#ftOffcanvas">
           <span class="bi bi-list fs-1"></span>
         </button>
-        <div class="collapse navbar-collapse d-none d-xl-flex justify-content-end"></div>
+        
       </div>
     </nav>
     <div class="offcanvas offcanvas-end ft-offcanvas" id="ftOffcanvas">
@@ -195,6 +203,23 @@
         document.getElementById("infoParentName").textContent = student.parentName || "-";
         document.getElementById("infoPhone").textContent = student.phone || "-";
         document.getElementById("infoCreated").textContent = new Date(student.createdAt).toLocaleDateString();
+
+        if (student.hasSchoolLogo && student.schoolId) {
+          // Fetch the logo and show it as a blob. A plain <img src="...api...">
+          // is blocked by the backend's cross-origin header whenever the site and
+          // the API are on different origins (local: :8080 vs :5000), which showed
+          // a broken image. The logo stays hidden unless it actually loads.
+          const logoImg = document.getElementById("schoolOwnLogo");
+          fetch(window.FT_CONFIG.API_BASE_URL + "/content/school-logo/" + encodeURIComponent(student.schoolId), { cache: "no-store" })
+            .then(function (r) { if (!r.ok) throw new Error("no logo"); return r.blob(); })
+            .then(function (b) {
+              logoImg.src = URL.createObjectURL(b);
+              logoImg.alt = "Your school logo";
+              logoImg.classList.remove("d-none");
+            })
+            .catch(function () { /* no logo available - show nothing */ });
+        }
+
         renderLearningSpace(student.programLevel);
         renderProgress(token, student.programLevel);
       } catch (err) {
@@ -207,7 +232,7 @@
 
     const LEVEL_LABELS = { level1: "Level 1", level2: "Level 2", level3: "Level 3", level4: "Level 4" };
 
-    function renderLearningSpace(programLevel) {
+    async function renderLearningSpace(programLevel) {
       const container = document.getElementById("learningSpaceLinks");
       if (!programLevel || !LEVEL_LABELS[programLevel]) {
         container.innerHTML =
@@ -218,21 +243,66 @@
       }
 
       const label = LEVEL_LABELS[programLevel];
-      const items = [
-        { href: programLevel + "-module1.html", icon: "bi-journal-text", title: "Module 1 Notes", sub: label + " &middot; PDF class notes" },
-        { href: programLevel + "-module1-quiz.html", icon: "bi-patch-question", title: "Module 1 Quiz", sub: label + " &middot; test your understanding" },
-        { href: programLevel + "-module1-pratical.html", icon: "bi-code-slash", title: "Module 1 Practical", sub: label + " &middot; hands-on exercise" },
-      ];
+      let modules = [];
+      try {
+        const res = await fetch(
+          (window.FT_CONFIG.API_BASE_URL) + "/content/module-status/" + programLevel,
+          { headers: { Authorization: "Bearer " + token } }
+        );
+        if (res.ok) {
+          const data = await res.json();
+          modules = data.modules || [];
+        }
+      } catch (e) {
+        console.error("Could not load module status", e);
+      }
 
-      container.innerHTML = items
-        .map(function (item) {
-          return '<a href="' + item.href + '" class="text-decoration-none">' +
+      if (!modules.length) {
+        container.innerHTML =
+          '<div class="coming-soon-item"><i class="bi bi-hourglass-split"></i>' +
+          '<div><div class="fw-semibold text-dark">No classes set up yet</div>' +
+          '<div class="small">Check back soon.</div></div></div>';
+        return;
+      }
+
+      container.innerHTML = modules.map(function (m) {
+        const num = m.moduleNumber;
+        const title = "Module " + num;
+
+        if (!m.unlocked) {
+          return (
+            '<div class="coming-soon-item" style="border-style:solid;border-color:#dbe1ea;color:#999;">' +
+              '<i class="bi bi-lock-fill"></i><div>' +
+              '<div class="fw-semibold">' + title + ' &mdash; Locked</div>' +
+              '<div class="small">Complete Module ' + (num - 1) + ' to unlock this.</div></div></div>'
+          );
+        }
+
+        if (num === 1) {
+          // Module 1 is the only module with a real quiz + practical built
+          // so far - show all three the way this always has.
+          return [
+            { href: programLevel + "-module1.html", icon: "bi-journal-text", title: "Module 1 Notes", sub: label + " &middot; PDF class notes" },
+            { href: programLevel + "-module1-quiz.html", icon: "bi-patch-question", title: "Module 1 Quiz", sub: label + " &middot; test your understanding" },
+            { href: programLevel + "-module1-pratical.html", icon: "bi-code-slash", title: "Module 1 Practical", sub: label + " &middot; hands-on exercise" },
+          ].map(function (item) {
+            return '<a href="' + item.href + '" class="text-decoration-none">' +
+              '<div class="coming-soon-item" style="border-style:solid;border-color:#dbe1ea;color:#222;">' +
+              '<i class="bi ' + item.icon + '"></i><div>' +
+              '<div class="fw-semibold text-dark">' + item.title + '</div>' +
+              '<div class="small">' + item.sub + '</div></div></div></a>';
+          }).join("");
+        }
+
+        const progress = m.totalClasses ? (m.openedClasses + " / " + m.totalClasses + " classes opened") : "No classes yet";
+        return (
+          '<a href="' + programLevel + '-module' + num + '.html" class="text-decoration-none">' +
             '<div class="coming-soon-item" style="border-style:solid;border-color:#dbe1ea;color:#222;">' +
-            '<i class="bi ' + item.icon + '"></i><div>' +
-            '<div class="fw-semibold text-dark">' + item.title + '</div>' +
-            '<div class="small">' + item.sub + '</div></div></div></a>';
-        })
-        .join("");
+            '<i class="bi bi-journal-text"></i><div>' +
+            '<div class="fw-semibold text-dark">' + title + ' Notes' + (m.complete ? ' &middot; <span class="text-success">Complete</span>' : '') + '</div>' +
+            '<div class="small">' + label + ' &middot; ' + progress + '</div></div></div></a>'
+        );
+      }).join("");
     }
 
     // Quiz IDs this program currently has, in the order they should be

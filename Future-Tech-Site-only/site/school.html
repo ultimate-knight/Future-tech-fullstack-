@@ -336,6 +336,26 @@
             color: #687990;
             font-size: 13px;
         }
+        .school-logo-thumb {
+            width: 44px;
+            height: 44px;
+            object-fit: contain;
+            border: 1px solid #e3e8ef;
+            border-radius: 8px;
+            background: #fff;
+            padding: 2px;
+            margin-left: auto;
+            flex-shrink: 0;
+        }
+        .school-status {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 600;
+            color: #146c43;
+            background: #d1e7dd;
+            border-radius: 20px;
+            padding: 1px 10px;
+        }
         .receipt-footer {
             text-align: center;
             padding-top: 20px;
@@ -473,45 +493,15 @@
                 <h2>List of Schools</h2>
                 <p>Our Partner Schools</p>
             </div>
-            <div class="school-items">
-                <div class="school-item">
-                    <span class="school-number">01</span>
-                    <div>
-                        <h5>ABC International School</h5>
-                        <p>Hyderabad, Telangana</p>
-                    </div>
-                </div>
-                <div class="school-item">
-                    <span class="school-number">02</span>
-                    <div>
-                        <h5>Delhi Public School</h5>
-                        <p>Hyderabad, Telangana</p>
-                    </div>
-                </div>
-                <div class="school-item">
-                    <span class="school-number">03</span>
-                    <div>
-                        <h5>Future Kids School</h5>
-                        <p>Bengaluru, Karnataka</p>
-                    </div>
-                </div>
-                <div class="school-item">
-                    <span class="school-number">04</span>
-                    <div>
-                        <h5>St. Mary's High School</h5>
-                        <p>Vijayawada, Andhra Pradesh</p>
-                    </div>
-                </div>
-                <div class="school-item">
-                    <span class="school-number">05</span>
-                    <div>
-                        <h5>Techno Smart School</h5>
-                        <p>Chennai, Tamil Nadu</p>
-                    </div>
+            <!-- Filled from the database by loadSchools() (GET /api/schools/list): every school
+                 with an ACTIVE Future Tech account. Nothing here is hardcoded. -->
+            <div class="school-items" id="schoolItems" aria-live="polite">
+                <div class="text-center text-muted py-4">
+                    <div class="spinner-border spinner-border-sm me-2" role="status"></div>Loading schools&hellip;
                 </div>
             </div>
             <div class="receipt-footer">
-                <span>Future-Ready Technology Education</span>
+                <span id="schoolCountNote">Future-Ready Technology Education</span>
             </div>
         </div>
     </section>
@@ -709,10 +699,98 @@
           <br class="d-md-none"><span class="mx-2 d-none d-md-inline">&middot;</span><a href="terms.html" class="text-white-50">Terms of Service</a><span class="mx-2">&middot;</span><a href="privacy.html" class="text-white-50">Privacy Policy</a></div>
         </div>
       </footer>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/api-client.js"></script>
     <script>
+        // ---- "Our Partner Schools" list: real schools with an ACTIVE Future Tech account ----
+        // The server (GET /api/schools/list) returns only accounts that exist AND are
+        // currently active; a school whose account the Super Admin has suspended is not
+        // shown. (This app has no separate "activation" step: creating the account makes
+        // it active, and suspending/reactivating is the only status change.)
+        let schoolsLoadedAt = 0;
+        let schoolsLoading = false;
+        const SCHOOLS_CACHE_MS = 60 * 1000;
+
+        function schoolMessage(box, text, withRetry) {
+            box.innerHTML = "";
+            const wrap = document.createElement("div");
+            wrap.className = "text-center text-muted py-4";
+            wrap.textContent = text;
+            if (withRetry) {
+                const btn = document.createElement("button");
+                btn.type = "button";
+                btn.className = "btn btn-outline-primary btn-sm d-block mx-auto mt-3";
+                btn.textContent = "Try again";
+                btn.onclick = function () { loadSchools(true); };
+                wrap.appendChild(btn);
+            }
+            box.appendChild(wrap);
+        }
+
+        // The logo route sends Cross-Origin-Resource-Policy: same-origin, so a plain
+        // <img src> breaks whenever the site and API are on different origins
+        // (local development) - fetch it and show it as a blob instead.
+        async function attachSchoolLogo(img, schoolId) {
+            try {
+                const r = await fetch(window.FT_CONFIG.API_BASE_URL + "/content/school-logo/" + encodeURIComponent(schoolId));
+                if (!r.ok) { img.remove(); return; }
+                img.src = URL.createObjectURL(await r.blob());
+            } catch (e) { img.remove(); }
+        }
+
+        async function loadSchools(force) {
+            const box = document.getElementById("schoolItems");
+            const note = document.getElementById("schoolCountNote");
+            if (schoolsLoading) return;
+            if (!force && schoolsLoadedAt && Date.now() - schoolsLoadedAt < SCHOOLS_CACHE_MS) return;
+            schoolsLoading = true;
+            schoolMessage(box, "Loading schools\u2026", false);
+            try {
+                const schools = await FTApi.listSchools();
+                box.innerHTML = "";
+                if (!schools.length) {
+                    schoolMessage(box, "No partner schools to show yet. Be the first \u2014 get in touch and bring Future Tech to your school.", false);
+                    note.textContent = "Future-Ready Technology Education";
+                } else {
+                    schools.forEach(function (sc, idx) {
+                        const item = document.createElement("div");
+                        item.className = "school-item";
+                        const num = document.createElement("span");
+                        num.className = "school-number";
+                        num.textContent = String(idx + 1).padStart(2, "0");
+                        const info = document.createElement("div");
+                        const name = document.createElement("h5");
+                        name.textContent = sc.schoolName;
+                        const status = document.createElement("span");
+                        status.className = "school-status";
+                        status.textContent = "Active Future Tech account";
+                        info.appendChild(name);
+                        info.appendChild(status);
+                        item.appendChild(num);
+                        item.appendChild(info);
+                        if (sc.hasLogo) {
+                            const img = document.createElement("img");
+                            img.className = "school-logo-thumb";
+                            img.alt = sc.schoolName + " logo";
+                            item.appendChild(img);
+                            attachSchoolLogo(img, sc.id);
+                        }
+                        box.appendChild(item);
+                    });
+                    note.textContent = schools.length + (schools.length === 1 ? " school" : " schools") + " with an active Future Tech account";
+                }
+                schoolsLoadedAt = Date.now();
+            } catch (err) {
+                schoolMessage(box, "We couldn't load the school list right now. " + (err && err.message ? err.message : ""), true);
+            } finally {
+                schoolsLoading = false;
+            }
+        }
+
         function showSchools() {
             document.getElementById("schoolList").classList.add("active");
             document.body.style.overflow = "hidden";
+            loadSchools(false);
         }
 
         function hideSchools() {

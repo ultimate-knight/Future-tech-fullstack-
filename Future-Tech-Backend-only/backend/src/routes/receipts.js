@@ -3,7 +3,7 @@ const path = require("path");
 const fs = require("fs");
 const { Payment, IndividualAdmission, BulkAdmission, Student } = require("../models");
 const { RECEIPTS_DIR, generateReceiptPdf } = require("../services/receiptService");
-const { getAdmission } = require("../services/paymentService");
+const { getAdmission, getSchoolLogoPath } = require("../services/paymentService");
 const { verifyToken } = require("../utils/jwt");
 
 const router = express.Router();
@@ -83,7 +83,7 @@ router.get("/:paymentId/download", async (req, res) => {
         });
       }
 
-      await generateReceiptPdf(payment, admission, payment.type);
+      await generateReceiptPdf(payment, admission, payment.type, await getSchoolLogoPath(admission.schoolId));
       console.warn(`Rebuilt missing receipt PDF ${payment.receiptNumber}.pdf for payment ${payment.id}`);
     }
 

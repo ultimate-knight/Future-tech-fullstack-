@@ -1,198 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-in">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="assets/images/shared/favicon.ico">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/site.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="assets/images/shared/favicon.ico">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<title>Level 4 &middot; AI Professional Foundation | Future Tech School Program</title>
+<style>
+:root{--navy:rgb(14,14,65);--gold:#ffc107;--blue:#2f7dff;--muted:#c9cdf0;--c:#ffc107}
+html{scroll-behavior:smooth}
+body{background:#0a0a2e;color:#fff;font-family:Poppins,system-ui,sans-serif;overflow-x:hidden}
+img{max-width:100%;height:auto}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+section.blk{padding:clamp(34px,6vw,70px) 0}
+.eyebrow{display:inline-block;border:1px solid var(--c);color:var(--c);border-radius:10px;padding:.3rem .9rem;font-size:.85rem;font-weight:600;margin-bottom:1rem}
+.sec-title{font-weight:700;font-size:clamp(1.5rem,4vw,2.3rem);text-align:center;margin-bottom:.5rem}
+.sec-sub{text-align:center;color:var(--muted);max-width:720px;margin:0 auto 2rem}
+.panel{background:var(--navy);border:1px solid #1b1b73;border-radius:18px}
+.hero{padding:clamp(34px,6vw,70px) 0;background:radial-gradient(circle at 85% 20%,#0b3b9a 0,transparent 55%),linear-gradient(160deg,#07072a,#0e0e41 60%,#0a1a5c)}
+.hero h1{font-weight:800;line-height:1.1;font-size:clamp(2rem,5.5vw,3.6rem);margin:0 0 .4rem}
+.hero .lead{color:#dfe2ff;font-size:clamp(1rem,2vw,1.15rem);line-height:1.7}
+.btn-ft{font-weight:600;padding:.75rem 1.7rem;border-radius:10px}
+.ft-footer .ft-col{border-right:0}
+@media (min-width:992px){.ft-footer .ft-col{border-right:1px solid rgba(255,255,255,.15)}}
+@media (max-width:575.98px){.hero .btn{width:100%}}
 
-    <title>Level 4 - AI Professional Foundation | Future Tech School Program</title>
- <style>
-    .level-section {
-            padding: 30px 0 50px;
-        }
-        .level-card {
-            position: relative;
-            min-height: 600px;
-            overflow: hidden;
-            border-radius: 14px;
-            background:
-                linear-gradient(
-                    110deg,
-                    #ffffff 0%,
-                    #ffffff 60%,
-                    #e9f4ff 100%
-                );
-            border: 1px solid #edf0f5;
-            box-shadow:
-                0 8px 25px rgba(20, 50, 80, 0.10);
-            padding: 42px 40px;
-        }
-        .level-badge {
-            display: inline-block;
-            background: #5534b8;
-            color: white;
-            padding: 8px 14px;
-            border-radius: 5px;
-            font-size: 15px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            margin-bottom: 12px;
-        }
-        .level-card h1 {
-            font-size: 36px;
-            font-weight: 800;
-            color: #172a46;
-            margin-bottom: 5px;
-        }
-        .level-card h3 {
-            font-size: 21px;
-            font-weight: 700;
-            color: #287bdc;
-            margin-bottom: 12px;
-        }
-        .level-card h3 sup {
-            font-size: 12px;
-        }
-        .description {
-            max-width: 500px;
-            color: #596579;
-            font-size: 15px;
-            line-height: 1.6;
-            margin-bottom: 22px;
-        }
-        .info-box {
-            display: flex;
-            align-items: center;
-            background: #5534b8;
-            border-radius: 10px;
-            padding: 12px 14px;
-            box-shadow:
-                0 4px 14px rgba(20, 50, 80, 0.10);
-            width: 100%;
-            max-width: 540px;
-            margin-bottom: 25px;
-        }
-        .info-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            flex: 1;
-            padding: 0 10px;
-            border-right: 1px solid rgba(255,255,255,0.5);
-        }
-        .info-item:last-child {
-            border-right: none;
-        }
-        .info-icon {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            border: 2px solid #fff;
-            color: #ffffff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-        }
-        .info-item small {
-            display: block;
-            font-size: 9px;
-            color: #ffffff;
-        }
-        .info-item strong {
-            display: block;
-            font-size: 10px;
-            color: #ffffff;
-            white-space: nowrap;
-        }
-        .skills-section {
-            margin-top: 10px;
-        }
-
-        .skills-section h4 {
-            color: #287bdc;
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-        .skills-section ul {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 20px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 7px 20px;
-        }
-        .skills-section li {
-            color: #596579;
-            font-size: 13px;
-            display: flex;
-            align-items: center;
-        }
-        .skills-section li i {
-            color: #16804b;
-            font-weight: bold;
-            margin-right: 8px;
-            font-size: 14px;
-        }
-        .enroll-btn {
-            display: inline-block;
-            background: #5534b8;
-            color: #ffffff;
-            text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 6px;
-            font-size: 13px;
-            font-weight: 700;
-            transition: all 0.3s ease;
-            margin-right: 8px;
-        }
-        .enroll-btn:hover {
-            background: #422797;
-            color: #ffffff;
-            transform: translateY(-2px);
-        }
-        .Curriculum-btn {
-            display: inline-block;
-            background: transparent;
-            border: 1px solid #287bdc;
-            color: #287bdc;
-            text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 6px;
-            font-size: 13px;
-            font-weight: 700;
-            transition: all 0.3s ease;
-        }
-        .Curriculum-btn:hover {
-            background: #287bdc;
-            color: #ffffff;
-            transform: translateY(-2px);
-        }
-        .image {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-        }
-        .students-image {
-            width: 100%;
-            max-width: 500px;
-            height: 430px;
-            display: block;
-            margin: auto;
-            object-fit: contain;
-        }
-    </style>
+.hero{background:radial-gradient(circle at 85% 20%,color-mix(in srgb,var(--c) 35%,#0b3b9a) 0,transparent 55%),linear-gradient(160deg,#07072a,#0e0e41 60%,#0a1a5c)}
+.hero h1 span{color:var(--c)}
+.hero .gr{font-size:clamp(1.05rem,2.2vw,1.3rem);font-weight:600;color:#fff;margin-bottom:1rem}
+.hero-img{width:100%;max-height:440px;object-fit:cover;border-radius:22px;box-shadow:0 20px 60px rgba(0,0,0,.55);border:2px solid color-mix(in srgb,var(--c) 40%,transparent)}
+.facts{margin-top:-30px;position:relative;z-index:2}
+.fact{display:flex;align-items:center;gap:14px;padding:18px}
+.fact i{flex:none;display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:#1a1a6e;color:var(--c);font-size:1.4rem}
+.fact small{display:block;color:var(--muted);font-size:.8rem}
+.fact b{font-size:1.05rem}
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.skill{display:flex;align-items:center;gap:12px;background:var(--navy);border:1px solid #1b1b73;border-left:4px solid var(--c);border-radius:12px;padding:14px 16px}
+.skill i{color:var(--c);font-size:1.2rem;flex:none}
+.note{color:var(--muted);font-size:.85rem;text-align:center;margin-top:1.2rem}
+.switch{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.switch a{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:#fff;border:1px solid #2b2baa;background:var(--navy);border-radius:999px;padding:.55rem 1.1rem;font-weight:600;font-size:.92rem;transition:.2s}
+.switch a:hover{border-color:var(--c);transform:translateY(-3px);color:#fff}
+.switch a.on{background:var(--c);border-color:var(--c);color:#0a0a2e}
+.switch .dot{width:10px;height:10px;border-radius:50%;background:var(--d)}
+.cta{text-align:center;padding:clamp(28px,5vw,52px) 20px}
+@media (max-width:991.98px){.skills{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:575.98px){.skills{grid-template-columns:1fr}.facts{margin-top:-18px}.fact{padding:12px;gap:10px}.fact i{width:42px;height:42px;font-size:1.1rem}.cta .btn{width:100%}}
+</style>
 </head>
 <body>
-    <header class="ft-header">
+<header class="ft-header sticky-top">
     <nav class="navbar navbar-expand-xl ft-navbar">
       <div class="container-fluid">
         <a href="home.html" class="d-flex align-items-center text-decoration-none ft-logo-wrap">
@@ -216,7 +78,7 @@
                 <li><a class="dropdown-item" href="programs-level1.html">Level 1 &middot; Junior Innovators</a></li>
                 <li><a class="dropdown-item" href="programs-level2.html">Level 2 &middot; Young Technologists</a></li>
                 <li><a class="dropdown-item" href="programs-level3.html">Level 3 &middot; Future Engineers</a></li>
-                <li><a class="dropdown-item active" href="programs-level4.html">Level 4 &middot; AI Professional Foundation</a></li>
+                <li><a class="dropdown-item" href="programs-level4.html">Level 4 &middot; AI Professional Foundation</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="methodology.html">Methodology</a></li>
               </ul>
@@ -247,6 +109,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">More</a>
               <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="school-portal.html">School Account</a></li>  
                 <li><a class="dropdown-item" href="school.html">School Programs</a></li>
                 <li><a class="dropdown-item" href="events-workshops.html">Events &amp; Workshops</a></li>
                 <li><a class="dropdown-item" href="competitions.html">Competitions</a></li>
@@ -255,7 +118,7 @@
                 <li><a class="dropdown-item" href="faq.html">FAQ's</a></li>
               </ul>
             </li>
-
+            
             <li class="nav-item"><a href="contact.html" class="btn btn-warning fw-bold px-4 ms-2">Contact</a></li>
           </ul>
         </div>
@@ -271,7 +134,7 @@
         <ul class="navbar-nav">
           <li class="nav-item"><a href="home.html" class="nav-link">Home</a></li>
           <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-          <li class="nav-item"><a href="programs.html" class="nav-link active">Programs Overview</a></li>
+          <li class="nav-item"><a href="programs.html" class="nav-link">Programs Overview</a></li>
           <li class="nav-item ps-3"><a href="programs-level1.html" class="nav-link small">Level 1 &middot; Junior Innovators</a></li>
           <li class="nav-item ps-3"><a href="programs-level2.html" class="nav-link small">Level 2 &middot; Young Technologists</a></li>
           <li class="nav-item ps-3"><a href="programs-level3.html" class="nav-link small">Level 3 &middot; Future Engineers</a></li>
@@ -293,234 +156,145 @@
       </div>
     </div>
   </header>
-  <section class="level-section">
-        <div class="container">
-            <div class="level-card">
-                <div class="row align-items-center">
-                    <div class="col-lg-6">
-                        <span class="level-badge">LEVEL 4</span>
-                        <h1>
-                            Advanced Technology
-                            <br>
-                            Learning Program
-                        </h1>
-                        <h3>
-                            11<sup>th</sup> - 12<sup>th</sup> Standard
-                        </h3>
-                        <p class="description">Build advanced technology skills through AI,Generative AI, cybersecurity, programming and real-world projects.</p>
-                        <div class="info-box">
-                            <div class="info-item">
-                                <div class="info-icon"><i class="bi bi-clock"></i></div>
-                                <div>
-                                    <small>Duration</small>
-                                    <strong>8 Months*</strong>
-                                </div>
-                            </div>
-                            <div class="info-item">
-                                <div class="info-icon">
-                                    <i class="bi bi-book"></i>
-                                </div>
-                                <div>
-                                    <small>
-                                        Learning Hours
-                                    </small>
-                                    <strong>
-                                        200 Hours*
-                                    </strong>
-                                </div>
-                            </div>
-                            <div class="info-item">
-                                <div class="info-icon">
-                                    <i class="bi bi-stopwatch"></i>
-                                </div>
-                                <div>
-                                    <small>
-                                        Daily
-                                    </small>
-                                    <strong>
-                                        2 Hours
-                                    </strong>
-                                </div>
-                            </div>
-                            <div class="info-item">
-                                <div class="info-icon">
-                                    <i class="bi bi-geo-alt"></i>
-                                </div>
-                                <div>
-                                    <small>
-                                        Mode
-                                    </small>
-                                    <strong>
-                                        Online / Offline
-                                    </strong>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="skills-section">
-                            <h4>Skills Students Gain.</h4>
-                            <ul>
-                                <li>
-                                    <i class="bi bi-check2"></i>
-                                    Intermediate Python
-                                </li>
-                                <li>
-                                    <i class="bi bi-check2"></i>
-                                    Machine Learning
-                                </li>
-                                <li>
-                                    <i class="bi bi-check2"></i>
-                                    Data Analysis
-                                </li>
-                                <li>
-                                    <i class="bi bi-check2"></i>
-                                    Data Visualization
-                                </li>
-                                <li>
-                                    <i class="bi bi-check2"></i>
-                                    Cybersecurity Fundamentals
-                                </li>
-                                <li>
-                                    <i class="bi bi-check2"></i>
-                                    Project Development
-                                </li>
-                                <li>
-                                    <i class="bi bi-check2"></i>
-                                    Analytical Thinking
-                                </li>
-                                <li>
-                                    <i class="bi bi-check2"></i>
-                                    Team Collaboration
-                                </li>
-                                <li>
-                                    <i class="bi bi-check2"></i>
-                                    Research
-                                </li>
-                                <li>
-                                    <i class="bi bi-check2"></i>
-                                    Presentation
-                                </li>
-                            </ul>
-                        </div>
-                        <a href="programs-level4.html"
-                           class="enroll-btn">
-                            Enroll for Level 4
-                        </a>
-                        <a href="curriculum-level4.html"
-                           class="Curriculum-btn">
-                            Curriculum
-                        </a>
-                    </div>
-                    <div class="col-lg-6 image">
-                        <img src="assets/images/admission/level4.jpeg"
-                             alt="Students learning advanced technology"
-                             class="students-image">
-                    </div>
-                </div>
-            </div>
+
+<main style="--c:#d44fe0">
+<section class="hero"><div class="wrap"><div class="row align-items-center g-4 g-lg-5">
+ <div class="col-lg-6 order-2 order-lg-1">
+  <span class="eyebrow">LEVEL 4</span>
+  <h1><span>AI Professional Foundation</span></h1>
+  <div class="text-white-50 small mb-1">Advanced Technology Learning Program</div>
+  <div class="gr">11<sup>th</sup> &ndash; 12<sup>th</sup> Standard</div>
+  <p class="lead">Build advanced technology skills through AI, Generative AI, cybersecurity, programming and real-world capstone projects.</p>
+  <a class="btn btn-warning btn-ft me-sm-2 mb-2" href="admissions-individual-registration.html">ENROLL NOW</a>
+  <a class="btn btn-outline-light btn-ft me-sm-2 mb-2" href="curriculum-level4.html">View Curriculum</a>
+ </div>
+ <div class="col-lg-6 order-1 order-lg-2"><img class="hero-img" src="assets/images/admission/level4.jpeg" alt="Advanced technology learning" width="800" height="600" fetchpriority="high"></div>
+</div></div></section>
+
+<div class="wrap facts"><div class="panel"><div class="row g-0"><div class="col-6 col-lg-3"><div class="fact"><i class="bi bi-clock"></i><div><small>Duration</small><b>8 Months*</b></div></div></div><div class="col-6 col-lg-3"><div class="fact"><i class="bi bi-book"></i><div><small>Learning Hours</small><b>200 Hours*</b></div></div></div><div class="col-6 col-lg-3"><div class="fact"><i class="bi bi-stopwatch"></i><div><small>Daily</small><b>2 Hours</b></div></div></div><div class="col-6 col-lg-3"><div class="fact"><i class="bi bi-geo-alt"></i><div><small>Mode</small><b>Online / Offline</b></div></div></div></div></div></div>
+
+<section class="blk"><div class="wrap">
+ <h2 class="sec-title">Skills Students Gain</h2>
+ <p class="sec-sub">What your child will be able to do by the end of Level 4.</p>
+ <div class="skills"><div class="skill"><i class="bi bi-check-circle-fill"></i>Advanced Python</div><div class="skill"><i class="bi bi-check-circle-fill"></i>Machine Learning &amp; AI</div><div class="skill"><i class="bi bi-check-circle-fill"></i>Generative AI</div><div class="skill"><i class="bi bi-check-circle-fill"></i>Cybersecurity &amp; ethical hacking</div><div class="skill"><i class="bi bi-check-circle-fill"></i>Capstone project development</div><div class="skill"><i class="bi bi-check-circle-fill"></i>Analytical thinking</div><div class="skill"><i class="bi bi-check-circle-fill"></i>Team collaboration</div><div class="skill"><i class="bi bi-check-circle-fill"></i>Research</div><div class="skill"><i class="bi bi-check-circle-fill"></i>Presentation</div></div>
+ <p class="note">* Duration and learning hours may vary by school schedule.</p>
+</div></section>
+
+<section class="blk pt-0"><div class="wrap">
+ <h2 class="sec-title" style="font-size:clamp(1.3rem,3vw,1.8rem)">Explore Other Levels</h2>
+ <div class="switch mt-3"><a href="programs-level1.html" class="" style="--d:#ffc107"><span class="dot"></span>Level 1 &middot; Junior Innovators</a><a href="programs-level2.html" class="" style="--d:#3ddc84"><span class="dot"></span>Level 2 &middot; Young Technologists</a><a href="programs-level3.html" class="" style="--d:#4f8dff"><span class="dot"></span>Level 3 &middot; Future Engineers</a><a href="programs-level4.html" class="on" style="--d:#d44fe0"><span class="dot"></span>Level 4 &middot; AI Professional Foundation</a></div>
+</div></section>
+
+<section class="blk pt-0"><div class="wrap"><div class="panel cta">
+ <h2 class="fw-bold" style="font-size:clamp(1.5rem,4vw,2.1rem)">Ready to start Level 4?</h2>
+ <p class="text-white-50 mx-auto" style="max-width:560px">Give your child a strong foundation in technology, creativity and digital skills.</p>
+ <a class="btn btn-warning btn-ft me-sm-2 mb-2" href="admissions-individual-registration.html">ENROLL NOW</a>
+ 
+</div></div></section>
+</main>
+<footer class="ft-footer">
+    <div class="container-fluid">
+      <div class="row gy-4">
+        <div class="col-lg-3 col-md-6 ft-col">
+          <div class="d-flex align-items-center mb-3">
+            <img src="assets/images/shared/logo.png" width="52" height="52" class="rounded-3 me-2" alt="logo">
+            <div class="fw-bold">FUTURE TECH<br><span class="text-warning">SCHOOL PROGRAM</span></div>
+          </div>
+          <p class="small text-white-50">Building Future Innovators Today &mdash; empowering students from Grade 5th to 12th with future-ready technology skills through hands-on learning, real-world projects and expert mentorship.</p>
         </div>
-    </section>
-    <footer class="ft-footer">
-      <div class="container-fluid">
-        <div class="row gy-4">
-          <div class="col-lg-3 col-md-6 ft-col">
-            <div class="d-flex align-items-center mb-3">
-              <img src="assets/images/shared/logo.png" width="52" height="52" class="rounded-3 me-2" alt="logo">
-              <div class="fw-bold">FUTURE TECH<br><span class="text-warning">SCHOOL PROGRAM</span></div>
-            </div>
-            <p class="small text-white-50">Building Future Innovators Today &mdash; empowering students from Grade 5th to 12th with future-ready technology skills through hands-on learning, real-world projects and expert mentorship.</p>
-          </div>
-  
-          <div class="col-lg-2 col-md-6 ft-col">
-            <h6>Quick Links</h6>
-            <a href="home.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Home</a>
-            <a href="about.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>About Us</a>
-            <a href="programs.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Programs</a>
-            <a href="school.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Schools</a>
-            <a href="events-workshops.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Events</a>
-            <a href="projects.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Projects</a>
-            <a href="gallery.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Gallery</a>
-            <a href="admissions-individual.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Admissions</a>
-            <a href="certifications.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Certificates</a>
-            <a href="contact.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Contact Us</a>
-          </div>
-  
-          <div class="col-lg-2 col-md-6 ft-col">
-            <h6>Program Levels</h6>
-            <p class="small mb-2">
-              <a href="curriculum-level1.html" class="ft-quick-link">
-                <span class="bi bi-circle-fill text-warning me-1"></span>Level 1 &middot; Junior Innovators
-                <br><span class="text-white-50 ms-3">(5th&ndash;6th Standard)</span>
-              </a>
-            </p>
-            <p class="small mb-2">
-              <a href="curriculum-level2.html" class="ft-quick-link">
-                <span class="bi bi-circle-fill text-success me-1"></span>Level 2 &middot; Young Technologists
-                <br><span class="text-white-50 ms-3">(7th&ndash;8th Standard)</span>
-              </a>
-            </p>
-            <p class="small mb-2">
-              <a href="curriculum-level3.html" class="ft-quick-link">
-                <span class="bi bi-circle-fill text-primary me-1"></span>Level 3 &middot; Future Engineers
-                <br><span class="text-white-50 ms-3">(9th&ndash;10th Standard)</span>
-              </a>
-            </p>
-            <p class="small mb-2">
-              <a href="curriculum-level4.html" class="ft-quick-link">
-                <span class="bi bi-circle-fill me-1" style="color:#bb16bb;"></span>Level 4 &middot; AI Professional Foundation
-                <br><span class="text-white-50 ms-3">(11th&ndash;12th Standard)</span>
-              </a>
-            </p>
-          </div>
-  
-          <div class="col-lg-2 col-md-6 ft-col">
-            <h6>Get In Touch</h6>
-            <p class="small mb-2"><i class="bi bi-telephone-fill me-2 text-warning"></i>+91 9108534041</p>
-            <p class="small mb-2"><i class="bi bi-envelope me-2 text-warning"></i>info@futuretech.org</p>
-            <p class="small mb-2"><i class="bi bi-globe me-2 text-warning"></i>www.futuretech.org</p>
-            <p class="small mb-2"><i class="bi bi-geo-alt-fill me-2 text-warning"></i>3DWebSoft IT Solutions,<br><span class="ms-4">Narsingi, Hyderabad,</span><br><span class="ms-4">Telangana - 500075, India</span></p>
-          </div>
-  
-          <div class="col-lg-3 col-md-6">
-            <h6>Follow Us</h6>
-            <div class="d-flex ft-social mb-3">
-              <a href="https://www.facebook.com/profile.php?id=61592302205333" class="me-2"><img src="assets/images/gallery/facebook.jpeg" alt="Facebook"></a>
-              <a href="https://www.instagram.com/3dwebsoftitsolutions" class="me-2"><img src="assets/images/gallery/instagram.jpeg" alt="Instagram"></a>
-              <a href="https://www.youtube.com/@3dwebsoftitsolutions" class="me-2"><img src="assets/images/gallery/youtube.jpeg" alt="YouTube"></a>
-              <a href="https://www.linkedin.com/company/3dwebsoft-it-solutions/"><img src="assets/images/gallery/linkedin.jpeg" alt="LinkedIn"></a>
-            </div>
-            <h6>Stay Updated</h6>
-            <p class="small text-white-50">Get the latest updates, events and opportunities.</p>
-            <form class="d-flex" onsubmit="return false;">
-              <input type="email" class="form-control form-control-sm" placeholder="Enter your email">
-              <button class="btn btn-warning btn-sm ms-2"><i class="bi bi-arrow-right"></i></button>
-            </form>
-          </div>
+
+        <div class="col-lg-2 col-md-6 ft-col">
+          <h6>Quick Links</h6>
+          <a href="home.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Home</a>
+          <a href="about.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>About Us</a>
+          <a href="programs.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Programs</a>
+          <a href="school.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Schools</a>
+          <a href="events-workshops.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Events</a>
+          <a href="projects.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Projects</a>
+          <a href="gallery.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Gallery</a>
+          <a href="admissions-individual.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Admissions</a>
+          <a href="certifications.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Certificates</a>
+          <a href="contact.html" class="ft-quick-link"><i class="bi bi-chevron-right me-1"></i>Contact Us</a>
         </div>
-  
-        <div class="ft-brand-badges d-flex flex-wrap justify-content-center gap-5 py-4">
-          <a href="https://www.3dwebsoftitsolutions.com" target="_blank" rel="noopener"
-             class="ft-badge-link d-flex flex-column align-items-center text-decoration-none text-center">
-            <img src="assets/images/shared/itsolutions-logo.jpeg"
-                 alt="3DWebSoft IT Solutions" class="rounded-circle mb-2" width="60" height="60">
-            <span class="text-white fw-bold lh-sm">3DWEBSOFT<br><span class="fw-normal">IT Solutions</span></span>
-            <span class="badge rounded-pill bg-primary px-3 py-2 mt-2">Developed by</span>
-          </a>
-  
-          <a href="https://3dwebsoftfoundation.org/" target="_blank" rel="noopener"
-             class="ft-badge-link d-flex flex-column align-items-center text-decoration-none text-center">
-            <img src="assets/images/shared/foundation-logo.jpeg"
-                 alt="3DWebSoft Foundation" class="rounded-circle mb-2" width="60" height="60">
-            <span class="text-white fw-bold lh-sm">3DWEBSOFT<br><span class="fw-normal">Foundation</span></span>
-            <span class="badge rounded-pill bg-warning text-dark px-3 py-2 mt-2">Launched by</span>
-          </a>
+
+        <div class="col-lg-2 col-md-6 ft-col">
+          <h6>Program Levels</h6>
+          <p class="small mb-2">
+            <a href="curriculum-level1.html" class="ft-quick-link">
+              <span class="bi bi-circle-fill text-warning me-1"></span>Level 1 &middot; Junior Innovators
+              <br><span class="text-white-50 ms-3">(5th&ndash;6th Standard)</span>
+            </a>
+          </p>
+          <p class="small mb-2">
+            <a href="curriculum-level2.html" class="ft-quick-link">
+              <span class="bi bi-circle-fill text-success me-1"></span>Level 2 &middot; Young Technologists
+              <br><span class="text-white-50 ms-3">(7th&ndash;8th Standard)</span>
+            </a>
+          </p>
+          <p class="small mb-2">
+            <a href="curriculum-level3.html" class="ft-quick-link">
+              <span class="bi bi-circle-fill text-primary me-1"></span>Level 3 &middot; Future Engineers
+              <br><span class="text-white-50 ms-3">(9th&ndash;10th Standard)</span>
+            </a>
+          </p>
+          <p class="small mb-2">
+            <a href="curriculum-level4.html" class="ft-quick-link">
+              <span class="bi bi-circle-fill me-1" style="color:#bb16bb;"></span>Level 4 &middot; AI Professional Foundation
+              <br><span class="text-white-50 ms-3">(11th&ndash;12th Standard)</span>
+            </a>
+          </p>
         </div>
-  
-  
-        <div class="ft-copyright text-center">
-          &copy; 2026 Future Tech School Program. All Rights Reserved. &middot; A 3DWebSoft IT Solutions initiative.
-        <br class="d-md-none"><span class="mx-2 d-none d-md-inline">&middot;</span><a href="terms.html" class="text-white-50">Terms of Service</a><span class="mx-2">&middot;</span><a href="privacy.html" class="text-white-50">Privacy Policy</a></div>
+
+        <div class="col-lg-2 col-md-6 ft-col">
+          <h6>Get In Touch</h6>
+          <p class="small mb-2"><i class="bi bi-telephone-fill me-2 text-warning"></i>+91 9108534041</p>
+          <p class="small mb-2"><i class="bi bi-envelope me-2 text-warning"></i>info@futuretech.org</p>
+          <p class="small mb-2"><i class="bi bi-globe me-2 text-warning"></i>www.futuretech.org</p>
+          <p class="small mb-2"><i class="bi bi-geo-alt-fill me-2 text-warning"></i>3DWebSoft IT Solutions,<br><span class="ms-4">Narsingi, Hyderabad,</span><br><span class="ms-4">Telangana - 500075, India</span></p>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h6>Follow Us</h6>
+          <div class="d-flex ft-social mb-3">
+            <a href="https://www.facebook.com/profile.php?id=61592302205333" class="me-2"><img src="assets/images/gallery/facebook.jpeg" alt="Facebook"></a>
+            <a href="https://www.instagram.com/3dwebsoftitsolutions" class="me-2"><img src="assets/images/gallery/instagram.jpeg" alt="Instagram"></a>
+            <a href="https://www.youtube.com/@3dwebsoftitsolutions" class="me-2"><img src="assets/images/gallery/youtube.jpeg" alt="YouTube"></a>
+            <a href="https://www.linkedin.com/company/3dwebsoft-it-solutions/"><img src="assets/images/gallery/linkedin.jpeg" alt="LinkedIn"></a>
+          </div>
+          <h6>Stay Updated</h6>
+          <p class="small text-white-50">Get the latest updates, events and opportunities.</p>
+          <form class="d-flex" onsubmit="return false;">
+            <input type="email" class="form-control form-control-sm" placeholder="Enter your email">
+            <button class="btn btn-warning btn-sm ms-2"><i class="bi bi-arrow-right"></i></button>
+          </form>
+        </div>
       </div>
-    </footer>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+      <div class="ft-brand-badges d-flex flex-wrap justify-content-center gap-5 py-4">
+        <a href="https://www.3dwebsoftitsolutions.com" target="_blank" rel="noopener"
+           class="ft-badge-link d-flex flex-column align-items-center text-decoration-none text-center">
+          <img src="assets/images/shared/itsolutions-logo.jpeg"
+               alt="3DWebSoft IT Solutions" class="rounded-circle mb-2" width="60" height="60">
+          <span class="text-white fw-bold lh-sm">3DWEBSOFT<br><span class="fw-normal">IT Solutions</span></span>
+          <span class="badge rounded-pill bg-primary px-3 py-2 mt-2">Developed by</span>
+        </a>
+
+        <a href="https://3dwebsoftfoundation.org/" target="_blank" rel="noopener"
+           class="ft-badge-link d-flex flex-column align-items-center text-decoration-none text-center">
+          <img src="assets/images/shared/foundation-logo.jpeg"
+               alt="3DWebSoft Foundation" class="rounded-circle mb-2" width="60" height="60">
+          <span class="text-white fw-bold lh-sm">3DWEBSOFT<br><span class="fw-normal">Foundation</span></span>
+          <span class="badge rounded-pill bg-warning text-dark px-3 py-2 mt-2">Launched by</span>
+        </a>
+      </div>
+
+
+      <div class="ft-copyright text-center">
+        &copy; 2026 Future Tech School Program. All Rights Reserved. &middot; A 3DWebSoft IT Solutions initiative.
+      <br class="d-md-none"><span class="mx-2 d-none d-md-inline">&middot;</span><a href="terms.html" class="text-white-50">Terms of Service</a><span class="mx-2">&middot;</span><a href="privacy.html" class="text-white-50">Privacy Policy</a></div>
+    </div>
+  </footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

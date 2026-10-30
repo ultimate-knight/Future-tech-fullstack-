@@ -15,8 +15,13 @@ if (!fs.existsSync(RECEIPTS_DIR)) {
  * @param {object} payment   - Payment model instance (already marked paid)
  * @param {object} admission - the linked IndividualAdmission or BulkAdmission
  * @param {"individual"|"bulk"} type
+ * @param {string|null} [schoolLogoPath] - absolute path to the school's own
+ *   logo image on disk (content/school-logos/<id>.<ext>), if they've
+ *   uploaded one. Drawn top-right, opposite the Future Tech name, so the
+ *   receipt shows both brands. Omit/null to show only Future Tech, same
+ *   as before this existed.
  */
-function generateReceiptPdf(payment, admission, type) {
+function generateReceiptPdf(payment, admission, type, schoolLogoPath) {
   const filePath = path.join(RECEIPTS_DIR, `${payment.receiptNumber}.pdf`);
   const doc = new PDFDocument({ size: "A4", margin: 50 });
   const stream = fs.createWriteStream(filePath);
@@ -27,15 +32,29 @@ function generateReceiptPdf(payment, admission, type) {
     .fillColor("#06264d")
     .fontSize(22)
     .font("Helvetica-Bold")
-    .text("FUTURE TECH SCHOOL PROGRAM", { align: "left" });
+    .text("FUTURE TECH SCHOOL PROGRAM", 50, 50, { align: "left", width: 350 });
 
   doc
     .fillColor("#555")
     .fontSize(10)
     .font("Helvetica")
-    .text("3DWebSoft IT Solutions, Narsingi, Hyderabad, Telangana - 500075, India")
-    .text("info@futuretech.org  |  +91 8562487139");
+    .text("3DWebSoft IT Solutions, Narsingi, Hyderabad, Telangana - 500075, India", 50, doc.y, { width: 350 })
+    .text("info@futuretech.org  |  +91 8562487139", 50, doc.y, { width: 350 });
 
+  // The school's own logo, opposite the Future Tech name above - best
+  // effort only; a missing/corrupt file should never break the receipt.
+  if (schoolLogoPath) {
+    try {
+      if (fs.existsSync(schoolLogoPath)) {
+        doc.image(schoolLogoPath, 475, 45, { fit: [70, 70] });
+      }
+    } catch (imgErr) {
+      console.error("receipt school logo draw error (continuing without it)", imgErr);
+    }
+  }
+
+  doc.y = Math.max(doc.y, 125);
+  doc.x = 50;
   doc.moveDown(1.2);
   doc
     .strokeColor("#0d6efd")
@@ -83,6 +102,10 @@ function generateReceiptPdf(payment, admission, type) {
     rows.push(["School Name", admission.schoolName || "-"]);
     rows.push(["Parent / Guardian", admission.parentName || "-"]);
     rows.push(["Program Level", (admission.programLevel || "-").toUpperCase()]);
+    if (payment.paymentMonths && payment.monthlyFee) {
+      rows.push(["Payment Period", `${payment.paymentMonths} months`]);
+      rows.push(["Monthly Fee", `Rs. ${Number(payment.monthlyFee).toLocaleString("en-IN")}`]);
+    }
   } else {
     rows.push(["Organization / School", admission.organizationName || "-"]);
     rows.push(["Coordinator", admission.coordinatorName || "-"]);
@@ -141,4 +164,4 @@ function generateReceiptPdf(payment, admission, type) {
   });
 }
 
-module.exports = { generateReceiptPdf, RECEIPTS_DIR };
+module.exports = { generateReceiptPdf, RECEIPTS_DIR, SCHOOL_LOGO_DIR: path.join(__dirname, "..", "..", "content", "school-logos") };

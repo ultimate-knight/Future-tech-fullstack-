@@ -54,6 +54,13 @@ const School = sequelize.define(
     // Name shown in the payer's UPI app. Falls back to schoolName if this
     // is left blank but upiVpa is set.
     upiPayeeName: { type: DataTypes.STRING, allowNull: true },
+
+    // ---- School branding ----
+    // Filename only (e.g. "<schoolId>.png"), stored on disk under
+    // backend/content/school-logos/. Served publicly (no login needed -
+    // it's just a branding image) via GET /api/content/school-logo/:id.
+    // Null = no logo uploaded yet, show the Future Tech logo alone.
+    logoFilename: { type: DataTypes.STRING, allowNull: true },
   },
   {
     tableName: "schools",

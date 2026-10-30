@@ -92,11 +92,15 @@ router.post(
           extraFields: extraFields || {},
         }));
 
-      const amount = fees.individualLevelFees[programLevel];
+      // Monthly fee x payment period (see config/fees.js). The level was
+      // already validated by the isIn() check above, so this can't error.
+      const pricing = fees.calculateIndividualFee(admission.programLevel);
 
       res.status(201).json({
         admissionId: admission.id,
-        amount,
+        amount: pricing.total,
+        monthlyFee: pricing.monthlyFee,
+        paymentMonths: pricing.months,
         currency: fees.currency,
       });
     } catch (err) {
@@ -105,6 +109,35 @@ router.post(
     }
   }
 );
+
+// ---------------------------------------------------------------------
+// GET /api/admissions/individual/stats
+// PUBLIC. Number of CONFIRMED (paid) individual enrolments per level, for
+// the counter on the individual admission page. Counts paid admissions only
+// - a form that was submitted but never paid is not an enrolment. Returns
+// aggregate numbers only, never any student data.
+// ---------------------------------------------------------------------
+router.get("/individual/stats", async (req, res) => {
+  try {
+    const { fn, col } = require("sequelize");
+    const rows = await IndividualAdmission.findAll({
+      attributes: ["programLevel", [fn("COUNT", col("id")), "count"]],
+      where: { paymentStatus: "paid" },
+      group: ["programLevel"],
+      raw: true,
+    });
+    const levels = { level1: 0, level2: 0, level3: 0, level4: 0 };
+    rows.forEach((r) => {
+      if (Object.prototype.hasOwnProperty.call(levels, r.programLevel)) levels[r.programLevel] = Number(r.count) || 0;
+    });
+    const total = Object.values(levels).reduce((a, b) => a + b, 0);
+    res.set("Cache-Control", "public, max-age=60");
+    res.json({ total, levels });
+  } catch (err) {
+    console.error("individual stats error", err);
+    res.status(500).json({ error: "Could not load registration counts." });
+  }
+});
 
 // ---------------------------------------------------------------------
 // POST /api/admissions/bulk
